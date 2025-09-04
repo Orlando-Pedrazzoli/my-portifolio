@@ -71,7 +71,7 @@ export default function Footer() {
             </h3>
             <div className='flex gap-4 mb-4'>
               <motion.a
-                href='https://github.com'
+                href='https://github.com/Orlando-Pedrazzoli'
                 target='_blank'
                 rel='noopener noreferrer'
                 whileHover={{ scale: 1.2 }}
@@ -81,7 +81,7 @@ export default function Footer() {
                 <Github className='w-5 h-5' />
               </motion.a>
               <motion.a
-                href='https://linkedin.com'
+                href='https://www.linkedin.com/in/orlandopedrazzoli/'
                 target='_blank'
                 rel='noopener noreferrer'
                 whileHover={{ scale: 1.2 }}
@@ -91,7 +91,7 @@ export default function Footer() {
                 <Linkedin className='w-5 h-5' />
               </motion.a>
               <motion.a
-                href='mailto:seu@email.com'
+                href='mailto:pedrazzoliorlando@gmail.com'
                 whileHover={{ scale: 1.2 }}
                 className='p-2 bg-gray-800 rounded-lg text-gray-400 hover:text-white hover:bg-purple-600 transition-all'
                 aria-label='Email'
@@ -99,7 +99,7 @@ export default function Footer() {
                 <Mail className='w-5 h-5' />
               </motion.a>
             </div>
-            <p className='text-gray-400 text-sm'>seu@email.com</p>
+            <p className='text-gray-400 text-sm'>pedrazzoliorlando@gmail.com</p>
           </div>
         </div>
 

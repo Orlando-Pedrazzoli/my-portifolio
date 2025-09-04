@@ -3,6 +3,7 @@ import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
+import { LanguageProvider } from '@/components/providers/LanguageProvider';
 
 export const metadata: Metadata = {
   title: 'Portfolio - Full Stack Developer & AI Engineer',
@@ -18,11 +19,13 @@ export default function RootLayout({
   return (
     <html lang='pt-BR' suppressHydrationWarning>
       <body className='bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors'>
-        <ThemeProvider>
-          <Header />
-          {children}
-          <Footer />
-        </ThemeProvider>
+        <LanguageProvider>
+          <ThemeProvider>
+            <Header />
+            {children}
+            <Footer />
+          </ThemeProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

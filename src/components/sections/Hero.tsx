@@ -11,6 +11,7 @@ import {
   Code2,
   Brain,
 } from 'lucide-react';
+import { useLanguage } from '@/components/providers/LanguageProvider';
 
 export default function Hero() {
   const [text, setText] = useState('');
@@ -18,12 +19,13 @@ export default function Hero() {
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(150);
   const [mounted, setMounted] = useState(false);
+  const { t } = useLanguage();
 
   const roles = [
-    'Full Stack Developer',
-    'AI Engineer',
-    'Problem Solver',
-    'Tech Innovator',
+    t('hero.roles.fullstack'),
+    t('hero.roles.ai'),
+    t('hero.roles.problem'),
+    t('hero.roles.tech'),
   ];
 
   useEffect(() => {
@@ -137,7 +139,7 @@ export default function Hero() {
           >
             <Sparkles className='w-4 h-4 text-purple-600 dark:text-purple-400' />
             <span className='text-sm text-purple-700 dark:text-purple-300'>
-              AI-Powered Developer
+              {t('hero.badge')}
             </span>
           </motion.div>
 
@@ -148,7 +150,7 @@ export default function Hero() {
             transition={{ delay: 0.3 }}
             className='text-5xl sm:text-7xl font-bold text-gray-900 dark:text-white mb-6'
           >
-            Olá, eu sou{' '}
+            {t('hero.greeting')}{' '}
             <span className='bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 dark:from-purple-400 dark:via-pink-400 dark:to-blue-400 bg-clip-text text-transparent'>
               Seu Nome
             </span>
@@ -172,8 +174,7 @@ export default function Hero() {
             transition={{ delay: 0.7 }}
             className='text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12'
           >
-            Transformando ideias em soluções inteligentes. Especializado em
-            construir aplicações web modernas com integração de IA de ponta.
+            {t('hero.description')}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -189,7 +190,7 @@ export default function Hero() {
             >
               <span className='relative z-10 flex items-center gap-2'>
                 <Brain className='w-5 h-5' />
-                Ver Projetos AI
+                {t('hero.cta.projects')}
               </span>
               <div className='absolute inset-0 bg-gradient-to-r from-purple-700 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity' />
             </a>
@@ -200,7 +201,7 @@ export default function Hero() {
             >
               <span className='flex items-center gap-2'>
                 <Code2 className='w-5 h-5' />
-                Entrar em Contato
+                {t('hero.cta.contact')}
               </span>
             </a>
           </motion.div>
