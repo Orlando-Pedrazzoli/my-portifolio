@@ -13,6 +13,20 @@ import {
 } from 'lucide-react';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 
+// Configuração do site
+const SITE_CONFIG = {
+  name: 'Orlando Pedrazzoli',
+  title: 'Full Stack Developer & AI Engineer',
+  description:
+    'Desenvolvedor Full Stack especializado em criar aplicações web modernas com integração de IA',
+  url: 'https://orlandopedrazzoli.com',
+  email: 'pedrazzoliorlando@gmail.com',
+  github: 'https://github.com/Orlando-Pedrazzoli',
+  linkedin: 'https://www.linkedin.com/in/orlandopedrazzoli/',
+  phone: '+351 912164220',
+  location: 'Lisboa, Portugal',
+};
+
 export default function Hero() {
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -152,7 +166,7 @@ export default function Hero() {
           >
             {t('hero.greeting')}{' '}
             <span className='bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 dark:from-purple-400 dark:via-pink-400 dark:to-blue-400 bg-clip-text text-transparent'>
-              Seu Nome
+              {SITE_CONFIG.name}
             </span>
           </motion.h1>
 
@@ -213,28 +227,39 @@ export default function Hero() {
             transition={{ delay: 1.1 }}
             className='flex gap-6 justify-center mt-12'
           >
-            {[
-              { icon: Github, href: 'https://github.com', label: 'GitHub' },
-              {
-                icon: Linkedin,
-                href: 'https://linkedin.com',
-                label: 'LinkedIn',
-              },
-              { icon: Mail, href: 'mailto:seu@email.com', label: 'Email' },
-            ].map(social => (
-              <motion.a
-                key={social.label}
-                href={social.href}
-                target='_blank'
-                rel='noopener noreferrer'
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                whileTap={{ scale: 0.9 }}
-                className='p-3 border border-gray-300 dark:border-purple-400/30 rounded-lg bg-white/80 dark:bg-purple-900/20 backdrop-blur-sm text-gray-700 dark:text-purple-300 hover:text-purple-600 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-purple-600/20 transition-all shadow-md hover:shadow-lg'
-                aria-label={social.label}
-              >
-                <social.icon className='w-5 h-5' />
-              </motion.a>
-            ))}
+            <motion.a
+              href={SITE_CONFIG.github}
+              target='_blank'
+              rel='noopener noreferrer'
+              whileHover={{ scale: 1.2, rotate: 5 }}
+              whileTap={{ scale: 0.9 }}
+              className='p-3 border border-gray-300 dark:border-purple-400/30 rounded-lg bg-white/80 dark:bg-purple-900/20 backdrop-blur-sm text-gray-700 dark:text-purple-300 hover:text-purple-600 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-purple-600/20 transition-all shadow-md hover:shadow-lg'
+              aria-label='GitHub'
+            >
+              <Github className='w-5 h-5' />
+            </motion.a>
+
+            <motion.a
+              href={SITE_CONFIG.linkedin}
+              target='_blank'
+              rel='noopener noreferrer'
+              whileHover={{ scale: 1.2, rotate: 5 }}
+              whileTap={{ scale: 0.9 }}
+              className='p-3 border border-gray-300 dark:border-purple-400/30 rounded-lg bg-white/80 dark:bg-purple-900/20 backdrop-blur-sm text-gray-700 dark:text-purple-300 hover:text-purple-600 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-purple-600/20 transition-all shadow-md hover:shadow-lg'
+              aria-label='LinkedIn'
+            >
+              <Linkedin className='w-5 h-5' />
+            </motion.a>
+
+            <motion.a
+              href={`mailto:${SITE_CONFIG.email}`}
+              whileHover={{ scale: 1.2, rotate: 5 }}
+              whileTap={{ scale: 0.9 }}
+              className='p-3 border border-gray-300 dark:border-purple-400/30 rounded-lg bg-white/80 dark:bg-purple-900/20 backdrop-blur-sm text-gray-700 dark:text-purple-300 hover:text-purple-600 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-purple-600/20 transition-all shadow-md hover:shadow-lg'
+              aria-label='Email'
+            >
+              <Mail className='w-5 h-5' />
+            </motion.a>
           </motion.div>
         </motion.div>
 

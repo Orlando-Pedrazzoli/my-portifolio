@@ -14,21 +14,19 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
 );
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguage] = useState<Language>('pt');
+  const [language, setLanguage] = useState<Language>('en'); // Mudado de 'pt' para 'en'
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    // Recuperar idioma do localStorage ou detectar do navegador
+    // Recuperar idioma do localStorage ou usar inglês como padrão
     const savedLang = localStorage.getItem('language') as Language;
     if (savedLang && (savedLang === 'pt' || savedLang === 'en')) {
       setLanguage(savedLang);
     } else {
-      // Detectar idioma do navegador
-      const browserLang = navigator.language.toLowerCase();
-      const detectedLang = browserLang.startsWith('pt') ? 'pt' : 'en';
-      setLanguage(detectedLang);
-      localStorage.setItem('language', detectedLang);
+      // Se não houver idioma salvo, usar inglês como padrão
+      setLanguage('en'); // Mudado de detectar navegador para sempre inglês
+      localStorage.setItem('language', 'en');
     }
   }, []);
 

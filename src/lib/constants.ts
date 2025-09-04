@@ -1,15 +1,16 @@
 // FILE: src/lib/constants.ts
 // =====================================
+
 export const SITE_CONFIG = {
-  name: 'Seu Nome',
+  name: 'Orlando Pedrazzoli',
   title: 'Full Stack Developer & AI Engineer',
   description:
     'Desenvolvedor Full Stack especializado em criar aplicações web modernas com integração de IA',
-  url: 'https://seuportfolio.com',
-  email: 'seu@email.com',
-  github: 'https://github.com/yourusername',
-  linkedin: 'https://linkedin.com/in/yourusername',
-  phone: '+351 XXX XXX XXX',
+  url: 'https://orlandopedrazzoli.com',
+  email: 'pedrazzoliorlando@gmail.com',
+  github: 'https://github.com/Orlando-Pedrazzoli',
+  linkedin: 'https://www.linkedin.com/in/orlandopedrazzoli/',
+  phone: '+351 912164220',
   location: 'Lisboa, Portugal',
 };
 
