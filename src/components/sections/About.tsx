@@ -2,41 +2,79 @@
 
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, Coffee, Rocket, Target, Heart } from 'lucide-react';
+import { useLanguage } from '@/components/providers/LanguageProvider';
+
+// Configuração do site
+const SITE_CONFIG = {
+  location: 'Lisboa, Portugal',
+};
 
 export default function About() {
+  const { t, language } = useLanguage();
+
+  // Stats com traduções dinâmicas
   const stats = [
-    { label: 'Anos de Experiência', value: '15+', icon: Calendar },
-    { label: 'Projetos Completos', value: '50+', icon: Rocket },
-    { label: 'Clientes Satisfeitos', value: '30+', icon: Heart },
-    { label: 'Linhas de Código', value: '100k+', icon: Coffee },
+    { label: t('about.stats.experience'), value: '15+', icon: Calendar },
+    { label: t('about.stats.projects'), value: '50+', icon: Rocket },
+    { label: t('about.stats.clients'), value: '30+', icon: Heart },
+    { label: t('about.stats.code'), value: '100k+', icon: Coffee },
   ];
 
-  const journey = [
-    {
-      year: '2010-2023',
-      title: 'Empreendedor & CEO',
-      description:
-        'Fundei e liderei a Elite Surfing, expandindo para mercados internacionais.',
-    },
-    {
-      year: '2023-2024',
-      title: 'Transição de Carreira',
-      description:
-        'Bootcamp intensivo em Full Stack Development, focado em tecnologias modernas.',
-    },
-    {
-      year: '2024',
-      title: 'Data Analyst - Accenture',
-      description:
-        'Análise de dados para cliente multinacional, desenvolvendo soluções automatizadas.',
-    },
-    {
-      year: 'Presente',
-      title: 'Full Stack Developer & AI Engineer',
-      description:
-        'Desenvolvendo aplicações inteligentes que combinam web development com IA.',
-    },
-  ];
+  // Journey com traduções dinâmicas
+  const journey =
+    language === 'pt'
+      ? [
+          {
+            year: '2010-2023',
+            title: 'Empreendedor & CEO',
+            description:
+              'Fundei e liderei a Elite Surfing, expandindo para mercados internacionais.',
+          },
+          {
+            year: '2023-2024',
+            title: 'Transição de Carreira',
+            description:
+              'Bootcamp intensivo em Full Stack Development, focado em tecnologias modernas.',
+          },
+          {
+            year: '2024',
+            title: 'Data Analyst - Accenture',
+            description:
+              'Análise de dados para cliente multinacional, desenvolvendo soluções automatizadas.',
+          },
+          {
+            year: 'Presente',
+            title: 'Full Stack Developer & AI Engineer',
+            description:
+              'Desenvolvendo aplicações inteligentes que combinam web development com IA.',
+          },
+        ]
+      : [
+          {
+            year: '2010-2023',
+            title: 'Entrepreneur & CEO',
+            description:
+              'Founded and led Elite Surfing, expanding to international markets.',
+          },
+          {
+            year: '2023-2024',
+            title: 'Career Transition',
+            description:
+              'Intensive Full Stack Development bootcamp, focused on modern technologies.',
+          },
+          {
+            year: '2024',
+            title: 'Data Analyst - Accenture',
+            description:
+              'Data analysis for multinational client, developing automated solutions.',
+          },
+          {
+            year: 'Present',
+            title: 'Full Stack Developer & AI Engineer',
+            description:
+              'Developing intelligent applications that combine web development with AI.',
+          },
+        ];
 
   return (
     <div className='max-w-7xl mx-auto'>
@@ -54,9 +92,9 @@ export default function About() {
             viewport={{ once: true }}
             className='text-4xl sm:text-5xl font-bold mb-4'
           >
-            Sobre{' '}
+            {t('about.title')}{' '}
             <span className='bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent'>
-              Mim
+              {t('about.titleHighlight')}
             </span>
           </motion.h2>
           <motion.p
@@ -64,10 +102,9 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className='text-gray-400 text-lg max-w-2xl mx-auto'
+            className='text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto'
           >
-            De empreendedor a desenvolvedor, minha jornada é sobre transformação
-            e paixão por tecnologia
+            {t('about.subtitle')}
           </motion.p>
         </div>
 
@@ -81,33 +118,24 @@ export default function About() {
             className='space-y-6'
           >
             <div className='prose prose-invert max-w-none'>
-              <h3 className='text-2xl font-bold mb-4 text-purple-400'>
-                Da Gestão Empresarial ao Código
+              <h3 className='text-2xl font-bold mb-4 text-purple-600 dark:text-purple-400'>
+                {t('about.heading')}
               </h3>
-              <p className='text-gray-300 mb-4'>
-                Após 15 anos liderando minha própria empresa no setor de surf,
-                decidi fazer uma transição de carreira para tecnologia. Minha
-                experiência em gestão, estratégia e resolução de problemas
-                complexos me dá uma perspectiva única no desenvolvimento de
-                software.
+              <p className='text-gray-700 dark:text-gray-300 mb-4'>
+                {t('about.description1')}
               </p>
-              <p className='text-gray-300 mb-4'>
-                Hoje, combino minha experiência empresarial com habilidades
-                técnicas em Full Stack Development e Inteligência Artificial
-                para criar soluções que não apenas funcionam, mas que
-                transformam negócios.
+              <p className='text-gray-700 dark:text-gray-300 mb-4'>
+                {t('about.description2')}
               </p>
-              <p className='text-gray-300'>
-                Meu foco está em desenvolver aplicações web modernas e
-                escaláveis, com integração de IA para automatizar processos e
-                gerar insights valiosos para empresas de todos os tamanhos.
+              <p className='text-gray-700 dark:text-gray-300'>
+                {t('about.description3')}
               </p>
             </div>
 
             {/* Location */}
-            <div className='flex items-center gap-2 text-gray-400'>
-              <MapPin className='w-5 h-5 text-purple-400' />
-              <span>Lisboa, Portugal</span>
+            <div className='flex items-center gap-2 text-gray-600 dark:text-gray-400'>
+              <MapPin className='w-5 h-5 text-purple-600 dark:text-purple-400' />
+              <span>{SITE_CONFIG.location}</span>
             </div>
 
             {/* CTA */}
@@ -117,13 +145,13 @@ export default function About() {
                 download
                 className='px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-lg hover:scale-105 transition-transform'
               >
-                Download CV
+                {t('about.downloadCV')}
               </a>
               <a
                 href='#experience'
-                className='px-6 py-3 border border-purple-400/50 text-purple-300 font-semibold rounded-lg hover:bg-purple-400/10 transition-colors'
+                className='px-6 py-3 border border-purple-500 dark:border-purple-400/50 text-purple-700 dark:text-purple-300 font-semibold rounded-lg hover:bg-purple-100 dark:hover:bg-purple-400/10 transition-colors'
               >
-                Ver Experiência
+                {t('about.viewExperience')}
               </a>
             </div>
           </motion.div>
@@ -138,8 +166,8 @@ export default function About() {
               transition={{ duration: 0.6 }}
               className='relative'
             >
-              <h4 className='text-xl font-bold mb-6 text-purple-400'>
-                Minha Jornada
+              <h4 className='text-xl font-bold mb-6 text-purple-600 dark:text-purple-400'>
+                {t('about.journey.title')}
               </h4>
               <div className='space-y-4'>
                 {journey.map((item, index) => (
@@ -152,17 +180,19 @@ export default function About() {
                     className='flex gap-4'
                   >
                     <div className='relative'>
-                      <div className='w-3 h-3 bg-purple-400 rounded-full' />
+                      <div className='w-3 h-3 bg-purple-600 dark:bg-purple-400 rounded-full' />
                       {index < journey.length - 1 && (
-                        <div className='absolute top-3 left-1/2 -translate-x-1/2 w-0.5 h-full bg-purple-400/30' />
+                        <div className='absolute top-3 left-1/2 -translate-x-1/2 w-0.5 h-full bg-purple-600/30 dark:bg-purple-400/30' />
                       )}
                     </div>
                     <div className='flex-1 -mt-1'>
-                      <span className='text-sm text-purple-400 font-semibold'>
+                      <span className='text-sm text-purple-600 dark:text-purple-400 font-semibold'>
                         {item.year}
                       </span>
-                      <h5 className='text-white font-semibold'>{item.title}</h5>
-                      <p className='text-gray-400 text-sm mt-1'>
+                      <h5 className='text-gray-900 dark:text-white font-semibold'>
+                        {item.title}
+                      </h5>
+                      <p className='text-gray-600 dark:text-gray-400 text-sm mt-1'>
                         {item.description}
                       </p>
                     </div>
@@ -187,13 +217,15 @@ export default function About() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ scale: 1.05 }}
-                  className='bg-gradient-to-br from-purple-900/20 to-blue-900/20 border border-purple-400/20 rounded-lg p-4 text-center'
+                  className='bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/20 dark:to-blue-900/20 border border-purple-300 dark:border-purple-400/20 rounded-lg p-4 text-center'
                 >
-                  <stat.icon className='w-8 h-8 text-purple-400 mx-auto mb-2' />
-                  <div className='text-2xl font-bold text-white'>
+                  <stat.icon className='w-8 h-8 text-purple-600 dark:text-purple-400 mx-auto mb-2' />
+                  <div className='text-2xl font-bold text-gray-900 dark:text-white'>
                     {stat.value}
                   </div>
-                  <div className='text-sm text-gray-400'>{stat.label}</div>
+                  <div className='text-sm text-gray-600 dark:text-gray-400'>
+                    {stat.label}
+                  </div>
                 </motion.div>
               ))}
             </motion.div>
@@ -204,10 +236,10 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className='bg-gradient-to-br from-purple-900/20 to-blue-900/20 border border-purple-400/20 rounded-lg p-6'
+              className='bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/20 dark:to-blue-900/20 border border-purple-300 dark:border-purple-400/20 rounded-lg p-6'
             >
-              <h4 className='text-lg font-bold mb-4 text-purple-400'>
-                Core Skills
+              <h4 className='text-lg font-bold mb-4 text-purple-600 dark:text-purple-400'>
+                {t('about.coreSkills')}
               </h4>
               <div className='flex flex-wrap gap-2'>
                 {[
@@ -222,7 +254,7 @@ export default function About() {
                 ].map(skill => (
                   <span
                     key={skill}
-                    className='px-3 py-1 bg-purple-900/30 border border-purple-400/30 rounded-full text-sm text-purple-300'
+                    className='px-3 py-1 bg-purple-200 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-400/30 rounded-full text-sm text-purple-700 dark:text-purple-300'
                   >
                     {skill}
                   </span>
