@@ -7,32 +7,35 @@ import Contact from '@/components/sections/Contact';
 
 export default function Home() {
   return (
-    <main className='relative bg-gray-950 text-white overflow-x-hidden'>
+    <main className='relative bg-white dark:bg-gray-950 text-gray-900 dark:text-white overflow-x-hidden transition-colors'>
       {/* Hero Section */}
       <Hero />
 
       {/* About Section */}
-      <section id='about' className='py-20 px-4'>
+      <section id='about' className='py-20 px-4 bg-gray-50 dark:bg-gray-950'>
         <About />
       </section>
 
       {/* Skills Section */}
-      <section id='skills' className='py-20 px-4 bg-gray-900/50'>
+      <section id='skills' className='py-20 px-4 bg-white dark:bg-gray-900/50'>
         <Skills />
       </section>
 
       {/* Projects Section */}
-      <section id='projects' className='py-20 px-4'>
+      <section id='projects' className='py-20 px-4 bg-gray-50 dark:bg-gray-950'>
         <Projects />
       </section>
 
       {/* Experience Section */}
-      <section id='experience' className='py-20 px-4 bg-gray-900/50'>
+      <section
+        id='experience'
+        className='py-20 px-4 bg-white dark:bg-gray-900/50'
+      >
         <Experience />
       </section>
 
       {/* Contact Section */}
-      <section id='contact' className='py-20 px-4'>
+      <section id='contact' className='py-20 px-4 bg-gray-50 dark:bg-gray-950'>
         <Contact />
       </section>
     </main>

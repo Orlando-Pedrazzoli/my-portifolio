@@ -60,8 +60,8 @@ export default function Hero() {
   return (
     <section className='relative min-h-screen flex items-center justify-center overflow-hidden'>
       {/* Animated Background */}
-      <div className='absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900'>
-        <div className='absolute inset-0 bg-black/20' />
+      <div className='absolute inset-0 bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-purple-900 dark:via-blue-900 dark:to-indigo-900'>
+        <div className='absolute inset-0 bg-white/50 dark:bg-black/20' />
 
         {/* Animated particles */}
         {mounted && (
@@ -69,7 +69,7 @@ export default function Hero() {
             {[...Array(30)].map((_, i) => (
               <motion.div
                 key={i}
-                className='absolute w-1 h-1 bg-white/20 rounded-full'
+                className='absolute w-1 h-1 bg-gray-600/20 dark:bg-white/20 rounded-full'
                 initial={{
                   x:
                     Math.random() *
@@ -99,7 +99,7 @@ export default function Hero() {
 
       {/* Gradient Orbs */}
       <motion.div
-        className='absolute top-20 left-20 w-72 h-72 bg-purple-600 rounded-full blur-3xl opacity-20'
+        className='absolute top-20 left-20 w-72 h-72 bg-purple-400 dark:bg-purple-600 rounded-full blur-3xl opacity-30 dark:opacity-20'
         animate={{
           x: [0, 100, 0],
           y: [0, -100, 0],
@@ -110,7 +110,7 @@ export default function Hero() {
         }}
       />
       <motion.div
-        className='absolute bottom-20 right-20 w-96 h-96 bg-blue-600 rounded-full blur-3xl opacity-20'
+        className='absolute bottom-20 right-20 w-96 h-96 bg-blue-400 dark:bg-blue-600 rounded-full blur-3xl opacity-30 dark:opacity-20'
         animate={{
           x: [0, -100, 0],
           y: [0, 100, 0],
@@ -133,10 +133,10 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
-            className='inline-flex items-center gap-2 px-4 py-2 mb-8 border border-purple-400/30 rounded-full bg-purple-900/20 backdrop-blur-sm'
+            className='inline-flex items-center gap-2 px-4 py-2 mb-8 border border-purple-400/50 dark:border-purple-400/30 rounded-full bg-white/80 dark:bg-purple-900/20 backdrop-blur-sm'
           >
-            <Sparkles className='w-4 h-4 text-purple-400' />
-            <span className='text-sm text-purple-300'>
+            <Sparkles className='w-4 h-4 text-purple-600 dark:text-purple-400' />
+            <span className='text-sm text-purple-700 dark:text-purple-300'>
               AI-Powered Developer
             </span>
           </motion.div>
@@ -146,10 +146,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className='text-5xl sm:text-7xl font-bold text-white mb-6'
+            className='text-5xl sm:text-7xl font-bold text-gray-900 dark:text-white mb-6'
           >
             Olá, eu sou{' '}
-            <span className='bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent'>
+            <span className='bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 dark:from-purple-400 dark:via-pink-400 dark:to-blue-400 bg-clip-text text-transparent'>
               Seu Nome
             </span>
           </motion.h1>
@@ -159,7 +159,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className='text-2xl sm:text-4xl text-gray-300 mb-8 h-12'
+            className='text-2xl sm:text-4xl text-gray-700 dark:text-gray-300 mb-8 h-12'
           >
             <span>{text}</span>
             <span className='animate-pulse'>|</span>
@@ -170,7 +170,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
-            className='text-lg text-gray-400 max-w-2xl mx-auto mb-12'
+            className='text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12'
           >
             Transformando ideias em soluções inteligentes. Especializado em
             construir aplicações web modernas com integração de IA de ponta.
@@ -185,7 +185,7 @@ export default function Hero() {
           >
             <a
               href='#projects'
-              className='group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:scale-105'
+              className='group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl'
             >
               <span className='relative z-10 flex items-center gap-2'>
                 <Brain className='w-5 h-5' />
@@ -196,7 +196,7 @@ export default function Hero() {
 
             <a
               href='#contact'
-              className='group px-8 py-4 border-2 border-purple-400/50 text-purple-300 font-semibold rounded-lg backdrop-blur-sm transition-all duration-300 hover:bg-purple-400/10 hover:scale-105'
+              className='group px-8 py-4 border-2 border-purple-500 dark:border-purple-400/50 text-purple-700 dark:text-purple-300 font-semibold rounded-lg backdrop-blur-sm transition-all duration-300 hover:bg-purple-100 dark:hover:bg-purple-400/10 hover:scale-105'
             >
               <span className='flex items-center gap-2'>
                 <Code2 className='w-5 h-5' />
@@ -228,7 +228,7 @@ export default function Hero() {
                 rel='noopener noreferrer'
                 whileHover={{ scale: 1.2, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
-                className='p-3 border border-purple-400/30 rounded-lg bg-purple-900/20 backdrop-blur-sm text-purple-300 hover:text-white hover:bg-purple-600/20 transition-all'
+                className='p-3 border border-gray-300 dark:border-purple-400/30 rounded-lg bg-white/80 dark:bg-purple-900/20 backdrop-blur-sm text-gray-700 dark:text-purple-300 hover:text-purple-600 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-purple-600/20 transition-all shadow-md hover:shadow-lg'
                 aria-label={social.label}
               >
                 <social.icon className='w-5 h-5' />
@@ -247,7 +247,7 @@ export default function Hero() {
           }}
           className='absolute bottom-8 left-1/2 -translate-x-1/2'
         >
-          <ChevronDown className='w-8 h-8 text-purple-400/50' />
+          <ChevronDown className='w-8 h-8 text-gray-600 dark:text-purple-400/50' />
         </motion.div>
       </div>
     </section>

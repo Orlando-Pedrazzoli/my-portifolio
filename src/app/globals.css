@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --background: #ffffff;
@@ -23,4 +23,205 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Tailwind 4 - Dark mode usando data attribute */
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+html.dark {
+  color-scheme: dark;
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+html:not(.dark) {
+  color-scheme: light;
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+/* Utility classes para dark mode no Tailwind 4 */
+@utility dark {
+  .dark\:bg-gray-950 {
+    background-color: rgb(3 7 18);
+  }
+  .dark\:bg-gray-900 {
+    background-color: rgb(17 24 39);
+  }
+  .dark\:bg-gray-900\/50 {
+    background-color: rgb(17 24 39 / 0.5);
+  }
+  .dark\:bg-gray-900\/95 {
+    background-color: rgb(17 24 39 / 0.95);
+  }
+  .dark\:bg-gray-800 {
+    background-color: rgb(31 41 55);
+  }
+  .dark\:bg-gray-800\/50 {
+    background-color: rgb(31 41 55 / 0.5);
+  }
+  .dark\:bg-gray-700 {
+    background-color: rgb(55 65 81);
+  }
+  .dark\:bg-gray-600 {
+    background-color: rgb(75 85 99);
+  }
+  .dark\:bg-black\/20 {
+    background-color: rgb(0 0 0 / 0.2);
+  }
+  .dark\:bg-black\/80 {
+    background-color: rgb(0 0 0 / 0.8);
+  }
+  .dark\:bg-purple-900\/20 {
+    background-color: rgb(88 28 135 / 0.2);
+  }
+  .dark\:bg-purple-600\/20 {
+    background-color: rgb(147 51 234 / 0.2);
+  }
+  .dark\:bg-purple-400\/10 {
+    background-color: rgb(196 181 253 / 0.1);
+  }
+
+  .dark\:text-white {
+    color: rgb(255 255 255);
+  }
+  .dark\:text-gray-300 {
+    color: rgb(209 213 219);
+  }
+  .dark\:text-gray-400 {
+    color: rgb(156 163 175);
+  }
+  .dark\:text-purple-300 {
+    color: rgb(216 180 254);
+  }
+  .dark\:text-purple-400 {
+    color: rgb(196 181 253);
+  }
+
+  .dark\:border-gray-800 {
+    border-color: rgb(31 41 55);
+  }
+  .dark\:border-gray-700 {
+    border-color: rgb(55 65 81);
+  }
+  .dark\:border-purple-400\/30 {
+    border-color: rgb(196 181 253 / 0.3);
+  }
+  .dark\:border-purple-400\/50 {
+    border-color: rgb(196 181 253 / 0.5);
+  }
+
+  .dark\:hover\:bg-gray-700:hover {
+    background-color: rgb(55 65 81);
+  }
+  .dark\:hover\:bg-gray-800:hover {
+    background-color: rgb(31 41 55);
+  }
+  .dark\:hover\:bg-purple-400\/10:hover {
+    background-color: rgb(196 181 253 / 0.1);
+  }
+  .dark\:hover\:bg-purple-600\/20:hover {
+    background-color: rgb(147 51 234 / 0.2);
+  }
+
+  .dark\:hover\:text-white:hover {
+    color: rgb(255 255 255);
+  }
+  .dark\:hover\:text-purple-400:hover {
+    color: rgb(196 181 253);
+  }
+
+  .dark\:from-purple-900 {
+    --tw-gradient-from: rgb(88 28 135);
+  }
+  .dark\:from-purple-400 {
+    --tw-gradient-from: rgb(196 181 253);
+  }
+  .dark\:via-blue-900 {
+    --tw-gradient-via: rgb(30 58 138);
+  }
+  .dark\:via-pink-400 {
+    --tw-gradient-via: rgb(244 114 182);
+  }
+  .dark\:to-indigo-900 {
+    --tw-gradient-to: rgb(49 46 129);
+  }
+  .dark\:to-blue-400 {
+    --tw-gradient-to: rgb(96 165 250);
+  }
+
+  .dark\:bg-white\/20 {
+    background-color: rgb(255 255 255 / 0.2);
+  }
+  .dark\:opacity-20 {
+    opacity: 0.2;
+  }
+  .dark\:ring-offset-gray-900 {
+    --tw-ring-offset-color: rgb(17 24 39);
+  }
+  .dark\:ring-purple-400 {
+    --tw-ring-color: rgb(196 181 253);
+  }
+}
+
+/* Smooth transitions */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(243 244 246);
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: rgb(31 41 55);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(156 163 175);
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgb(75 85 99);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(107 114 128);
+}
+
+/* Selection styling */
+::selection {
+  background: rgb(233 213 255);
+  color: rgb(88 28 135);
+}
+
+.dark ::selection {
+  background: rgb(88 28 135);
+  color: rgb(233 213 255);
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: none;
+  ring: 2px;
+  ring-color: rgb(147 51 234);
+  ring-offset: 2px;
+  ring-offset-color: white;
+}
+
+.dark :focus-visible {
+  ring-color: rgb(196 181 253);
+  ring-offset-color: rgb(17 24 39);
 }
