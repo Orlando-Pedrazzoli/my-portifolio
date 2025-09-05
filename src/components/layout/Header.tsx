@@ -47,7 +47,7 @@ export default function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800'
-          : 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md'
+          : 'bg-transparent dark:bg-transparent'
       }`}
     >
       <nav className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
@@ -162,7 +162,7 @@ export default function Header() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className='md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800'
+            className='md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-t border-gray-200 dark:border-gray-800'
           >
             <ul className='py-2'>
               {navItems.map(item => (
