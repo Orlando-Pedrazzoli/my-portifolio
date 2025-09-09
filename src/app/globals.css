@@ -1,10 +1,14 @@
 @import 'tailwindcss';
 
+/* ========================================
+   BASE CSS VARIABLES
+   ======================================== */
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
+/* Theme inline do Tailwind */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -12,40 +16,49 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/* Tailwind 4 - Dark mode usando data attribute */
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
-
-html.dark {
-  color-scheme: dark;
-  --background: #0a0a0a;
-  --foreground: #ededed;
-}
-
+/* ========================================
+   LIGHT MODE - Explicit
+   ======================================== */
 html:not(.dark) {
-  color-scheme: light;
   --background: #ffffff;
   --foreground: #171717;
+  color-scheme: light;
 }
 
-/* Utility classes para dark mode no Tailwind 4 */
+html:not(.dark) body {
+  background-color: #ffffff !important;
+  color: #171717 !important;
+}
+
+/* ========================================
+   DARK MODE - Explicit
+   ======================================== */
+html.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  color-scheme: dark;
+}
+
+html.dark body {
+  background-color: #0a0a0a !important;
+  color: #ededed !important;
+}
+
+/* ========================================
+   BODY BASE STYLES
+   ======================================== */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ========================================
+   DARK MODE UTILITY CLASSES
+   ======================================== */
 @utility dark {
+  /* Backgrounds */
   .dark\:bg-gray-950 {
     background-color: rgb(3 7 18);
   }
@@ -86,6 +99,7 @@ html:not(.dark) {
     background-color: rgb(196 181 253 / 0.1);
   }
 
+  /* Text colors */
   .dark\:text-white {
     color: rgb(255 255 255);
   }
@@ -102,6 +116,7 @@ html:not(.dark) {
     color: rgb(196 181 253);
   }
 
+  /* Borders */
   .dark\:border-gray-800 {
     border-color: rgb(31 41 55);
   }
@@ -115,6 +130,7 @@ html:not(.dark) {
     border-color: rgb(196 181 253 / 0.5);
   }
 
+  /* Hover states */
   .dark\:hover\:bg-gray-700:hover {
     background-color: rgb(55 65 81);
   }
@@ -127,7 +143,6 @@ html:not(.dark) {
   .dark\:hover\:bg-purple-600\/20:hover {
     background-color: rgb(147 51 234 / 0.2);
   }
-
   .dark\:hover\:text-white:hover {
     color: rgb(255 255 255);
   }
@@ -135,6 +150,7 @@ html:not(.dark) {
     color: rgb(196 181 253);
   }
 
+  /* Gradients */
   .dark\:from-purple-900 {
     --tw-gradient-from: rgb(88 28 135);
   }
@@ -154,6 +170,7 @@ html:not(.dark) {
     --tw-gradient-to: rgb(96 165 250);
   }
 
+  /* Others */
   .dark\:bg-white\/20 {
     background-color: rgb(255 255 255 / 0.2);
   }
@@ -168,13 +185,18 @@ html:not(.dark) {
   }
 }
 
-/* Smooth transitions */
+/* ========================================
+   SMOOTH TRANSITIONS
+   ======================================== */
 * {
-  transition: background-color 0.3s ease, border-color 0.3s ease,
-    color 0.3s ease;
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
 }
 
-/* Scrollbar styling */
+/* ========================================
+   SCROLLBAR STYLING
+   ======================================== */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -184,7 +206,7 @@ html:not(.dark) {
   background: rgb(243 244 246);
 }
 
-.dark ::-webkit-scrollbar-track {
+html.dark ::-webkit-scrollbar-track {
   background: rgb(31 41 55);
 }
 
@@ -193,7 +215,7 @@ html:not(.dark) {
   border-radius: 9999px;
 }
 
-.dark ::-webkit-scrollbar-thumb {
+html.dark ::-webkit-scrollbar-thumb {
   background: rgb(75 85 99);
 }
 
@@ -201,18 +223,22 @@ html:not(.dark) {
   background: rgb(107 114 128);
 }
 
-/* Selection styling */
+/* ========================================
+   SELECTION STYLING
+   ======================================== */
 ::selection {
   background: rgb(233 213 255);
   color: rgb(88 28 135);
 }
 
-.dark ::selection {
+html.dark ::selection {
   background: rgb(88 28 135);
   color: rgb(233 213 255);
 }
 
-/* Focus styles */
+/* ========================================
+   FOCUS STYLES
+   ======================================== */
 :focus-visible {
   outline: none;
   ring: 2px;
@@ -221,13 +247,38 @@ html:not(.dark) {
   ring-offset-color: white;
 }
 
-.dark :focus-visible {
+html.dark :focus-visible {
   ring-color: rgb(196 181 253);
   ring-offset-color: rgb(17 24 39);
 }
 
-/* About section cards - Fix dark mode backgrounds */
-.dark .bg-gradient-to-br.from-purple-100.to-blue-100 {
+/* ========================================
+   SECTION SPECIFIC FIXES
+   ======================================== */
+
+/* Light Mode - Ensure proper backgrounds */
+html:not(.dark) .bg-gray-50 {
+  background-color: rgb(249 250 251) !important;
+}
+
+html:not(.dark) .bg-gray-100 {
+  background-color: rgb(243 244 246) !important;
+}
+
+html:not(.dark) .bg-white {
+  background-color: rgb(255 255 255) !important;
+}
+
+/* About section cards */
+html:not(.dark) .bg-gradient-to-br.from-purple-100.to-blue-100 {
+  background: linear-gradient(
+    135deg,
+    rgb(243 232 255),
+    rgb(219 234 254)
+  ) !important;
+}
+
+html.dark .bg-gradient-to-br.from-purple-100.to-blue-100 {
   background: linear-gradient(
     135deg,
     rgba(31, 41, 55, 0.8),
@@ -235,20 +286,16 @@ html:not(.dark) {
   );
 }
 
-.dark .bg-purple-50 {
-  background-color: rgb(31 41 55 / 0.8);
+/* Skills section */
+html:not(.dark) .bg-gradient-to-br.from-purple-50.to-blue-50 {
+  background: linear-gradient(
+    135deg,
+    rgb(250 245 255),
+    rgb(239 246 255)
+  ) !important;
 }
 
-.dark .bg-purple-200 {
-  background-color: rgb(55 65 81 / 0.8);
-}
-
-/* Skills section cards - Fix dark mode backgrounds */
-.dark .bg-white {
-  background-color: rgb(31 41 55 / 0.9);
-}
-
-.dark .bg-gradient-to-br.from-purple-50.to-blue-50 {
+html.dark .bg-gradient-to-br.from-purple-50.to-blue-50 {
   background: linear-gradient(
     135deg,
     rgba(31, 41, 55, 0.8),
@@ -256,71 +303,76 @@ html:not(.dark) {
   );
 }
 
-.dark .bg-gray-100 {
-  background-color: rgb(31 41 55);
+/* Skill level badges */
+html:not(.dark) .bg-green-100 {
+  background-color: rgba(34, 197, 94, 0.15) !important;
 }
 
-.dark .bg-purple-100 {
-  background-color: rgb(31 41 55 / 0.9);
+html:not(.dark) .bg-blue-100 {
+  background-color: rgba(59, 130, 246, 0.15) !important;
 }
 
-/* Skills level badges */
-.dark .bg-green-100 {
+html:not(.dark) .bg-yellow-100 {
+  background-color: rgba(250, 204, 21, 0.15) !important;
+}
+
+html.dark .bg-green-100 {
   background-color: rgba(34, 197, 94, 0.1);
 }
 
-.dark .bg-blue-100 {
+html.dark .bg-blue-100 {
   background-color: rgba(59, 130, 246, 0.1);
 }
 
-.dark .bg-yellow-100 {
+html.dark .bg-yellow-100 {
   background-color: rgba(250, 204, 21, 0.1);
 }
 
-/* Currently Learning tags - Fix dark mode */
-.dark .bg-gradient-to-r.from-purple-100.to-blue-100 {
-  background: linear-gradient(
-    to right,
-    rgba(88, 28, 135, 0.3),
-    rgba(29, 78, 216, 0.3)
-  );
-}
-/* Mobile View Fixes - adicionar ao globals.css */
-
-/* Ajustes específicos para mobile view */
+/* ========================================
+   MOBILE VIEW FIXES
+   ======================================== */
 @media (max-width: 640px) {
-  /* Hero Section - garante espaçamento correto da navbar */
+  /* Hero Section spacing */
   #home,
   section:first-of-type {
-    padding-top: 60px; /* Altura da navbar mobile + margem */
+    padding-top: 60px;
   }
 
-  /* Ajusta o conteúdo principal da Hero */
   .hero-content {
     margin-top: 2rem;
   }
 
-  /* Previne sobreposição em todas as seções */
   section {
     scroll-margin-top: 60px;
   }
 
-  /* Ajusta tamanho dos textos para melhor legibilidade */
   h1 {
     line-height: 1.2;
   }
 
-  /* Botões fullwidth no mobile */
   .hero-buttons a {
     width: 100%;
   }
+
+  /* Ensure proper colors in mobile */
+  html:not(.dark) body {
+    background-color: #ffffff !important;
+    color: #171717 !important;
+  }
+
+  html.dark body {
+    background-color: #0a0a0a !important;
+    color: #ededed !important;
+  }
 }
 
-/* Tablet View (641px - 1024px) */
+/* ========================================
+   TABLET VIEW
+   ======================================== */
 @media (min-width: 641px) and (max-width: 1024px) {
   #home,
   section:first-of-type {
-    padding-top: 64px; /* Altura da navbar tablet */
+    padding-top: 64px;
   }
 
   section {
@@ -328,31 +380,31 @@ html:not(.dark) {
   }
 }
 
-/* Garantir que a navbar sempre fique acima */
+/* ========================================
+   Z-INDEX HIERARCHY
+   ======================================== */
 header {
   z-index: 50 !important;
 }
 
-/* Hero section específica */
 .hero-section {
   position: relative;
   z-index: 1;
 }
-/* iOS Dark Mode Fixes - Adicionar ao final do globals.css */
 
-/* Fix para iOS Safari */
+/* ========================================
+   iOS SPECIFIC FIXES
+   ======================================== */
 @supports (-webkit-touch-callout: none) {
   /* iOS specific styles */
 
-  /* Garantir transições suaves no iOS */
+  /* Smooth transitions */
   * {
     -webkit-transition: background-color 0.3s ease, color 0.3s ease,
       border-color 0.3s ease;
-    transition: background-color 0.3s ease, color 0.3s ease,
-      border-color 0.3s ease;
   }
 
-  /* Forçar cores no modo light */
+  /* Light mode enforcement */
   html:not(.dark) {
     background-color: #ffffff !important;
     color: #171717 !important;
@@ -363,7 +415,7 @@ header {
     color: #171717 !important;
   }
 
-  /* Forçar cores no modo dark */
+  /* Dark mode enforcement */
   html.dark {
     background-color: #0a0a0a !important;
     color: #ededed !important;
@@ -374,20 +426,7 @@ header {
     color: #ededed !important;
   }
 
-  /* Fix para elementos que não mudam no iOS */
-  .dark .bg-white {
-    background-color: rgb(31 41 55 / 0.9) !important;
-  }
-
-  .dark .text-gray-900 {
-    color: rgb(243 244 246) !important;
-  }
-
-  .dark .bg-gray-50 {
-    background-color: rgb(17 24 39) !important;
-  }
-
-  /* Garantir que botões respondam ao toque */
+  /* Touch interactions */
   button,
   a,
   [role='button'] {
@@ -397,7 +436,7 @@ header {
     touch-action: manipulation;
   }
 
-  /* Fix para o toggle de tema */
+  /* Theme toggle button */
   .theme-toggle-button {
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
@@ -405,25 +444,9 @@ header {
   }
 }
 
-/* Media query específica para dispositivos iOS */
-@media screen and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
-  /* Garantir que o toggle funcione no iOS */
-  button[aria-label='Toggle theme'] {
-    position: relative;
-    z-index: 9999;
-    -webkit-appearance: none;
-    appearance: none;
-  }
-}
-
-/* Fix para iPhone com notch */
-@supports (padding-top: env(safe-area-inset-top)) {
-  .header-mobile {
-    padding-top: env(safe-area-inset-top);
-  }
-}
-
-/* Desabilitar zoom no iOS quando clicar em inputs */
+/* ========================================
+   PREVENT ZOOM ON INPUTS
+   ======================================== */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   input[type='text'],
   input[type='email'],
@@ -433,149 +456,9 @@ header {
   }
 }
 
-/* Forçar re-render no iOS */
-@media (prefers-color-scheme: dark) {
-  html:not(.dark) * {
-    transition: none !important;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  html.dark * {
-    transition: none !important;
-  }
-}
-/* iOS Dark Mode Fix Definitivo - Adicionar ao globals.css */
-
-/* Reset para iOS Safari */
-html {
-  -webkit-text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Light mode usando data attribute (mais confiável no iOS) */
-html[data-theme='light'],
-html.light {
-  --background: #ffffff !important;
-  --foreground: #171717 !important;
-  background-color: #ffffff !important;
-  color: #171717 !important;
-}
-
-html[data-theme='light'] body,
-html.light body {
-  background-color: #ffffff !important;
-  color: #171717 !important;
-}
-
-/* Dark mode usando data attribute */
-html[data-theme='dark'],
-html.dark {
-  --background: #0a0a0a !important;
-  --foreground: #ededed !important;
-  background-color: #0a0a0a !important;
-  color: #ededed !important;
-}
-
-html[data-theme='dark'] body,
-html.dark body {
-  background-color: #0a0a0a !important;
-  color: #ededed !important;
-}
-
-/* Forçar cores em elementos específicos - Light Mode */
-html[data-theme='light'] .dark\:bg-gray-950,
-html.light .dark\:bg-gray-950 {
-  background-color: #ffffff !important;
-}
-
-html[data-theme='light'] .dark\:bg-gray-900,
-html.light .dark\:bg-gray-900 {
-  background-color: #f9fafb !important;
-}
-
-html[data-theme='light'] .dark\:bg-gray-800,
-html.light .dark\:bg-gray-800 {
-  background-color: #f3f4f6 !important;
-}
-
-html[data-theme='light'] .dark\:text-white,
-html.light .dark\:text-white {
-  color: #111827 !important;
-}
-
-html[data-theme='light'] .dark\:text-gray-300,
-html.light .dark\:text-gray-300 {
-  color: #4b5563 !important;
-}
-
-html[data-theme='light'] .dark\:text-gray-400,
-html.light .dark\:text-gray-400 {
-  color: #6b7280 !important;
-}
-
-/* Forçar cores em elementos específicos - Dark Mode */
-html[data-theme='dark'] .bg-white {
-  background-color: #1f2937 !important;
-}
-
-html[data-theme='dark'] .bg-gray-50 {
-  background-color: #111827 !important;
-}
-
-html[data-theme='dark'] .text-gray-900 {
-  color: #f3f4f6 !important;
-}
-
-html[data-theme='dark'] .text-gray-700 {
-  color: #d1d5db !important;
-}
-
-/* Botão de tema específico para iOS */
-button[aria-label='Toggle theme'] {
-  -webkit-tap-highlight-color: transparent !important;
-  -webkit-touch-callout: none !important;
-  -webkit-user-select: none !important;
-  touch-action: manipulation !important;
-  cursor: pointer !important;
-  position: relative !important;
-  z-index: 9999 !important;
-}
-
-/* Garantir transições suaves */
-* {
-  -webkit-transition: background-color 0.3s ease, color 0.3s ease !important;
-  transition: background-color 0.3s ease, color 0.3s ease !important;
-}
-
-/* Prevenir zoom em inputs no iOS */
-input,
-select,
-textarea {
-  font-size: 16px !important;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-/* Prevenir Safari Reader Mode */
-article,
-main {
-  /* Evita que Safari detecte como artigo */
-  word-break: normal !important;
-  overflow-wrap: normal !important;
-}
-
-/* Remove estilos de article que triggam Reader */
-article h1,
-article h2,
-article p {
-  all: unset;
-  display: block;
-}
-
-/* iOS Safe Areas */
+/* ========================================
+   iOS SAFE AREAS
+   ======================================== */
 @supports (padding: env(safe-area-inset-top)) {
   body {
     padding-top: env(safe-area-inset-top);

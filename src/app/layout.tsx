@@ -4,6 +4,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { LanguageProvider } from '@/components/providers/LanguageProvider';
+import Script from 'next/script';
 
 // Viewport export separado (Next.js 15)
 export const viewport: Viewport = {
@@ -111,6 +112,27 @@ export default function RootLayout({
   return (
     <html lang='pt-BR' suppressHydrationWarning>
       <head>
+        {/* Theme initialization script - prevents FOUC */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const savedTheme = localStorage.getItem('theme');
+                const theme = savedTheme || 'light';
+                const root = document.documentElement;
+                
+                if (theme === 'dark') {
+                  root.classList.add('dark');
+                  root.style.colorScheme = 'dark';
+                } else {
+                  root.classList.remove('dark');
+                  root.style.colorScheme = 'light';
+                }
+              })();
+            `,
+          }}
+        />
+
         {/* Prevenir Safari Reader Mode */}
         <meta name='format-detection' content='telephone=no' />
         <meta name='x-apple-disable-message-reformatting' />
@@ -124,8 +146,23 @@ export default function RootLayout({
         {/* iOS specific */}
         <meta name='apple-mobile-web-app-capable' content='yes' />
         <meta name='apple-mobile-web-app-status-bar-style' content='default' />
+
+        {/* Dynamic theme color */}
+        <meta
+          name='theme-color'
+          content='#ffffff'
+          media='(prefers-color-scheme: light)'
+        />
+        <meta
+          name='theme-color'
+          content='#0a0a0a'
+          media='(prefers-color-scheme: dark)'
+        />
       </head>
-      <body className='bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors'>
+      <body
+        className='bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors'
+        suppressHydrationWarning
+      >
         {/* Providers envolvendo TODO o conteúdo */}
         <ThemeProvider>
           <LanguageProvider>
