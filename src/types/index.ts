@@ -18,8 +18,8 @@ export interface ContactFormData {
   message: string;
 }
 
-// Tipos para resposta da API
-export interface ApiResponse<T = any> {
+// Tipos para resposta da API com genérico tipado
+export interface ApiResponse<T = unknown> {
   success: boolean;
   data?: T;
   error?: string;

@@ -2,17 +2,11 @@
 
 import { motion } from 'framer-motion';
 import { experiences } from '@/data/experience';
-import {
-  Calendar,
-  MapPin,
-  Building,
-  Briefcase,
-  ChevronRight,
-} from 'lucide-react';
+import { Calendar, MapPin, Building, ChevronRight } from 'lucide-react';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 
 export default function Experience() {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
 
   // Stats com traduções
   const stats = [

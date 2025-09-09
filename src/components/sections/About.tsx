@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Calendar, MapPin, Coffee, Rocket, Target, Heart } from 'lucide-react';
+import { Calendar, MapPin, Coffee, Rocket, Heart } from 'lucide-react';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 
 // Configuração do site

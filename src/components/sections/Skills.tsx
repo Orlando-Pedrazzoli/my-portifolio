@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { skills, skillCategories, getSkillsByCategory } from '@/data/skills';
+import { skillCategories, getSkillsByCategory } from '@/data/skills';
 import type { Skill } from '@/data/skills';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 

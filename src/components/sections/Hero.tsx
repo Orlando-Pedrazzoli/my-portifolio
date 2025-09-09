@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import {
   Github,
@@ -35,12 +35,15 @@ export default function Hero() {
   const [mounted, setMounted] = useState(false);
   const { t } = useLanguage();
 
-  const roles = [
-    t('hero.roles.fullstack'),
-    t('hero.roles.ai'),
-    t('hero.roles.problem'),
-    t('hero.roles.tech'),
-  ];
+  const roles = useMemo(
+    () => [
+      t('hero.roles.fullstack'),
+      t('hero.roles.ai'),
+      t('hero.roles.problem'),
+      t('hero.roles.tech'),
+    ],
+    [t]
+  );
 
   useEffect(() => {
     setMounted(true);

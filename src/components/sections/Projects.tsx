@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { projects, getFeaturedProjects } from '@/data/projects';
+import { projects } from '@/data/projects';
 import {
   Github,
   ExternalLink,

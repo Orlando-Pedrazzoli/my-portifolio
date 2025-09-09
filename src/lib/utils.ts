@@ -71,7 +71,7 @@ export async function copyToClipboard(text: string) {
   try {
     await navigator.clipboard.writeText(text);
     return true;
-  } catch (err) {
+  } catch {
     return false;
   }
 }
@@ -87,8 +87,8 @@ export function formatNumber(num: number) {
   return num.toString();
 }
 
-// Debounce function
-export function debounce<T extends (...args: any[]) => any>(
+// Debounce function com tipagem correta
+export function debounce<T extends (...args: unknown[]) => unknown>(
   func: T,
   wait: number
 ): (...args: Parameters<T>) => void {
@@ -100,8 +100,8 @@ export function debounce<T extends (...args: any[]) => any>(
   };
 }
 
-// Throttle function
-export function throttle<T extends (...args: any[]) => any>(
+// Throttle function com tipagem correta
+export function throttle<T extends (...args: unknown[]) => unknown>(
   func: T,
   limit: number
 ): (...args: Parameters<T>) => void {
