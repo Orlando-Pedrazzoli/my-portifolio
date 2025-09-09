@@ -285,3 +285,56 @@ html:not(.dark) {
     rgba(29, 78, 216, 0.3)
   );
 }
+/* Mobile View Fixes - adicionar ao globals.css */
+
+/* Ajustes específicos para mobile view */
+@media (max-width: 640px) {
+  /* Hero Section - garante espaçamento correto da navbar */
+  #home,
+  section:first-of-type {
+    padding-top: 60px; /* Altura da navbar mobile + margem */
+  }
+
+  /* Ajusta o conteúdo principal da Hero */
+  .hero-content {
+    margin-top: 2rem;
+  }
+
+  /* Previne sobreposição em todas as seções */
+  section {
+    scroll-margin-top: 60px;
+  }
+
+  /* Ajusta tamanho dos textos para melhor legibilidade */
+  h1 {
+    line-height: 1.2;
+  }
+
+  /* Botões fullwidth no mobile */
+  .hero-buttons a {
+    width: 100%;
+  }
+}
+
+/* Tablet View (641px - 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  #home,
+  section:first-of-type {
+    padding-top: 64px; /* Altura da navbar tablet */
+  }
+
+  section {
+    scroll-margin-top: 64px;
+  }
+}
+
+/* Garantir que a navbar sempre fique acima */
+header {
+  z-index: 50 !important;
+}
+
+/* Hero section específica */
+.hero-section {
+  position: relative;
+  z-index: 1;
+}

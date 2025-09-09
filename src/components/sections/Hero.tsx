@@ -74,7 +74,7 @@ export default function Hero() {
   }, [text, isDeleting, loopNum, typingSpeed, mounted, roles]);
 
   return (
-    <section className='relative min-h-screen flex items-center justify-center overflow-hidden'>
+    <section className='relative min-h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-16 md:pt-0'>
       {/* Animated Background */}
       <div className='absolute inset-0 bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-purple-900 dark:via-blue-900 dark:to-indigo-900'>
         <div className='absolute inset-0 bg-white/50 dark:bg-black/20' />
@@ -137,8 +137,8 @@ export default function Hero() {
         }}
       />
 
-      {/* Main Content */}
-      <div className='relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto'>
+      {/* Main Content - Ajustado com padding adicional no mobile */}
+      <div className='relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mt-8 sm:mt-0'>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -149,7 +149,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
-            className='inline-flex items-center gap-2 px-4 py-2 mb-8 border border-purple-400/50 dark:border-purple-400/30 rounded-full bg-white/80 dark:bg-purple-900/20 backdrop-blur-sm'
+            className='inline-flex items-center gap-2 px-4 py-2 mb-6 sm:mb-8 border border-purple-400/50 dark:border-purple-400/30 rounded-full bg-white/80 dark:bg-purple-900/20 backdrop-blur-sm'
           >
             <Sparkles className='w-4 h-4 text-purple-600 dark:text-purple-400' />
             <span className='text-sm text-purple-700 dark:text-purple-300'>
@@ -157,52 +157,52 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* Name */}
+          {/* Name - Ajustado tamanho do texto para mobile */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className='text-5xl sm:text-7xl font-bold text-gray-900 dark:text-white mb-6'
+            className='text-4xl sm:text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6'
           >
             {t('hero.greeting')}{' '}
-            <span className='bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 dark:from-purple-400 dark:via-pink-400 dark:to-blue-400 bg-clip-text text-transparent'>
+            <span className='bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 dark:from-purple-400 dark:via-pink-400 dark:to-blue-400 bg-clip-text text-transparent block sm:inline mt-2 sm:mt-0'>
               {SITE_CONFIG.name}
             </span>
           </motion.h1>
 
-          {/* Typing Animation */}
+          {/* Typing Animation - Ajustado tamanho para mobile */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className='text-2xl sm:text-4xl text-gray-700 dark:text-gray-300 mb-8 h-12'
+            className='text-xl sm:text-2xl md:text-4xl text-gray-700 dark:text-gray-300 mb-6 sm:mb-8 h-12'
           >
             <span>{text}</span>
             <span className='animate-pulse'>|</span>
           </motion.div>
 
-          {/* Description */}
+          {/* Description - Ajustado espaçamento */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
-            className='text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12'
+            className='text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8 sm:mb-12 px-4 sm:px-0'
           >
             {t('hero.description')}
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - Melhorado para mobile */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9 }}
-            className='flex flex-col sm:flex-row gap-4 justify-center items-center'
+            className='flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-0'
           >
             <a
               href='#projects'
-              className='group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl'
+              className='group relative w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl'
             >
-              <span className='relative z-10 flex items-center gap-2'>
+              <span className='relative z-10 flex items-center justify-center gap-2'>
                 <Brain className='w-5 h-5' />
                 {t('hero.cta.projects')}
               </span>
@@ -211,21 +211,21 @@ export default function Hero() {
 
             <a
               href='#contact'
-              className='group px-8 py-4 border-2 border-purple-500 dark:border-purple-400/50 text-purple-700 dark:text-purple-300 font-semibold rounded-lg backdrop-blur-sm transition-all duration-300 hover:bg-purple-100 dark:hover:bg-purple-400/10 hover:scale-105'
+              className='group w-full sm:w-auto px-8 py-4 border-2 border-purple-500 dark:border-purple-400/50 text-purple-700 dark:text-purple-300 font-semibold rounded-lg backdrop-blur-sm transition-all duration-300 hover:bg-purple-100 dark:hover:bg-purple-400/10 hover:scale-105'
             >
-              <span className='flex items-center gap-2'>
+              <span className='flex items-center justify-center gap-2'>
                 <Code2 className='w-5 h-5' />
                 {t('hero.cta.contact')}
               </span>
             </a>
           </motion.div>
 
-          {/* Social Links */}
+          {/* Social Links - Ajustado espaçamento */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.1 }}
-            className='flex gap-6 justify-center mt-12'
+            className='flex gap-4 sm:gap-6 justify-center mt-8 sm:mt-12'
           >
             <motion.a
               href={SITE_CONFIG.github}
@@ -233,7 +233,7 @@ export default function Hero() {
               rel='noopener noreferrer'
               whileHover={{ scale: 1.2, rotate: 5 }}
               whileTap={{ scale: 0.9 }}
-              className='p-3 border border-gray-300 dark:border-purple-400/30 rounded-lg bg-white/80 dark:bg-purple-900/20 backdrop-blur-sm text-gray-700 dark:text-purple-300 hover:text-purple-600 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-purple-600/20 transition-all shadow-md hover:shadow-lg'
+              className='p-2.5 sm:p-3 border border-gray-300 dark:border-purple-400/30 rounded-lg bg-white/80 dark:bg-purple-900/20 backdrop-blur-sm text-gray-700 dark:text-purple-300 hover:text-purple-600 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-purple-600/20 transition-all shadow-md hover:shadow-lg'
               aria-label='GitHub'
             >
               <Github className='w-5 h-5' />
@@ -245,7 +245,7 @@ export default function Hero() {
               rel='noopener noreferrer'
               whileHover={{ scale: 1.2, rotate: 5 }}
               whileTap={{ scale: 0.9 }}
-              className='p-3 border border-gray-300 dark:border-purple-400/30 rounded-lg bg-white/80 dark:bg-purple-900/20 backdrop-blur-sm text-gray-700 dark:text-purple-300 hover:text-purple-600 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-purple-600/20 transition-all shadow-md hover:shadow-lg'
+              className='p-2.5 sm:p-3 border border-gray-300 dark:border-purple-400/30 rounded-lg bg-white/80 dark:bg-purple-900/20 backdrop-blur-sm text-gray-700 dark:text-purple-300 hover:text-purple-600 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-purple-600/20 transition-all shadow-md hover:shadow-lg'
               aria-label='LinkedIn'
             >
               <Linkedin className='w-5 h-5' />
@@ -255,7 +255,7 @@ export default function Hero() {
               href={`mailto:${SITE_CONFIG.email}`}
               whileHover={{ scale: 1.2, rotate: 5 }}
               whileTap={{ scale: 0.9 }}
-              className='p-3 border border-gray-300 dark:border-purple-400/30 rounded-lg bg-white/80 dark:bg-purple-900/20 backdrop-blur-sm text-gray-700 dark:text-purple-300 hover:text-purple-600 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-purple-600/20 transition-all shadow-md hover:shadow-lg'
+              className='p-2.5 sm:p-3 border border-gray-300 dark:border-purple-400/30 rounded-lg bg-white/80 dark:bg-purple-900/20 backdrop-blur-sm text-gray-700 dark:text-purple-300 hover:text-purple-600 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-purple-600/20 transition-all shadow-md hover:shadow-lg'
               aria-label='Email'
             >
               <Mail className='w-5 h-5' />
@@ -263,7 +263,7 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator - Ajustado posição para mobile */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: [0, 10, 0] }}
@@ -271,9 +271,9 @@ export default function Hero() {
             opacity: { delay: 1.5 },
             y: { duration: 1.5, repeat: Infinity },
           }}
-          className='absolute bottom-8 left-1/2 -translate-x-1/2'
+          className='absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2'
         >
-          <ChevronDown className='w-8 h-8 text-gray-600 dark:text-purple-400/50' />
+          <ChevronDown className='w-6 h-6 sm:w-8 sm:h-8 text-gray-600 dark:text-purple-400/50' />
         </motion.div>
       </div>
     </section>
