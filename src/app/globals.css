@@ -445,3 +445,142 @@ header {
     transition: none !important;
   }
 }
+/* iOS Dark Mode Fix Definitivo - Adicionar ao globals.css */
+
+/* Reset para iOS Safari */
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Light mode usando data attribute (mais confiável no iOS) */
+html[data-theme='light'],
+html.light {
+  --background: #ffffff !important;
+  --foreground: #171717 !important;
+  background-color: #ffffff !important;
+  color: #171717 !important;
+}
+
+html[data-theme='light'] body,
+html.light body {
+  background-color: #ffffff !important;
+  color: #171717 !important;
+}
+
+/* Dark mode usando data attribute */
+html[data-theme='dark'],
+html.dark {
+  --background: #0a0a0a !important;
+  --foreground: #ededed !important;
+  background-color: #0a0a0a !important;
+  color: #ededed !important;
+}
+
+html[data-theme='dark'] body,
+html.dark body {
+  background-color: #0a0a0a !important;
+  color: #ededed !important;
+}
+
+/* Forçar cores em elementos específicos - Light Mode */
+html[data-theme='light'] .dark\:bg-gray-950,
+html.light .dark\:bg-gray-950 {
+  background-color: #ffffff !important;
+}
+
+html[data-theme='light'] .dark\:bg-gray-900,
+html.light .dark\:bg-gray-900 {
+  background-color: #f9fafb !important;
+}
+
+html[data-theme='light'] .dark\:bg-gray-800,
+html.light .dark\:bg-gray-800 {
+  background-color: #f3f4f6 !important;
+}
+
+html[data-theme='light'] .dark\:text-white,
+html.light .dark\:text-white {
+  color: #111827 !important;
+}
+
+html[data-theme='light'] .dark\:text-gray-300,
+html.light .dark\:text-gray-300 {
+  color: #4b5563 !important;
+}
+
+html[data-theme='light'] .dark\:text-gray-400,
+html.light .dark\:text-gray-400 {
+  color: #6b7280 !important;
+}
+
+/* Forçar cores em elementos específicos - Dark Mode */
+html[data-theme='dark'] .bg-white {
+  background-color: #1f2937 !important;
+}
+
+html[data-theme='dark'] .bg-gray-50 {
+  background-color: #111827 !important;
+}
+
+html[data-theme='dark'] .text-gray-900 {
+  color: #f3f4f6 !important;
+}
+
+html[data-theme='dark'] .text-gray-700 {
+  color: #d1d5db !important;
+}
+
+/* Botão de tema específico para iOS */
+button[aria-label='Toggle theme'] {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  touch-action: manipulation !important;
+  cursor: pointer !important;
+  position: relative !important;
+  z-index: 9999 !important;
+}
+
+/* Garantir transições suaves */
+* {
+  -webkit-transition: background-color 0.3s ease, color 0.3s ease !important;
+  transition: background-color 0.3s ease, color 0.3s ease !important;
+}
+
+/* Prevenir zoom em inputs no iOS */
+input,
+select,
+textarea {
+  font-size: 16px !important;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Prevenir Safari Reader Mode */
+article,
+main {
+  /* Evita que Safari detecte como artigo */
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+/* Remove estilos de article que triggam Reader */
+article h1,
+article h2,
+article p {
+  all: unset;
+  display: block;
+}
+
+/* iOS Safe Areas */
+@supports (padding: env(safe-area-inset-top)) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}

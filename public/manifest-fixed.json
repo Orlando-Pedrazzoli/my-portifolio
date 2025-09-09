@@ -2,11 +2,13 @@
   "name": "Orlando Pedrazzoli - Portfolio",
   "short_name": "OP Portfolio",
   "description": "Full Stack Developer & AI Engineer - Portfolio profissional de Orlando Pedrazzoli",
-  "start_url": "/",
+  "start_url": "https://orlandopedrazzolidev.vercel.app",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#7c3aed",
-  "orientation": "portrait-primary",
+  "id": "orlandopedrazzolidev",
   "icons": [
     {
       "src": "/myico.ico",
@@ -32,5 +34,7 @@
   ],
   "categories": ["developer", "portfolio", "business"],
   "lang": "pt-BR",
-  "dir": "ltr"
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "related_applications": []
 }

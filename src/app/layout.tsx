@@ -16,9 +16,9 @@ export const viewport: Viewport = {
   ],
 };
 
-// Metadata com metadataBase configurado
+// Metadata com URL CORRETA
 export const metadata: Metadata = {
-  metadataBase: new URL('https://orlandopedrazzoli.vercel.app'), // Atualize com seu domínio real quando tiver
+  metadataBase: new URL('https://orlandopedrazzolidev.vercel.app'),
   title: 'Orlando Pedrazzoli | Full Stack Developer & AI Engineer',
   description:
     'Desenvolvedor Full Stack especializado em criar aplicações web modernas com integração de IA. React, Node.js, Python, AI/ML.',
@@ -43,17 +43,20 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  applicationName: 'Orlando Pedrazzoli Portfolio',
+  generator: 'Next.js',
+  referrer: 'origin-when-cross-origin',
   openGraph: {
     title: 'Orlando Pedrazzoli | Full Stack Developer & AI Engineer',
     description:
       'Desenvolvedor Full Stack especializado em criar aplicações web modernas com integração de IA',
-    url: 'https://orlandopedrazzoli.vercel.app',
+    url: 'https://orlandopedrazzolidev.vercel.app',
     siteName: 'Orlando Pedrazzoli Portfolio',
     locale: 'pt_BR',
     type: 'website',
     images: [
       {
-        url: '/og-image.jpg', // Você pode adicionar uma imagem para preview em redes sociais
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Orlando Pedrazzoli - Full Stack Developer & AI Engineer',
@@ -92,10 +95,10 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   alternates: {
-    canonical: 'https://orlandopedrazzoli.vercel.app',
+    canonical: 'https://orlandopedrazzolidev.vercel.app',
     languages: {
-      'pt-BR': 'https://orlandopedrazzoli.vercel.app/pt',
-      'en-US': 'https://orlandopedrazzoli.vercel.app/en',
+      'pt-BR': 'https://orlandopedrazzolidev.vercel.app/pt',
+      'en-US': 'https://orlandopedrazzolidev.vercel.app/en',
     },
   },
 };
@@ -108,20 +111,29 @@ export default function RootLayout({
   return (
     <html lang='pt-BR' suppressHydrationWarning>
       <head>
-        {/* Favicon fallbacks para garantir compatibilidade */}
+        {/* Prevenir Safari Reader Mode */}
+        <meta name='format-detection' content='telephone=no' />
+        <meta name='x-apple-disable-message-reformatting' />
+
+        {/* Favicon fallbacks */}
         <link rel='icon' href='/myico.ico' sizes='any' />
         <link rel='icon' type='image/x-icon' href='/myico.ico' />
         <link rel='shortcut icon' href='/myico.ico' />
         <link rel='apple-touch-icon' href='/myico.ico' />
+
+        {/* iOS specific */}
+        <meta name='apple-mobile-web-app-capable' content='yes' />
+        <meta name='apple-mobile-web-app-status-bar-style' content='default' />
       </head>
       <body className='bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors'>
-        <LanguageProvider>
-          <ThemeProvider>
+        {/* Providers envolvendo TODO o conteúdo */}
+        <ThemeProvider>
+          <LanguageProvider>
             <Header />
-            {children}
+            <main className='min-h-screen'>{children}</main>
             <Footer />
-          </ThemeProvider>
-        </LanguageProvider>
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

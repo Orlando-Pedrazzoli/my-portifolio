@@ -1,6 +1,12 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState } from 'react';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from 'react';
 
 type Theme = 'light' | 'dark';
 
@@ -11,87 +17,122 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('dark');
+interface ThemeProviderProps {
+  children: ReactNode;
+}
+
+export function ThemeProvider({ children }: ThemeProviderProps) {
+  const [theme, setTheme] = useState<Theme>('light');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
 
-    // Recuperar tema do localStorage ou usar o preferido do sistema
-    const savedTheme = localStorage.getItem('theme') as Theme;
+    // Função para aplicar tema
+    const applyTheme = (newTheme: Theme) => {
+      const root = document.documentElement;
 
-    if (savedTheme) {
-      setTheme(savedTheme);
-      // Aplicar tema imediatamente
-      if (savedTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-        document.documentElement.style.colorScheme = 'dark';
-      } else {
-        document.documentElement.classList.remove('dark');
-        document.documentElement.style.colorScheme = 'light';
+      // Remove ambas as classes primeiro
+      root.classList.remove('light', 'dark');
+
+      // Adiciona a classe correta
+      root.classList.add(newTheme);
+
+      // Define data attribute (para iOS)
+      root.setAttribute('data-theme', newTheme);
+
+      // Define color-scheme CSS
+      root.style.colorScheme = newTheme;
+
+      // Atualiza meta theme-color
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+      if (metaThemeColor) {
+        metaThemeColor.setAttribute(
+          'content',
+          newTheme === 'dark' ? '#0a0a0a' : '#ffffff'
+        );
       }
+
+      // Atualiza variáveis CSS para iOS
+      if (newTheme === 'dark') {
+        root.style.setProperty('--background', '#0a0a0a');
+        root.style.setProperty('--foreground', '#ededed');
+      } else {
+        root.style.setProperty('--background', '#ffffff');
+        root.style.setProperty('--foreground', '#171717');
+      }
+    };
+
+    // Recuperar tema salvo ou detectar preferência
+    const savedTheme = localStorage.getItem('theme') as Theme | null;
+
+    if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark')) {
+      setTheme(savedTheme);
+      applyTheme(savedTheme);
     } else {
       // Detectar preferência do sistema
       const prefersDark = window.matchMedia(
         '(prefers-color-scheme: dark)'
       ).matches;
-      const initialTheme = prefersDark ? 'dark' : 'light';
-      setTheme(initialTheme);
-
-      if (initialTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-        document.documentElement.style.colorScheme = 'dark';
-      } else {
-        document.documentElement.classList.remove('dark');
-        document.documentElement.style.colorScheme = 'light';
-      }
+      const defaultTheme = prefersDark ? 'dark' : 'light';
+      setTheme(defaultTheme);
+      applyTheme(defaultTheme);
+      localStorage.setItem('theme', defaultTheme);
     }
   }, []);
 
   const toggleTheme = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';
 
-    // Atualizar estado
-    setTheme(newTheme);
-
     // Salvar no localStorage
     localStorage.setItem('theme', newTheme);
 
-    // Aplicar classes e color-scheme para iOS
+    // Atualizar estado
+    setTheme(newTheme);
+
+    // Aplicar mudanças no DOM
+    const root = document.documentElement;
+
+    // Remove ambas as classes
+    root.classList.remove('light', 'dark');
+
+    // Força reflow
+    void root.offsetHeight;
+
+    // Adiciona nova classe
+    root.classList.add(newTheme);
+
+    // Atributos adicionais para iOS
+    root.setAttribute('data-theme', newTheme);
+    root.style.colorScheme = newTheme;
+
+    // Atualiza variáveis CSS
     if (newTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-      document.documentElement.style.colorScheme = 'dark';
-      // Meta tag para iOS
-      updateThemeColor('#0a0a0a');
+      root.style.setProperty('--background', '#0a0a0a');
+      root.style.setProperty('--foreground', '#ededed');
     } else {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.style.colorScheme = 'light';
-      // Meta tag para iOS
-      updateThemeColor('#ffffff');
+      root.style.setProperty('--background', '#ffffff');
+      root.style.setProperty('--foreground', '#171717');
     }
 
-    // Forçar re-render no iOS
-    document.body.style.display = 'none';
-    // eslint-disable-next-line no-unused-expressions
-    document.body.offsetHeight; // Trigger reflow
-    document.body.style.display = '';
-  };
-
-  // Função para atualizar meta theme-color (iOS Safari)
-  const updateThemeColor = (color: string) => {
+    // Meta theme-color
     const metaThemeColor = document.querySelector('meta[name="theme-color"]');
     if (metaThemeColor) {
-      metaThemeColor.setAttribute('content', color);
-    } else {
-      const meta = document.createElement('meta');
-      meta.name = 'theme-color';
-      meta.content = color;
-      document.head.appendChild(meta);
+      metaThemeColor.setAttribute(
+        'content',
+        newTheme === 'dark' ? '#0a0a0a' : '#ffffff'
+      );
     }
+
+    // Força repaint no iOS
+    const body = document.body;
+    const display = body.style.display;
+    body.style.display = 'none';
+    void body.offsetHeight; // Trigger reflow
+    body.style.display = display;
   };
 
-  // Evitar flash de tema incorreto
+  // Previne flash de conteúdo não estilizado
   if (!mounted) {
     return null;
   }
