@@ -1,11 +1,24 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { LanguageProvider } from '@/components/providers/LanguageProvider';
 
+// Viewport export separado (Next.js 15)
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' },
+  ],
+};
+
+// Metadata com metadataBase configurado
 export const metadata: Metadata = {
+  metadataBase: new URL('https://orlandopedrazzoli.vercel.app'), // Atualize com seu domínio real quando tiver
   title: 'Orlando Pedrazzoli | Full Stack Developer & AI Engineer',
   description:
     'Desenvolvedor Full Stack especializado em criar aplicações web modernas com integração de IA. React, Node.js, Python, AI/ML.',
@@ -34,7 +47,7 @@ export const metadata: Metadata = {
     title: 'Orlando Pedrazzoli | Full Stack Developer & AI Engineer',
     description:
       'Desenvolvedor Full Stack especializado em criar aplicações web modernas com integração de IA',
-    url: 'https://orlandopedrazzoli.com',
+    url: 'https://orlandopedrazzoli.vercel.app',
     siteName: 'Orlando Pedrazzoli Portfolio',
     locale: 'pt_BR',
     type: 'website',
@@ -79,21 +92,12 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   alternates: {
-    canonical: 'https://orlandopedrazzoli.com',
+    canonical: 'https://orlandopedrazzoli.vercel.app',
     languages: {
-      'pt-BR': 'https://orlandopedrazzoli.com/pt',
-      'en-US': 'https://orlandopedrazzoli.com/en',
+      'pt-BR': 'https://orlandopedrazzoli.vercel.app/pt',
+      'en-US': 'https://orlandopedrazzoli.vercel.app/en',
     },
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-  },
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' },
-  ],
 };
 
 export default function RootLayout({
