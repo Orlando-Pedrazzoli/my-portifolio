@@ -32,11 +32,32 @@ export default function Header() {
   const handleNavClick = (href: string) => {
     setIsMenuOpen(false);
     if (href === '#home') {
-      // Para home, sempre rola para o topo
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       const element = document.querySelector(href);
       element?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Função de toggle de tema com fix para iOS
+  const handleThemeToggle = (e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // Vibração tátil no iOS (se suportado)
+    if ('vibrate' in navigator) {
+      navigator.vibrate(10);
+    }
+
+    // Toggle do tema
+    toggleTheme();
+
+    // Forçar atualização no iOS
+    if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+      setTimeout(() => {
+        window.scrollBy(0, 1);
+        window.scrollBy(0, -1);
+      }, 100);
     }
   };
 
@@ -101,7 +122,8 @@ export default function Header() {
 
               {/* Theme Toggle Desktop */}
               <motion.button
-                onClick={toggleTheme}
+                onClick={handleThemeToggle}
+                onTouchEnd={handleThemeToggle}
                 className='p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors'
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
@@ -128,16 +150,23 @@ export default function Header() {
               <span>{language === 'pt' ? 'EN' : 'PT'}</span>
             </button>
 
-            {/* Mobile Theme Toggle - Icon Only */}
+            {/* Mobile Theme Toggle - Fix para iOS */}
             <button
-              onClick={toggleTheme}
-              className='p-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors'
+              onClick={handleThemeToggle}
+              onTouchEnd={handleThemeToggle}
+              className='p-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors theme-toggle-button relative z-50'
               aria-label='Toggle theme'
+              style={{
+                WebkitTapHighlightColor: 'transparent',
+                touchAction: 'manipulation',
+                userSelect: 'none',
+                WebkitUserSelect: 'none',
+              }}
             >
               {theme === 'dark' ? (
-                <Sun className='w-5 h-5' />
+                <Sun className='w-5 h-5 pointer-events-none' />
               ) : (
-                <Moon className='w-5 h-5' />
+                <Moon className='w-5 h-5 pointer-events-none' />
               )}
             </button>
 
