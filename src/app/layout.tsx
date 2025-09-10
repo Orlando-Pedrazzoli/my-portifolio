@@ -16,7 +16,7 @@ export const viewport: Viewport = {
   ],
 };
 
-// Metadata com URL CORRETA
+// Metadata com URL CORRETA e FAVICONS configurados
 export const metadata: Metadata = {
   metadataBase: new URL('https://orlandopedrazzolidev.vercel.app'),
   title: 'Orlando Pedrazzoli | Full Stack Developer & AI Engineer',
@@ -83,14 +83,14 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/myico.ico' },
-      { url: '/myico.ico', sizes: '16x16', type: 'image/x-icon' },
-      { url: '/myico.ico', sizes: '32x32', type: 'image/x-icon' },
+      { url: '/favicon.ico', type: 'image/x-icon' },
+      { url: '/myico.ico', type: 'image/x-icon' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
     ],
-    shortcut: '/myico.ico',
+    shortcut: '/favicon.ico',
     apple: [
-      { url: '/myico.ico' },
-      { url: '/myico.ico', sizes: '180x180', type: 'image/x-icon' },
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],
   },
   manifest: '/manifest.json',
@@ -111,6 +111,12 @@ export default function RootLayout({
   return (
     <html lang='pt-BR' suppressHydrationWarning>
       <head>
+        {/* Favicon tags explícitas para garantir que funcionem em todos os lugares */}
+        <link rel='icon' href='/favicon.ico' />
+        <link rel='icon' type='image/x-icon' href='/myico.ico' />
+        <link rel='shortcut icon' href='/favicon.ico' />
+        <link rel='apple-touch-icon' sizes='180x180' href='/myico.ico' />
+
         {/* Theme initialization script - prevents FOUC */}
         <script
           dangerouslySetInnerHTML={{
@@ -305,12 +311,6 @@ export default function RootLayout({
         {/* Prevenir Safari Reader Mode */}
         <meta name='format-detection' content='telephone=no' />
         <meta name='x-apple-disable-message-reformatting' />
-
-        {/* Favicon fallbacks */}
-        <link rel='icon' href='/myico.ico' sizes='any' />
-        <link rel='icon' type='image/x-icon' href='/myico.ico' />
-        <link rel='shortcut icon' href='/myico.ico' />
-        <link rel='apple-touch-icon' href='/myico.ico' />
 
         {/* iOS specific */}
         <meta name='apple-mobile-web-app-capable' content='yes' />
