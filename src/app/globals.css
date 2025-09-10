@@ -921,3 +921,35 @@ header {
     }
   }
 }
+/* ADICIONE ISTO no final do seu globals.css, após o fix anterior */
+
+/* Fix específico para gradiente do nome e botão no iOS Light Mode */
+@media screen and (max-width: 768px) {
+  @supports (-webkit-touch-callout: none) {
+    /* Fix 1: Força o gradiente do nome Orlando Pedrazzoli a aparecer */
+    html:not(.dark)
+      .bg-gradient-to-r.from-purple-600.via-pink-500.to-blue-600.bg-clip-text.text-transparent,
+    html:not(.dark)
+      .bg-gradient-to-r.from-purple-600.to-blue-600.bg-clip-text.text-transparent,
+    html:not(.dark) span.bg-gradient-to-r.bg-clip-text.text-transparent {
+      background-image: linear-gradient(
+        to right,
+        #9333ea,
+        #ec4899,
+        #3b82f6
+      ) !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      color: transparent !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+
+    /* Fix 2: Força texto branco no botão View Projects */
+    html:not(.dark) .bg-gradient-to-r.from-purple-600.to-blue-600 span,
+    html:not(.dark) a.bg-gradient-to-r.from-purple-600.to-blue-600,
+    html:not(.dark) a.bg-gradient-to-r.from-purple-600.to-blue-600 * {
+      color: white !important;
+      -webkit-text-fill-color: white !important;
+    }
+  }
+}
