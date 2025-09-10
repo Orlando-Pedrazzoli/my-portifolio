@@ -70,7 +70,8 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
           // Force repaint
           document.body.style.display = 'none';
-          document.body.offsetHeight; // trigger reflow
+          // Trigger reflow
+          void document.body.offsetHeight;
           document.body.style.display = '';
         }, 0);
       }
