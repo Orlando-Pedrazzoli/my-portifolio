@@ -49,6 +49,31 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
       root.style.setProperty('--foreground', '#171717');
       body.style.backgroundColor = '#ffffff';
       body.style.color = '#171717';
+
+      // iOS-specific fix for light mode
+      if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        // Force Safari to properly render text colors
+        setTimeout(() => {
+          // Clear any webkit text fill color that might be cached
+          const allTextElements = document.querySelectorAll('*');
+          allTextElements.forEach(element => {
+            if (element instanceof HTMLElement) {
+              const styles = window.getComputedStyle(element);
+              if (
+                styles.webkitTextFillColor &&
+                styles.webkitTextFillColor !== 'transparent'
+              ) {
+                element.style.webkitTextFillColor = '';
+              }
+            }
+          });
+
+          // Force repaint
+          document.body.style.display = 'none';
+          document.body.offsetHeight; // trigger reflow
+          document.body.style.display = '';
+        }, 0);
+      }
     }
 
     // Update meta theme-color

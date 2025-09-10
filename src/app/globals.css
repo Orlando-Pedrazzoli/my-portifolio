@@ -467,3 +467,126 @@ header {
     padding-bottom: env(safe-area-inset-bottom);
   }
 }
+/* ========================================
+   iOS LIGHT MODE FIX
+   Adicione este código NO FINAL do seu globals.css existente
+   NÃO substitua o arquivo inteiro, apenas adicione estas linhas
+   ======================================== */
+
+/* Fix específico para iOS Safari Light Mode em Mobile */
+@media screen and (max-width: 768px) {
+  @supports (-webkit-touch-callout: none) {
+    /* Força cores de texto corretas no light mode iOS */
+    html:not(.dark) body,
+    html:not(.dark) main,
+    html:not(.dark) section,
+    html:not(.dark) div,
+    html:not(.dark) article {
+      color: rgb(23, 23, 23) !important;
+      -webkit-text-fill-color: initial !important;
+    }
+
+    /* Headings */
+    html:not(.dark) h1,
+    html:not(.dark) h2,
+    html:not(.dark) h3,
+    html:not(.dark) h4,
+    html:not(.dark) h5,
+    html:not(.dark) h6 {
+      color: rgb(23, 23, 23) !important;
+      -webkit-text-fill-color: initial !important;
+    }
+
+    /* Parágrafos e spans sem classes específicas */
+    html:not(.dark) p:not([class*='text-gray']):not([class*='text-purple']),
+    html:not(.dark)
+      span:not([class*='text-gray']):not([class*='text-purple']):not(
+        .bg-gradient-to-r
+      ) {
+      color: rgb(23, 23, 23) !important;
+      -webkit-text-fill-color: initial !important;
+    }
+
+    /* Classes de texto cinza */
+    html:not(.dark) .text-gray-900 {
+      color: rgb(17, 24, 39) !important;
+      -webkit-text-fill-color: rgb(17, 24, 39) !important;
+    }
+
+    html:not(.dark) .text-gray-800 {
+      color: rgb(31, 41, 55) !important;
+      -webkit-text-fill-color: rgb(31, 41, 55) !important;
+    }
+
+    html:not(.dark) .text-gray-700 {
+      color: rgb(55, 65, 81) !important;
+      -webkit-text-fill-color: rgb(55, 65, 81) !important;
+    }
+
+    html:not(.dark) .text-gray-600 {
+      color: rgb(75, 85, 99) !important;
+      -webkit-text-fill-color: rgb(75, 85, 99) !important;
+    }
+
+    html:not(.dark) .text-gray-500 {
+      color: rgb(107, 114, 128) !important;
+      -webkit-text-fill-color: rgb(107, 114, 128) !important;
+    }
+
+    html:not(.dark) .text-gray-400 {
+      color: rgb(156, 163, 175) !important;
+      -webkit-text-fill-color: rgb(156, 163, 175) !important;
+    }
+
+    /* Classes de texto roxo */
+    html:not(.dark) .text-purple-700 {
+      color: rgb(126, 34, 206) !important;
+      -webkit-text-fill-color: rgb(126, 34, 206) !important;
+    }
+
+    html:not(.dark) .text-purple-600 {
+      color: rgb(147, 51, 234) !important;
+      -webkit-text-fill-color: rgb(147, 51, 234) !important;
+    }
+
+    html:not(.dark) .text-purple-400 {
+      color: rgb(196, 181, 253) !important;
+      -webkit-text-fill-color: rgb(196, 181, 253) !important;
+    }
+
+    /* Labels e elementos de formulário */
+    html:not(.dark) label {
+      color: rgb(55, 65, 81) !important;
+      -webkit-text-fill-color: rgb(55, 65, 81) !important;
+    }
+
+    /* Links sem classes de cor específicas */
+    html:not(.dark) a:not([class*='text-']) {
+      color: rgb(23, 23, 23) !important;
+      -webkit-text-fill-color: initial !important;
+    }
+
+    /* Preserva texto com gradiente */
+    html:not(.dark) .bg-gradient-to-r.bg-clip-text.text-transparent {
+      -webkit-text-fill-color: transparent !important;
+    }
+
+    /* Fix para elementos com data-ios-light */
+    html[data-ios-light='true']:not(.dark) * {
+      -webkit-text-fill-color: initial;
+    }
+
+    html[data-ios-light='true']:not(.dark)
+      .bg-gradient-to-r.bg-clip-text.text-transparent {
+      -webkit-text-fill-color: transparent !important;
+    }
+  }
+}
+
+/* Fix adicional para iOS em qualquer largura de tela */
+@supports (-webkit-touch-callout: none) {
+  html[data-ios-light='true']:not(.dark) body {
+    color: rgb(23, 23, 23) !important;
+    -webkit-text-fill-color: initial !important;
+  }
+}

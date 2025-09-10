@@ -133,6 +133,56 @@ export default function RootLayout({
           }}
         />
 
+        {/* iOS Light Mode Fix */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+                
+                if (isIOS) {
+                  function fixIOSLightMode() {
+                    const theme = localStorage.getItem('theme') || 'light';
+                    const root = document.documentElement;
+                    
+                    if (theme === 'light' && !root.classList.contains('dark')) {
+                      root.setAttribute('data-ios-light', 'true');
+                      
+                      // Force webkit text fill color reset
+                      if (document.body) {
+                        document.body.style.webkitTextFillColor = '';
+                      }
+                      
+                      requestAnimationFrame(() => {
+                        const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span:not(.bg-gradient-to-r), div:not(.bg-gradient-to-r)');
+                        textElements.forEach(el => {
+                          if (el instanceof HTMLElement && !el.className.includes('text-transparent')) {
+                            el.style.webkitTextFillColor = '';
+                          }
+                        });
+                      });
+                    } else {
+                      root.removeAttribute('data-ios-light');
+                    }
+                  }
+                  
+                  if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', fixIOSLightMode);
+                  } else {
+                    fixIOSLightMode();
+                  }
+                  
+                  window.addEventListener('storage', function(e) {
+                    if (e.key === 'theme') {
+                      setTimeout(fixIOSLightMode, 100);
+                    }
+                  });
+                }
+              })();
+            `,
+          }}
+        />
+
         {/* Prevenir Safari Reader Mode */}
         <meta name='format-detection' content='telephone=no' />
         <meta name='x-apple-disable-message-reformatting' />
