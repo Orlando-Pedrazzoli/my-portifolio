@@ -1,0 +1,22 @@
+{
+  "name": "Orlando Pedrazzoli Portfolio",
+  "short_name": "Portfolio",
+  "description": "Full Stack Developer & AI Engineer Portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#9333ea",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/myico.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48", 
+      "type": "image/x-icon"
+    }
+  ]
+}

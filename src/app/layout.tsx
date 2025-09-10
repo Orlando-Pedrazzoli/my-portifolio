@@ -82,16 +82,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [
-      { url: '/favicon.ico', type: 'image/x-icon' },
-      { url: '/myico.ico', type: 'image/x-icon' },
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-    ],
-    shortcut: '/favicon.ico',
-    apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
+    icon: [{ url: '/myico.ico', type: 'image/x-icon' }],
+    shortcut: '/myico.ico',
+    apple: [{ url: '/myico.ico' }],
   },
   manifest: '/manifest.json',
   alternates: {
@@ -112,10 +105,8 @@ export default function RootLayout({
     <html lang='pt-BR' suppressHydrationWarning>
       <head>
         {/* Favicon tags explícitas para garantir que funcionem em todos os lugares */}
-        <link rel='icon' href='/favicon.ico' />
-        <link rel='icon' type='image/x-icon' href='/myico.ico' />
-        <link rel='shortcut icon' href='/favicon.ico' />
-        <link rel='apple-touch-icon' sizes='180x180' href='/myico.ico' />
+        <link rel='icon' href='/myico.ico' />
+        <link rel='shortcut icon' href='/myico.ico' />
 
         {/* Theme initialization script - prevents FOUC */}
         <script
