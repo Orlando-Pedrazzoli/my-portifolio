@@ -132,7 +132,6 @@ export default function RootLayout({
             `,
           }}
         />
-
         {/* iOS Light Mode Fix */}
         <script
           dangerouslySetInnerHTML={{
@@ -182,109 +181,138 @@ export default function RootLayout({
             `,
           }}
         />
-
-        {/* Fix específico para Header e Hero no iOS Light Mode */}
+        // Adicione este código NO LUGAR do script "Fix específico para Header e
+        Hero" no seu layout.tsx // Este substitui o script anterior com
+        melhorias
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              (function() {
-                const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
-                
-                if (isIOS) {
-                  function fixHeaderHero() {
-                    const theme = localStorage.getItem('theme') || 'light';
-                    
-                    if (theme === 'light') {
-                      // Fix header elements
-                      const header = document.querySelector('header');
-                      if (header) {
-                        // Reset all text elements in header
-                        const headerElements = header.querySelectorAll('*');
-                        headerElements.forEach(el => {
-                          if (el instanceof HTMLElement) {
-                            el.style.webkitTextFillColor = '';
-                            
-                            // Force proper color inheritance
-                            if (el.tagName === 'A' || el.tagName === 'BUTTON') {
-                              el.style.color = '';
-                            }
-                          }
-                        });
-                      }
-                      
-                      // Fix hero section
-                      const hero = document.querySelector('section:first-of-type') || document.querySelector('#home');
-                      if (hero) {
-                        // Reset all text elements in hero
-                        const heroElements = hero.querySelectorAll('h1, h2, p, span:not(.bg-gradient-to-r), a, button');
-                        heroElements.forEach(el => {
-                          if (el instanceof HTMLElement && !el.classList.contains('text-transparent')) {
-                            el.style.webkitTextFillColor = '';
-                            
-                            // Ensure text is visible
-                            const computed = window.getComputedStyle(el);
-                            if (computed.color === 'rgba(0, 0, 0, 0)' || computed.color === 'transparent') {
-                              el.style.color = '#171717';
-                            }
-                          }
-                        });
-                        
-                        // Fix gradient text specifically
-                        const gradientTexts = hero.querySelectorAll('.bg-gradient-to-r.bg-clip-text.text-transparent');
-                        gradientTexts.forEach(el => {
-                          if (el instanceof HTMLElement) {
-                            el.style.webkitTextFillColor = 'transparent';
-                            el.style.backgroundClip = 'text';
-                            el.style.webkitBackgroundClip = 'text';
-                          }
-                        });
-                      }
-                    }
+      (function() {
+        const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+        
+        if (isIOS) {
+          function fixHeaderHero() {
+            const theme = localStorage.getItem('theme') || 'light';
+            
+            if (theme === 'light') {
+              // Fix header Portfolio text
+              const logoText = document.querySelector('header a[href="#home"] span');
+              if (logoText && !logoText.classList.contains('text-purple-600')) {
+                logoText.style.color = '#111827';
+                logoText.style.webkitTextFillColor = '#111827';
+              }
+              
+              // Fix header buttons and icons
+              const headerButtons = document.querySelectorAll('header button');
+              headerButtons.forEach(btn => {
+                if (btn instanceof HTMLElement) {
+                  btn.style.webkitTextFillColor = '';
+                  const svg = btn.querySelector('svg');
+                  if (svg && !svg.classList.contains('text-purple-600')) {
+                    svg.style.color = '#374151';
                   }
-                  
-                  // Run on different load states
-                  if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', fixHeaderHero);
-                  } else {
-                    fixHeaderHero();
-                  }
-                  
-                  // Run after full page load
-                  window.addEventListener('load', function() {
-                    setTimeout(fixHeaderHero, 100);
-                  });
-                  
-                  // Run when theme changes
-                  window.addEventListener('storage', function(e) {
-                    if (e.key === 'theme') {
-                      setTimeout(fixHeaderHero, 150);
-                    }
-                  });
-                  
-                  // Run on orientation change
-                  window.addEventListener('orientationchange', function() {
-                    setTimeout(fixHeaderHero, 200);
-                  });
                 }
-              })();
-            `,
+              });
+              
+              // Fix hero "Hi, I am" text
+              const heroH1 = document.querySelector('section:first-of-type h1, #home h1');
+              if (heroH1 instanceof HTMLElement) {
+                // Get the first text node (before the gradient span)
+                const textNodes = Array.from(heroH1.childNodes).filter(
+                  node => node.nodeType === Node.TEXT_NODE
+                );
+                if (textNodes.length > 0) {
+                  heroH1.style.color = '#111827';
+                  heroH1.style.webkitTextFillColor = '#111827';
+                }
+              }
+              
+              // Fix typing animation
+              const typingDiv = document.querySelector('section:first-of-type .text-xl, #home .text-xl');
+              if (typingDiv instanceof HTMLElement) {
+                typingDiv.style.color = '#374151';
+                typingDiv.style.webkitTextFillColor = '#374151';
+                
+                // Fix cursor
+                const cursor = typingDiv.querySelector('.animate-pulse');
+                if (cursor instanceof HTMLElement) {
+                  cursor.style.color = '#374151';
+                  cursor.style.webkitTextFillColor = '#374151';
+                }
+              }
+              
+              // Fix "Get in Touch" button
+              const contactBtn = document.querySelector('a[href="#contact"]:not(.bg-gradient-to-r)');
+              if (contactBtn instanceof HTMLElement) {
+                contactBtn.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+                contactBtn.style.borderColor = '#9333ea';
+                contactBtn.style.color = '#9333ea';
+                
+                const btnText = contactBtn.querySelector('span');
+                if (btnText) {
+                  btnText.style.color = '#9333ea';
+                  btnText.style.webkitTextFillColor = '#9333ea';
+                }
+              }
+              
+              // Preserve gradient texts
+              const gradientTexts = document.querySelectorAll('.bg-gradient-to-r.bg-clip-text.text-transparent');
+              gradientTexts.forEach(el => {
+                if (el instanceof HTMLElement) {
+                  el.style.webkitTextFillColor = 'transparent';
+                  el.style.backgroundClip = 'text';
+                  el.style.webkitBackgroundClip = 'text';
+                }
+              });
+            }
+          }
+          
+          // Run on different load states
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', fixHeaderHero);
+          } else {
+            fixHeaderHero();
+          }
+          
+          // Run after full page load
+          window.addEventListener('load', function() {
+            setTimeout(fixHeaderHero, 100);
+          });
+          
+          // Run when theme changes
+          window.addEventListener('storage', function(e) {
+            if (e.key === 'theme') {
+              setTimeout(fixHeaderHero, 150);
+            }
+          });
+          
+          // Run on orientation change
+          window.addEventListener('orientationchange', function() {
+            setTimeout(fixHeaderHero, 200);
+          });
+          
+          // Run when clicking theme toggle
+          document.addEventListener('click', function(e) {
+            if (e.target && e.target.closest && e.target.closest('.theme-toggle-button')) {
+              setTimeout(fixHeaderHero, 100);
+            }
+          });
+        }
+      })();
+    `,
           }}
         />
-
         {/* Prevenir Safari Reader Mode */}
         <meta name='format-detection' content='telephone=no' />
         <meta name='x-apple-disable-message-reformatting' />
-
         {/* Favicon fallbacks */}
         <link rel='icon' href='/myico.ico' sizes='any' />
         <link rel='icon' type='image/x-icon' href='/myico.ico' />
         <link rel='shortcut icon' href='/myico.ico' />
         <link rel='apple-touch-icon' href='/myico.ico' />
-
         {/* iOS specific */}
         <meta name='apple-mobile-web-app-capable' content='yes' />
         <meta name='apple-mobile-web-app-status-bar-style' content='default' />
-
         {/* Dynamic theme color */}
         <meta
           name='theme-color'
