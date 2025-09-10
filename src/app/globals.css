@@ -894,3 +894,30 @@ header {
     background-color: rgba(255, 255, 255, 0.5) !important;
   }
 }
+/* ADICIONE APENAS ISTO no final do seu globals.css original */
+
+/* iOS Safari Light Mode Text Fix - Mobile Only */
+@media screen and (max-width: 768px) {
+  @supports (-webkit-touch-callout: none) {
+    html:not(.dark) body {
+      -webkit-text-fill-color: initial !important;
+    }
+
+    html:not(.dark) h1,
+    html:not(.dark) h2,
+    html:not(.dark) h3,
+    html:not(.dark) h4,
+    html:not(.dark) h5,
+    html:not(.dark) h6,
+    html:not(.dark) p,
+    html:not(.dark) span:not(.bg-gradient-to-r),
+    html:not(.dark) div {
+      -webkit-text-fill-color: initial !important;
+    }
+
+    /* Preserve gradients */
+    html:not(.dark) .bg-gradient-to-r.bg-clip-text.text-transparent {
+      -webkit-text-fill-color: transparent !important;
+    }
+  }
+}
