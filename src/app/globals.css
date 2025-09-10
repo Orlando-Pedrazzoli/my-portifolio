@@ -953,3 +953,28 @@ header {
     }
   }
 }
+/* ADICIONE ISTO no final do seu globals.css - Fix APENAS para Dark Mode */
+
+/* Dark Mode Text Fixes - NÃO afeta o light mode */
+@media screen and (max-width: 768px) {
+  @supports (-webkit-touch-callout: none) {
+    /* Fix Portfolio text no header - Dark Mode */
+    html.dark header .font-bold,
+    html.dark header a[href='#home'] span:not(.text-purple-600) {
+      color: rgb(255, 255, 255) !important;
+      -webkit-text-fill-color: rgb(255, 255, 255) !important;
+    }
+
+    /* Fix "Hi, I am" / "Olá, eu sou" text - Dark Mode */
+    html.dark section:first-of-type h1,
+    html.dark #home h1 {
+      color: rgb(255, 255, 255) !important;
+      -webkit-text-fill-color: rgb(255, 255, 255) !important;
+    }
+
+    /* Preserva o gradiente do nome no dark mode */
+    html.dark .bg-gradient-to-r.bg-clip-text.text-transparent {
+      -webkit-text-fill-color: transparent !important;
+    }
+  }
+}
