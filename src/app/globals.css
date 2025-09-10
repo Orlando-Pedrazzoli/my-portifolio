@@ -590,3 +590,160 @@ header {
     -webkit-text-fill-color: initial !important;
   }
 }
+/* ========================================
+   FIX ESPECÍFICO PARA HEADER E HERO - iOS LIGHT MODE
+   Adicione este código TAMBÉM no final do seu globals.css
+   ======================================== */
+
+/* Header/Navbar Fix - iOS Light Mode */
+@media screen and (max-width: 768px) {
+  @supports (-webkit-touch-callout: none) {
+    /* Header específico */
+    html:not(.dark) header,
+    html:not(.dark) nav {
+      color: rgb(23, 23, 23) !important;
+      -webkit-text-fill-color: initial !important;
+    }
+
+    /* Links do menu no header */
+    html:not(.dark) header a,
+    html:not(.dark) nav a {
+      color: rgb(55, 65, 81) !important;
+      -webkit-text-fill-color: rgb(55, 65, 81) !important;
+    }
+
+    html:not(.dark) header a:hover,
+    html:not(.dark) nav a:hover {
+      color: rgb(147, 51, 234) !important;
+      -webkit-text-fill-color: rgb(147, 51, 234) !important;
+    }
+
+    /* Logo/Brand text */
+    html:not(.dark) header .font-bold,
+    html:not(.dark) nav .font-bold {
+      color: rgb(17, 24, 39) !important;
+      -webkit-text-fill-color: rgb(17, 24, 39) !important;
+    }
+
+    /* Botões do header */
+    html:not(.dark) header button,
+    html:not(.dark) nav button {
+      color: rgb(55, 65, 81) !important;
+      -webkit-text-fill-color: rgb(55, 65, 81) !important;
+    }
+
+    /* Ícones do header */
+    html:not(.dark) header svg,
+    html:not(.dark) nav svg {
+      color: currentColor !important;
+    }
+
+    /* Menu mobile */
+    html:not(.dark) .md\:hidden ul li a {
+      color: rgb(55, 65, 81) !important;
+      -webkit-text-fill-color: rgb(55, 65, 81) !important;
+    }
+  }
+}
+
+/* Hero Section Fix - iOS Light Mode */
+@media screen and (max-width: 768px) {
+  @supports (-webkit-touch-callout: none) {
+    /* Hero section principal */
+    html:not(.dark) section:first-of-type,
+    html:not(.dark) #home {
+      color: rgb(23, 23, 23) !important;
+      -webkit-text-fill-color: initial !important;
+    }
+
+    /* Hero headings */
+    html:not(.dark) section:first-of-type h1,
+    html:not(.dark) #home h1 {
+      color: rgb(17, 24, 39) !important;
+      -webkit-text-fill-color: rgb(17, 24, 39) !important;
+    }
+
+    /* Hero paragraphs */
+    html:not(.dark) section:first-of-type p,
+    html:not(.dark) #home p {
+      color: rgb(75, 85, 99) !important;
+      -webkit-text-fill-color: rgb(75, 85, 99) !important;
+    }
+
+    /* Typing animation text */
+    html:not(.dark) section:first-of-type .text-gray-700,
+    html:not(.dark) #home .text-gray-700 {
+      color: rgb(55, 65, 81) !important;
+      -webkit-text-fill-color: rgb(55, 65, 81) !important;
+    }
+
+    /* Hero buttons text */
+    html:not(.dark) section:first-of-type a,
+    html:not(.dark) #home a:not(.bg-gradient-to-r) {
+      color: inherit !important;
+      -webkit-text-fill-color: initial !important;
+    }
+
+    /* Gradient buttons should keep white text */
+    html:not(.dark) section:first-of-type .bg-gradient-to-r.from-purple-600,
+    html:not(.dark) #home .bg-gradient-to-r.from-purple-600 {
+      color: white !important;
+      -webkit-text-fill-color: white !important;
+    }
+
+    /* Border buttons */
+    html:not(.dark) section:first-of-type .border-purple-500,
+    html:not(.dark) #home .border-purple-500 {
+      color: rgb(126, 34, 206) !important;
+      -webkit-text-fill-color: rgb(126, 34, 206) !important;
+    }
+
+    /* Social links in hero */
+    html:not(.dark) section:first-of-type a[aria-label],
+    html:not(.dark) #home a[aria-label] {
+      color: rgb(55, 65, 81) !important;
+      -webkit-text-fill-color: rgb(55, 65, 81) !important;
+    }
+
+    /* Badge text */
+    html:not(.dark) .border-purple-400\/50 span,
+    html:not(.dark) .dark\:border-purple-400\/30 span {
+      color: rgb(126, 34, 206) !important;
+      -webkit-text-fill-color: rgb(126, 34, 206) !important;
+    }
+
+    /* Preserve gradient text in hero */
+    html:not(.dark)
+      section:first-of-type
+      .bg-gradient-to-r.bg-clip-text.text-transparent,
+    html:not(.dark) #home .bg-gradient-to-r.bg-clip-text.text-transparent {
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+      -webkit-background-clip: text !important;
+    }
+  }
+}
+
+/* Fix adicional para o background do header quando scrolled */
+@supports (-webkit-touch-callout: none) {
+  html:not(.dark) header.bg-white\/95 {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+  }
+
+  html:not(.dark) header .bg-gray-100 {
+    background-color: rgb(243, 244, 246) !important;
+  }
+
+  /* Hero background gradient fix */
+  html:not(.dark) .from-purple-100 {
+    --tw-gradient-from: rgb(243, 232, 255) !important;
+  }
+
+  html:not(.dark) .via-blue-100 {
+    --tw-gradient-via: rgb(219, 234, 254) !important;
+  }
+
+  html:not(.dark) .to-indigo-100 {
+    --tw-gradient-to: rgb(224, 231, 255) !important;
+  }
+}

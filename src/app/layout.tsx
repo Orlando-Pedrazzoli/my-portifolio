@@ -183,6 +183,94 @@ export default function RootLayout({
           }}
         />
 
+        {/* Fix específico para Header e Hero no iOS Light Mode */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+                
+                if (isIOS) {
+                  function fixHeaderHero() {
+                    const theme = localStorage.getItem('theme') || 'light';
+                    
+                    if (theme === 'light') {
+                      // Fix header elements
+                      const header = document.querySelector('header');
+                      if (header) {
+                        // Reset all text elements in header
+                        const headerElements = header.querySelectorAll('*');
+                        headerElements.forEach(el => {
+                          if (el instanceof HTMLElement) {
+                            el.style.webkitTextFillColor = '';
+                            
+                            // Force proper color inheritance
+                            if (el.tagName === 'A' || el.tagName === 'BUTTON') {
+                              el.style.color = '';
+                            }
+                          }
+                        });
+                      }
+                      
+                      // Fix hero section
+                      const hero = document.querySelector('section:first-of-type') || document.querySelector('#home');
+                      if (hero) {
+                        // Reset all text elements in hero
+                        const heroElements = hero.querySelectorAll('h1, h2, p, span:not(.bg-gradient-to-r), a, button');
+                        heroElements.forEach(el => {
+                          if (el instanceof HTMLElement && !el.classList.contains('text-transparent')) {
+                            el.style.webkitTextFillColor = '';
+                            
+                            // Ensure text is visible
+                            const computed = window.getComputedStyle(el);
+                            if (computed.color === 'rgba(0, 0, 0, 0)' || computed.color === 'transparent') {
+                              el.style.color = '#171717';
+                            }
+                          }
+                        });
+                        
+                        // Fix gradient text specifically
+                        const gradientTexts = hero.querySelectorAll('.bg-gradient-to-r.bg-clip-text.text-transparent');
+                        gradientTexts.forEach(el => {
+                          if (el instanceof HTMLElement) {
+                            el.style.webkitTextFillColor = 'transparent';
+                            el.style.backgroundClip = 'text';
+                            el.style.webkitBackgroundClip = 'text';
+                          }
+                        });
+                      }
+                    }
+                  }
+                  
+                  // Run on different load states
+                  if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', fixHeaderHero);
+                  } else {
+                    fixHeaderHero();
+                  }
+                  
+                  // Run after full page load
+                  window.addEventListener('load', function() {
+                    setTimeout(fixHeaderHero, 100);
+                  });
+                  
+                  // Run when theme changes
+                  window.addEventListener('storage', function(e) {
+                    if (e.key === 'theme') {
+                      setTimeout(fixHeaderHero, 150);
+                    }
+                  });
+                  
+                  // Run on orientation change
+                  window.addEventListener('orientationchange', function() {
+                    setTimeout(fixHeaderHero, 200);
+                  });
+                }
+              })();
+            `,
+          }}
+        />
+
         {/* Prevenir Safari Reader Mode */}
         <meta name='format-detection' content='telephone=no' />
         <meta name='x-apple-disable-message-reformatting' />
