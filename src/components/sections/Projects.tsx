@@ -128,12 +128,56 @@ export default function Projects() {
                 )}
 
                 {/* Project Image */}
-                <div className='relative h-48 bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/20 dark:to-blue-900/20'>
-                  <div className='absolute inset-0 flex items-center justify-center'>
-                    <span className='text-6xl opacity-30 dark:opacity-20'>
-                      {project.category === 'AI/ML' ? '🤖' : '💻'}
-                    </span>
-                  </div>
+                <div className='relative h-48 bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/20 dark:to-blue-900/20 overflow-hidden'>
+                  {project.image &&
+                  project.image !== '' &&
+                  !project.image.includes('placeholder') ? (
+                    <>
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className='absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110'
+                        onError={e => {
+                          // Hide broken image and show fallback
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          const fallback = target.nextElementSibling;
+                          if (fallback) {
+                            fallback.classList.remove('hidden');
+                          }
+                        }}
+                      />
+                      {/* Fallback for when image fails to load */}
+                      <div className='absolute inset-0 flex items-center justify-center hidden'>
+                        <span className='text-6xl opacity-30 dark:opacity-20'>
+                          {project.category === 'AI/ML'
+                            ? '🤖'
+                            : project.category === 'Full Stack'
+                            ? '🚀'
+                            : project.category === 'Frontend'
+                            ? '🎨'
+                            : project.category === 'Backend'
+                            ? '⚙️'
+                            : '💻'}
+                        </span>
+                      </div>
+                    </>
+                  ) : (
+                    // Default fallback when no image is provided
+                    <div className='absolute inset-0 flex items-center justify-center'>
+                      <span className='text-6xl opacity-30 dark:opacity-20'>
+                        {project.category === 'AI/ML'
+                          ? '🤖'
+                          : project.category === 'Full Stack'
+                          ? '🚀'
+                          : project.category === 'Frontend'
+                          ? '🎨'
+                          : project.category === 'Backend'
+                          ? '⚙️'
+                          : '💻'}
+                      </span>
+                    </div>
+                  )}
 
                   {/* Overlay with actions */}
                   <div className='absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4'>
