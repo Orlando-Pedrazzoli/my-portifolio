@@ -1,0 +1,38 @@
+# Robots.txt for www.orlandopedrazzoli.com
+# Orlando Pedrazzoli - Full Stack Developer & AI Engineer
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /node_modules/
+
+# Googlebot specific
+User-agent: Googlebot
+Allow: /
+Allow: /*.js$
+Allow: /*.css$
+Crawl-delay: 0
+
+# Bingbot specific
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+# Important pages for crawlers
+Allow: /
+Allow: /pt
+Allow: /en
+Allow: /#about
+Allow: /#skills
+Allow: /#projects
+Allow: /#experience
+Allow: /#contact
+
+# Sitemap location
+Sitemap: https://www.orlandopedrazzoli.com/sitemap.xml
+Sitemap: https://www.orlandopedrazzoli.com/sitemap-index.xml
+
+# Host
+Host: https://www.orlandopedrazzoli.com
