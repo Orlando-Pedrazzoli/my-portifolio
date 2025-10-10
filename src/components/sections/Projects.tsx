@@ -1,5 +1,5 @@
 'use client';
-
+import Image from 'next/image';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { projects } from '@/data/projects';
@@ -133,22 +133,27 @@ export default function Projects() {
                   project.image !== '' &&
                   !project.image.includes('placeholder') ? (
                     <>
-                      <img
+                      <Image
                         src={project.image}
                         alt={project.title}
-                        className='absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110'
+                        fill
+                        className='object-cover transition-transform duration-300 group-hover:scale-110'
+                        sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                         onError={e => {
                           // Hide broken image and show fallback
                           const target = e.target as HTMLImageElement;
                           target.style.display = 'none';
-                          const fallback = target.nextElementSibling;
+                          const fallback =
+                            target.parentElement?.querySelector(
+                              '.fallback-icon'
+                            );
                           if (fallback) {
                             fallback.classList.remove('hidden');
                           }
                         }}
                       />
                       {/* Fallback for when image fails to load */}
-                      <div className='absolute inset-0 flex items-center justify-center hidden'>
+                      <div className='fallback-icon absolute inset-0 flex items-center justify-center hidden'>
                         <span className='text-6xl opacity-30 dark:opacity-20'>
                           {project.category === 'AI/ML'
                             ? '🤖'

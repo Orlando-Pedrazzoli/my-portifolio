@@ -10,6 +10,25 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 // Substitua pelo seu ID do Google Analytics
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-XXXXXXXXXX';
 
+// Tipo para o gtag global
+declare global {
+  interface Window {
+    gtag: (
+      command: 'config' | 'event' | 'js' | 'set',
+      targetId: string,
+      config?: {
+        page_path?: string;
+        cookie_flags?: string;
+        event_category?: string;
+        event_label?: string;
+        value?: number;
+        [key: string]: string | number | undefined;
+      }
+    ) => void;
+    dataLayer: Array<unknown>;
+  }
+}
+
 export function GoogleAnalytics() {
   if (!GA_ID || GA_ID === 'G-XXXXXXXXXX') {
     return null;
@@ -57,8 +76,8 @@ export const trackEvent = (
   label?: string,
   value?: number
 ) => {
-  if (typeof window !== 'undefined' && (window as any).gtag) {
-    (window as any).gtag('event', action, {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', action, {
       event_category: category,
       event_label: label,
       value: value,
