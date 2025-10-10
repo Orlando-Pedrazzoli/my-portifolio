@@ -5,7 +5,6 @@ import Footer from '@/components/layout/Footer';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { LanguageProvider } from '@/components/providers/LanguageProvider';
 import StructuredData from '@/components/SEO/StructuredData';
-import { Analytics } from '@/components/Analytics/Analytics';
 
 // Viewport export separado (Next.js 15)
 export const viewport: Viewport = {
@@ -243,9 +242,10 @@ export const metadata: Metadata = {
     google: 'seu-codigo-google-search-console', // Adicione seu código do Google Search Console
     yandex: 'seu-codigo-yandex',
     yahoo: 'seu-codigo-yahoo',
-    bing: 'seu-codigo-bing',
+    // Para Bing, use a meta tag other['msvalidate.01']
   },
   other: {
+    'msvalidate.01': 'seu-codigo-bing', // Verificação do Bing
     'og:logo': 'https://www.orlandopedrazzoli.com/logo.png',
     'og:email': 'pedrazzoliorlando@gmail.com',
     'og:phone_number': '+351 912 164 220',
@@ -539,7 +539,6 @@ export default function RootLayout({
               {children}
             </main>
             <Footer />
-            <Analytics />
           </LanguageProvider>
         </ThemeProvider>
       </body>
