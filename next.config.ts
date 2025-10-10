@@ -174,11 +174,11 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  // Configurações experimentais para melhor performance
-  experimental: {
-    optimizeCss: true,
-    scrollRestoration: true,
-  },
+  // REMOVIDO experimental para evitar erro do critters
+  // experimental: {
+  //   optimizeCss: true,
+  //   scrollRestoration: true,
+  // },
 
   // Webpack customizado para otimização
   webpack: (config, { dev, isServer }) => {
