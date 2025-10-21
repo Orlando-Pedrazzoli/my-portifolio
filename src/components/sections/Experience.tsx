@@ -10,8 +10,8 @@ export default function Experience() {
 
   // Stats com traduções
   const stats = [
-    { label: t('experience.stats.years'), value: '15+', icon: '🎯' },
-    { label: t('experience.stats.companies'), value: '5', icon: '🏢' },
+    { label: t('experience.stats.years'), value: '3+', icon: '🎯' },
+    { label: t('experience.stats.companies'), value: '2', icon: '🏢' },
     { label: t('experience.stats.projects'), value: '50+', icon: '🚀' },
     { label: t('experience.stats.technologies'), value: '30+', icon: '💻' },
   ];

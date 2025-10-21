@@ -77,7 +77,7 @@ export const experiences: Experience[] = [
   },
   {
     id: 2,
-    title: 'Data Analyst',
+    title: 'Analyst',
     company: 'Accenture Portugal',
     location: 'Lisboa Metropolitan Area',
     type: 'Full-time',
