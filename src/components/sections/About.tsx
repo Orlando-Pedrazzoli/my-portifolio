@@ -14,9 +14,9 @@ export default function About() {
 
   // Stats com traduções dinâmicas
   const stats = [
-    { label: t('about.stats.experience'), value: '15+', icon: Calendar },
-    { label: t('about.stats.projects'), value: '50+', icon: Rocket },
-    { label: t('about.stats.clients'), value: '30+', icon: Heart },
+    { label: t('about.stats.experience'), value: '3+', icon: Calendar },
+    { label: t('about.stats.projects'), value: '90+', icon: Rocket },
+    { label: t('about.stats.clients'), value: '10+', icon: Heart },
     { label: t('about.stats.code'), value: '100k+', icon: Coffee },
   ];
 
@@ -245,7 +245,6 @@ export default function About() {
                 {[
                   'React',
                   'Node.js',
-                  'Python',
                   'AI/ML',
                   'TypeScript',
                   'Next.js',
