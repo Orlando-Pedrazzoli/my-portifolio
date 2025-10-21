@@ -64,7 +64,7 @@ export default function About() {
           },
           {
             year: '2024',
-            title: 'Data Analyst - Accenture',
+            title: 'Analyst - Accenture',
             description:
               'Data analysis for multinational client, developing automated solutions.',
           },
