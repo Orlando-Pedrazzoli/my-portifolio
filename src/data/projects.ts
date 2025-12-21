@@ -96,7 +96,7 @@ export const projects: Project[] = [
     ],
     category: 'Full Stack',
     featured: true,
-    githubUrl: 'https://github.com/Orlando-Pedrazzoli/cm-hub',
+    githubUrl: 'https://github.com/yourusername/raquelperez-imoveis',
     liveUrl: 'https://cm-hub.vercel.app/',
     highlights: [
       'Sistema completo de autenticação JWT com httpOnly cookies',
