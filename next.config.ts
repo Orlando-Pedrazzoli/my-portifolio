@@ -1,6 +1,9 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  // ✅ ADICIONE ESTA LINHA para silenciar o erro do Turbopack
+  turbopack: {},
+
   // Otimização de imagens
   images: {
     remotePatterns: [
@@ -173,12 +176,6 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-
-  // REMOVIDO experimental para evitar erro do critters
-  // experimental: {
-  //   optimizeCss: true,
-  //   scrollRestoration: true,
-  // },
 
   // Webpack customizado para otimização
   webpack: (config, { dev, isServer }) => {
