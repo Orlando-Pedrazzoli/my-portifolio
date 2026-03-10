@@ -241,11 +241,11 @@ export default function Skills() {
           </h4>
           <div className='flex flex-wrap justify-center gap-3'>
             {[
-              'Rust',
-              'Web3',
-              'Advanced AI/ML',
-              'Cloud Architecture',
-              'Kubernetes',
+              'Testing (Vitest / Playwright)',
+              'Docker basics',
+              'PostgreSQL / Prisma',
+              'Server Components (RSC)',
+              'CI/CD (GitHub Actions)',
             ].map(tech => (
               <span
                 key={tech}

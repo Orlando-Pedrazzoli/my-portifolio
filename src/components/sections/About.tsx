@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { Calendar, MapPin, Coffee, Rocket, Heart } from 'lucide-react';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 
-// Configuração do site
 const SITE_CONFIG = {
   location: 'Lisboa, Portugal',
 };
@@ -12,67 +11,65 @@ const SITE_CONFIG = {
 export default function About() {
   const { t, language } = useLanguage();
 
-  // Stats com traduções dinâmicas
   const stats = [
     { label: t('about.stats.experience'), value: '3+', icon: Calendar },
-    { label: t('about.stats.projects'), value: '90+', icon: Rocket },
-    { label: t('about.stats.clients'), value: '10+', icon: Heart },
-    { label: t('about.stats.code'), value: '100k+', icon: Coffee },
+    { label: t('about.stats.projects'), value: '6+', icon: Rocket },
+    { label: t('about.stats.clients'), value: '5+', icon: Heart },
+    { label: t('about.stats.code'), value: '15+', icon: Coffee },
   ];
 
-  // Journey com traduções dinâmicas
   const journey =
     language === 'pt'
       ? [
           {
-            year: '2010-2023',
-            title: 'Empreendedor & CEO',
+            year: '2005-2010',
+            title: 'Production Manager',
             description:
-              'Fundei e liderei a Elite Surfing, expandindo para mercados internacionais.',
+              'Gestao de producao para marcas de surf (FCS, Creatures of Leisure, Gorilla Grip).',
+          },
+          {
+            year: '2010-2023',
+            title: 'Founder & CEO — Elite Surfing',
+            description:
+              'Fundei e geri marca de acessorios de surf durante mais de uma decada.',
           },
           {
             year: '2023-2024',
-            title: 'Transição de Carreira',
+            title: 'Bootcamp Ironhack',
             description:
-              'Bootcamp intensivo em Full Stack Development, focado em tecnologias modernas.',
+              'Full Stack Web Development — MERN Stack, React, Node.js, MongoDB.',
           },
           {
-            year: '2024',
-            title: 'Analyst - Accenture',
+            year: '2024-Presente',
+            title: 'Full Stack Developer & Data Analyst',
             description:
-              'Análise de dados para cliente multinacional, desenvolvendo soluções automatizadas.',
-          },
-          {
-            year: 'Presente',
-            title: 'Full Stack Developer & AI Engineer',
-            description:
-              'Desenvolvendo aplicações inteligentes que combinam web development com IA.',
+              'Freelance na Pedrazzoli Digital e Data Analyst na Accenture Portugal.',
           },
         ]
       : [
           {
-            year: '2010-2023',
-            title: 'Entrepreneur & CEO',
+            year: '2005-2010',
+            title: 'Production Manager',
             description:
-              'Founded and led Elite Surfing, expanding to international markets.',
+              'Production management for surf brands (FCS, Creatures of Leisure, Gorilla Grip).',
+          },
+          {
+            year: '2010-2023',
+            title: 'Founder & CEO — Elite Surfing',
+            description:
+              'Founded and ran a surf accessories brand for over a decade.',
           },
           {
             year: '2023-2024',
-            title: 'Career Transition',
+            title: 'Ironhack Bootcamp',
             description:
-              'Intensive Full Stack Development bootcamp, focused on modern technologies.',
+              'Full Stack Web Development — MERN Stack, React, Node.js, MongoDB.',
           },
           {
-            year: '2024',
-            title: 'Analyst - Accenture',
+            year: '2024-Present',
+            title: 'Full Stack Developer & Data Analyst',
             description:
-              'Data analysis for multinational client, developing automated solutions.',
-          },
-          {
-            year: 'Present',
-            title: 'Full Stack Developer & AI Engineer',
-            description:
-              'Developing intelligent applications that combine web development with AI.',
+              'Freelancing at Pedrazzoli Digital and Data Analyst at Accenture Portugal.',
           },
         ];
 
@@ -217,7 +214,7 @@ export default function About() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ scale: 1.05 }}
-                  className='bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/20 dark:to-blue-900/20 border border-purple-300 dark:border-purple-400/20 rounded-lg p-4 text-center'
+                  className='bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-800/80 dark:to-gray-800/60 border border-purple-200 dark:border-gray-700 rounded-xl p-4 text-center'
                 >
                   <stat.icon className='w-8 h-8 text-purple-600 dark:text-purple-400 mx-auto mb-2' />
                   <div className='text-2xl font-bold text-gray-900 dark:text-white'>
@@ -236,7 +233,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className='bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/20 dark:to-blue-900/20 border border-purple-300 dark:border-purple-400/20 rounded-lg p-6'
+              className='bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-800/80 dark:to-gray-800/60 border border-purple-200 dark:border-gray-700 rounded-xl p-6'
             >
               <h4 className='text-lg font-bold mb-4 text-purple-600 dark:text-purple-400'>
                 {t('about.coreSkills')}
@@ -244,16 +241,16 @@ export default function About() {
               <div className='flex flex-wrap gap-2'>
                 {[
                   'React',
-                  'Node.js',
-                  'AI/ML',
-                  'TypeScript',
                   'Next.js',
+                  'TypeScript',
+                  'Node.js',
+                  'Express',
                   'MongoDB',
-                  'Docker',
+                  'Tailwind CSS',
                 ].map(skill => (
                   <span
                     key={skill}
-                    className='px-3 py-1 bg-purple-200 dark:bg-purple-900/30 border border-purple-300 dark:border-purple-400/30 rounded-full text-sm text-purple-700 dark:text-purple-300'
+                    className='px-3 py-1 bg-purple-100 dark:bg-gray-800 border border-purple-300 dark:border-gray-600 rounded-full text-sm text-purple-700 dark:text-purple-300'
                   >
                     {skill}
                   </span>

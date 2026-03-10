@@ -7,20 +7,20 @@ export const translations = {
       about: 'Sobre',
       skills: 'Habilidades',
       projects: 'Projetos',
-      experience: 'Experiência',
+      experience: 'Experiencia',
       contact: 'Contato',
     },
     hero: {
-      greeting: 'Olá, eu sou',
-      badge: 'Desenvolvedor com IA',
+      greeting: 'Ola, eu sou',
+      badge: 'Full Stack Developer',
       roles: {
-        fullstack: 'Desenvolvedor Full Stack',
-        ai: 'Engenheiro de IA',
+        fullstack: 'Full Stack Developer',
+        web: 'Criador de Websites',
+        ecommerce: 'Developer E-commerce',
         problem: 'Solucionador de Problemas',
-        tech: 'Inovador Tecnológico',
       },
       description:
-        'Transformando ideias em soluções inteligentes. Especializado em construir aplicações web modernas com integração de IA de ponta.',
+        'Construo websites e aplicacoes web para negocios reais. De landing pages a plataformas e-commerce com pagamentos, envios e paineis de gestao.',
       cta: {
         projects: 'Ver Projetos',
         contact: 'Entrar em Contato',
@@ -30,159 +30,138 @@ export const translations = {
       title: 'Sobre',
       titleHighlight: 'Mim',
       subtitle:
-        'De empreendedor a desenvolvedor, minha jornada é sobre transformação e paixão por tecnologia',
-      heading: 'Da Gestão Empresarial ao Código',
+        'De empreendedor a developer — uma decada de experiencia em negocios, agora aplicada a construir software',
+      heading: 'Da Gestao de Negocios ao Codigo',
       description1:
-        'Após 15 anos liderando minha própria empresa no setor de surf, decidi fazer uma transição de carreira para tecnologia. Minha experiência em gestão, estratégia e resolução de problemas complexos me dá uma perspectiva única no desenvolvimento de software.',
+        'Depois de mais de 10 anos a liderar a minha propria empresa no setor de surf, fiz a transicao para desenvolvimento de software. Completei o bootcamp na Ironhack e desde entao tenho trabalhado com o stack MERN, Next.js e TypeScript, tanto em projetos proprios como para clientes.',
       description2:
-        'Hoje, combino minha experiência empresarial com habilidades técnicas em Full Stack Development e Inteligência Artificial para criar soluções que não apenas funcionam, mas que transformam negócios.',
+        'A minha experiencia como fundador e CEO da-me uma perspetiva de negocio que a maioria dos developers nao tem. Entendo o que um cliente precisa, sei gerir prazos e prioridades, e penso no produto como um todo — nao so no codigo.',
       description3:
-        'Meu foco está em desenvolver aplicações web modernas e escaláveis, com integração de IA para automatizar processos e gerar insights valiosos para empresas de todos os tamanhos.',
+        'Paralelamente ao freelance, trabalho como Data Analyst na Accenture Portugal. Estou baseado em Lisboa e disponivel para projetos remotos ou hibridos.',
       location: 'Lisboa, Portugal',
       downloadCV: 'Download CV',
-      viewExperience: 'Ver Experiência',
+      viewExperience: 'Ver Experiencia',
       journey: {
-        title: 'Minha Jornada',
+        title: 'O Meu Percurso',
         items: [
           {
-            year: '2010-2023',
-            title: 'Empreendedor & CEO',
+            year: '2005-2010',
+            title: 'Production Manager',
             description:
-              'Fundei e liderei a Elite Surfing, expandindo para mercados internacionais.',
+              'Gestao de producao para marcas de surf (FCS, Creatures of Leisure, Gorilla Grip).',
+          },
+          {
+            year: '2010-2023',
+            title: 'Founder & CEO — Elite Surfing',
+            description:
+              'Fundei e geri marca de acessorios de surf durante mais de uma decada.',
           },
           {
             year: '2023-2024',
-            title: 'Transição de Carreira',
+            title: 'Bootcamp Ironhack',
             description:
-              'Bootcamp intensivo em Full Stack Development, focado em tecnologias modernas.',
+              'Full Stack Web Development — MERN Stack, React, Node.js, MongoDB.',
           },
           {
-            year: '2024',
-            title: 'Data Analyst - Accenture',
+            year: '2024-Presente',
+            title: 'Full Stack Developer & Data Analyst',
             description:
-              'Análise de dados para cliente multinacional, desenvolvendo soluções automatizadas.',
-          },
-          {
-            year: 'Presente',
-            title: 'Full Stack Developer & AI Engineer',
-            description:
-              'Desenvolvendo aplicações inteligentes que combinam web development com IA.',
+              'Freelance na Pedrazzoli Digital e Data Analyst na Accenture Portugal.',
           },
         ],
       },
       stats: {
-        experience: 'Anos de Experiência',
-        projects: 'Projetos Completos',
-        clients: 'Clientes Satisfeitos',
-        code: 'Linhas de Código',
+        experience: 'Anos como Developer',
+        projects: 'Projetos Entregues',
+        clients: 'Clientes',
+        code: 'Anos em Negocios',
       },
-      coreSkills: 'Habilidades Principais',
+      coreSkills: 'Stack Principal',
     },
     skills: {
-      title: 'Minhas',
+      title: 'As Minhas',
       titleHighlight: 'Habilidades',
       subtitle:
-        'Tecnologias e ferramentas que domino para criar soluções excepcionais',
+        'Tecnologias e ferramentas que uso no dia a dia para construir projetos reais',
       level: {
-        expert: 'Expert',
-        advanced: 'Avançado',
-        intermediate: 'Intermediário',
+        expert: 'Forte',
+        advanced: 'Confortavel',
+        intermediate: 'Em desenvolvimento',
       },
       special: {
-        title: 'Competências Especiais',
-        items: [
-          {
-            title: 'Resolução de Problemas',
-            desc: 'Análise e resolução de problemas complexos',
-          },
-          {
-            title: 'Liderança de Equipe',
-            desc: '15+ anos liderando equipes',
-          },
-          {
-            title: 'Estratégia de Negócios',
-            desc: 'Visão estratégica de negócios',
-          },
-          {
-            title: 'Aprendizado Rápido',
-            desc: 'Adaptação rápida a novas tecnologias',
-          },
-        ],
+        title: 'Competencias que trago do mundo dos negocios',
       },
-      learning: 'Atualmente Aprendendo',
+      learning: 'A explorar',
     },
     projects: {
-      title: 'Meus',
+      title: 'Os Meus',
       titleHighlight: 'Projetos',
       subtitle:
-        'Explorando a interseção entre desenvolvimento web e inteligência artificial',
+        'Projetos reais em producao — e-commerce, websites institucionais, ferramentas SaaS',
       categories: {
         all: 'Todos',
-        aiml: 'IA/ML',
         fullstack: 'Full Stack',
         frontend: 'Frontend',
         backend: 'Backend',
       },
-      featured: 'Destaque',
       viewDetails: 'Ver Detalhes',
       highlights: 'Destaques',
       technologies: 'Tecnologias',
       viewDemo: 'Ver Demo',
     },
     experience: {
-      title: 'Minha',
-      titleHighlight: 'Experiência',
+      title: 'A Minha',
+      titleHighlight: 'Experiencia',
       subtitle:
-        'Uma jornada de crescimento contínuo e transformação profissional',
-      responsibilities: 'Principais Responsabilidades',
-      achievement: 'Conquista Principal',
-      downloadCV: 'Download CV Completo',
+        'De empreendedor a developer — um percurso de reinvencao profissional',
+      responsibilities: 'Responsabilidades',
+      achievement: 'Destaque',
+      downloadCV: 'Download CV',
       stats: {
-        years: 'Anos de Experiência',
+        years: 'Anos como Developer',
         companies: 'Empresas',
-        projects: 'Projetos Completos',
+        projects: 'Projetos',
         technologies: 'Tecnologias',
       },
     },
     contact: {
       title: 'Vamos',
       titleHighlight: 'Conversar',
-      subtitle:
-        'Tem um projeto em mente? Vamos trabalhar juntos para criar algo incrível',
+      subtitle: 'Tem um projeto em mente? Vamos trabalhar juntos',
       form: {
         name: 'Nome',
-        namePlaceholder: 'Seu nome',
+        namePlaceholder: 'O seu nome',
         email: 'Email',
         emailPlaceholder: 'seu@email.com',
         subject: 'Assunto',
         subjectPlaceholder: 'Selecione um assunto',
         subjectOptions: {
           project: 'Novo Projeto',
-          collaboration: 'Colaboração',
+          collaboration: 'Colaboracao',
           job: 'Oportunidade de Trabalho',
           other: 'Outro',
         },
         message: 'Mensagem',
-        messagePlaceholder: 'Conte-me sobre seu projeto...',
+        messagePlaceholder: 'Conte-me sobre o seu projeto...',
         send: 'Enviar Mensagem',
         sending: 'Enviando...',
-        success: 'Mensagem enviada com sucesso! Entrarei em contato em breve.',
-        error: 'Ops! Algo deu errado. Por favor, tente novamente.',
+        success: 'Mensagem enviada com sucesso! Respondo em breve.',
+        error: 'Algo correu mal. Por favor, tente novamente.',
       },
       directContact: 'Contato Direto',
       socialNetworks: 'Redes Sociais',
       available: {
-        title: 'Disponível para Projetos',
+        title: 'Disponivel para Projetos',
         description:
-          'Atualmente estou aceitando novos projetos freelance e oportunidades de trabalho remoto ou presencial.',
+          'Aceito novos projetos freelance e oportunidades de trabalho remoto ou hibrido.',
         services: [
           'Desenvolvimento Full Stack',
-          'Integração de IA/ML',
-          'Consultoria Técnica',
-          'Desenvolvimento de MVPs',
+          'Websites e Landing Pages',
+          'E-commerce',
+          'Consultoria Tecnica',
         ],
       },
-      responseTime: 'Normalmente respondo em até',
+      responseTime: 'Normalmente respondo em ate',
       hours: '24 horas',
     },
   },
@@ -197,15 +176,15 @@ export const translations = {
     },
     hero: {
       greeting: 'Hi, I am',
-      badge: 'AI-Powered Developer',
+      badge: 'Full Stack Developer',
       roles: {
         fullstack: 'Full Stack Developer',
-        ai: 'AI Engineer',
+        web: 'Website Creator',
+        ecommerce: 'E-commerce Developer',
         problem: 'Problem Solver',
-        tech: 'Tech Innovator',
       },
       description:
-        'Transforming ideas into intelligent solutions. Specialized in building modern web applications with cutting-edge AI integration.',
+        'I build websites and web applications for real businesses. From landing pages to full e-commerce platforms with payments, shipping and admin panels.',
       cta: {
         projects: 'View Projects',
         contact: 'Get in Touch',
@@ -215,14 +194,14 @@ export const translations = {
       title: 'About',
       titleHighlight: 'Me',
       subtitle:
-        'From entrepreneur to developer, my journey is about transformation and passion for technology',
+        'From entrepreneur to developer — a decade of business experience, now applied to building software',
       heading: 'From Business Management to Code',
       description1:
-        'After 15 years leading my own company in the surf industry, I decided to make a career transition to technology. My experience in management, strategy, and complex problem-solving gives me a unique perspective in software development.',
+        'After over 10 years leading my own company in the surf industry, I transitioned into software development. I completed the Ironhack bootcamp and have since been working with the MERN stack, Next.js and TypeScript, both on personal projects and for clients.',
       description2:
-        'Today, I combine my business experience with technical skills in Full Stack Development and Artificial Intelligence to create solutions that not only work but transform businesses.',
+        "My background as a founder and CEO gives me a business perspective that most developers don't have. I understand what clients need, I know how to manage deadlines and priorities, and I think about the product as a whole — not just the code.",
       description3:
-        'My focus is on developing modern and scalable web applications, with AI integration to automate processes and generate valuable insights for businesses of all sizes.',
+        "Alongside freelancing, I work as a Data Analyst at Accenture Portugal. I'm based in Lisbon and available for remote or hybrid projects.",
       location: 'Lisbon, Portugal',
       downloadCV: 'Download CV',
       viewExperience: 'View Experience',
@@ -230,85 +209,64 @@ export const translations = {
         title: 'My Journey',
         items: [
           {
-            year: '2010-2023',
-            title: 'Entrepreneur & CEO',
+            year: '2005-2010',
+            title: 'Production Manager',
             description:
-              'Founded and led Elite Surfing, expanding to international markets.',
+              'Production management for surf brands (FCS, Creatures of Leisure, Gorilla Grip).',
+          },
+          {
+            year: '2010-2023',
+            title: 'Founder & CEO — Elite Surfing',
+            description:
+              'Founded and ran a surf accessories brand for over a decade.',
           },
           {
             year: '2023-2024',
-            title: 'Career Transition',
+            title: 'Ironhack Bootcamp',
             description:
-              'Intensive Full Stack Development bootcamp, focused on modern technologies.',
+              'Full Stack Web Development — MERN Stack, React, Node.js, MongoDB.',
           },
           {
-            year: '2024',
-            title: 'Data Analyst - Accenture',
+            year: '2024-Present',
+            title: 'Full Stack Developer & Data Analyst',
             description:
-              'Data analysis for multinational client, developing automated solutions.',
-          },
-          {
-            year: 'Present',
-            title: 'Full Stack Developer & AI Engineer',
-            description:
-              'Developing intelligent applications that combine web development with AI.',
+              'Freelancing at Pedrazzoli Digital and Data Analyst at Accenture Portugal.',
           },
         ],
       },
       stats: {
-        experience: 'Years of Experience',
-        projects: 'Completed Projects',
-        clients: 'Satisfied Clients',
-        code: 'Lines of Code',
+        experience: 'Years as Developer',
+        projects: 'Projects Delivered',
+        clients: 'Clients',
+        code: 'Years in Business',
       },
-      coreSkills: 'Core Skills',
+      coreSkills: 'Core Stack',
     },
     skills: {
       title: 'My',
       titleHighlight: 'Skills',
-      subtitle:
-        'Technologies and tools I master to create exceptional solutions',
+      subtitle: 'Technologies and tools I use daily to build real projects',
       level: {
-        expert: 'Expert',
-        advanced: 'Advanced',
-        intermediate: 'Intermediate',
+        expert: 'Strong',
+        advanced: 'Comfortable',
+        intermediate: 'Growing',
       },
       special: {
-        title: 'Special Skills',
-        items: [
-          {
-            title: 'Problem Solving',
-            desc: 'Analysis and resolution of complex problems',
-          },
-          {
-            title: 'Team Leadership',
-            desc: '15+ years leading teams',
-          },
-          {
-            title: 'Business Strategy',
-            desc: 'Strategic business vision',
-          },
-          {
-            title: 'Fast Learning',
-            desc: 'Quick adaptation to new technologies',
-          },
-        ],
+        title: 'Skills I bring from the business world',
       },
-      learning: 'Currently Learning',
+      learning: 'Exploring',
     },
     projects: {
       title: 'My',
       titleHighlight: 'Projects',
       subtitle:
-        'Exploring the intersection between web development and artificial intelligence',
+        'Real projects in production — e-commerce, institutional websites, SaaS tools',
       categories: {
         all: 'All',
-        aiml: 'AI/ML',
         fullstack: 'Full Stack',
         frontend: 'Frontend',
         backend: 'Backend',
       },
-      featured: 'Featured',
       viewDetails: 'View Details',
       highlights: 'Highlights',
       technologies: 'Technologies',
@@ -318,22 +276,21 @@ export const translations = {
       title: 'My',
       titleHighlight: 'Experience',
       subtitle:
-        'A journey of continuous growth and professional transformation',
-      responsibilities: 'Main Responsibilities',
-      achievement: 'Main Achievement',
-      downloadCV: 'Download Full CV',
+        'From entrepreneur to developer — a journey of professional reinvention',
+      responsibilities: 'Responsibilities',
+      achievement: 'Highlight',
+      downloadCV: 'Download CV',
       stats: {
-        years: 'Years of Experience',
+        years: 'Years as Developer',
         companies: 'Companies',
-        projects: 'Completed Projects',
+        projects: 'Projects',
         technologies: 'Technologies',
       },
     },
     contact: {
       title: "Let's",
       titleHighlight: 'Talk',
-      subtitle:
-        "Have a project in mind? Let's work together to create something amazing",
+      subtitle: "Have a project in mind? Let's work together",
       form: {
         name: 'Name',
         namePlaceholder: 'Your name',
@@ -352,19 +309,19 @@ export const translations = {
         send: 'Send Message',
         sending: 'Sending...',
         success: "Message sent successfully! I'll get back to you soon.",
-        error: 'Oops! Something went wrong. Please try again.',
+        error: 'Something went wrong. Please try again.',
       },
       directContact: 'Direct Contact',
       socialNetworks: 'Social Networks',
       available: {
         title: 'Available for Projects',
         description:
-          'Currently accepting new freelance projects and remote or on-site work opportunities.',
+          'Currently accepting new freelance projects and remote or hybrid work opportunities.',
         services: [
           'Full Stack Development',
-          'AI/ML Integration',
+          'Websites & Landing Pages',
+          'E-commerce',
           'Technical Consulting',
-          'MVP Development',
         ],
       },
       responseTime: 'I usually respond within',

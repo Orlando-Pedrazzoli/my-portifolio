@@ -15,13 +15,12 @@ export default function Projects() {
 
   const categories =
     language === 'pt'
-      ? ['Todos', 'IA/ML', 'Full Stack', 'Frontend', 'Backend']
-      : ['All', 'AI/ML', 'Full Stack', 'Frontend', 'Backend'];
+      ? ['Todos', 'Full Stack', 'Frontend', 'Backend']
+      : ['All', 'Full Stack', 'Frontend', 'Backend'];
 
   const getCategoryInEnglish = (category: string) => {
     const map: { [key: string]: string } = {
       Todos: 'All',
-      'IA/ML': 'AI/ML',
     };
     return map[category] || category;
   };
@@ -35,8 +34,6 @@ export default function Projects() {
 
   const categoryEmoji = (cat: string) => {
     switch (cat) {
-      case 'AI/ML':
-        return '🤖';
       case 'Full Stack':
         return '🚀';
       case 'Frontend':

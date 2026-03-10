@@ -7,24 +7,16 @@ import {
   Linkedin,
   Mail,
   ChevronDown,
-  Sparkles,
   Code2,
-  Brain,
+  ArrowRight,
 } from 'lucide-react';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 
-// Configuração do site
 const SITE_CONFIG = {
   name: 'Orlando Pedrazzoli',
-  title: 'Full Stack Developer & AI Engineer',
-  description:
-    'Desenvolvedor Full Stack especializado em criar aplicações web modernas com integração de IA',
-  url: 'https://orlandopedrazzoli.com',
   email: 'pedrazzoliorlando@gmail.com',
   github: 'https://github.com/Orlando-Pedrazzoli',
   linkedin: 'https://www.linkedin.com/in/orlandopedrazzoli/',
-  phone: '+351 912164220',
-  location: 'Lisboa, Portugal',
 };
 
 export default function Hero() {
@@ -38,11 +30,11 @@ export default function Hero() {
   const roles = useMemo(
     () => [
       t('hero.roles.fullstack'),
-      t('hero.roles.ai'),
+      t('hero.roles.web'),
+      t('hero.roles.ecommerce'),
       t('hero.roles.problem'),
-      t('hero.roles.tech'),
     ],
-    [t]
+    [t],
   );
 
   useEffect(() => {
@@ -59,7 +51,7 @@ export default function Hero() {
       setText(
         isDeleting
           ? fullText.substring(0, text.length - 1)
-          : fullText.substring(0, text.length + 1)
+          : fullText.substring(0, text.length + 1),
       );
 
       setTypingSpeed(isDeleting ? 30 : 150);
@@ -78,14 +70,13 @@ export default function Hero() {
 
   return (
     <section className='relative min-h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-16 md:pt-0'>
-      {/* Animated Background */}
+      {/* Background */}
       <div className='absolute inset-0 bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-100 dark:from-purple-900 dark:via-blue-900 dark:to-indigo-900'>
         <div className='absolute inset-0 bg-white/50 dark:bg-black/20' />
 
-        {/* Animated particles */}
         {mounted && (
           <div className='absolute inset-0'>
-            {[...Array(30)].map((_, i) => (
+            {[...Array(20)].map((_, i) => (
               <motion.div
                 key={i}
                 className='absolute w-1 h-1 bg-gray-600/20 dark:bg-white/20 rounded-full'
@@ -119,48 +110,36 @@ export default function Hero() {
       {/* Gradient Orbs */}
       <motion.div
         className='absolute top-20 left-20 w-72 h-72 bg-purple-400 dark:bg-purple-600 rounded-full blur-3xl opacity-30 dark:opacity-20'
-        animate={{
-          x: [0, 100, 0],
-          y: [0, -100, 0],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-        }}
+        animate={{ x: [0, 100, 0], y: [0, -100, 0] }}
+        transition={{ duration: 20, repeat: Infinity }}
       />
       <motion.div
         className='absolute bottom-20 right-20 w-96 h-96 bg-blue-400 dark:bg-blue-600 rounded-full blur-3xl opacity-30 dark:opacity-20'
-        animate={{
-          x: [0, -100, 0],
-          y: [0, 100, 0],
-        }}
-        transition={{
-          duration: 25,
-          repeat: Infinity,
-        }}
+        animate={{ x: [0, -100, 0], y: [0, 100, 0] }}
+        transition={{ duration: 25, repeat: Infinity }}
       />
 
-      {/* Main Content - Ajustado com padding adicional no mobile */}
+      {/* Content */}
       <div className='relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mt-8 sm:mt-0'>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {/* AI Badge */}
+          {/* Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
             className='inline-flex items-center gap-2 px-4 py-2 mb-6 sm:mb-8 border border-purple-400/50 dark:border-purple-400/30 rounded-full bg-white/80 dark:bg-purple-900/20 backdrop-blur-sm'
           >
-            <Sparkles className='w-4 h-4 text-purple-600 dark:text-purple-400' />
+            <Code2 className='w-4 h-4 text-purple-600 dark:text-purple-400' />
             <span className='text-sm text-purple-700 dark:text-purple-300'>
               {t('hero.badge')}
             </span>
           </motion.div>
 
-          {/* Name - Ajustado tamanho do texto para mobile */}
+          {/* Name */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -173,7 +152,7 @@ export default function Hero() {
             </span>
           </motion.h1>
 
-          {/* Typing Animation - Ajustado tamanho para mobile */}
+          {/* Typing */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -184,7 +163,7 @@ export default function Hero() {
             <span className='animate-pulse'>|</span>
           </motion.div>
 
-          {/* Description - Ajustado espaçamento */}
+          {/* Description */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -194,7 +173,7 @@ export default function Hero() {
             {t('hero.description')}
           </motion.p>
 
-          {/* CTA Buttons - Melhorado para mobile */}
+          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -206,8 +185,8 @@ export default function Hero() {
               className='group relative w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl'
             >
               <span className='relative z-10 flex items-center justify-center gap-2'>
-                <Brain className='w-5 h-5' />
                 {t('hero.cta.projects')}
+                <ArrowRight className='w-5 h-5' />
               </span>
               <div className='absolute inset-0 bg-gradient-to-r from-purple-700 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity' />
             </a>
@@ -217,13 +196,13 @@ export default function Hero() {
               className='group w-full sm:w-auto px-8 py-4 border-2 border-purple-500 dark:border-purple-400/50 text-purple-700 dark:text-purple-300 font-semibold rounded-lg backdrop-blur-sm transition-all duration-300 hover:bg-purple-100 dark:hover:bg-purple-400/10 hover:scale-105'
             >
               <span className='flex items-center justify-center gap-2'>
-                <Code2 className='w-5 h-5' />
+                <Mail className='w-5 h-5' />
                 {t('hero.cta.contact')}
               </span>
             </a>
           </motion.div>
 
-          {/* Social Links - Ajustado espaçamento */}
+          {/* Social Links */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -266,7 +245,7 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Scroll Indicator - Ajustado posição para mobile */}
+        {/* Scroll Indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: [0, 10, 0] }}

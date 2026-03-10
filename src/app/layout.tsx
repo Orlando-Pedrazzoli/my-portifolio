@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: '%s | Orlando Pedrazzoli',
   },
   description:
-    'Orlando Pedrazzoli - Desenvolvedor Full Stack em Lisboa. Criação de websites profissionais, e-commerce, landing pages e aplicações web com React, Next.js e Node.js.',
+    'Orlando Pedrazzoli - Desenvolvedor Full Stack em Lisboa. Criacao de websites, e-commerce, landing pages e aplicacoes web com React, Next.js, Node.js e MongoDB.',
   authors: [
     { name: 'Orlando Pedrazzoli', url: 'https://www.orlandopedrazzoli.com' },
   ],
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Orlando Pedrazzoli | Full Stack Developer | Lisboa',
     description:
-      'Desenvolvedor Full Stack especializado em criar websites profissionais, e-commerce e aplicações web modernas com React, Next.js e Node.js.',
+      'Desenvolvedor Full Stack especializado em criar websites, e-commerce e aplicacoes web com React, Next.js, Node.js e MongoDB.',
     url: 'https://www.orlandopedrazzoli.com',
     siteName: 'Orlando Pedrazzoli',
     locale: 'pt_BR',
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Orlando Pedrazzoli | Full Stack Developer',
     description:
-      'Desenvolvimento de websites profissionais, e-commerce e aplicações web. React, Next.js, Node.js.',
+      'Desenvolvimento de websites, e-commerce e aplicacoes web. React, Next.js, Node.js, MongoDB.',
     images: ['https://www.orlandopedrazzoli.com/og-image.jpg'],
   },
   robots: {
