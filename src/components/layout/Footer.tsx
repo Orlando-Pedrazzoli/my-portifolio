@@ -1,10 +1,10 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 
-// Configuração do site
 const SITE_CONFIG = {
   name: 'Orlando Pedrazzoli',
   email: 'pedrazzoliorlando@gmail.com',
@@ -21,7 +21,6 @@ export default function Footer() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Links rápidos com traduções
   const quickLinks = [
     { label: t('nav.about'), href: '#about' },
     { label: t('nav.projects'), href: '#projects' },
@@ -35,9 +34,22 @@ export default function Footer() {
         <div className='grid md:grid-cols-3 gap-8 mb-8'>
           {/* About */}
           <div>
-            <h3 className='text-lg font-semibold text-gray-900 dark:text-white mb-4'>
-              {t('nav.about')}
-            </h3>
+            <div className='mb-4'>
+              <Image
+                src='/logo-orlando-light.png'
+                alt='Orlando Pedrazzoli'
+                width={140}
+                height={42}
+                className='h-9 w-auto dark:hidden'
+              />
+              <Image
+                src='/logo-orlando-dark.png'
+                alt='Orlando Pedrazzoli'
+                width={140}
+                height={42}
+                className='h-9 w-auto hidden dark:block'
+              />
+            </div>
             <p className='text-gray-600 dark:text-gray-400 text-sm'>
               {t('footer.about')}
             </p>
@@ -119,7 +131,6 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Back to Top */}
           <motion.button
             onClick={scrollToTop}
             whileHover={{ scale: 1.1 }}

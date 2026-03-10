@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Brain, Sun, Moon, Globe } from 'lucide-react';
+import { Sun, Moon, Globe } from 'lucide-react';
 import { useTheme } from '@/components/providers/ThemeProvider';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 
@@ -29,7 +30,6 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Lock/unlock scroll quando menu abrir/fechar
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -51,20 +51,16 @@ export default function Header() {
     }
   };
 
-  // Função de toggle de tema com fix para iOS
   const handleThemeToggle = (e: React.MouseEvent | React.TouchEvent) => {
     e.preventDefault();
     e.stopPropagation();
 
-    // Vibração tátil no iOS (se suportado)
     if ('vibrate' in navigator) {
       navigator.vibrate(10);
     }
 
-    // Toggle do tema
     toggleTheme();
 
-    // Forçar atualização no iOS
     if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
       setTimeout(() => {
         window.scrollBy(0, 1);
@@ -89,14 +85,28 @@ export default function Header() {
             {/* Logo */}
             <a
               href='#home'
-              className='flex items-center gap-1.5 text-lg sm:text-xl font-bold text-gray-900 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors z-50'
+              className='flex items-center gap-1.5 z-50'
               onClick={e => {
                 e.preventDefault();
                 handleNavClick('#home');
               }}
             >
-              <Brain className='w-5 h-5 sm:w-6 sm:h-6 text-purple-600 dark:text-purple-400' />
-              <span>Portfolio</span>
+              <Image
+                src='/logo-orlando-light.png'
+                alt='Orlando Pedrazzoli'
+                width={120}
+                height={36}
+                className='h-8 w-auto dark:hidden'
+                priority
+              />
+              <Image
+                src='/logo-orlando-dark.png'
+                alt='Orlando Pedrazzoli'
+                width={120}
+                height={36}
+                className='h-8 w-auto hidden dark:block'
+                priority
+              />
             </a>
 
             {/* Desktop Navigation */}
@@ -119,7 +129,7 @@ export default function Header() {
               </ul>
 
               <div className='flex items-center gap-2'>
-                {/* Language Toggle Desktop — FIX: mostra idioma ATUAL */}
+                {/* Language Toggle Desktop */}
                 <motion.button
                   onClick={toggleLanguage}
                   className='px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors flex items-center gap-1.5'
@@ -153,7 +163,7 @@ export default function Header() {
 
             {/* Mobile Controls */}
             <div className='flex items-center gap-1 md:hidden z-50'>
-              {/* Mobile Language Toggle — FIX: mostra idioma ATUAL */}
+              {/* Mobile Language Toggle */}
               <button
                 onClick={toggleLanguage}
                 className='flex items-center gap-1 px-2 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors'
@@ -163,7 +173,7 @@ export default function Header() {
                 <span>{language === 'pt' ? 'PT' : 'EN'}</span>
               </button>
 
-              {/* Mobile Theme Toggle - Fix para iOS */}
+              {/* Mobile Theme Toggle */}
               <button
                 onClick={handleThemeToggle}
                 onTouchEnd={handleThemeToggle}
@@ -183,7 +193,7 @@ export default function Header() {
                 )}
               </button>
 
-              {/* Hamburger Menu Button - MODERNO */}
+              {/* Hamburger Menu Button */}
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className='relative w-10 h-10 flex items-center justify-center text-gray-700 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors'
@@ -219,11 +229,10 @@ export default function Header() {
         </nav>
       </motion.header>
 
-      {/* Mobile Navigation Menu - FULLSCREEN MODERNO */}
+      {/* Mobile Navigation Menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <>
-            {/* Backdrop com blur */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -233,7 +242,6 @@ export default function Header() {
               onClick={() => setIsMenuOpen(false)}
             />
 
-            {/* Menu Container */}
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
@@ -248,10 +256,20 @@ export default function Header() {
               {/* Menu Header */}
               <div className='flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-800'>
                 <div className='flex items-center gap-2'>
-                  <Brain className='w-6 h-6 text-purple-600 dark:text-purple-400' />
-                  <span className='text-xl font-bold text-gray-900 dark:text-white'>
-                    Menu
-                  </span>
+                  <Image
+                    src='/logo-orlando-light.png'
+                    alt='Orlando Pedrazzoli'
+                    width={100}
+                    height={30}
+                    className='h-7 w-auto dark:hidden'
+                  />
+                  <Image
+                    src='/logo-orlando-dark.png'
+                    alt='Orlando Pedrazzoli'
+                    width={100}
+                    height={30}
+                    className='h-7 w-auto hidden dark:block'
+                  />
                 </div>
                 <button
                   onClick={() => setIsMenuOpen(false)}
@@ -274,7 +292,7 @@ export default function Header() {
                 </button>
               </div>
 
-              {/* Menu Items com Stagger Animation */}
+              {/* Menu Items */}
               <nav className='p-6'>
                 <ul className='space-y-2'>
                   {navItems.map((item, index) => (
@@ -305,7 +323,7 @@ export default function Header() {
                 </ul>
               </nav>
 
-              {/* Menu Footer com Actions — FIX: mostra idioma ATUAL */}
+              {/* Menu Footer */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -318,7 +336,7 @@ export default function Header() {
                     className='flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-purple-50 dark:hover:bg-purple-900/20 border border-gray-200 dark:border-gray-700 transition-all duration-300 font-medium'
                   >
                     <Globe className='w-5 h-5' />
-                    <span>{language === 'pt' ? 'English' : 'Português'}</span>
+                    <span>{language === 'pt' ? 'English' : 'Portugues'}</span>
                   </button>
 
                   <button
