@@ -10,7 +10,6 @@ export default function Skills() {
   const [activeCategory, setActiveCategory] = useState('Frontend');
   const { t, language } = useLanguage();
 
-  // Competências especiais com traduções
   const specialSkills =
     language === 'pt'
       ? [
@@ -50,7 +49,6 @@ export default function Skills() {
           },
         ];
 
-  // Função para traduzir níveis
   const getSkillLevelLabel = (level: number) => {
     if (level >= 90) {
       return t('skills.level.expert');
@@ -113,14 +111,11 @@ export default function Skills() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setActiveCategory(category.name)}
-              className={`
-                px-6 py-3 rounded-lg font-semibold transition-all duration-300
-                ${
-                  activeCategory === category.name
-                    ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg'
-                    : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-700'
-                }
-              `}
+              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                activeCategory === category.name
+                  ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-600'
+              }`}
             >
               <span className='flex items-center gap-2'>
                 <span className='text-xl'>{category.icon}</span>
@@ -146,7 +141,7 @@ export default function Skills() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05 }}
                 whileHover={{ scale: 1.02 }}
-                className='bg-white dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow-md dark:shadow-none hover:shadow-lg dark:hover:shadow-purple-500/10 transition-all'
+                className='bg-white dark:bg-gray-800/70 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-md dark:shadow-none hover:shadow-lg dark:hover:shadow-purple-500/10 transition-all'
               >
                 <div className='flex justify-between items-start mb-4'>
                   <h3 className='text-lg font-semibold text-gray-900 dark:text-white'>
@@ -176,22 +171,19 @@ export default function Skills() {
                 {/* Skill Level Label */}
                 <div className='mt-3'>
                   <span
-                    className={`
-                      text-xs px-2 py-1 rounded-full font-medium
-                      ${
-                        skill.level >= 90
-                          ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 border border-green-300 dark:border-green-400/30'
-                          : skill.level >= 75
-                          ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 border border-blue-300 dark:border-blue-400/30'
-                          : 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 border border-yellow-300 dark:border-yellow-400/30'
-                      }
-                    `}
+                    className={`text-xs px-2.5 py-1 rounded-full font-medium ${
+                      skill.level >= 90
+                        ? 'bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300 border border-green-300 dark:border-green-700'
+                        : skill.level >= 75
+                          ? 'bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 border border-blue-300 dark:border-blue-700'
+                          : 'bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-300 border border-yellow-300 dark:border-yellow-700'
+                    }`}
                   >
                     {getSkillLevelLabel(skill.level)}
                   </span>
                 </div>
               </motion.div>
-            )
+            ),
           )}
         </motion.div>
 
@@ -201,7 +193,7 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className='mt-16 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 border border-purple-200 dark:border-purple-400/20 rounded-lg p-8'
+          className='mt-16 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-800/80 dark:to-gray-800/60 border border-purple-200 dark:border-gray-700 rounded-xl p-8'
         >
           <h3 className='text-2xl font-bold mb-6 text-center'>
             <span className='bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent'>
@@ -257,7 +249,7 @@ export default function Skills() {
             ].map(tech => (
               <span
                 key={tech}
-                className='px-4 py-2 bg-gradient-to-r from-purple-100 to-blue-100 dark:from-purple-900/30 dark:to-blue-900/30 border border-purple-300 dark:border-purple-400/30 rounded-full text-sm text-purple-700 dark:text-purple-300 font-medium'
+                className='px-4 py-2 bg-purple-100 dark:bg-gray-800 border border-purple-300 dark:border-gray-600 rounded-full text-sm text-purple-700 dark:text-purple-300 font-medium'
               >
                 {tech}
               </span>

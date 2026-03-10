@@ -7,7 +7,7 @@ import Contact from '@/components/sections/Contact';
 
 export default function Home() {
   return (
-    <main className='relative bg-white dark:bg-gray-950 text-gray-900 dark:text-white overflow-x-hidden transition-colors'>
+    <>
       {/* Hero Section */}
       <Hero />
 
@@ -38,6 +38,6 @@ export default function Home() {
       <section id='contact' className='py-20 px-4 bg-gray-50 dark:bg-gray-950'>
         <Contact />
       </section>
-    </main>
+    </>
   );
 }

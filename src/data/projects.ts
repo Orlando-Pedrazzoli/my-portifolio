@@ -6,7 +6,6 @@ export interface Project {
   image: string;
   technologies: string[];
   category: 'AI/ML' | 'Full Stack' | 'Frontend' | 'Backend' | 'Mobile';
-  featured: boolean;
   githubUrl?: string;
   liveUrl?: string;
   demoUrl?: string;
@@ -45,7 +44,6 @@ export const projects: Project[] = [
       'Multer',
     ],
     category: 'Full Stack',
-    featured: true,
     githubUrl: 'https://github.com/Orlando-Pedrazzoli/elite-surfing-brasil',
     liveUrl: 'https://www.elitesurfing.com.br/',
     highlights: [
@@ -68,7 +66,7 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    title: 'Centro Dentário Colombo — Website Bilíngue com Portal do Paciente',
+    title: 'Centro Dentário Colombo — Website com Portal do Paciente',
     description:
       'Website profissional e sistema de gestão para clínica dentária real em Lisboa com portal do paciente, painel administrativo, autenticação Clerk e compliance GDPR',
     longDescription:
@@ -94,7 +92,6 @@ export const projects: Project[] = [
       'xlsx (SheetJS)',
     ],
     category: 'Full Stack',
-    featured: true,
     githubUrl: 'https://github.com/Orlando-Pedrazzoli/centro-dentario-colombo',
     liveUrl: 'https://www.centrodentariocolombo.com/',
     highlights: [
@@ -114,7 +111,7 @@ export const projects: Project[] = [
   },
   {
     id: 3,
-    title: 'FollowerScan — Análise de Seguidores Instagram com SaaS',
+    title: 'FollowerScan — Análise de Seguidores Instagram SaaS',
     description:
       'Aplicação web que analisa exports do Instagram para identificar quem não te segue de volta, detectar bloqueios e rastrear mudanças — processamento 100% no navegador com modelo freemium via Clerk e Stripe',
     longDescription:
@@ -138,7 +135,6 @@ export const projects: Project[] = [
       'tailwind-merge',
     ],
     category: 'Full Stack',
-    featured: true,
     githubUrl: 'https://github.com/Orlando-Pedrazzoli/followerscan',
     liveUrl: 'https://www.followerscan.com/',
     highlights: [
@@ -154,15 +150,13 @@ export const projects: Project[] = [
       '⚡ Categorização: VIPs, Red Flags, mutual followers, unfollows recentes',
       '🔄 Histórico de análises em localStorage para comparação temporal',
       '📱 UI com Radix UI primitives (Dialog, Progress, Tabs, Toast) + Framer Motion',
-      '📋 Páginas legais: Privacy Policy, Terms, Cookies, GDPR, FAQ',
-      '🗺️ Sitemap e robots.txt dinâmicos via Next.js',
     ],
   },
   {
     id: 4,
     title: 'Pedrazzoli Digital — Landing Page de Conversão',
     description:
-      'Landing page para a minha agência de desenvolvimento web focada no mercado brasileiro, com conversão contextual via WhatsApp, dark mode, scroll animations e Tailwind CSS v4',
+      'Landing page da minha agência de desenvolvimento web focada no mercado brasileiro, com conversão contextual via WhatsApp, dark mode, scroll animations e Tailwind CSS v4',
     longDescription:
       'Landing page da minha marca freelance de desenvolvimento web, targeting pequenos e médios empresários brasileiros. Cada seção do site funil para uma mensagem contextual no WhatsApp com o interesse do visitante já pré-preenchido — se o visitante está vendo o plano "E-commerce", a mensagem já menciona esse plano e preço. O site tem 12 seções: Hero, tipos de negócio que atendo, features incluídas, processo de trabalho, portfólio real, 3 planos de preço + manutenção mensal, tech stack, depoimentos, sobre mim, FAQ, mapa Brasil/Portugal e CTA final. Todo o conteúdo está separado dos componentes em arquivos de dados. Projeto onde experimentei Tailwind CSS v4 com @theme directive, cores oklch e plugin Vite ao invés de PostCSS. Dark/light mode com 3 fontes de verdade (toggle manual, localStorage, prefers-color-scheme). Scroll animations com IntersectionObserver customizado.',
     image: '/seo-tumb.png',
@@ -176,22 +170,20 @@ export const projects: Project[] = [
       'React Hot Toast',
     ],
     category: 'Frontend',
-    featured: true,
     githubUrl: 'https://github.com/Orlando-Pedrazzoli/pedrazzoli-digital',
     liveUrl: 'https://pedrazzolidigital.com/',
     highlights: [
       '💬 Conversão contextual: cada CTA gera URL WhatsApp com mensagem pré-preenchida baseada na seção/plano',
       '📁 Separação total conteúdo/componente — todo texto em /data, componentes só renderizam',
       '🌗 Dark mode completo com 3 fontes: toggle manual → localStorage → prefers-color-scheme',
-      '✨ Scroll animations com IntersectionObserver customizado (useInView hook) — CSS-based, não JS-driven',
+      '✨ Scroll animations com IntersectionObserver customizado (useInView hook) — CSS-based',
       '🎨 Tailwind CSS v4: @theme directive, cores oklch, plugin Vite ao invés de PostCSS',
-      '🔤 Tipografia: Plus Jakarta Sans (body) + Instrument Serif (headings) — evita o look "AI-generated"',
+      '🔤 Tipografia: Plus Jakarta Sans (body) + Instrument Serif (headings)',
       '💼 12 tipos de negócio atendidos, 12 features incluídas, 3 planos de preço + manutenção',
       '🗂️ Portfólio com projetos reais e processo de trabalho step-by-step',
       '🌍 WorldMap visual mostrando cobertura Brasil + Portugal',
       '🍪 Cookie consent GDPR com CookieProvider',
       '🔍 SEO com meta tags dinâmicas via manipulação DOM direta (sem react-helmet)',
-      '📱 Design responsivo com navbar blur-on-scroll e menu fullscreen mobile',
     ],
   },
   {
@@ -215,7 +207,6 @@ export const projects: Project[] = [
       'Express',
     ],
     category: 'Full Stack',
-    featured: true,
     githubUrl: 'https://github.com/Orlando-Pedrazzoli/street-paint',
     liveUrl: 'https://streetpaint.pt/',
     highlights: [
@@ -229,12 +220,11 @@ export const projects: Project[] = [
       '🎨 CSS 100% customizado por componente (sem framework) para atender design específico da marca',
       '🍪 Cookie consent GDPR com estado persistente',
       '🔍 Sitemap gerado no build (postbuild script) + meta tags e Open Graph por página',
-      '📱 Design responsivo Mobile-First com CSS Grid e Flexbox',
     ],
   },
   {
     id: 6,
-    title: 'Go Portugal Tours — Website de Reservas com Preço Dinâmico',
+    title: 'Go Portugal Tours — Reservas com Preço Dinâmico',
     description:
       'Website de reservas para serviço de tours privados em Portugal com 24 tours, preços dinâmicos por número de passageiros, formulário validado com Zod e suporte bilíngue PT/EN',
     longDescription:
@@ -257,7 +247,6 @@ export const projects: Project[] = [
       'tailwind-merge',
     ],
     category: 'Full Stack',
-    featured: false,
     githubUrl: 'https://github.com/Orlando-Pedrazzoli/go-portugal-tours',
     liveUrl: 'https://www.goportugaltours.com/',
     highlights: [
@@ -269,20 +258,18 @@ export const projects: Project[] = [
       '🧩 UI com Radix UI primitives: Accordion (FAQ), Dialog (preview), Select, Toast + CVA variants',
       '💬 WhatsApp flutuante com mensagem pré-preenchida incluindo nome do tour',
       '📧 Submissão de reservas via EmailJS direto para o email do cliente',
-      '🗺️ Breadcrumbs de navegação em páginas de detalhe do tour',
-      '📱 MobileFix component para correções de viewport em dispositivos móveis',
     ],
   },
 ];
 
 export const getProjectsByCategory = (category: Project['category']) => {
-  return projects.filter((project) => project.category === category);
+  return projects.filter(project => project.category === category);
 };
 
 export const getFeaturedProjects = () => {
-  return projects.filter((project) => project.featured);
+  return projects;
 };
 
 export const getProjectById = (id: number) => {
-  return projects.find((project) => project.id === id);
+  return projects.find(project => project.id === id);
 };

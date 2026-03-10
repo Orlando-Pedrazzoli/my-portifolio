@@ -1,4 +1,5 @@
 'use client';
+
 import Image from 'next/image';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -31,6 +32,21 @@ export default function Projects() {
     englishCategory === 'All'
       ? projects
       : projects.filter(p => p.category === englishCategory);
+
+  const categoryEmoji = (cat: string) => {
+    switch (cat) {
+      case 'AI/ML':
+        return '🤖';
+      case 'Full Stack':
+        return '🚀';
+      case 'Frontend':
+        return '🎨';
+      case 'Backend':
+        return '⚙️';
+      default:
+        return '💻';
+    }
+  };
 
   return (
     <div className='max-w-7xl mx-auto'>
@@ -78,14 +94,11 @@ export default function Projects() {
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`
-                px-6 py-2 rounded-full font-medium transition-all duration-300
-                ${
-                  selectedCategory === category
-                    ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg'
-                    : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-700'
-                }
-              `}
+              className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
+                selectedCategory === category
+                  ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-700'
+              }`}
             >
               {category}
             </button>
@@ -135,38 +148,22 @@ export default function Projects() {
                         />
                         <div className='fallback-icon absolute inset-0 flex items-center justify-center hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900'>
                           <span className='text-5xl opacity-30'>
-                            {project.category === 'AI/ML'
-                              ? '🤖'
-                              : project.category === 'Full Stack'
-                                ? '🚀'
-                                : project.category === 'Frontend'
-                                  ? '🎨'
-                                  : project.category === 'Backend'
-                                    ? '⚙️'
-                                    : '💻'}
+                            {categoryEmoji(project.category)}
                           </span>
                         </div>
                       </>
                     ) : (
                       <div className='absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900'>
                         <span className='text-5xl opacity-30'>
-                          {project.category === 'AI/ML'
-                            ? '🤖'
-                            : project.category === 'Full Stack'
-                              ? '🚀'
-                              : project.category === 'Frontend'
-                                ? '🎨'
-                                : project.category === 'Backend'
-                                  ? '⚙️'
-                                  : '💻'}
+                          {categoryEmoji(project.category)}
                         </span>
                       </div>
                     )}
 
-                    {/* Gradient overlay — always visible, darkens on hover */}
+                    {/* Gradient overlay */}
                     <div className='absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500' />
 
-                    {/* Action buttons — bottom right, appear on hover */}
+                    {/* Action buttons — appear on hover */}
                     <div className='absolute bottom-4 right-4 flex items-center gap-2 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300'>
                       {project.githubUrl && (
                         <a

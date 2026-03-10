@@ -8,7 +8,6 @@ import { useLanguage } from '@/components/providers/LanguageProvider';
 export default function Experience() {
   const { t } = useLanguage();
 
-  // Stats com traduções
   const stats = [
     { label: t('experience.stats.years'), value: '3+', icon: '🎯' },
     { label: t('experience.stats.companies'), value: '2', icon: '🏢' },
@@ -63,10 +62,9 @@ export default function Experience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`
-                relative flex flex-col md:flex-row gap-8 mb-12
-                ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}
-              `}
+              className={`relative flex flex-col md:flex-row gap-8 mb-12 ${
+                index % 2 === 0 ? 'md:flex-row-reverse' : ''
+              }`}
             >
               {/* Timeline Dot */}
               <div className='absolute left-8 md:left-1/2 -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 rounded-full border-4 border-white dark:border-gray-900 z-10 shadow-lg' />
@@ -79,11 +77,9 @@ export default function Experience() {
               >
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  className={`
-                    bg-white dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 
-                    rounded-lg p-6 shadow-md dark:shadow-none hover:shadow-lg dark:hover:shadow-purple-500/10 transition-all
-                    ${index % 2 === 0 ? 'md:mr-12' : 'md:ml-12'}
-                  `}
+                  className={`bg-white dark:bg-gray-800/70 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-md dark:shadow-none hover:shadow-lg dark:hover:shadow-purple-500/10 transition-all ${
+                    index % 2 === 0 ? 'md:mr-12' : 'md:ml-12'
+                  }`}
                 >
                   {/* Header */}
                   <div
@@ -160,7 +156,7 @@ export default function Experience() {
                         {exp.responsibilities.slice(0, 3).map((resp, i) => (
                           <li
                             key={i}
-                            className={`text-sm text-gray-600 dark:text-gray-400 flex items-start gap-2 ${
+                            className={`text-sm text-gray-600 dark:text-gray-300 flex items-start gap-2 ${
                               index % 2 === 0 ? 'md:flex-row-reverse' : ''
                             }`}
                           >
@@ -184,13 +180,13 @@ export default function Experience() {
                       {exp.technologies.slice(0, 5).map(tech => (
                         <span
                           key={tech}
-                          className='text-xs px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 border border-purple-300 dark:border-purple-400/30 rounded'
+                          className='text-xs px-2.5 py-1 bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 border border-purple-300 dark:border-purple-700 rounded-md font-medium'
                         >
                           {tech}
                         </span>
                       ))}
                       {exp.technologies.length > 5 && (
-                        <span className='text-xs px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded'>
+                        <span className='text-xs px-2.5 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-600 rounded-md font-medium'>
                           +{exp.technologies.length - 5}
                         </span>
                       )}
@@ -201,11 +197,11 @@ export default function Experience() {
                   {exp.achievements && exp.achievements.length > 0 && (
                     <div className='mt-4 pt-4 border-t border-gray-200 dark:border-gray-700'>
                       <div
-                        className={`flex items-center gap-2 text-green-600 dark:text-green-400 text-sm ${
+                        className={`flex items-center gap-2 text-sm ${
                           index % 2 === 0 ? 'md:justify-end' : ''
                         }`}
                       >
-                        <span className='font-semibold'>
+                        <span className='font-semibold text-green-600 dark:text-green-400'>
                           🏆 {t('experience.achievement')}:
                         </span>
                         <span className='text-gray-700 dark:text-gray-300'>
@@ -239,7 +235,7 @@ export default function Experience() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ scale: 1.05 }}
-              className='bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 border border-purple-200 dark:border-purple-400/20 rounded-lg p-6 text-center shadow-md dark:shadow-none'
+              className='bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-800/80 dark:to-gray-800/60 border border-purple-200 dark:border-gray-700 rounded-xl p-6 text-center shadow-md dark:shadow-none'
             >
               <div className='text-3xl mb-2'>{stat.icon}</div>
               <div className='text-2xl font-bold text-gray-900 dark:text-white mb-1'>
