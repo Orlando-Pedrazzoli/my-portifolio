@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { skillCategories, getSkillsByCategory } from '@/data/skills';
 import type { Skill } from '@/data/skills';
 import { useLanguage } from '@/components/providers/LanguageProvider';
@@ -14,20 +14,20 @@ export default function Skills() {
     language === 'pt'
       ? [
           {
-            title: 'Resolução de Problemas',
-            desc: 'Análise e resolução de problemas complexos',
+            title: 'Resolucao de Problemas',
+            desc: 'Analise e resolucao de problemas complexos',
           },
           {
-            title: 'Liderança de Equipe',
+            title: 'Lideranca de Equipe',
             desc: '15+ anos liderando equipes',
           },
           {
-            title: 'Estratégia de Negócios',
-            desc: 'Visão estratégica de negócios',
+            title: 'Estrategia de Negocios',
+            desc: 'Visao estrategica de negocios',
           },
           {
-            title: 'Aprendizado Rápido',
-            desc: 'Adaptação rápida a novas tecnologias',
+            title: 'Aprendizado Rapido',
+            desc: 'Adaptacao rapida a novas tecnologias',
           },
         ]
       : [
@@ -49,14 +49,11 @@ export default function Skills() {
           },
         ];
 
-  const getSkillLevelLabel = (level: number) => {
-    if (level >= 90) {
-      return t('skills.level.expert');
-    } else if (level >= 75) {
-      return t('skills.level.advanced');
-    } else {
-      return t('skills.level.intermediate');
-    }
+  const getLevelDots = (level: number) => {
+    if (level >= 90) return 5;
+    if (level >= 80) return 4;
+    if (level >= 70) return 3;
+    return 2;
   };
 
   return (
@@ -93,13 +90,13 @@ export default function Skills() {
           </motion.p>
         </div>
 
-        {/* Category Tabs */}
+        {/* Category Tabs — Clean, no emojis */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className='flex flex-wrap justify-center gap-4 mb-12'
+          className='flex flex-wrap justify-center gap-2 mb-12'
         >
           {skillCategories.map((category, index) => (
             <motion.button
@@ -108,138 +105,143 @@ export default function Skills() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileTap={{ scale: 0.97 }}
               onClick={() => setActiveCategory(category.name)}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+              className={`relative px-5 py-2.5 rounded-lg font-medium text-sm transition-all duration-300 ${
                 activeCategory === category.name
-                  ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg'
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-600'
+                  ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900 shadow-lg'
+                  : 'bg-gray-100 dark:bg-gray-800/60 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700/60 border border-gray-200 dark:border-gray-700/50'
               }`}
             >
               <span className='flex items-center gap-2'>
-                <span className='text-xl'>{category.icon}</span>
                 <span>{category.name}</span>
+                <span
+                  className={`text-xs px-1.5 py-0.5 rounded ${
+                    activeCategory === category.name
+                      ? 'bg-white/20 dark:bg-gray-900/20'
+                      : 'bg-gray-200 dark:bg-gray-700'
+                  }`}
+                >
+                  {
+                    getSkillsByCategory(category.name as Skill['category'])
+                      .length
+                  }
+                </span>
               </span>
             </motion.button>
           ))}
         </motion.div>
 
-        {/* Skills Grid */}
-        <motion.div
-          key={activeCategory}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'
-        >
-          {getSkillsByCategory(activeCategory as Skill['category']).map(
-            (skill, index) => (
-              <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05 }}
-                whileHover={{ scale: 1.02 }}
-                className='bg-white dark:bg-gray-800/70 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-md dark:shadow-none hover:shadow-lg dark:hover:shadow-purple-500/10 transition-all'
-              >
-                <div className='flex justify-between items-start mb-4'>
-                  <h3 className='text-lg font-semibold text-gray-900 dark:text-white'>
-                    {skill.name}
-                  </h3>
-                  <span className='text-2xl font-bold text-purple-600 dark:text-purple-400'>
-                    {skill.level}%
-                  </span>
-                </div>
+        {/* Skills Grid — Modern card layout with accent bar + dots */}
+        <AnimatePresence mode='wait'>
+          <motion.div
+            key={activeCategory}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.25 }}
+            className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'
+          >
+            {getSkillsByCategory(activeCategory as Skill['category']).map(
+              (skill, index) => {
+                const dots = getLevelDots(skill.level);
 
-                {/* Progress Bar */}
-                <div className='relative w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden'>
+                return (
                   <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.level}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, delay: index * 0.1 }}
-                    className='absolute top-0 left-0 h-full rounded-full'
-                    style={{
-                      background: `linear-gradient(to right, ${
-                        skill.color || '#9333ea'
-                      }, ${skill.color || '#3b82f6'})`,
-                    }}
-                  />
-                </div>
-
-                {/* Skill Level Label */}
-                <div className='mt-3'>
-                  <span
-                    className={`text-xs px-2.5 py-1 rounded-full font-medium ${
-                      skill.level >= 90
-                        ? 'bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300 border border-green-300 dark:border-green-700'
-                        : skill.level >= 75
-                          ? 'bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 border border-blue-300 dark:border-blue-700'
-                          : 'bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-300 border border-yellow-300 dark:border-yellow-700'
-                    }`}
+                    key={skill.name}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.04 }}
+                    className='group relative bg-white dark:bg-gray-800/50 border border-gray-200/80 dark:border-gray-700/40 rounded-xl p-5 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 hover:shadow-md dark:hover:shadow-purple-500/5'
                   >
-                    {getSkillLevelLabel(skill.level)}
-                  </span>
-                </div>
-              </motion.div>
-            ),
-          )}
-        </motion.div>
+                    <div className='flex items-center justify-between'>
+                      <div className='flex items-center gap-3'>
+                        {/* Color accent bar */}
+                        <div
+                          className='w-1 h-8 rounded-full opacity-70 group-hover:opacity-100 transition-opacity'
+                          style={{
+                            backgroundColor: skill.color || '#9333ea',
+                          }}
+                        />
+                        <h3 className='text-[15px] font-semibold text-gray-800 dark:text-gray-200 group-hover:text-gray-900 dark:group-hover:text-white transition-colors'>
+                          {skill.name}
+                        </h3>
+                      </div>
 
-        {/* Special Skills Section */}
+                      {/* Proficiency dots */}
+                      <div className='flex items-center gap-1'>
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <div
+                            key={i}
+                            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                              i < dots
+                                ? 'bg-gray-700 dark:bg-gray-300 group-hover:bg-purple-600 dark:group-hover:bg-purple-400'
+                                : 'bg-gray-200 dark:bg-gray-700'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              },
+            )}
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Business Skills — Clean cards with gradient accent line */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className='mt-16 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-800/80 dark:to-gray-800/60 border border-purple-200 dark:border-gray-700 rounded-xl p-8'
+          transition={{ delay: 0.3 }}
+          className='mt-16'
         >
-          <h3 className='text-2xl font-bold mb-6 text-center'>
+          <h3 className='text-2xl font-bold mb-8 text-center'>
             <span className='bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent'>
               {t('skills.special.title')}
             </span>
           </h3>
 
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
             {specialSkills.map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className='text-center'
+                transition={{ delay: index * 0.08 }}
+                className='group relative bg-white dark:bg-gray-800/50 border border-gray-200/80 dark:border-gray-700/40 rounded-xl p-6 hover:border-purple-300 dark:hover:border-purple-500/30 transition-all duration-300 hover:shadow-md'
               >
-                <div className='w-16 h-16 mx-auto mb-3 bg-gradient-to-br from-purple-600 to-blue-600 rounded-full flex items-center justify-center shadow-lg'>
-                  <span className='text-2xl font-bold text-white'>
-                    {index + 1}
-                  </span>
+                {/* Subtle gradient accent on hover */}
+                <div className='absolute inset-0 rounded-xl bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/10 dark:to-blue-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+
+                <div className='relative'>
+                  <div className='w-8 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 rounded-full mb-4' />
+                  <h4 className='text-gray-900 dark:text-white font-semibold mb-2'>
+                    {item.title}
+                  </h4>
+                  <p className='text-gray-500 dark:text-gray-400 text-sm leading-relaxed'>
+                    {item.desc}
+                  </p>
                 </div>
-                <h4 className='text-gray-900 dark:text-white font-semibold mb-2'>
-                  {item.title}
-                </h4>
-                <p className='text-gray-600 dark:text-gray-400 text-sm'>
-                  {item.desc}
-                </p>
               </motion.div>
             ))}
           </div>
         </motion.div>
 
-        {/* Learning Section */}
+        {/* Currently Exploring */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.4 }}
           className='mt-12 text-center'
         >
           <h4 className='text-lg font-semibold text-purple-600 dark:text-purple-400 mb-4'>
-            🚀 {t('skills.learning')}
+            {t('skills.learning')}
           </h4>
-          <div className='flex flex-wrap justify-center gap-3'>
+          <div className='flex flex-wrap justify-center gap-2.5'>
             {[
               'Testing (Vitest / Playwright)',
               'Docker basics',
@@ -249,7 +251,7 @@ export default function Skills() {
             ].map(tech => (
               <span
                 key={tech}
-                className='px-4 py-2 bg-purple-100 dark:bg-gray-800 border border-purple-300 dark:border-gray-600 rounded-full text-sm text-purple-700 dark:text-purple-300 font-medium'
+                className='px-4 py-2 bg-gray-50 dark:bg-gray-800/60 border border-dashed border-gray-300 dark:border-gray-600 rounded-lg text-sm text-gray-600 dark:text-gray-400 font-medium hover:border-purple-400 dark:hover:border-purple-500 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-300'
               >
                 {tech}
               </span>

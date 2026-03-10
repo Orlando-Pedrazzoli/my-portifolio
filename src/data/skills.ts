@@ -98,10 +98,10 @@ export const skills: Skill[] = [
 ];
 
 export const skillCategories = [
-  { name: 'Frontend', icon: '🎨', description: 'UI Development' },
-  { name: 'Backend', icon: '⚙️', description: 'Server & APIs' },
-  { name: 'Database', icon: '💾', description: 'Data & Storage' },
-  { name: 'Tools', icon: '🛠️', description: 'Workflow & DevOps' },
+  { name: 'Frontend', description: 'UI Development' },
+  { name: 'Backend', description: 'Server & APIs' },
+  { name: 'Database', description: 'Data & Storage' },
+  { name: 'Tools', description: 'Workflow & DevOps' },
 ];
 
 export const getSkillsByCategory = (category: Skill['category']) => {

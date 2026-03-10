@@ -9,28 +9,8 @@ import type { Project } from '@/data/projects';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 
 export default function Projects() {
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const { t, language } = useLanguage();
-
-  const categories =
-    language === 'pt'
-      ? ['Todos', 'Full Stack', 'Frontend', 'Backend']
-      : ['All', 'Full Stack', 'Frontend', 'Backend'];
-
-  const getCategoryInEnglish = (category: string) => {
-    const map: { [key: string]: string } = {
-      Todos: 'All',
-    };
-    return map[category] || category;
-  };
-
-  const englishCategory = getCategoryInEnglish(selectedCategory);
-
-  const filteredProjects =
-    englishCategory === 'All'
-      ? projects
-      : projects.filter(p => p.category === englishCategory);
 
   const categoryEmoji = (cat: string) => {
     switch (cat) {
@@ -79,36 +59,13 @@ export default function Projects() {
           </motion.p>
         </div>
 
-        {/* Category Filter */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className='flex flex-wrap justify-center gap-3 mb-12'
-        >
-          {categories.map(category => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
-                selectedCategory === category
-                  ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg'
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-700'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </motion.div>
-
-        {/* Projects Grid */}
+        {/* Projects Grid — All projects, no filter */}
         <motion.div
           layout
           className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'
         >
           <AnimatePresence mode='popLayout'>
-            {filteredProjects.map((project, index) => (
+            {projects.map((project, index) => (
               <motion.div
                 key={project.id}
                 layout

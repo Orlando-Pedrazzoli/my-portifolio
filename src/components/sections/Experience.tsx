@@ -2,17 +2,26 @@
 
 import { motion } from 'framer-motion';
 import { experiences } from '@/data/experience';
-import { Calendar, MapPin, Building, ChevronRight } from 'lucide-react';
+import {
+  Calendar,
+  MapPin,
+  Building,
+  ChevronRight,
+  Target,
+  Briefcase,
+  GitBranch,
+  Layers,
+} from 'lucide-react';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 
 export default function Experience() {
   const { t, language } = useLanguage();
 
   const stats = [
-    { label: t('experience.stats.years'), value: '3+', icon: '🎯' },
-    { label: t('experience.stats.companies'), value: '2', icon: '🏢' },
-    { label: t('experience.stats.projects'), value: '50+', icon: '🚀' },
-    { label: t('experience.stats.technologies'), value: '30+', icon: '💻' },
+    { label: t('experience.stats.years'), value: '3+', icon: Target },
+    { label: t('experience.stats.companies'), value: '2', icon: Briefcase },
+    { label: t('experience.stats.projects'), value: '108+', icon: GitBranch },
+    { label: t('experience.stats.technologies'), value: '30+', icon: Layers },
   ];
 
   return (
@@ -202,7 +211,7 @@ export default function Experience() {
                         }`}
                       >
                         <span className='font-semibold text-green-600 dark:text-green-400'>
-                          🏆 {t('experience.achievement')}:
+                          {t('experience.achievement')}:
                         </span>
                         <span className='text-gray-700 dark:text-gray-300'>
                           {exp.achievements[0][language]}
@@ -219,7 +228,7 @@ export default function Experience() {
           ))}
         </div>
 
-        {/* Summary Stats */}
+        {/* Summary Stats — Lucide icons instead of emojis */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -237,7 +246,7 @@ export default function Experience() {
               whileHover={{ scale: 1.05 }}
               className='bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-800/80 dark:to-gray-800/60 border border-purple-200 dark:border-gray-700 rounded-xl p-6 text-center shadow-md dark:shadow-none'
             >
-              <div className='text-3xl mb-2'>{stat.icon}</div>
+              <stat.icon className='w-7 h-7 mx-auto mb-2 text-purple-600 dark:text-purple-400' />
               <div className='text-2xl font-bold text-gray-900 dark:text-white mb-1'>
                 {stat.value}
               </div>

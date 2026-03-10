@@ -13,7 +13,7 @@ export default function About() {
 
   const stats = [
     { label: t('about.stats.experience'), value: '3+', icon: Calendar },
-    { label: t('about.stats.projects'), value: '6+', icon: Rocket },
+    { label: t('about.stats.projects'), value: '108+', icon: Rocket },
     { label: t('about.stats.clients'), value: '5+', icon: Heart },
     { label: t('about.stats.code'), value: '15+', icon: Coffee },
   ];
@@ -25,13 +25,13 @@ export default function About() {
             year: '2005-2010',
             title: 'Production Manager',
             description:
-              'Gestao de producao para marcas de surf (FCS, Creatures of Leisure, Gorilla Grip).',
+              'Gestão de produção para marcas de surf (FCS, Creatures of Leisure, Gorilla Grip).',
           },
           {
             year: '2010-2023',
             title: 'Founder & CEO — Elite Surfing',
             description:
-              'Fundei e geri marca de acessorios de surf durante mais de uma decada.',
+              'Fundei e geri marca de acessórios de surf durante mais de uma década.',
           },
           {
             year: '2023-2024',
