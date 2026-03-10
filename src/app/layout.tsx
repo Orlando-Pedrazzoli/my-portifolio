@@ -71,11 +71,14 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [{ url: '/myico.ico', type: 'image/x-icon' }],
-    shortcut: '/myico.ico',
-    apple: [{ url: '/myico.ico' }],
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
   },
-  manifest: '/manifest.json',
+  manifest: '/site.webmanifest',
   alternates: {
     canonical: 'https://www.orlandopedrazzoli.com',
   },
@@ -90,7 +93,10 @@ export default function RootLayout({
     <html lang='pt-BR' suppressHydrationWarning>
       <head>
         <StructuredData />
-        <link rel='icon' href='/myico.ico' />
+        <link rel='icon' href='/favicon.ico' sizes='any' />
+        <link rel='icon' href='/favicon.svg' type='image/svg+xml' />
+        <link rel='apple-touch-icon' href='/apple-touch-icon.png' />
+        <link rel='manifest' href='/site.webmanifest' />
         <link rel='preconnect' href='https://fonts.googleapis.com' />
         <link
           rel='preconnect'
