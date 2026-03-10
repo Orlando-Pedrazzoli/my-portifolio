@@ -208,7 +208,7 @@ export default function Projects() {
                     </h3>
 
                     <p className='text-gray-500 dark:text-gray-400 text-sm mb-5 line-clamp-2 leading-relaxed'>
-                      {project.description}
+                      {project.description[language]}
                     </p>
 
                     {/* Technologies */}
@@ -281,8 +281,9 @@ export default function Projects() {
                 </div>
 
                 <p className='text-gray-600 dark:text-gray-300 mb-8 leading-relaxed'>
-                  {selectedProject.longDescription ||
-                    selectedProject.description}
+                  {selectedProject.longDescription
+                    ? selectedProject.longDescription[language]
+                    : selectedProject.description[language]}
                 </p>
 
                 {selectedProject.highlights && (
@@ -296,7 +297,7 @@ export default function Projects() {
                           key={i}
                           className='text-sm text-gray-600 dark:text-gray-300 leading-relaxed pl-1'
                         >
-                          {highlight}
+                          {highlight[language]}
                         </li>
                       ))}
                     </ul>

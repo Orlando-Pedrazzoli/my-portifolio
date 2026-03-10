@@ -29,15 +29,6 @@ export default function Footer() {
     { label: t('nav.contact'), href: '#contact' },
   ];
 
-  // Texto sobre
-  const aboutText =
-    language === 'pt'
-      ? 'Full Stack Developer e AI Engineer criando soluções inovadoras que combinam desenvolvimento web moderno com inteligência artificial.'
-      : 'Full Stack Developer and AI Engineer creating innovative solutions that combine modern web development with artificial intelligence.';
-
-  const quickLinksTitle = language === 'pt' ? 'Links Rápidos' : 'Quick Links';
-  const connectTitle = language === 'pt' ? 'Conecte-se' : 'Connect';
-
   return (
     <footer className='bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12 mt-20'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
@@ -48,14 +39,14 @@ export default function Footer() {
               {t('nav.about')}
             </h3>
             <p className='text-gray-600 dark:text-gray-400 text-sm'>
-              {aboutText}
+              {t('footer.about')}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
             <h3 className='text-lg font-semibold text-gray-900 dark:text-white mb-4'>
-              {quickLinksTitle}
+              {t('footer.quickLinks')}
             </h3>
             <ul className='space-y-2 text-sm'>
               {quickLinks.map(link => (
@@ -74,7 +65,7 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <h3 className='text-lg font-semibold text-gray-900 dark:text-white mb-4'>
-              {connectTitle}
+              {t('footer.connect')}
             </h3>
             <div className='flex gap-4 mb-4'>
               <motion.a
@@ -116,7 +107,7 @@ export default function Footer() {
         <div className='pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row items-center justify-between'>
           <div className='text-gray-600 dark:text-gray-400 text-sm'>
             <p>
-              © {currentYear} {SITE_CONFIG.name}. All rights reserved.
+              © {currentYear} {SITE_CONFIG.name}. {t('footer.rights')}
             </p>
             <a
               href={`https://${SITE_CONFIG.website}`}
@@ -134,7 +125,7 @@ export default function Footer() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             className='mt-4 sm:mt-0 p-2 bg-purple-600 rounded-lg text-white hover:bg-purple-700 transition-colors'
-            aria-label={language === 'pt' ? 'Voltar ao topo' : 'Back to top'}
+            aria-label={t('footer.backToTop')}
           >
             <ArrowUp className='w-5 h-5' />
           </motion.button>

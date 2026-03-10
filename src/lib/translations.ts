@@ -7,11 +7,11 @@ export const translations = {
       about: 'Sobre',
       skills: 'Habilidades',
       projects: 'Projetos',
-      experience: 'Experiencia',
+      experience: 'Experiência',
       contact: 'Contato',
     },
     hero: {
-      greeting: 'Ola, eu sou',
+      greeting: 'Olá, eu sou',
       badge: 'Full Stack Developer',
       roles: {
         fullstack: 'Full Stack Developer',
@@ -20,7 +20,7 @@ export const translations = {
         problem: 'Solucionador de Problemas',
       },
       description:
-        'Construo websites e aplicacoes web para negocios reais. De landing pages a plataformas e-commerce com pagamentos, envios e paineis de gestao.',
+        'Construo websites e aplicações web para negócios reais. De landing pages a plataformas e-commerce com pagamentos, envios e painéis de gestão.',
       cta: {
         projects: 'Ver Projetos',
         contact: 'Entrar em Contato',
@@ -30,17 +30,17 @@ export const translations = {
       title: 'Sobre',
       titleHighlight: 'Mim',
       subtitle:
-        'De empreendedor a developer — uma decada de experiencia em negocios, agora aplicada a construir software',
-      heading: 'Da Gestao de Negocios ao Codigo',
+        'De empreendedor a developer — uma década de experiência em negócios, agora aplicada a construir software',
+      heading: 'Da Gestão de Negócios ao Código',
       description1:
-        'Depois de mais de 10 anos a liderar a minha propria empresa no setor de surf, fiz a transicao para desenvolvimento de software. Completei o bootcamp na Ironhack e desde entao tenho trabalhado com o stack MERN, Next.js e TypeScript, tanto em projetos proprios como para clientes.',
+        'Depois de mais de 10 anos a liderar a minha própria empresa no setor de surf, fiz a transição para desenvolvimento de software. Completei o bootcamp na Ironhack e desde então tenho trabalhado com o stack MERN, Next.js e TypeScript, tanto em projetos próprios como para clientes.',
       description2:
-        'A minha experiencia como fundador e CEO da-me uma perspetiva de negocio que a maioria dos developers nao tem. Entendo o que um cliente precisa, sei gerir prazos e prioridades, e penso no produto como um todo — nao so no codigo.',
+        'A minha experiência como fundador e CEO dá-me uma perspetiva de negócio que a maioria dos developers não tem. Entendo o que um cliente precisa, sei gerir prazos e prioridades, e penso no produto como um todo — não só no código.',
       description3:
-        'Paralelamente ao freelance, trabalho como Data Analyst na Accenture Portugal. Estou baseado em Lisboa e disponivel para projetos remotos ou hibridos.',
+        'Paralelamente ao freelance, trabalho como Data Analyst na Accenture Portugal. Estou baseado em Lisboa e disponível para projetos remotos ou híbridos.',
       location: 'Lisboa, Portugal',
       downloadCV: 'Download CV',
-      viewExperience: 'Ver Experiencia',
+      viewExperience: 'Ver Experiência',
       journey: {
         title: 'O Meu Percurso',
         items: [
@@ -48,13 +48,13 @@ export const translations = {
             year: '2005-2010',
             title: 'Production Manager',
             description:
-              'Gestao de producao para marcas de surf (FCS, Creatures of Leisure, Gorilla Grip).',
+              'Gestão de produção para marcas de surf (FCS, Creatures of Leisure, Gorilla Grip).',
           },
           {
             year: '2010-2023',
             title: 'Founder & CEO — Elite Surfing',
             description:
-              'Fundei e geri marca de acessorios de surf durante mais de uma decada.',
+              'Fundei e geri marca de acessórios de surf durante mais de uma década.',
           },
           {
             year: '2023-2024',
@@ -74,7 +74,7 @@ export const translations = {
         experience: 'Anos como Developer',
         projects: 'Projetos Entregues',
         clients: 'Clientes',
-        code: 'Anos em Negocios',
+        code: 'Anos em Negócios',
       },
       coreSkills: 'Stack Principal',
     },
@@ -85,11 +85,11 @@ export const translations = {
         'Tecnologias e ferramentas que uso no dia a dia para construir projetos reais',
       level: {
         expert: 'Forte',
-        advanced: 'Confortavel',
+        advanced: 'Confortável',
         intermediate: 'Em desenvolvimento',
       },
       special: {
-        title: 'Competencias que trago do mundo dos negocios',
+        title: 'Competências que trago do mundo dos negócios',
       },
       learning: 'A explorar',
     },
@@ -97,7 +97,7 @@ export const translations = {
       title: 'Os Meus',
       titleHighlight: 'Projetos',
       subtitle:
-        'Projetos reais em producao — e-commerce, websites institucionais, ferramentas SaaS',
+        'Projetos reais em produção — e-commerce, websites institucionais, ferramentas SaaS',
       categories: {
         all: 'Todos',
         fullstack: 'Full Stack',
@@ -111,9 +111,9 @@ export const translations = {
     },
     experience: {
       title: 'A Minha',
-      titleHighlight: 'Experiencia',
+      titleHighlight: 'Experiência',
       subtitle:
-        'De empreendedor a developer — um percurso de reinvencao profissional',
+        'De empreendedor a developer — um percurso de reinvenção profissional',
       responsibilities: 'Responsabilidades',
       achievement: 'Destaque',
       downloadCV: 'Download CV',
@@ -137,7 +137,7 @@ export const translations = {
         subjectPlaceholder: 'Selecione um assunto',
         subjectOptions: {
           project: 'Novo Projeto',
-          collaboration: 'Colaboracao',
+          collaboration: 'Colaboração',
           job: 'Oportunidade de Trabalho',
           other: 'Outro',
         },
@@ -151,18 +151,26 @@ export const translations = {
       directContact: 'Contato Direto',
       socialNetworks: 'Redes Sociais',
       available: {
-        title: 'Disponivel para Projetos',
+        title: 'Disponível para Projetos',
         description:
-          'Aceito novos projetos freelance e oportunidades de trabalho remoto ou hibrido.',
+          'Aceito novos projetos freelance e oportunidades de trabalho remoto ou híbrido.',
         services: [
           'Desenvolvimento Full Stack',
           'Websites e Landing Pages',
           'E-commerce',
-          'Consultoria Tecnica',
+          'Consultoria Técnica',
         ],
       },
-      responseTime: 'Normalmente respondo em ate',
+      responseTime: 'Normalmente respondo em até',
       hours: '24 horas',
+    },
+    footer: {
+      about:
+        'Full Stack Developer e AI Engineer criando soluções inovadoras que combinam desenvolvimento web moderno com inteligência artificial.',
+      quickLinks: 'Links Rápidos',
+      connect: 'Conecte-se',
+      rights: 'Todos os direitos reservados.',
+      backToTop: 'Voltar ao topo',
     },
   },
   en: {
@@ -326,6 +334,14 @@ export const translations = {
       },
       responseTime: 'I usually respond within',
       hours: '24 hours',
+    },
+    footer: {
+      about:
+        'Full Stack Developer and AI Engineer creating innovative solutions that combine modern web development with artificial intelligence.',
+      quickLinks: 'Quick Links',
+      connect: 'Connect',
+      rights: 'All rights reserved.',
+      backToTop: 'Back to top',
     },
   },
 };

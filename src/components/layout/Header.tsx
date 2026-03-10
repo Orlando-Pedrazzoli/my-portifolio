@@ -119,7 +119,7 @@ export default function Header() {
               </ul>
 
               <div className='flex items-center gap-2'>
-                {/* Language Toggle Desktop */}
+                {/* Language Toggle Desktop — FIX: mostra idioma ATUAL */}
                 <motion.button
                   onClick={toggleLanguage}
                   className='px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors flex items-center gap-1.5'
@@ -129,7 +129,7 @@ export default function Header() {
                 >
                   <Globe className='w-4 h-4' />
                   <span className='text-sm font-medium'>
-                    {language === 'pt' ? 'EN' : 'PT'}
+                    {language === 'pt' ? 'PT' : 'EN'}
                   </span>
                 </motion.button>
 
@@ -153,14 +153,14 @@ export default function Header() {
 
             {/* Mobile Controls */}
             <div className='flex items-center gap-1 md:hidden z-50'>
-              {/* Mobile Language Toggle - Compact */}
+              {/* Mobile Language Toggle — FIX: mostra idioma ATUAL */}
               <button
                 onClick={toggleLanguage}
                 className='flex items-center gap-1 px-2 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors'
                 aria-label='Toggle language'
               >
                 <Globe className='w-4 h-4' />
-                <span>{language === 'pt' ? 'EN' : 'PT'}</span>
+                <span>{language === 'pt' ? 'PT' : 'EN'}</span>
               </button>
 
               {/* Mobile Theme Toggle - Fix para iOS */}
@@ -193,27 +193,21 @@ export default function Header() {
                 <div className='w-6 h-5 flex flex-col justify-center items-center'>
                   <motion.span
                     animate={
-                      isMenuOpen
-                        ? { rotate: 45, y: 8 }
-                        : { rotate: 0, y: 0 }
+                      isMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }
                     }
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                     className='w-6 h-0.5 bg-current block mb-1.5 origin-center'
                   />
                   <motion.span
                     animate={
-                      isMenuOpen
-                        ? { opacity: 0, x: -20 }
-                        : { opacity: 1, x: 0 }
+                      isMenuOpen ? { opacity: 0, x: -20 } : { opacity: 1, x: 0 }
                     }
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                     className='w-6 h-0.5 bg-current block mb-1.5'
                   />
                   <motion.span
                     animate={
-                      isMenuOpen
-                        ? { rotate: -45, y: -8 }
-                        : { rotate: 0, y: 0 }
+                      isMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }
                     }
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                     className='w-6 h-0.5 bg-current block origin-center'
@@ -244,10 +238,10 @@ export default function Header() {
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ 
-                type: 'spring', 
-                damping: 25, 
-                stiffness: 200 
+              transition={{
+                type: 'spring',
+                damping: 25,
+                stiffness: 200,
               }}
               className='fixed top-0 right-0 bottom-0 w-full sm:w-80 bg-white/98 dark:bg-gray-900/98 backdrop-blur-xl shadow-2xl z-50 md:hidden overflow-y-auto'
             >
@@ -311,7 +305,7 @@ export default function Header() {
                 </ul>
               </nav>
 
-              {/* Menu Footer com Actions */}
+              {/* Menu Footer com Actions — FIX: mostra idioma ATUAL */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

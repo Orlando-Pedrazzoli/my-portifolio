@@ -6,7 +6,7 @@ import { Calendar, MapPin, Building, ChevronRight } from 'lucide-react';
 import { useLanguage } from '@/components/providers/LanguageProvider';
 
 export default function Experience() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const stats = [
     { label: t('experience.stats.years'), value: '3+', icon: '🎯' },
@@ -91,7 +91,7 @@ export default function Experience() {
                   >
                     <div className={index % 2 === 0 ? 'md:text-right' : ''}>
                       <h3 className='text-xl font-bold text-gray-900 dark:text-white mb-1'>
-                        {exp.title}
+                        {exp.title[language]}
                       </h3>
                       <div
                         className={`flex items-center gap-2 text-purple-600 dark:text-purple-400 ${
@@ -115,7 +115,7 @@ export default function Experience() {
                       >
                         <Calendar className='w-4 h-4' />
                         <span>
-                          {exp.startDate} - {exp.endDate}
+                          {exp.startDate[language]} - {exp.endDate[language]}
                         </span>
                       </div>
                       <div
@@ -135,7 +135,7 @@ export default function Experience() {
                       index % 2 === 0 ? 'md:text-right' : ''
                     }`}
                   >
-                    {exp.description}
+                    {exp.description[language]}
                   </p>
 
                   {/* Responsibilities */}
@@ -163,7 +163,7 @@ export default function Experience() {
                             <span className='text-purple-600 dark:text-purple-400 mt-0.5'>
                               •
                             </span>
-                            <span>{resp}</span>
+                            <span>{resp[language]}</span>
                           </li>
                         ))}
                       </ul>
@@ -205,7 +205,7 @@ export default function Experience() {
                           🏆 {t('experience.achievement')}:
                         </span>
                         <span className='text-gray-700 dark:text-gray-300'>
-                          {exp.achievements[0]}
+                          {exp.achievements[0][language]}
                         </span>
                       </div>
                     </div>
