@@ -82,10 +82,10 @@ export default function Header() {
       >
         <nav className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
           <div className='flex items-center justify-between h-14 sm:h-16'>
-            {/* Logo */}
+            {/* Logo — Left */}
             <a
               href='#home'
-              className='flex items-center gap-1.5 z-50'
+              className='flex-shrink-0 z-50'
               onClick={e => {
                 e.preventDefault();
                 handleNavClick('#home');
@@ -109,61 +109,59 @@ export default function Header() {
               />
             </a>
 
-            {/* Desktop Navigation */}
-            <div className='hidden md:flex items-center gap-8'>
-              <ul className='flex items-center gap-8'>
-                {navItems.map(item => (
-                  <li key={item.href}>
-                    <a
-                      href={item.href}
-                      onClick={e => {
-                        e.preventDefault();
-                        handleNavClick(item.href);
-                      }}
-                      className='text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors font-medium'
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+            {/* Nav Links — Center */}
+            <ul className='hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2'>
+              {navItems.map(item => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    onClick={e => {
+                      e.preventDefault();
+                      handleNavClick(item.href);
+                    }}
+                    className='text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors font-medium'
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
 
-              <div className='flex items-center gap-2'>
-                {/* Language Toggle Desktop */}
-                <motion.button
-                  onClick={toggleLanguage}
-                  className='px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors flex items-center gap-1.5'
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  aria-label='Toggle language'
-                >
-                  <Globe className='w-4 h-4' />
-                  <span className='text-sm font-medium'>
-                    {language === 'pt' ? 'PT' : 'EN'}
-                  </span>
-                </motion.button>
+            {/* Controls — Right */}
+            <div className='hidden md:flex items-center gap-2 flex-shrink-0'>
+              {/* Language Toggle */}
+              <motion.button
+                onClick={toggleLanguage}
+                className='px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors flex items-center gap-1.5'
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label='Toggle language'
+              >
+                <Globe className='w-4 h-4' />
+                <span className='text-sm font-medium'>
+                  {language === 'pt' ? 'PT' : 'EN'}
+                </span>
+              </motion.button>
 
-                {/* Theme Toggle Desktop */}
-                <motion.button
-                  onClick={handleThemeToggle}
-                  onTouchEnd={handleThemeToggle}
-                  className='p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors'
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  aria-label='Toggle theme'
-                >
-                  {theme === 'dark' ? (
-                    <Sun className='w-5 h-5' />
-                  ) : (
-                    <Moon className='w-5 h-5' />
-                  )}
-                </motion.button>
-              </div>
+              {/* Theme Toggle */}
+              <motion.button
+                onClick={handleThemeToggle}
+                onTouchEnd={handleThemeToggle}
+                className='p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors'
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label='Toggle theme'
+              >
+                {theme === 'dark' ? (
+                  <Sun className='w-5 h-5' />
+                ) : (
+                  <Moon className='w-5 h-5' />
+                )}
+              </motion.button>
             </div>
 
             {/* Mobile Controls */}
             <div className='flex items-center gap-1 md:hidden z-50'>
-              {/* Mobile Language Toggle */}
               <button
                 onClick={toggleLanguage}
                 className='flex items-center gap-1 px-2 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors'
@@ -173,7 +171,6 @@ export default function Header() {
                 <span>{language === 'pt' ? 'PT' : 'EN'}</span>
               </button>
 
-              {/* Mobile Theme Toggle */}
               <button
                 onClick={handleThemeToggle}
                 onTouchEnd={handleThemeToggle}
@@ -193,7 +190,6 @@ export default function Header() {
                 )}
               </button>
 
-              {/* Hamburger Menu Button */}
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className='relative w-10 h-10 flex items-center justify-center text-gray-700 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors'
@@ -253,7 +249,6 @@ export default function Header() {
               }}
               className='fixed top-0 right-0 bottom-0 w-full sm:w-80 bg-white/98 dark:bg-gray-900/98 backdrop-blur-xl shadow-2xl z-50 md:hidden overflow-y-auto'
             >
-              {/* Menu Header */}
               <div className='flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-800'>
                 <div className='flex items-center gap-2'>
                   <Image
@@ -292,7 +287,6 @@ export default function Header() {
                 </button>
               </div>
 
-              {/* Menu Items */}
               <nav className='p-6'>
                 <ul className='space-y-2'>
                   {navItems.map((item, index) => (
@@ -323,7 +317,6 @@ export default function Header() {
                 </ul>
               </nav>
 
-              {/* Menu Footer */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
