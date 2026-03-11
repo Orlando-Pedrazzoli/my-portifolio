@@ -94,8 +94,8 @@ export const experiences: Experience[] = [
   {
     id: 2,
     title: {
-      pt: 'Data Analyst',
-      en: 'Data Analyst',
+      pt: 'Content Analyst',
+      en: 'Content Analyst',
     },
     company: 'Accenture Portugal',
     location: 'Lisboa, Portugal',
