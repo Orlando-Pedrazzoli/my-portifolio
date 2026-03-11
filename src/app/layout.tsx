@@ -18,6 +18,9 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.orlandopedrazzoli.com'),
+  verification: {
+    google: 'gvmu36gpY8cEDhuxWZsByZ7n8QS_1QxwkOWWwEaje4k',
+  },
   title: {
     default:
       'Orlando Pedrazzoli | Desenvolvedor Full Stack em Lisboa | React, Next.js, Node.js',
