@@ -1,8 +1,16 @@
-User-agent: *
-Allow: /
-Disallow: /api/
-Disallow: /_next/
+import type { MetadataRoute } from 'next';
 
-Sitemap: https://www.orlandopedrazzoli.com/sitemap.xml
+export default function robots(): MetadataRoute.Robots {
+  const baseUrl = 'https://www.orlandopedrazzoli.com';
 
-Host: https://www.orlandopedrazzoli.com
+  return {
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/api/'],
+      },
+    ],
+    sitemap: `${baseUrl}/sitemap.xml`,
+  };
+}

@@ -20,11 +20,11 @@ const SITE_CONFIG = {
 };
 
 export default function Hero() {
+  const [mounted, setMounted] = useState(false);
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(150);
-  const [mounted, setMounted] = useState(false);
   const { t } = useLanguage();
 
   const roles = useMemo(
@@ -67,6 +67,10 @@ export default function Hero() {
     const timer = setTimeout(handleTyping, typingSpeed);
     return () => clearTimeout(timer);
   }, [text, isDeleting, loopNum, typingSpeed, mounted, roles]);
+
+  // SSR: show full first role so crawlers index complete text
+  // Client: show animated typing effect
+  const displayText = mounted ? text : roles[0];
 
   return (
     <section className='relative min-h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-16 md:pt-0'>
@@ -139,7 +143,7 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* Name */}
+          {/* Name — h1 with semantic SEO value */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -152,15 +156,19 @@ export default function Hero() {
             </span>
           </motion.h1>
 
-          {/* Typing */}
+          {/* Typing animation — SSR renders full text, client animates */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
             className='text-xl sm:text-2xl md:text-4xl text-gray-700 dark:text-gray-300 mb-6 sm:mb-8 h-12'
+            role='text'
+            aria-label={roles.join(', ')}
           >
-            <span>{text}</span>
-            <span className='animate-pulse'>|</span>
+            <span>{displayText}</span>
+            <span className='animate-pulse' aria-hidden='true'>
+              |
+            </span>
           </motion.div>
 
           {/* Description */}
@@ -216,7 +224,7 @@ export default function Hero() {
               whileHover={{ scale: 1.2, rotate: 5 }}
               whileTap={{ scale: 0.9 }}
               className='p-2.5 sm:p-3 border border-gray-300 dark:border-purple-400/30 rounded-lg bg-white/80 dark:bg-purple-900/20 backdrop-blur-sm text-gray-700 dark:text-purple-300 hover:text-purple-600 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-purple-600/20 transition-all shadow-md hover:shadow-lg'
-              aria-label='GitHub'
+              aria-label='GitHub — Orlando Pedrazzoli'
             >
               <Github className='w-5 h-5' />
             </motion.a>
@@ -228,7 +236,7 @@ export default function Hero() {
               whileHover={{ scale: 1.2, rotate: 5 }}
               whileTap={{ scale: 0.9 }}
               className='p-2.5 sm:p-3 border border-gray-300 dark:border-purple-400/30 rounded-lg bg-white/80 dark:bg-purple-900/20 backdrop-blur-sm text-gray-700 dark:text-purple-300 hover:text-purple-600 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-purple-600/20 transition-all shadow-md hover:shadow-lg'
-              aria-label='LinkedIn'
+              aria-label='LinkedIn — Orlando Pedrazzoli'
             >
               <Linkedin className='w-5 h-5' />
             </motion.a>
@@ -238,7 +246,7 @@ export default function Hero() {
               whileHover={{ scale: 1.2, rotate: 5 }}
               whileTap={{ scale: 0.9 }}
               className='p-2.5 sm:p-3 border border-gray-300 dark:border-purple-400/30 rounded-lg bg-white/80 dark:bg-purple-900/20 backdrop-blur-sm text-gray-700 dark:text-purple-300 hover:text-purple-600 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-purple-600/20 transition-all shadow-md hover:shadow-lg'
-              aria-label='Email'
+              aria-label='Email — pedrazzoliorlando@gmail.com'
             >
               <Mail className='w-5 h-5' />
             </motion.a>

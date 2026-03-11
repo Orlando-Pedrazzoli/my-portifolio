@@ -2,7 +2,6 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   turbopack: {},
-
   images: {
     remotePatterns: [
       {
@@ -27,19 +26,24 @@ const nextConfig: NextConfig = {
       },
     ],
     formats: ['image/avif', 'image/webp'],
-    // Cache de 24h em dev, 30 dias em prod — permite atualizar imagens sem loucura
     minimumCacheTTL:
       process.env.NODE_ENV === 'development' ? 0 : 60 * 60 * 24 * 30,
   },
-
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
   trailingSlash: false,
 
-  // Redirecionamentos SEO
   async redirects() {
     return [
+      // Canonical: non-www → www
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'orlandopedrazzoli.com' }],
+        destination: 'https://www.orlandopedrazzoli.com/:path*',
+        permanent: true,
+      },
+      // SEO redirects
       { source: '/home', destination: '/', permanent: true },
       { source: '/index', destination: '/', permanent: true },
       { source: '/portfolio', destination: '/#projects', permanent: true },
@@ -49,7 +53,6 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  // Headers de segurança
   async headers() {
     return [
       {
@@ -69,7 +72,6 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // Cache longo só para assets com hash no nome (Next.js já faz isso)
       {
         source: '/_next/static/:path*',
         headers: [
@@ -79,7 +81,6 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // Imagens e fontes: cache de 7 dias com revalidação
       {
         source: '/:all*(svg|jpg|jpeg|png|gif|ico|webp|avif|woff|woff2)',
         headers: [
@@ -93,7 +94,7 @@ const nextConfig: NextConfig = {
   },
 
   env: {
-    NEXT_PUBLIC_SITE_URL: 'https://orlandopedrazzoli.com',
+    NEXT_PUBLIC_SITE_URL: 'https://www.orlandopedrazzoli.com',
     NEXT_PUBLIC_SITE_NAME: 'Orlando Pedrazzoli',
   },
 };

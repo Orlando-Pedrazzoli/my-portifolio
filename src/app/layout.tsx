@@ -19,11 +19,25 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.orlandopedrazzoli.com'),
   title: {
-    default: 'Orlando Pedrazzoli | Full Stack Developer | Lisboa',
+    default:
+      'Orlando Pedrazzoli | Desenvolvedor Full Stack em Lisboa | React, Next.js, Node.js',
     template: '%s | Orlando Pedrazzoli',
   },
   description:
-    'Orlando Pedrazzoli - Desenvolvedor Full Stack em Lisboa. Criacao de websites, e-commerce, landing pages e aplicacoes web com React, Next.js, Node.js e MongoDB.',
+    'Desenvolvedor Full Stack em Lisboa, Portugal. Criação de websites, e-commerce, landing pages e aplicações web com React, Next.js, Node.js e MongoDB. Projetos reais em produção para clientes em Portugal e Brasil.',
+  keywords: [
+    'Desenvolvedor Full Stack Lisboa',
+    'Full Stack Developer Lisbon',
+    'Criação de websites Portugal',
+    'React developer Lisboa',
+    'Next.js developer Portugal',
+    'E-commerce developer',
+    'Freelance web developer Lisboa',
+    'Desenvolvimento web Portugal',
+    'MERN stack developer',
+    'Node.js developer Portugal',
+    'Orlando Pedrazzoli',
+  ],
   authors: [
     { name: 'Orlando Pedrazzoli', url: 'https://www.orlandopedrazzoli.com' },
   ],
@@ -35,30 +49,30 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: 'Orlando Pedrazzoli | Full Stack Developer | Lisboa',
+    title: 'Orlando Pedrazzoli | Desenvolvedor Full Stack em Lisboa',
     description:
-      'Desenvolvedor Full Stack especializado em criar websites, e-commerce e aplicacoes web com React, Next.js, Node.js e MongoDB.',
+      'Criação de websites, e-commerce e aplicações web com React, Next.js e Node.js. Projetos reais em produção para clientes em Portugal e Brasil.',
     url: 'https://www.orlandopedrazzoli.com',
-    siteName: 'Orlando Pedrazzoli',
-    locale: 'pt_BR',
-    alternateLocale: ['en_US', 'pt_PT'],
+    siteName: 'Orlando Pedrazzoli — Full Stack Developer',
+    locale: 'pt_PT',
+    alternateLocale: ['pt_BR', 'en_US'],
     type: 'website',
     images: [
       {
-        url: 'https://www.orlandopedrazzoli.com/og-image.jpg',
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Orlando Pedrazzoli - Full Stack Developer em Lisboa',
+        alt: 'Orlando Pedrazzoli — Desenvolvedor Full Stack em Lisboa, Portugal',
         type: 'image/jpeg',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Orlando Pedrazzoli | Full Stack Developer',
+    title: 'Orlando Pedrazzoli | Full Stack Developer em Lisboa',
     description:
-      'Desenvolvimento de websites, e-commerce e aplicacoes web. React, Next.js, Node.js, MongoDB.',
-    images: ['https://www.orlandopedrazzoli.com/og-image.jpg'],
+      'Websites, e-commerce e aplicações web com React, Next.js e Node.js. Projetos reais em produção.',
+    images: ['/og-image.jpg'],
   },
   robots: {
     index: true,
@@ -68,6 +82,7 @@ export const metadata: Metadata = {
       follow: true,
       'max-image-preview': 'large',
       'max-snippet': -1,
+      'max-video-preview': -1,
     },
   },
   icons: {
@@ -82,6 +97,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.orlandopedrazzoli.com',
   },
+  category: 'technology',
 };
 
 export default function RootLayout({
@@ -90,13 +106,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='pt-BR' suppressHydrationWarning>
+    <html lang='pt' suppressHydrationWarning>
       <head>
         <StructuredData />
-        <link rel='icon' href='/favicon.ico' sizes='any' />
-        <link rel='icon' href='/favicon.svg' type='image/svg+xml' />
-        <link rel='apple-touch-icon' href='/apple-touch-icon.png' />
-        <link rel='manifest' href='/site.webmanifest' />
         <link rel='preconnect' href='https://fonts.googleapis.com' />
         <link
           rel='preconnect'

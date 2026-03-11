@@ -1,9 +1,20 @@
+import type { Metadata } from 'next';
 import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/About';
 import Skills from '@/components/sections/Skills';
 import Projects from '@/components/sections/Projects';
 import Experience from '@/components/sections/Experience';
 import Contact from '@/components/sections/Contact';
+
+export const metadata: Metadata = {
+  title:
+    'Orlando Pedrazzoli | Desenvolvedor Full Stack em Lisboa | React, Next.js, Node.js',
+  description:
+    'Desenvolvedor Full Stack em Lisboa com projetos reais em produção. Websites, e-commerce, landing pages e aplicações web com React, Next.js, Node.js e MongoDB. Disponível para projetos freelance.',
+  alternates: {
+    canonical: 'https://www.orlandopedrazzoli.com',
+  },
+};
 
 export default function Home() {
   return (
