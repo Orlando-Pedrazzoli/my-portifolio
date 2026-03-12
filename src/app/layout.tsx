@@ -133,7 +133,7 @@ export default function RootLayout({
         <ThemeProvider>
           <LanguageProvider>
             <Header />
-            <main className='min-h-screen'>{children}</main>
+            <main className='min-h-screen overflow-x-hidden'>{children}</main>
             <Footer />
           </LanguageProvider>
         </ThemeProvider>
