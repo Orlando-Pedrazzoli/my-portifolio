@@ -27,12 +27,11 @@ export default function Hero() {
   const [typingSpeed, setTypingSpeed] = useState(150);
   const { t } = useLanguage();
 
-  const roles = useMemo(
+  const phrases = useMemo(
     () => [
-      t('hero.roles.fullstack'),
-      t('hero.roles.web'),
-      t('hero.roles.ecommerce'),
-      t('hero.roles.problem'),
+      t('hero.phrases.build'),
+      t('hero.phrases.scope'),
+      t('hero.phrases.location'),
     ],
     [t],
   );
@@ -45,8 +44,8 @@ export default function Hero() {
     if (!mounted) return;
 
     const handleTyping = () => {
-      const current = loopNum % roles.length;
-      const fullText = roles[current];
+      const current = loopNum % phrases.length;
+      const fullText = phrases[current];
 
       setText(
         isDeleting
@@ -66,11 +65,11 @@ export default function Hero() {
 
     const timer = setTimeout(handleTyping, typingSpeed);
     return () => clearTimeout(timer);
-  }, [text, isDeleting, loopNum, typingSpeed, mounted, roles]);
+  }, [text, isDeleting, loopNum, typingSpeed, mounted, phrases]);
 
-  // SSR: show full first role so crawlers index complete text
+  // SSR: show full first phrase so crawlers index complete text
   // Client: show animated typing effect
-  const displayText = mounted ? text : roles[0];
+  const displayText = mounted ? text : phrases[0];
 
   return (
     <section className='relative min-h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-16 md:pt-0'>
@@ -143,27 +142,26 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* Name — h1 with semantic SEO value */}
+          {/* Name — h1, clean, no greeting prefix */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
             className='text-4xl sm:text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6'
           >
-            {t('hero.greeting')}{' '}
-            <span className='bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 dark:from-purple-400 dark:via-pink-400 dark:to-blue-400 bg-clip-text text-transparent block sm:inline mt-2 sm:mt-0'>
+            <span className='bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 dark:from-purple-400 dark:via-pink-400 dark:to-blue-400 bg-clip-text text-transparent'>
               {SITE_CONFIG.name}
             </span>
           </motion.h1>
 
-          {/* Typing animation — SSR renders full text, client animates */}
+          {/* Typing animation — 3 refined phrases */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
             className='text-xl sm:text-2xl md:text-4xl text-gray-700 dark:text-gray-300 mb-6 sm:mb-8 h-12'
             role='text'
-            aria-label={roles.join(', ')}
+            aria-label={phrases.join(', ')}
           >
             <span>{displayText}</span>
             <span className='animate-pulse' aria-hidden='true'>

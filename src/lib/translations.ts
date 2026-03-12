@@ -11,13 +11,11 @@ export const translations = {
       contact: 'Contato',
     },
     hero: {
-      greeting: 'Olá, eu sou',
       badge: 'Full Stack Developer',
-      roles: {
-        fullstack: 'Full Stack Developer',
-        web: 'Criador de Websites',
-        ecommerce: 'Developer E-commerce',
-        problem: 'Solucionador de Problemas',
+      phrases: {
+        build: 'Websites e e-commerce para negócios reais.',
+        scope: 'Do conceito à produção.',
+        location: 'Em Lisboa, disponível worldwide.',
       },
       description:
         'Construo websites e aplicações web para negócios reais. De landing pages a plataformas e-commerce com pagamentos, envios e painéis de gestão.',
@@ -183,13 +181,11 @@ export const translations = {
       contact: 'Contact',
     },
     hero: {
-      greeting: 'Hi, I am',
       badge: 'Full Stack Developer',
-      roles: {
-        fullstack: 'Full Stack Developer',
-        web: 'Website Creator',
-        ecommerce: 'E-commerce Developer',
-        problem: 'Problem Solver',
+      phrases: {
+        build: 'Websites & e-commerce for real businesses.',
+        scope: 'From concept to production.',
+        location: 'Based in Lisbon, available worldwide.',
       },
       description:
         'I build websites and web applications for real businesses. From landing pages to full e-commerce platforms with payments, shipping and admin panels.',
