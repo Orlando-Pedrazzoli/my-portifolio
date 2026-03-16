@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/og-image.jpg?v=2',
         width: 1200,
         height: 630,
         alt: 'Orlando Pedrazzoli — Desenvolvedor Full Stack em Lisboa, Portugal',
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     title: 'Orlando Pedrazzoli | Full Stack Developer em Lisboa',
     description:
       'Websites, e-commerce e aplicações web com React, Next.js e Node.js. Projetos reais em produção.',
-    images: ['/og-image.jpg'],
+    images: ['/og-image.jpg?v=2'],
   },
   robots: {
     index: true,
@@ -90,11 +90,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/favicon.ico?v=2', sizes: 'any' },
+      { url: '/favicon.svg?v=2', type: 'image/svg+xml' },
+      { url: '/favicon-96x96.png?v=2', sizes: '96x96', type: 'image/png' },
     ],
-    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
+    apple: [{ url: '/apple-touch-icon.png?v=2', sizes: '180x180' }],
   },
   manifest: '/site.webmanifest',
   alternates: {
