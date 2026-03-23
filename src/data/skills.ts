@@ -8,8 +8,8 @@ export interface Skill {
 export const skills: Skill[] = [
   // Frontend
   { name: 'React 18/19', level: 90, category: 'Frontend', color: '#61DAFB' },
-  { name: 'Next.js 14–16', level: 85, category: 'Frontend', color: '#000000' },
-  { name: 'TypeScript', level: 80, category: 'Frontend', color: '#3178C6' },
+  { name: 'Next.js 14-16', level: 88, category: 'Frontend', color: '#000000' },
+  { name: 'TypeScript', level: 82, category: 'Frontend', color: '#3178C6' },
   {
     name: 'JavaScript ES6+',
     level: 92,
@@ -17,14 +17,15 @@ export const skills: Skill[] = [
     color: '#F7DF1E',
   },
   {
-    name: 'Tailwind CSS 3/4',
+    name: 'Tailwind CSS v3/v4',
     level: 90,
     category: 'Frontend',
     color: '#06B6D4',
   },
   { name: 'Vite', level: 85, category: 'Frontend', color: '#646CFF' },
-  { name: 'Framer Motion', level: 78, category: 'Frontend', color: '#FF0080' },
-  { name: 'React Router', level: 88, category: 'Frontend', color: '#CA4245' },
+  { name: 'Framer Motion', level: 80, category: 'Frontend', color: '#FF0080' },
+  { name: 'GSAP', level: 75, category: 'Frontend', color: '#88CE02' },
+  { name: 'Three.js', level: 72, category: 'Frontend', color: '#000000' },
   {
     name: 'React Hook Form + Zod',
     level: 82,
@@ -37,7 +38,12 @@ export const skills: Skill[] = [
     category: 'Frontend',
     color: '#FF4154',
   },
-  { name: 'Radix UI', level: 75, category: 'Frontend', color: '#111111' },
+  {
+    name: 'Radix UI / shadcn/ui',
+    level: 78,
+    category: 'Frontend',
+    color: '#111111',
+  },
   { name: 'HTML5 / CSS3', level: 92, category: 'Frontend', color: '#E34C26' },
 
   // Backend
@@ -45,26 +51,21 @@ export const skills: Skill[] = [
   { name: 'Express', level: 85, category: 'Backend', color: '#000000' },
   { name: 'REST APIs', level: 88, category: 'Backend', color: '#FF6B6B' },
   { name: 'JWT / Auth', level: 85, category: 'Backend', color: '#000000' },
-  { name: 'Mongoose', level: 85, category: 'Backend', color: '#880000' },
-  { name: 'Clerk', level: 78, category: 'Backend', color: '#6C47FF' },
+  { name: 'Mongoose ODM', level: 85, category: 'Backend', color: '#880000' },
+  { name: 'Prisma ORM', level: 75, category: 'Backend', color: '#2D3748' },
+  { name: 'Drizzle ORM', level: 72, category: 'Backend', color: '#C5F74F' },
+  { name: 'Clerk', level: 80, category: 'Backend', color: '#6C47FF' },
+  { name: 'NextAuth', level: 75, category: 'Backend', color: '#000000' },
+  { name: 'Better-auth', level: 72, category: 'Backend', color: '#000000' },
   {
     name: 'Stripe (Payments + Webhooks)',
-    level: 82,
+    level: 85,
     category: 'Backend',
-    color: '#008CDD',
+    color: '#635BFF',
   },
-  {
-    name: 'Resend / EmailJS',
-    level: 80,
-    category: 'Backend',
-    color: '#0F9E51',
-  },
-  {
-    name: 'Multer (File Upload)',
-    level: 78,
-    category: 'Backend',
-    color: '#FFA500',
-  },
+  { name: 'Pagar.me V5', level: 78, category: 'Backend', color: '#00A868' },
+  { name: 'Nodemailer', level: 80, category: 'Backend', color: '#0F9E51' },
+  { name: 'Cloudinary', level: 82, category: 'Backend', color: '#3448C5' },
   {
     name: 'Melhor Envio API',
     level: 75,
@@ -72,15 +73,15 @@ export const skills: Skill[] = [
     color: '#00B4D8',
   },
 
-  // Database and Storage
+  // Database
   { name: 'MongoDB Atlas', level: 88, category: 'Database', color: '#47A248' },
-  { name: 'Cloudinary', level: 85, category: 'Database', color: '#3448C5' },
+  { name: 'SQLite', level: 70, category: 'Database', color: '#003B57' },
 
-  // Tools and Workflow
+  // Tools
   { name: 'Git / GitHub', level: 88, category: 'Tools', color: '#F05032' },
   { name: 'Vercel', level: 88, category: 'Tools', color: '#000000' },
   { name: 'VS Code', level: 90, category: 'Tools', color: '#007ACC' },
-  { name: 'SEO / Schema.org', level: 80, category: 'Tools', color: '#30A854' },
+  { name: 'SEO / JSON-LD', level: 80, category: 'Tools', color: '#30A854' },
   {
     name: 'Google Search Console',
     level: 78,
@@ -93,8 +94,6 @@ export const skills: Skill[] = [
     category: 'Tools',
     color: '#0066CC',
   },
-  { name: 'Postman', level: 82, category: 'Tools', color: '#FF6C37' },
-  { name: 'Jira', level: 75, category: 'Tools', color: '#0052CC' },
 ];
 
 export const skillCategories = [

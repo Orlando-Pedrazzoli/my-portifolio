@@ -7,18 +7,18 @@ export const translations = {
       about: 'Sobre',
       skills: 'Habilidades',
       projects: 'Projetos',
-      experience: 'Experiência',
+      experience: 'Experiencia',
       contact: 'Contato',
     },
     hero: {
       badge: 'Full Stack Developer',
       phrases: {
-        build: 'Websites e e-commerce para negócios reais.',
-        scope: 'Do conceito à produção.',
-        location: 'Em Lisboa, disponível worldwide.',
+        build: 'Websites e e-commerce para negocios reais.',
+        scope: 'Do conceito a producao.',
+        location: 'Em Lisboa, disponivel worldwide.',
       },
       description:
-        'Construo websites e aplicações web para negócios reais. De landing pages a plataformas e-commerce com pagamentos, envios e painéis de gestão.',
+        'Construo websites e aplicacoes web para negocios reais. De landing pages a plataformas e-commerce com pagamentos, envios e paineis de gestao.',
       cta: {
         projects: 'Ver Projetos',
         contact: 'Entrar em Contato',
@@ -28,31 +28,43 @@ export const translations = {
       title: 'Sobre',
       titleHighlight: 'Mim',
       subtitle:
-        'De empreendedor a developer — uma década de experiência em negócios, agora aplicada a construir software',
-      heading: 'Da Gestão de Negócios ao Código',
+        'De empreendedor a developer — 15 anos de experiencia em negocios, agora aplicada a construir software',
+      heading: 'Da Gestao de Negocios ao Codigo',
       description1:
-        'Depois de mais de 10 anos a liderar a minha própria empresa no setor de surf, fiz a transição para desenvolvimento de software. Completei o bootcamp na Ironhack e desde então tenho trabalhado com o stack MERN, Next.js e TypeScript, tanto em projetos próprios como para clientes.',
+        'Depois de mais de 15 anos a fundar e gerir empresas no setor de surf — escalando uma marca para R$200k/mes com 16 funcionarios — fiz a transicao para desenvolvimento de software. Completei o bootcamp na Ironhack e desde entao construi mais de 10 projetos em producao para clientes em Portugal e no Brasil.',
       description2:
-        'A minha experiência como fundador e CEO dá-me uma perspetiva de negócio que a maioria dos developers não tem. Entendo o que um cliente precisa, sei gerir prazos e prioridades, e penso no produto como um todo — não só no código.',
+        'A minha experiencia como fundador e CEO da-me uma perspetiva de negocio que a maioria dos developers nao tem. Entendo o que um cliente precisa, sei gerir prazos e prioridades, e penso no produto como um todo — nao so no codigo.',
       description3:
-        'Paralelamente ao freelance, trabalho como Content Analyst na Accenture Portugal. Estou baseado em Lisboa e disponível para projetos remotos ou híbridos.',
+        'Paralelamente ao freelance na Pedrazzoli Digital, trabalho como Content Operations Analyst na Accenture Portugal. Estou baseado em Lisboa e disponivel para projetos remotos ou hibridos.',
       location: 'Lisboa, Portugal',
       downloadCV: 'Download CV',
-      viewExperience: 'Ver Experiência',
+      viewExperience: 'Ver Experiencia',
       journey: {
         title: 'O Meu Percurso',
         items: [
           {
-            year: '2005-2010',
-            title: 'Production Manager',
+            year: '2001-2006',
+            title: 'Australia & ISC SA Ltda',
             description:
-              'Gestão de produção para marcas de surf (FCS, Creatures of Leisure, Gorilla Grip).',
+              'Gap year na Australia, depois fundei a ISC SA — importacao e fabricacao de acessorios de surf no Brasil.',
+          },
+          {
+            year: '2006-2010',
+            title: 'Production Manager — PLP',
+            description:
+              'Gestao de producao para marcas de surf (FCS, Creatures of Leisure, Gorilla Grip). Tripliquei o faturamento no primeiro ano.',
           },
           {
             year: '2010-2023',
             title: 'Founder & CEO — Elite Surfing',
             description:
-              'Fundei e geri marca de acessórios de surf durante mais de uma década.',
+              'Fundei e escalei marca de acessorios de surf para R$200k/mes com 16 funcionarios.',
+          },
+          {
+            year: '2017-2021',
+            title: 'Go Portugal Tours',
+            description:
+              'Empresa de tours privados e transfers em Lisboa. Encerrada durante a pandemia.',
           },
           {
             year: '2023-2024',
@@ -62,17 +74,17 @@ export const translations = {
           },
           {
             year: '2024-Presente',
-            title: 'Full Stack Developer & Content Analyst',
+            title: 'Full Stack Developer & Content Operations Analyst',
             description:
-              'Freelance na Pedrazzoli Digital e Content Analyst na Accenture Portugal.',
+              'Freelance na Pedrazzoli Digital e Content Operations Analyst na Accenture Portugal.',
           },
         ],
       },
       stats: {
         experience: 'Anos como Developer',
-        projects: 'Projetos Entregues',
+        projects: 'Projetos em Producao',
         clients: 'Clientes',
-        code: 'Anos em Negócios',
+        code: 'Anos em Negocios',
       },
       coreSkills: 'Stack Principal',
     },
@@ -83,11 +95,11 @@ export const translations = {
         'Tecnologias e ferramentas que uso no dia a dia para construir projetos reais',
       level: {
         expert: 'Forte',
-        advanced: 'Confortável',
+        advanced: 'Confortavel',
         intermediate: 'Em desenvolvimento',
       },
       special: {
-        title: 'Competências que trago do mundo dos negócios',
+        title: 'Competencias que trago do mundo dos negocios',
       },
       learning: 'A explorar',
     },
@@ -95,7 +107,7 @@ export const translations = {
       title: 'Os Meus',
       titleHighlight: 'Projetos',
       subtitle:
-        'Projetos reais em produção — e-commerce, websites institucionais, ferramentas SaaS',
+        'Projetos reais em producao — e-commerce, websites institucionais, ferramentas SaaS',
       categories: {
         all: 'Todos',
         fullstack: 'Full Stack',
@@ -109,9 +121,9 @@ export const translations = {
     },
     experience: {
       title: 'A Minha',
-      titleHighlight: 'Experiência',
+      titleHighlight: 'Experiencia',
       subtitle:
-        'Mais de 15 anos de experiência profissional — da gestão de empresas ao desenvolvimento de software',
+        'Mais de 20 anos de experiencia profissional — da gestao de empresas ao desenvolvimento de software',
       responsibilities: 'Responsabilidades',
       achievement: 'Destaque',
       downloadCV: 'Download CV',
@@ -135,7 +147,7 @@ export const translations = {
         subjectPlaceholder: 'Selecione um assunto',
         subjectOptions: {
           project: 'Novo Projeto',
-          collaboration: 'Colaboração',
+          collaboration: 'Colaboracao',
           job: 'Oportunidade de Trabalho',
           other: 'Outro',
         },
@@ -149,23 +161,23 @@ export const translations = {
       directContact: 'Contato Direto',
       socialNetworks: 'Redes Sociais',
       available: {
-        title: 'Disponível para Projetos',
+        title: 'Disponivel para Projetos',
         description:
-          'Aceito novos projetos freelance e oportunidades de trabalho remoto ou híbrido.',
+          'Aceito novos projetos freelance e oportunidades de trabalho remoto ou hibrido.',
         services: [
           'Desenvolvimento Full Stack',
           'Websites e Landing Pages',
           'E-commerce',
-          'Consultoria Técnica',
+          'Consultoria Tecnica',
         ],
       },
-      responseTime: 'Normalmente respondo em até',
+      responseTime: 'Normalmente respondo em ate',
       hours: '24 horas',
     },
     footer: {
       about:
-        'Full Stack Developer criando soluções web modernas para negócios reais. Websites, e-commerce e aplicações com React, Next.js e Node.js.',
-      quickLinks: 'Links Rápidos',
+        'Full Stack Developer criando solucoes web modernas para negocios reais. Websites, e-commerce e aplicacoes com React, Next.js e Node.js.',
+      quickLinks: 'Links Rapidos',
       connect: 'Conecte-se',
       rights: 'Todos os direitos reservados.',
       backToTop: 'Voltar ao topo',
@@ -198,14 +210,14 @@ export const translations = {
       title: 'About',
       titleHighlight: 'Me',
       subtitle:
-        'From entrepreneur to developer — a decade of business experience, now applied to building software',
+        'From entrepreneur to developer — 15 years of business experience, now applied to building software',
       heading: 'From Business Management to Code',
       description1:
-        'After over 10 years leading my own company in the surf industry, I transitioned into software development. I completed the Ironhack bootcamp and have since been working with the MERN stack, Next.js and TypeScript, both on personal projects and for clients.',
+        'After over 15 years founding and running companies in the surf industry — scaling a brand to R$200k/month with 16 employees — I transitioned into software development. I completed the Ironhack bootcamp and have since built 10+ production projects for clients in Portugal and Brazil.',
       description2:
         "My background as a founder and CEO gives me a business perspective that most developers don't have. I understand what clients need, I know how to manage deadlines and priorities, and I think about the product as a whole — not just the code.",
       description3:
-        "Alongside freelancing, I work as a Content Analyst at Accenture Portugal. I'm based in Lisbon and available for remote or hybrid projects.",
+        "Alongside freelancing at Pedrazzoli Digital, I work as a Content Operations Analyst at Accenture Portugal. I'm based in Lisbon and available for remote or hybrid projects.",
       location: 'Lisbon, Portugal',
       downloadCV: 'Download CV',
       viewExperience: 'View Experience',
@@ -213,16 +225,28 @@ export const translations = {
         title: 'My Journey',
         items: [
           {
-            year: '2005-2010',
-            title: 'Production Manager',
+            year: '2001-2006',
+            title: 'Australia & ISC SA Ltda',
             description:
-              'Production management for surf brands (FCS, Creatures of Leisure, Gorilla Grip).',
+              'Gap year in Australia, then founded ISC SA — surf accessories import and manufacturing in Brazil.',
+          },
+          {
+            year: '2006-2010',
+            title: 'Production Manager — PLP',
+            description:
+              'Production management for surf brands (FCS, Creatures of Leisure, Gorilla Grip). Tripled revenue in the first year.',
           },
           {
             year: '2010-2023',
             title: 'Founder & CEO — Elite Surfing',
             description:
-              'Founded and ran a surf accessories brand for over a decade.',
+              'Founded and scaled a surf accessories brand to R$200k/month with 16 employees.',
+          },
+          {
+            year: '2017-2021',
+            title: 'Go Portugal Tours',
+            description:
+              'Private tour and transfer company in Lisbon. Closed during the pandemic.',
           },
           {
             year: '2023-2024',
@@ -232,15 +256,15 @@ export const translations = {
           },
           {
             year: '2024-Present',
-            title: 'Full Stack Developer & Content Analyst',
+            title: 'Full Stack Developer & Content Operations Analyst',
             description:
-              'Freelancing at Pedrazzoli Digital and Content Analyst at Accenture Portugal.',
+              'Freelancing at Pedrazzoli Digital and Content Operations Analyst at Accenture Portugal.',
           },
         ],
       },
       stats: {
         experience: 'Years as Developer',
-        projects: 'Projects Delivered',
+        projects: 'Projects in Production',
         clients: 'Clients',
         code: 'Years in Business',
       },
@@ -280,7 +304,7 @@ export const translations = {
       title: 'My',
       titleHighlight: 'Experience',
       subtitle:
-        'Over 15 years of professional experience — from running businesses to building software',
+        'Over 20 years of professional experience — from running businesses to building software',
       responsibilities: 'Responsibilities',
       achievement: 'Highlight',
       downloadCV: 'Download CV',

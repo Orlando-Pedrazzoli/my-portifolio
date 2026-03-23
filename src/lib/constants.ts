@@ -2,13 +2,13 @@ export const SITE_CONFIG = {
   name: 'Orlando Pedrazzoli',
   title: 'Full Stack Developer',
   description:
-    'Desenvolvedor Full Stack em Lisboa. Criação de websites, e-commerce e aplicações web com React, Next.js, Node.js e MongoDB.',
+    'Full Stack Developer in Lisbon. Building websites, e-commerce and web applications with React, Next.js, Node.js and MongoDB.',
   url: 'https://www.orlandopedrazzoli.com',
   email: 'pedrazzoliorlando@gmail.com',
   github: 'https://github.com/Orlando-Pedrazzoli',
   linkedin: 'https://www.linkedin.com/in/orlandopedrazzoli/',
   instagram: 'https://www.instagram.com/opcreate',
-  location: 'Lisboa, Portugal',
+  location: 'Lisbon, Portugal',
 };
 
 export const ANIMATION_DURATION = {
