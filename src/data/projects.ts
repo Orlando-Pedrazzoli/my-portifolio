@@ -568,6 +568,7 @@ export const projects: Project[] = [
     ],
     category: 'Full Stack',
     githubUrl: 'https://github.com/Orlando-Pedrazzoli/ferri-schoedl',
+    liveUrl: 'https://ferrischoeld.vercel.app/',
     highlights: [
       {
         pt: 'Loja de livros juridicos com carrinho e pagamentos Stripe',
@@ -620,6 +621,7 @@ export const projects: Project[] = [
     ],
     category: 'Full Stack',
     githubUrl: 'https://github.com/Orlando-Pedrazzoli/ranas-twist',
+    liveUrl: 'https://ranas-twist-menu.vercel.app/en',
     highlights: [
       {
         pt: 'Gerador de QR code para mesas do restaurante',
