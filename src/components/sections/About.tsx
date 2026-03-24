@@ -14,7 +14,7 @@ export default function About() {
   const stats = [
     { label: t('about.stats.experience'), value: '3+', icon: Calendar },
     { label: t('about.stats.projects'), value: '108+', icon: Rocket },
-    { label: t('about.stats.clients'), value: '5+', icon: Heart },
+    { label: t('about.stats.clients'), value: '10+', icon: Heart },
     { label: t('about.stats.code'), value: '15+', icon: Coffee },
   ];
 
