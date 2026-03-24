@@ -593,55 +593,6 @@ export const projects: Project[] = [
   },
   {
     id: 9,
-    title: 'B2B Distribuidores — Order Management Platform',
-    description: {
-      pt: 'Plataforma de gestao de pedidos B2B para distribuidores. Catalogo multi-fornecedor, tabelas de precos customizadas com drag-and-drop, calculadora de margens, exportacao PDF/Excel, painel admin.',
-      en: 'B2B order management platform for distributors. Multi-supplier catalog, custom price tables with drag-and-drop, margin calculator, PDF/Excel export, admin panel.',
-    },
-    longDescription: {
-      pt: 'Plataforma de gestao de pedidos para distribuidores onde cada distribuidor acessa a sua dashboard, escolhe fornecedores, faz pedidos, define tabelas de precos com drag-and-drop, acompanha status dos pedidos e exporta dados em PDF e Excel. Painel admin com financeiro e gestao de pedidos. Autenticacao JWT, uploads via Cloudinary, notificacoes por email via Nodemailer.',
-      en: 'Order management platform for distributors where each distributor accesses their dashboard, selects suppliers, places orders, defines price tables with drag-and-drop, tracks order status and exports data to PDF and Excel. Admin panel with financials and order management. JWT authentication, Cloudinary uploads, email notifications via Nodemailer.',
-    },
-    image: '/b2b-tumb.png',
-    technologies: [
-      'Next.js 14',
-      'React 18',
-      'MongoDB',
-      'Mongoose',
-      'Tailwind CSS',
-      'dnd-kit',
-      'PDFKit',
-      'SheetJS (xlsx)',
-      'JWT',
-      'Bcrypt.js',
-      'Cloudinary',
-      'Nodemailer',
-      'Multer',
-    ],
-    category: 'Full Stack',
-    githubUrl: 'https://github.com/Orlando-Pedrazzoli/ecommerce-distribuidores',
-    liveUrl: 'https://ecommerce-distribuidores.vercel.app/',
-    highlights: [
-      {
-        pt: 'Tabelas de precos com drag-and-drop via dnd-kit e calculadora de margens',
-        en: 'Price tables with drag-and-drop via dnd-kit and margin calculator',
-      },
-      {
-        pt: 'Exportacao de pedidos em PDF (PDFKit) e Excel (SheetJS)',
-        en: 'Order export to PDF (PDFKit) and Excel (SheetJS)',
-      },
-      {
-        pt: 'Dashboard do distribuidor com catalogo multi-fornecedor',
-        en: 'Distributor dashboard with multi-supplier catalog',
-      },
-      {
-        pt: 'Painel admin com financeiro e gestao de pedidos',
-        en: 'Admin panel with financials and order management',
-      },
-    ],
-  },
-  {
-    id: 10,
     title: "Rana's Twist — Restaurant Management System",
     description: {
       pt: 'Menu digital e sistema de gestao para restaurante indiano. Painel admin com autenticacao, CRUD de pratos, upload de imagens Cloudinary, gerador de QR code, filtros dieteticos, busca fuzzy. Bilingue PT/EN.',
