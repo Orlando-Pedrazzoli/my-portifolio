@@ -12,7 +12,11 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
-    formats: ['image/avif', 'image/webp'],
+    // Servir as imagens diretamente de /public. O optimizador da Vercel
+    // (/_next/image) devolve 402 quando a conta excede a quota de Image
+    // Optimization, partilhada por todos os projetos — e o site fica sem
+    // screenshots. Os JPGs em public/work já vão redimensionados.
+    unoptimized: true,
   },
   async headers() {
     return [
