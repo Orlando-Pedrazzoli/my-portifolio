@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "images": "node scripts/images-manifest.mjs",
+    "predev": "node scripts/images-manifest.mjs",
+    "prebuild": "node scripts/images-manifest.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
