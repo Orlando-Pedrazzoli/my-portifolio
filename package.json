@@ -8,9 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
-    "images": "node scripts/images-manifest.mjs",
-    "predev": "node scripts/images-manifest.mjs",
-    "prebuild": "node scripts/images-manifest.mjs"
+    "images": "node scripts/images-manifest.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
@@ -35,7 +33,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.5.3",
+    "eslint-config-next": "^16.3.6",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
