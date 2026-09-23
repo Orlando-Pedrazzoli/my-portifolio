@@ -1,188 +1,248 @@
+/* src/app/globals.css */
 @import 'tailwindcss';
 
-/* Tailwind v4: dark mode via .dark class (not media query) */
+/* Garante que o Tailwind v4 lê TODOS os ficheiros de src/ em produção.
+   Sem isto, o Turbopack pode não detetar classes e o build "perde" utilities. */
+@source '../';
+
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* ========================================
-   CSS VARIABLES
-   ======================================== */
+/* ==========================================================================
+   TOKENS
+   Um sistema, duas superfícies (papel / tinta). Um único acento.
+   ========================================================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: oklch(98.2% 0.006 80);
+  --paper-2: oklch(95.5% 0.008 80);
+  --ink: oklch(18% 0.01 60);
+  --ink-2: oklch(38% 0.01 60);
+  --ink-3: oklch(56% 0.01 60);
+  --line: oklch(86% 0.008 80);
+  --line-strong: oklch(70% 0.01 80);
+  --accent: oklch(55% 0.17 40);
+  --accent-ink: oklch(98% 0.01 80);
+  --selection: oklch(90% 0.06 40);
+  --measure: 62ch;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --section: clamp(4rem, 10vw, 8rem);
 }
 
 html.dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --paper: oklch(16% 0.008 60);
+  --paper-2: oklch(20% 0.008 60);
+  --ink: oklch(94% 0.006 80);
+  --ink-2: oklch(76% 0.008 80);
+  --ink-3: oklch(60% 0.008 80);
+  --line: oklch(28% 0.008 60);
+  --line-strong: oklch(40% 0.01 60);
+  --accent: oklch(72% 0.15 45);
+  --accent-ink: oklch(16% 0.008 60);
+  --selection: oklch(35% 0.08 40);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+
+  --font-serif: var(--font-serif), 'Times New Roman', serif;
+  --font-sans: var(--font-sans), system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, monospace;
+
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* ========================================
-   COLOR SCHEME
-   ======================================== */
-html:not(.dark) {
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+html {
   color-scheme: light;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
-
 html.dark {
   color-scheme: dark;
 }
 
-/* ========================================
-   OVERFLOW GLOBAL — previne scroll lateral no mobile
-   ======================================== */
-html {
-  overflow-x: hidden;
-  max-width: 100%;
-}
-
-/* ========================================
-   BODY
-   ======================================== */
 body {
-  overflow-x: hidden;
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  font-feature-settings: 'ss01', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* ========================================
-   THEME TRANSITION
-   Only transition bg/color/border — not ALL properties
-   ======================================== */
-body,
-header,
-main,
-footer,
-section,
-nav {
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease,
-    border-color 0.3s ease;
-}
-
-/* ========================================
-   SCROLLBAR
-   ======================================== */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgb(243 244 246);
-}
-
-html.dark ::-webkit-scrollbar-track {
-  background: rgb(31 41 55);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgb(156 163 175);
-  border-radius: 9999px;
-}
-
-html.dark ::-webkit-scrollbar-thumb {
-  background: rgb(75 85 99);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgb(107 114 128);
-}
-
-/* ========================================
-   TEXT SELECTION
-   ======================================== */
 ::selection {
-  background: rgb(233 213 255);
-  color: rgb(88 28 135);
+  background: var(--selection);
 }
 
-html.dark ::selection {
-  background: rgb(88 28 135);
-  color: rgb(233 213 255);
+/* Container editorial */
+.wrap {
+  width: 100%;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
 }
 
-/* ========================================
-   MOBILE
-   ======================================== */
-@media (max-width: 640px) {
-  #home,
-  section:first-of-type {
-    padding-top: 60px;
-  }
+/* Regra horizontal de secção (editorial) */
+.rule {
+  border-top: 1px solid var(--line);
+}
 
-  section {
-    scroll-margin-top: 60px;
+/* Etiqueta em mono (rail esquerdo das secções) */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* Títulos de display */
+.display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.prose-measure {
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+/* Link com sublinhado animado */
+.link {
+  position: relative;
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  transition: background-size 0.25s var(--ease-out-quart);
+}
+.link:hover {
+  background-size: 0% 1px;
+  background-position: 100% 100%;
+}
+
+/* Reveal ao entrar no viewport (JS acrescenta .is-in) */
+.reveal {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.5s var(--ease-out-quart),
+    transform 0.5s var(--ease-out-quart);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .link {
+    transition: none;
   }
 }
 
-@media (min-width: 641px) and (max-width: 1024px) {
-  #home,
-  section:first-of-type {
-    padding-top: 64px;
-  }
-
-  section {
-    scroll-margin-top: 64px;
-  }
+/* Marca OP na navbar — máscara pintada com currentColor */
+.logo-mark {
+  display: inline-block;
+  width: 2rem;
+  aspect-ratio: 444 / 222;
+  background: currentColor;
+  -webkit-mask: url('/logo-mark.png') center / contain no-repeat;
+  mask: url('/logo-mark.png') center / contain no-repeat;
 }
 
-/* ========================================
-   Z-INDEX
-   ======================================== */
-header {
-  z-index: 50 !important;
+/* Screenshot frame */
+.figure {
+  border: 1px solid var(--line);
+  background: var(--paper-2);
+  overflow: hidden;
+}
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.figure-empty {
+  aspect-ratio: 16 / 10;
+  display: grid;
+  place-items: center;
+  color: var(--ink-3);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
 }
 
-/* ========================================
-   iOS TOUCH FIXES (minimal)
-   ======================================== */
-@supports (-webkit-touch-callout: none) {
-  button,
-  a,
-  [role='button'] {
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-  }
+/* Formulário */
+.field {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line-strong);
+  padding: 0.75rem 0;
+  color: var(--ink);
+  font: inherit;
+  border-radius: 0;
+}
+.field:focus {
+  outline: none;
+  border-bottom-color: var(--ink);
+}
+.field::placeholder {
+  color: var(--ink-3);
 }
 
-/* ========================================
-   PREVENT ZOOM ON INPUTS (iOS)
-   ======================================== */
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  input[type='text'],
-  input[type='email'],
-  textarea,
-  select {
-    font-size: 16px !important;
-  }
+/* Botões */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  background: transparent;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+.btn:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+.btn-solid {
+  background: var(--ink);
+  color: var(--paper);
+}
+.btn-solid:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
 }
 
-/* ========================================
-   iOS SAFE AREAS
-   ======================================== */
-@supports (padding: env(safe-area-inset-top)) {
-  body {
-    padding-top: env(safe-area-inset-top);
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
-    padding-bottom: env(safe-area-inset-bottom);
-  }
-}
-
-/* ========================================
-   iOS SAFARI: webkit-text-fill-color fix
-   Gradient text needs transparent fill,
-   everything else needs initial
-   ======================================== */
-@supports (-webkit-touch-callout: none) {
-  .bg-clip-text.text-transparent {
-    -webkit-text-fill-color: transparent !important;
-  }
+/* Foco visível consistente */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }

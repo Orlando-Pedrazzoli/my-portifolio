@@ -1,0 +1,62 @@
+{
+  "nav": {
+    "work": "Trabalho",
+    "about": "Percurso",
+    "contact": "Contacto",
+    "menu": "Menu",
+    "close": "Fechar",
+    "theme": "Alternar tema",
+    "language": "English"
+  },
+  "sections": {
+    "capabilities": "O que construo",
+    "featured": "Case principal",
+    "work": "Trabalho selecionado",
+    "principles": "Como trabalho",
+    "trajectory": "Percurso",
+    "stack": "Stack",
+    "contact": "Contacto"
+  },
+  "common": {
+    "readCase": "Ler o case",
+    "allWork": "Ver todo o trabalho",
+    "visit": "Ver em produção",
+    "repo": "Repositório",
+    "downloadCv": "Descarregar CV",
+    "fullTrajectory": "Percurso completo",
+    "backHome": "Voltar ao início",
+    "problem": "Problema",
+    "solution": "Solução",
+    "result": "Resultado",
+    "context": "Contexto",
+    "role": "O meu papel",
+    "decisions": "Decisões técnicas",
+    "architecture": "Arquitetura",
+    "features": "Principais funcionalidades",
+    "stack": "Stack",
+    "status": "Estado",
+    "client": "Cliente",
+    "year": "Ano",
+    "screenshotPending": "screenshot em breve"
+  },
+  "contact": {
+    "name": "Nome",
+    "email": "Email",
+    "message": "Mensagem",
+    "send": "Enviar mensagem",
+    "sending": "A enviar…",
+    "success": "Recebido. Respondo em breve.",
+    "error": "Não foi possível enviar. Escreve-me diretamente para o email acima.",
+    "placeholderMessage": "Conta-me o que precisas de construir."
+  },
+  "footer": {
+    "rights": "Orlando Pedrazzoli. Lisboa.",
+    "built": "Site construído com Next.js, publicado na Vercel."
+  },
+  "meta": {
+    "title": "Orlando Pedrazzoli — Full stack developer em Lisboa",
+    "description": "Construo software para negócios reais: e-commerce com pagamentos, plataformas de gestão, SaaS. Do problema ao produto em produção. Lisboa, disponível remoto.",
+    "workTitle": "Trabalho",
+    "aboutTitle": "Percurso"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "nav": {
+    "work": "Work",
+    "about": "Background",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close",
+    "theme": "Toggle theme",
+    "language": "Português"
+  },
+  "sections": {
+    "capabilities": "What I build",
+    "featured": "Featured case",
+    "work": "Selected work",
+    "principles": "How I work",
+    "trajectory": "Background",
+    "stack": "Stack",
+    "contact": "Contact"
+  },
+  "common": {
+    "readCase": "Read the case",
+    "allWork": "See all work",
+    "visit": "View in production",
+    "repo": "Repository",
+    "downloadCv": "Download CV",
+    "fullTrajectory": "Full background",
+    "backHome": "Back to home",
+    "problem": "Problem",
+    "solution": "Solution",
+    "result": "Result",
+    "context": "Context",
+    "role": "My role",
+    "decisions": "Technical decisions",
+    "architecture": "Architecture",
+    "features": "Key features",
+    "stack": "Stack",
+    "status": "Status",
+    "client": "Client",
+    "year": "Year",
+    "screenshotPending": "screenshot coming soon"
+  },
+  "contact": {
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send message",
+    "sending": "Sending…",
+    "success": "Received. I'll reply soon.",
+    "error": "Couldn't send. Email me directly at the address above.",
+    "placeholderMessage": "Tell me what you need to build."
+  },
+  "footer": {
+    "rights": "Orlando Pedrazzoli. Lisbon.",
+    "built": "Built with Next.js, deployed on Vercel."
+  },
+  "meta": {
+    "title": "Orlando Pedrazzoli — Full stack developer in Lisbon",
+    "description": "I build software for real businesses: e-commerce with payments, management platforms, SaaS. From the problem to the product in production. Lisbon, available remotely.",
+    "workTitle": "Work",
+    "aboutTitle": "Background"
+  }
+}

@@ -1,146 +1,37 @@
-'use client';
+// src/components/layout/Footer.tsx
+import { getTranslations } from 'next-intl/server';
+import { site } from '@/lib/site';
 
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
-import { useLanguage } from '@/components/providers/LanguageProvider';
-
-const SITE_CONFIG = {
-  name: 'Orlando Pedrazzoli',
-  email: 'pedrazzoliorlando@gmail.com',
-  github: 'https://github.com/Orlando-Pedrazzoli',
-  linkedin: 'https://www.linkedin.com/in/orlandopedrazzoli/',
-  website: 'orlandopedrazzoli.com',
-};
-
-export default function Footer() {
-  const currentYear = new Date().getFullYear();
-  const { t, language } = useLanguage();
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const quickLinks = [
-    { label: t('nav.about'), href: '#about' },
-    { label: t('nav.projects'), href: '#projects' },
-    { label: t('nav.experience'), href: '#experience' },
-    { label: t('nav.contact'), href: '#contact' },
-  ];
-
+export default async function Footer() {
+  const t = await getTranslations('footer');
   return (
-    <footer className='bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12 mt-20'>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className='grid md:grid-cols-3 gap-8 mb-8'>
-          {/* About */}
-          <div>
-            <div className='mb-4'>
-              <Image
-                src='/logo-orlando-light.png'
-                alt='Orlando Pedrazzoli'
-                width={140}
-                height={42}
-                className='h-9 w-auto dark:hidden'
-              />
-              <Image
-                src='/logo-orlando-dark.png'
-                alt='Orlando Pedrazzoli'
-                width={140}
-                height={42}
-                className='h-9 w-auto hidden dark:block'
-              />
-            </div>
-            <p className='text-gray-600 dark:text-gray-400 text-sm'>
-              {t('footer.about')}
-            </p>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className='text-lg font-semibold text-gray-900 dark:text-white mb-4'>
-              {t('footer.quickLinks')}
-            </h3>
-            <ul className='space-y-2 text-sm'>
-              {quickLinks.map(link => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className='text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors'
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className='text-lg font-semibold text-gray-900 dark:text-white mb-4'>
-              {t('footer.connect')}
-            </h3>
-            <div className='flex gap-4 mb-4'>
-              <motion.a
-                href={SITE_CONFIG.github}
-                target='_blank'
-                rel='noopener noreferrer'
-                whileHover={{ scale: 1.2 }}
-                className='p-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-600 dark:text-gray-400 hover:text-white hover:bg-purple-600 transition-all'
-                aria-label='GitHub'
-              >
-                <Github className='w-5 h-5' />
-              </motion.a>
-              <motion.a
-                href={SITE_CONFIG.linkedin}
-                target='_blank'
-                rel='noopener noreferrer'
-                whileHover={{ scale: 1.2 }}
-                className='p-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-600 dark:text-gray-400 hover:text-white hover:bg-purple-600 transition-all'
-                aria-label='LinkedIn'
-              >
-                <Linkedin className='w-5 h-5' />
-              </motion.a>
-              <motion.a
-                href={`mailto:${SITE_CONFIG.email}`}
-                whileHover={{ scale: 1.2 }}
-                className='p-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-600 dark:text-gray-400 hover:text-white hover:bg-purple-600 transition-all'
-                aria-label='Email'
-              >
-                <Mail className='w-5 h-5' />
-              </motion.a>
-            </div>
-            <p className='text-gray-600 dark:text-gray-400 text-sm'>
-              {SITE_CONFIG.email}
-            </p>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className='pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row items-center justify-between'>
-          <div className='text-gray-600 dark:text-gray-400 text-sm'>
-            <p>
-              © {currentYear} {SITE_CONFIG.name}. {t('footer.rights')}
-            </p>
-            <a
-              href={`https://${SITE_CONFIG.website}`}
-              target='_blank'
-              rel='noopener noreferrer'
-              className='hover:text-purple-600 dark:hover:text-purple-400 transition-colors'
-            >
-              {SITE_CONFIG.website}
-            </a>
-          </div>
-
-          <motion.button
-            onClick={scrollToTop}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className='mt-4 sm:mt-0 p-2 bg-purple-600 rounded-lg text-white hover:bg-purple-700 transition-colors'
-            aria-label={t('footer.backToTop')}
+    <footer className='rule'>
+      <div className='wrap flex flex-col gap-4 py-10 text-sm text-ink-3 md:flex-row md:items-center md:justify-between'>
+        <p>
+          © {new Date().getFullYear()} {t('rights')}
+        </p>
+        <div className='flex gap-6'>
+          <a
+            href={site.github}
+            target='_blank'
+            rel='noopener noreferrer'
+            className='link'
           >
-            <ArrowUp className='w-5 h-5' />
-          </motion.button>
+            GitHub
+          </a>
+          <a
+            href={site.linkedin}
+            target='_blank'
+            rel='noopener noreferrer'
+            className='link'
+          >
+            LinkedIn
+          </a>
+          <a href={`mailto:${site.email}`} className='link'>
+            Email
+          </a>
         </div>
+        <p className='font-mono text-xs'>{t('built')}</p>
       </div>
     </footer>
   );
