@@ -69,10 +69,10 @@ export default function CaseNav({ items }: { items: CaseNavItem[] }) {
                 className='case-nav-link'
                 aria-current={item.id === active ? 'location' : undefined}
               >
+                <span className='case-nav-label'>{item.label}</span>
                 <span className='case-nav-n'>
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <span className='case-nav-label'>{item.label}</span>
               </a>
             </li>
           ))}

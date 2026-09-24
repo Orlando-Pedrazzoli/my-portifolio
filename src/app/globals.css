@@ -203,7 +203,6 @@ body {
   .index-link,
   .disclosure-icon,
   .case-nav-link,
-  .case-nav-label,
   .next-project,
   .next-project-arrow,
   .cap-title,
@@ -540,14 +539,16 @@ body {
 .case-nav ol {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.35rem;
 }
+/* Etiqueta à esquerda, número numa coluna fixa à direita: todos os itens
+   têm a largura do mais largo, por isso os números ficam alinhados. */
 .case-nav-link {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 0.6rem;
-  padding: 0.25rem 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 1.5rem;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.3rem 0;
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.05em;
@@ -556,20 +557,10 @@ body {
   transition: color 0.2s;
 }
 .case-nav-label {
-  opacity: 0;
-  transform: translateX(4px);
-  transition:
-    opacity 0.2s var(--ease-out-quart),
-    transform 0.2s var(--ease-out-quart);
-}
-.case-nav:hover .case-nav-label,
-.case-nav-link:focus-visible .case-nav-label,
-.case-nav-link[aria-current] .case-nav-label {
-  opacity: 1;
-  transform: none;
+  text-align: right;
+  white-space: nowrap;
 }
 .case-nav-n {
-  min-width: 1.5rem;
   text-align: right;
   border-bottom: 1px solid transparent;
 }
