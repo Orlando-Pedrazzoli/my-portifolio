@@ -1,33 +1,27 @@
 // src/components/home/Contact.tsx
-import { getLocale, getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import Section from '@/components/ui/Section';
 import ContactForm from './ContactForm';
 import { site } from '@/lib/site';
-import type { Locale } from '@/i18n/routing';
 
 export default async function Contact() {
-  const locale = (await getLocale()) as Locale;
-  const t = await getTranslations('sections');
+  const t = await getTranslations();
 
   return (
     <Section
       id='contact'
-      n='07'
-      label={t('contact')}
-      title={
-        locale === 'pt'
-          ? 'Tens um problema que precisa de software? Fala comigo.'
-          : 'Have a problem that needs software? Talk to me.'
-      }
+      n='06'
+      label={t('sections.contact')}
+      title={t('contact.title')}
     >
       <div className='grid gap-12 md:grid-cols-12'>
         <div className='md:col-span-5'>
-          <p className='text-ink-2'>
-            {locale === 'pt'
-              ? 'Disponível para projetos freelance, colaborações e oportunidades em Lisboa ou remoto.'
-              : 'Available for freelance projects, collaborations and opportunities in Lisbon or remote.'}
+          <p className='t-lead text-ink-2'>{t('contact.lead')}</p>
+          <p className='mt-6 font-mono text-xs text-ink-3'>
+            {t('contact.responds')}
           </p>
-          <ul className='mt-8 space-y-3'>
+          <p className='mt-10 eyebrow'>{t('contact.emailDirect')}</p>
+          <ul className='mt-3 space-y-3'>
             <li>
               <a href={`mailto:${site.email}`} className='link text-lg'>
                 {site.email}

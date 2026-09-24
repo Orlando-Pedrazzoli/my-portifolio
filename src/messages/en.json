@@ -1,38 +1,45 @@
 {
   "nav": {
     "work": "Work",
-    "about": "Background",
+    "services": "Services",
+    "about": "About",
     "contact": "Contact",
+    "resume": "Resume",
+    "talk": "Let's talk",
     "menu": "Menu",
     "close": "Close",
     "theme": "Toggle theme",
     "language": "Português"
   },
   "sections": {
-    "capabilities": "What I build",
-    "featured": "Featured case",
     "work": "Selected work",
-    "principles": "How I work",
-    "trajectory": "Background",
-    "stack": "Stack",
+    "moreWork": "More work",
+    "services": "What I build",
+    "principles": "Engineering principles",
+    "background": "Background",
+    "stack": "Tech stack",
     "contact": "Contact"
   },
   "common": {
-    "readCase": "Read the case",
+    "readCase": "Read case study",
+    "viewCase": "View case study",
     "allWork": "See all work",
     "visit": "View in production",
     "repo": "Repository",
     "downloadCv": "Download CV",
-    "fullTrajectory": "Full background",
-    "backHome": "Back to home",
-    "problem": "Problem",
+    "fullBackground": "Full background",
+    "fullStack": "View full technical stack",
+    "backHome": "Back to work",
+    "problem": "The problem",
     "solution": "Solution",
-    "result": "Result",
+    "result": "Outcome",
     "context": "Context",
     "role": "My role",
-    "decisions": "Technical decisions",
+    "constraints": "Constraints",
+    "decisions": "Key decisions",
     "architecture": "Architecture",
-    "features": "Key features",
+    "features": "What was built",
+    "learned": "What I would change",
     "stack": "Stack",
     "status": "Status",
     "client": "Client",
@@ -40,23 +47,28 @@
     "screenshotPending": "screenshot coming soon"
   },
   "contact": {
+    "title": "Have a business problem to solve?",
+    "lead": "Tell me what you're building, what isn't working, or what you want to automate.",
+    "responds": "Usually responds within 24 hours",
+    "emailDirect": "Or email me directly",
     "name": "Name",
     "email": "Email",
     "message": "Message",
-    "send": "Send message",
+    "send": "Start a conversation",
     "sending": "Sending…",
     "success": "Received. I'll reply soon.",
     "error": "Couldn't send. Email me directly at the address above.",
-    "placeholderMessage": "Tell me what you need to build."
+    "placeholderMessage": "What are you building, and what isn't working?"
   },
   "footer": {
-    "rights": "Orlando Pedrazzoli. Lisbon.",
-    "built": "Built with Next.js, deployed on Vercel."
+    "role": "Full Stack Developer",
+    "location": "Lisbon, Portugal",
+    "rights": "Orlando Pedrazzoli"
   },
   "meta": {
-    "title": "Orlando Pedrazzoli — Full stack developer in Lisbon",
-    "description": "I build software for real businesses: e-commerce with payments, management platforms, SaaS. From the problem to the product in production. Lisbon, available remotely.",
+    "title": "Orlando Pedrazzoli — Full Stack Developer in Lisbon",
+    "description": "Full stack developer who understands the business behind the software. E-commerce, management platforms and SaaS built from business problem to production. Lisbon, available remotely.",
     "workTitle": "Work",
-    "aboutTitle": "Background"
+    "aboutTitle": "About"
   }
 }

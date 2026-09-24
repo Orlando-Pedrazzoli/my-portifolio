@@ -4,8 +4,8 @@ import { notFound } from 'next/navigation';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
-import { serif, sans, mono } from '@/lib/fonts';
-import { site } from '@/lib/site';
+import { sans, mono } from '@/lib/fonts';
+import { absoluteUrl, languageAlternates } from '@/lib/site';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import StructuredData from '@/components/layout/StructuredData';
@@ -22,23 +22,23 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const l = locale as Locale;
   const t = await getTranslations({ locale, namespace: 'meta' });
-  const path = locale === routing.defaultLocale ? '' : `/${locale}`;
 
   return {
-    metadataBase: new URL(site.url),
+    metadataBase: new URL(absoluteUrl(routing.defaultLocale)),
     title: { default: t('title'), template: `%s — Orlando Pedrazzoli` },
     description: t('description'),
     alternates: {
-      canonical: `${site.url}${path}`,
-      languages: { pt: site.url, en: `${site.url}/en`, 'x-default': site.url },
+      canonical: absoluteUrl(l),
+      languages: languageAlternates(),
     },
     openGraph: {
       title: t('title'),
       description: t('description'),
-      url: `${site.url}${path}`,
+      url: absoluteUrl(l),
       siteName: 'Orlando Pedrazzoli',
-      locale: locale === 'pt' ? 'pt_PT' : 'en_US',
+      locale: l === 'pt' ? 'pt_PT' : 'en_US',
       type: 'website',
       images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
     },
@@ -71,7 +71,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       suppressHydrationWarning
-      className={`${serif.variable} ${sans.variable} ${mono.variable}`}
+      className={`${sans.variable} ${mono.variable}`}
     >
       <head>
         {/* Tema antes do primeiro paint: localStorage > prefers-color-scheme */}

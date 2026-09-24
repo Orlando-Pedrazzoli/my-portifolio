@@ -4,6 +4,18 @@ import type { WorkCase } from '../types';
 export const chiSublime: WorkCase = {
   slug: 'chi-sublime',
   title: 'Chi Sublime',
+  headline: {
+    pt: 'Transformar um negócio de serviços numa operação digital.',
+    en: 'Turning a service business into a digital operation.',
+  },
+  category: {
+    pt: 'Reservas, POS e faturação certificada',
+    en: 'Booking, POS and certified invoicing',
+  },
+  tags: {
+    pt: ['Produto', 'Reservas', 'Faturação'],
+    en: ['Product', 'Booking', 'Invoicing'],
+  },
   tagline: {
     pt: 'Plataforma de gestão para um salão de cabeleireiro e estética em Cascais: site, reservas online, área de cliente, ponto de venda, caixa e faturação certificada.',
     en: 'Management platform for a hair and beauty salon in Cascais: website, online booking, client area, point of sale, cash register and certified invoicing.',
@@ -28,6 +40,22 @@ export const chiSublime: WorkCase = {
       en: 'Chi Sublime booking flow',
     },
   },
+  metrics: [
+    {
+      value: '3',
+      label: {
+        pt: 'passos para reservar online',
+        en: 'steps to book online',
+      },
+    },
+    {
+      value: '35',
+      label: {
+        pt: 'serviços sincronizados com o Moloni',
+        en: 'services synced with Moloni',
+      },
+    },
+  ],
   context: {
     pt: [
       'Um salão em Cascais geria marcações por telefone e WhatsApp, recebia pagamentos sem faturação integrada e não tinha visibilidade sobre a receita por profissional. O dono queria uma única aplicação para tudo.',
@@ -49,6 +77,20 @@ export const chiSublime: WorkCase = {
   role: {
     pt: 'Único developer, incluindo a configuração da conta Moloni e a articulação com o contabilista do cliente sobre regime de IVA e séries de documentos.',
     en: "Sole developer, including setting up the Moloni account and coordinating with the client's accountant on VAT regime and document series.",
+  },
+  constraints: {
+    pt: [
+      'Dupla marcação impossível, mesmo com dois clientes a reservar o mesmo slot ao mesmo tempo.',
+      'Faturação certificada em Portugal: emissão e comunicação à AT não podem falhar em silêncio.',
+      'Um único dono a operar tudo — sem equipa técnica, sem contas por profissional.',
+      'Regime de IVA e séries de documentos definidos com o contabilista do cliente.',
+    ],
+    en: [
+      'Double booking impossible, even with two clients booking the same slot at the same time.',
+      'Certified invoicing in Portugal: issuing and reporting to the tax authority cannot fail silently.',
+      'A single owner operating everything — no technical team, no per-professional accounts.',
+      "VAT regime and document series defined with the client's accountant.",
+    ],
   },
   solution: {
     pt: [
@@ -106,6 +148,16 @@ export const chiSublime: WorkCase = {
     ],
     en: [
       'Online booking, schedule and certified invoicing working in production, with real invoice-receipts reported to the tax authority.',
+    ],
+  },
+  learned: {
+    pt: [
+      'Ter um provider Mock de faturação desde o início permitiu desenvolver semanas sem tocar na AT. Repetiria em qualquer integração fiscal.',
+      'Numa segunda iteração adicionaria lembretes por SMS além de email: é o canal que os clientes do salão realmente leem.',
+    ],
+    en: [
+      'Having a Mock invoicing provider from the start allowed weeks of development without touching the tax authority. I would repeat it in any fiscal integration.',
+      "In a second iteration I would add SMS reminders on top of email: it is the channel the salon's clients actually read.",
     ],
   },
   stack: [

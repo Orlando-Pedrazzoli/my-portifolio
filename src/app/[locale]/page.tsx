@@ -1,9 +1,12 @@
 // src/app/[locale]/page.tsx
+// Homepage com blocos intencionais, por esta ordem:
+// Hero → dois caminhos → trabalho selecionado (+ mais trabalho) →
+// o que construo → princípios → percurso → stack → contacto.
 import { setRequestLocale } from 'next-intl/server';
 import Hero from '@/components/home/Hero';
-import Capabilities from '@/components/home/Capabilities';
-import FeaturedCase from '@/components/home/FeaturedCase';
+import Paths from '@/components/home/Paths';
 import SelectedWork from '@/components/home/SelectedWork';
+import Capabilities from '@/components/home/Capabilities';
 import Principles from '@/components/home/Principles';
 import Trajectory from '@/components/home/Trajectory';
 import Stack from '@/components/home/Stack';
@@ -20,9 +23,9 @@ export default async function Home({
   return (
     <>
       <Hero />
-      <Capabilities />
-      <FeaturedCase />
+      <Paths />
       <SelectedWork />
+      <Capabilities />
       <Principles />
       <Trajectory />
       <Stack />

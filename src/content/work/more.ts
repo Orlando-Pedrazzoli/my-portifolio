@@ -5,6 +5,18 @@ import type { WorkCase } from '../types';
 export const centroDentarioColombo: WorkCase = {
   slug: 'centro-dentario-colombo',
   title: 'Centro Dentário Colombo — website',
+  headline: {
+    pt: 'Presença digital bilingue com portal do paciente — a origem do CDC Manager.',
+    en: 'Bilingual digital presence with patient portal — where CDC Manager started.',
+  },
+  category: {
+    pt: 'Website e portal do paciente',
+    en: 'Website and patient portal',
+  },
+  tags: {
+    pt: ['Website', 'Portal', 'SEO'],
+    en: ['Website', 'Portal', 'SEO'],
+  },
   tagline: {
     pt: 'Website institucional bilingue de uma clínica dentária em Lisboa, com portal do paciente e painel de gestão. O projeto que deu origem ao CDC Manager.',
     en: 'Bilingual institutional website for a Lisbon dental clinic, with patient portal and admin panel. The project that led to CDC Manager.',
@@ -25,6 +37,7 @@ export const centroDentarioColombo: WorkCase = {
       en: 'Centro Dentário Colombo website',
     },
   },
+  metrics: [],
   context: {
     pt: [
       'Uma clínica num centro comercial com muitos turistas precisava de presença digital em PT/EN, com dez páginas de especialidade com conteúdo clínico validado e atribuição de campanhas via WhatsApp.',
@@ -91,6 +104,18 @@ export const centroDentarioColombo: WorkCase = {
 export const eliteSurfingBrasil: WorkCase = {
   slug: 'elite-surfing-brasil',
   title: 'Elite Surfing Brasil',
+  headline: {
+    pt: 'Três canais de venda — consumidor, B2B e dropshipping — sobre um único stock.',
+    en: 'Three sales channels — consumer, B2B and dropshipping — on a single stock.',
+  },
+  category: {
+    pt: 'E-commerce multicanal',
+    en: 'Multichannel e-commerce',
+  },
+  tags: {
+    pt: ['E-commerce', 'B2B', 'Pagamentos'],
+    en: ['E-commerce', 'B2B', 'Payments'],
+  },
   tagline: {
     pt: 'E-commerce da marca de acessórios de surf que fundei em 2010, construído do zero: pagamentos, frete, B2B para revendedores, vendas diretas e dropshipping.',
     en: 'E-commerce for the surf accessories brand I founded in 2010, built from scratch: payments, shipping, B2B for resellers, direct sales and dropshipping.',
@@ -108,6 +133,7 @@ export const eliteSurfingBrasil: WorkCase = {
     caption: { pt: 'Homepage da loja.', en: 'Store homepage.' },
     alt: { pt: 'Loja Elite Surfing Brasil', en: 'Elite Surfing Brasil store' },
   },
+  metrics: [],
   context: {
     pt: [
       'Sou o cliente. Conheço o produto, os revendedores e as transportadoras, e quis uma loja que servisse tanto o consumidor final como a rede B2B.',
@@ -178,6 +204,18 @@ export const eliteSurfingBrasil: WorkCase = {
 export const goPortugalTours: WorkCase = {
   slug: 'go-portugal-tours',
   title: 'Go Portugal Tours',
+  headline: {
+    pt: 'Um site de reservas construído por quem já operou o negócio.',
+    en: 'A booking site built by someone who ran the business.',
+  },
+  category: {
+    pt: 'Site de reservas de tours',
+    en: 'Tour booking site',
+  },
+  tags: {
+    pt: ['Website', 'Reservas', 'i18n'],
+    en: ['Website', 'Booking', 'i18n'],
+  },
   tagline: {
     pt: 'Site de reservas para tours privados em Portugal: 24 tours data-driven, preços por número de passageiros, formulários validados, PT/EN.',
     en: 'Booking site for private tours in Portugal: 24 data-driven tours, pricing by passenger count, validated forms, PT/EN.',
@@ -195,6 +233,7 @@ export const goPortugalTours: WorkCase = {
     },
     alt: { pt: 'Go Portugal Tours', en: 'Go Portugal Tours' },
   },
+  metrics: [],
   context: {
     pt: [
       'Geri uma empresa de tours de 2017 a 2021. Sei o que um cliente pergunta antes de reservar e o que o operador precisa de saber para responder.',
@@ -240,6 +279,18 @@ export const goPortugalTours: WorkCase = {
 export const streetPaint: WorkCase = {
   slug: 'street-paint',
   title: 'Street Paint',
+  headline: {
+    pt: 'Pré-qualificar orçamentos antes do primeiro contacto humano.',
+    en: 'Pre-qualifying estimates before the first human contact.',
+  },
+  category: {
+    pt: 'Site com orçamento interativo',
+    en: 'Site with interactive estimator',
+  },
+  tags: {
+    pt: ['Website', 'Leads', 'SVG'],
+    en: ['Website', 'Leads', 'SVG'],
+  },
   tagline: {
     pt: 'Site de uma oficina de chapa e pintura em Sintra com orçamento interativo: o cliente clica nas peças danificadas num diagrama SVG e recebe uma estimativa enviada para o WhatsApp da oficina.',
     en: "Site for an auto body shop in Sintra with an interactive estimate: the customer clicks damaged parts on an SVG diagram and gets an estimate sent to the shop's WhatsApp.",
@@ -254,6 +305,7 @@ export const streetPaint: WorkCase = {
     caption: { pt: 'Estimador interativo.', en: 'Interactive estimator.' },
     alt: { pt: 'Street Paint', en: 'Street Paint' },
   },
+  metrics: [],
   context: {
     pt: [
       'A oficina recebia dezenas de chamadas "quanto custa?" sem informação suficiente para responder.',

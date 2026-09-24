@@ -1,38 +1,45 @@
 {
   "nav": {
     "work": "Trabalho",
-    "about": "Percurso",
+    "services": "Serviços",
+    "about": "Sobre",
     "contact": "Contacto",
+    "resume": "CV",
+    "talk": "Fala comigo",
     "menu": "Menu",
     "close": "Fechar",
     "theme": "Alternar tema",
     "language": "English"
   },
   "sections": {
-    "capabilities": "O que construo",
-    "featured": "Case principal",
     "work": "Trabalho selecionado",
-    "principles": "Como trabalho",
-    "trajectory": "Percurso",
+    "moreWork": "Mais trabalho",
+    "services": "O que construo",
+    "principles": "Princípios de engenharia",
+    "background": "Percurso",
     "stack": "Stack",
     "contact": "Contacto"
   },
   "common": {
-    "readCase": "Ler o case",
+    "readCase": "Ler o case study",
+    "viewCase": "Ver case study",
     "allWork": "Ver todo o trabalho",
     "visit": "Ver em produção",
     "repo": "Repositório",
     "downloadCv": "Descarregar CV",
-    "fullTrajectory": "Percurso completo",
-    "backHome": "Voltar ao início",
-    "problem": "Problema",
+    "fullBackground": "Percurso completo",
+    "fullStack": "Ver stack técnica completa",
+    "backHome": "Voltar ao trabalho",
+    "problem": "O problema",
     "solution": "Solução",
     "result": "Resultado",
     "context": "Contexto",
     "role": "O meu papel",
-    "decisions": "Decisões técnicas",
+    "constraints": "Restrições",
+    "decisions": "Decisões-chave",
     "architecture": "Arquitetura",
-    "features": "Principais funcionalidades",
+    "features": "O que foi construído",
+    "learned": "O que mudaria",
     "stack": "Stack",
     "status": "Estado",
     "client": "Cliente",
@@ -40,23 +47,28 @@
     "screenshotPending": "screenshot em breve"
   },
   "contact": {
+    "title": "Tens um problema de negócio para resolver?",
+    "lead": "Conta-me o que estás a construir, o que não está a funcionar ou o que queres automatizar.",
+    "responds": "Normalmente respondo em 24 horas",
+    "emailDirect": "Ou escreve-me diretamente",
     "name": "Nome",
     "email": "Email",
     "message": "Mensagem",
-    "send": "Enviar mensagem",
+    "send": "Iniciar conversa",
     "sending": "A enviar…",
     "success": "Recebido. Respondo em breve.",
     "error": "Não foi possível enviar. Escreve-me diretamente para o email acima.",
-    "placeholderMessage": "Conta-me o que precisas de construir."
+    "placeholderMessage": "O que estás a construir e o que não está a funcionar?"
   },
   "footer": {
-    "rights": "Orlando Pedrazzoli. Lisboa.",
-    "built": "Site construído com Next.js, publicado na Vercel."
+    "role": "Full Stack Developer",
+    "location": "Lisboa, Portugal",
+    "rights": "Orlando Pedrazzoli"
   },
   "meta": {
-    "title": "Orlando Pedrazzoli — Full stack developer em Lisboa",
-    "description": "Construo software para negócios reais: e-commerce com pagamentos, plataformas de gestão, SaaS. Do problema ao produto em produção. Lisboa, disponível remoto.",
+    "title": "Orlando Pedrazzoli — Full Stack Developer em Lisboa",
+    "description": "Full stack developer que percebe o negócio por trás do software. E-commerce, plataformas de gestão e SaaS construídos do problema de negócio até produção. Lisboa, disponível remoto.",
     "workTitle": "Trabalho",
-    "aboutTitle": "Percurso"
+    "aboutTitle": "Sobre"
   }
 }

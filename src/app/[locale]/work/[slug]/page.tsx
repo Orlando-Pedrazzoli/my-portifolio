@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
 import { work, getCase } from '@/content/work';
-import { site } from '@/lib/site';
+import { site, absoluteUrl, languageAlternates } from '@/lib/site';
 import CaseArticle from '@/components/work/CaseArticle';
 
 type Params = Promise<{ locale: string; slug: string }>;
@@ -24,20 +24,19 @@ export async function generateMetadata({
   const c = getCase(slug);
   if (!c) return {};
   const l = locale as Locale;
-  const prefix = locale === routing.defaultLocale ? '' : `/${locale}`;
+  const path = `/work/${slug}`;
   return {
-    title: c.title,
+    title: `${c.title} — ${c.headline[l]}`,
     description: c.tagline[l],
     alternates: {
-      canonical: `${site.url}${prefix}/work/${slug}`,
-      languages: {
-        pt: `${site.url}/work/${slug}`,
-        en: `${site.url}/en/work/${slug}`,
-      },
+      canonical: absoluteUrl(l, path),
+      languages: languageAlternates(path),
     },
     openGraph: {
-      title: c.title,
+      title: `${c.title} — ${c.headline[l]}`,
       description: c.tagline[l],
+      url: absoluteUrl(l, path),
+      type: 'article',
       images: c.cover?.src ? [{ url: c.cover.src }] : undefined,
     },
   };
@@ -48,5 +47,52 @@ export default async function WorkPage({ params }: { params: Params }) {
   setRequestLocale(locale);
   const c = getCase(slug);
   if (!c) notFound();
-  return <CaseArticle c={c} />;
+  const l = locale as Locale;
+
+  // JSON-LD do case: breadcrumb + a peça como CreativeWork do autor.
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: absoluteUrl(l) },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: l === 'pt' ? 'Trabalho' : 'Work',
+        item: absoluteUrl(l, '/#work'),
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: c.title,
+        item: absoluteUrl(l, `/work/${slug}`),
+      },
+    ],
+  };
+  const creativeWork = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: c.title,
+    headline: c.headline[l],
+    description: c.tagline[l],
+    url: absoluteUrl(l, `/work/${slug}`),
+    image: c.cover?.src ? `${site.url}${c.cover.src}` : undefined,
+    inLanguage: l === 'pt' ? 'pt-PT' : 'en',
+    author: { '@type': 'Person', name: site.name, url: site.url },
+    keywords: c.stack.join(', '),
+  };
+
+  return (
+    <>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWork) }}
+      />
+      <CaseArticle c={c} />
+    </>
+  );
 }

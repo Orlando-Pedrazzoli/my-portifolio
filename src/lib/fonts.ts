@@ -1,13 +1,7 @@
 // src/lib/fonts.ts
-import { Instrument_Serif, Geist, Geist_Mono } from 'next/font/google';
-
-export const serif = Instrument_Serif({
-  subsets: ['latin'],
-  weight: '400',
-  style: ['normal', 'italic'],
-  variable: '--font-serif',
-  display: 'swap',
-});
+// Uma família para tudo (Geist) + mono para etiquetas. Sem serifa de display:
+// a hierarquia vem do tamanho, do peso e do espaço, não de uma segunda fonte.
+import { Geist, Geist_Mono } from 'next/font/google';
 
 export const sans = Geist({
   subsets: ['latin'],

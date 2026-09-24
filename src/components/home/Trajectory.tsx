@@ -1,10 +1,12 @@
 // src/components/home/Trajectory.tsx
+// Percurso em versão curta: Negócio → Fundador → Operações → Software.
+// A versão longa vive em /about.
 import { getLocale, getTranslations } from 'next-intl/server';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import Section from '@/components/ui/Section';
 import Reveal from '@/components/ui/Reveal';
-import { trajectory } from '@/content/home';
+import { timeline } from '@/content/home';
 import { site } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
 
@@ -13,38 +15,46 @@ export default async function Trajectory() {
   const t = await getTranslations();
 
   return (
-    <Section id='trajectory' n='05' label={t('sections.trajectory')}>
-      <ol className='divide-y divide-line'>
-        {trajectory.map((item, i) => (
+    <Section
+      id='background'
+      n='04'
+      label={t('sections.background')}
+      title={
+        locale === 'pt'
+          ? 'A experiência de negócio por trás do código.'
+          : 'The business experience behind the code.'
+      }
+      intro={
+        locale === 'pt'
+          ? 'Negócio → Fundador → Operações → Software. Passei quinze anos a fabricar produto, negociar com fornecedores, contratar e vender antes de escrever a primeira linha de código profissional. É por isso que consigo ver a operação por trás de cada pedido de software.'
+          : 'Business → Founder → Operations → Software. I spent fifteen years manufacturing product, negotiating with suppliers, hiring and selling before writing my first professional line of code. That is why I can see the operation behind every software request.'
+      }
+    >
+      <ol className='border-t border-line'>
+        {timeline.map((item, i) => (
           <Reveal
             as='li'
-            key={item.period}
+            key={item.year}
             delay={i * 40}
-            className='grid gap-2 py-8 md:grid-cols-12 md:gap-6'
+            className='grid gap-1 border-b border-line py-5 sm:grid-cols-12 sm:gap-6'
           >
-            <span className='font-mono text-sm text-ink-3 md:col-span-3'>
-              {item.period}
+            <span className='display text-xl sm:col-span-2'>{item.year}</span>
+            <span className='text-ink-2 sm:col-span-10'>
+              {item.label[locale]}
             </span>
-            <div className='md:col-span-9'>
-              <h3 className='display text-2xl'>{item.title[locale]}</h3>
-              <p className='mt-3 text-ink-2'>{item.body[locale]}</p>
-              {item.link && (
-                <Link
-                  href={`/work/${item.link.slug}`}
-                  className='link mt-3 inline-flex items-center gap-1 font-mono text-xs text-ink'
-                >
-                  {item.link.label} <ArrowUpRight size={12} />
-                </Link>
-              )}
-            </div>
           </Reveal>
         ))}
       </ol>
       <div className='mt-8 flex flex-wrap gap-4'>
         <Link href='/about' className='btn'>
-          {t('common.fullTrajectory')}
+          {t('common.fullBackground')} <ArrowRight size={16} />
         </Link>
-        <a href={site.cv} download className='btn'>
+        <a
+          href={site.cv}
+          target='_blank'
+          rel='noopener noreferrer'
+          className='btn'
+        >
           {t('common.downloadCv')}
         </a>
       </div>

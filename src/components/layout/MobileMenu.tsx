@@ -11,10 +11,12 @@ interface Item {
 
 export default function MobileMenu({
   items,
+  resume,
   openLabel,
   closeLabel,
 }: {
   items: Item[];
+  resume: Item;
   openLabel: string;
   closeLabel: string;
 }) {
@@ -42,7 +44,7 @@ export default function MobileMenu({
       {open && (
         <nav
           id='mobile-nav'
-          className='fixed inset-x-0 top-14 bottom-0 z-40 bg-paper px-[var(--gutter)] pt-10'
+          className='fixed inset-x-0 top-16 bottom-0 z-40 bg-paper px-[var(--gutter)] pt-10'
         >
           <ul className='space-y-6'>
             {items.map(item => (
@@ -56,6 +58,17 @@ export default function MobileMenu({
                 </Link>
               </li>
             ))}
+            <li className='pt-4'>
+              <a
+                href={resume.href}
+                target='_blank'
+                rel='noopener noreferrer'
+                onClick={() => setOpen(false)}
+                className='btn'
+              >
+                {resume.label}
+              </a>
+            </li>
           </ul>
         </nav>
       )}

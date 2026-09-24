@@ -1,12 +1,14 @@
 // src/i18n/routing.ts
 import { defineRouting } from 'next-intl/routing';
 
-export const locales = ['pt', 'en'] as const;
+export const locales = ['en', 'pt'] as const;
 export type Locale = (typeof locales)[number];
 
 export const routing = defineRouting({
   locales,
-  defaultLocale: 'pt',
-  // PT vive em "/" (URLs atuais mantêm-se); EN vive em "/en".
+  // EN é o idioma principal (recrutamento internacional): vive em "/".
+  // PT vive em "/pt". A negociação Accept-Language + cookie (proxy.ts)
+  // continua a levar visitantes portugueses para /pt automaticamente.
+  defaultLocale: 'en',
   localePrefix: 'as-needed',
 });

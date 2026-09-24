@@ -10,11 +10,12 @@ export default async function Principles() {
   const t = await getTranslations('sections');
 
   return (
-    <Section id='principles' n='04' label={t('principles')}>
-      <div className='grid gap-x-12 gap-y-10 md:grid-cols-2'>
+    <Section id='principles' n='03' label={t('principles')}>
+      <div className='grid gap-px border border-line bg-line sm:grid-cols-2'>
         {principles.map((p, i) => (
-          <Reveal key={p.title.en} delay={i * 40}>
-            <h3 className='display text-2xl'>{p.title[locale]}</h3>
+          <Reveal key={p.n} delay={i * 40} className='bg-paper p-8'>
+            <span className='font-mono text-xs text-ink-3'>{p.n}</span>
+            <h3 className='display mt-4 text-2xl'>{p.title[locale]}</h3>
             <p className='mt-3 text-ink-2'>{p.body[locale]}</p>
           </Reveal>
         ))}

@@ -25,10 +25,10 @@ export const work: WorkCase[] = [
   streetPaint,
 ];
 
-export const featured = cdcManager;
+/** Quatro cases principais; o primeiro é o case de destaque (grande). */
 export const selectedWork = work.filter(w => w.selected);
-export const moreWork = work.filter(
-  w => !w.selected && w.slug !== featured.slug,
-);
+export const featured = selectedWork[0];
+/** Os restantes entram em "Mais trabalho" — lista compacta, todos com página. */
+export const moreWork = work.filter(w => !w.selected);
 
 export const getCase = (slug: string) => work.find(w => w.slug === slug);

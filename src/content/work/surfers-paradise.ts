@@ -4,6 +4,18 @@ import type { WorkCase } from '../types';
 export const surfersParadise: WorkCase = {
   slug: 'surfers-paradise',
   title: 'Surfers Paradise',
+  headline: {
+    pt: 'Construir uma operação de comércio completa, não apenas uma loja online.',
+    en: 'Building a complete commerce operation, not just an online store.',
+  },
+  category: {
+    pt: 'E-commerce e operação de loja',
+    en: 'E-commerce and store operations',
+  },
+  tags: {
+    pt: ['E-commerce', 'Pagamentos', 'Logística'],
+    en: ['E-commerce', 'Payments', 'Logistics'],
+  },
   tagline: {
     pt: 'E-commerce completo para uma loja de surf com 20 anos de mercado no Brasil: catálogo, checkout com PIX, boleto e cartão, logística e painel de gestão.',
     en: 'Complete e-commerce for a surf shop with 20 years in the Brazilian market: catalog, checkout with PIX, boleto and card, logistics and admin panel.',
@@ -25,6 +37,29 @@ export const surfersParadise: WorkCase = {
       en: 'Surfers Paradise homepage',
     },
   },
+  metrics: [
+    {
+      value: '3',
+      label: {
+        pt: 'meios de pagamento: PIX, boleto e cartão parcelado',
+        en: 'payment methods: PIX, boleto and installment cards',
+      },
+    },
+    {
+      value: '17',
+      label: {
+        pt: 'modelos de dados, ~60 rotas de API',
+        en: 'data models, ~60 API routes',
+      },
+    },
+    {
+      value: '9',
+      label: {
+        pt: 'scopes Melhor Envio: cotação, etiquetas, tracking',
+        en: 'Melhor Envio scopes: quotes, labels, tracking',
+      },
+    },
+  ],
   context: {
     pt: [
       'Uma loja física de surf com duas décadas de história queria vender online com a mesma profundidade de catálogo das grandes lojas brasileiras do setor: pranchas, wetsuits, quilhas, acessórios, dezenas de marcas.',
@@ -48,6 +83,20 @@ export const surfersParadise: WorkCase = {
   role: {
     pt: 'Único developer: arquitetura, modelo de dados, integrações de pagamento e logística, painel de administração, SEO e catalogação inicial com a cliente.',
     en: 'Sole developer: architecture, data model, payment and logistics integrations, admin panel, SEO and initial cataloging with the client.',
+  },
+  constraints: {
+    pt: [
+      'Catálogo profundo com variantes reais (tamanho, cor) que têm SKU, stock, preço e fotos próprios.',
+      'Mercado brasileiro: PIX, boleto, parcelamento, frete por CEP com várias transportadoras, nota fiscal.',
+      'Fraude: uma loja nova é alvo imediato de cartões testados e pedidos falsos.',
+      'A equipa da loja tinha de operar o painel sem apoio técnico.',
+    ],
+    en: [
+      'Deep catalog with real variants (size, colour) that have their own SKU, stock, price and photos.',
+      'Brazilian market: PIX, boleto, installments, shipping by postal code across several carriers, fiscal invoices.',
+      'Fraud: a new store is an immediate target for card testing and fake orders.',
+      'The shop team had to operate the admin panel without technical support.',
+    ],
   },
   solution: {
     pt: [
@@ -109,6 +158,16 @@ export const surfersParadise: WorkCase = {
     en: [
       'Store in production with catalog, payments, shipping and fiscal invoices working end to end, and a panel the shop team operates without technical support.',
       'The architecture became the base for two subsequent projects for other brands in the sector.',
+    ],
+  },
+  learned: {
+    pt: [
+      'A abstração de pagamentos pagou-se sozinha na migração de Pagar.me para Mercado Pago. Numa próxima loja faria o mesmo para o frete desde o primeiro dia.',
+      'Variantes como produtos independentes foi a decisão certa para quem embala; para quem cadastra, precisa de mais automação no painel — clonar família, edição em massa.',
+    ],
+    en: [
+      'The payments abstraction paid for itself during the Pagar.me → Mercado Pago migration. In the next store I would do the same for shipping from day one.',
+      'Variants as independent products was right for the person packing; for the person cataloguing, it needs more automation in the admin — clone family, bulk edit.',
     ],
   },
   stack: [

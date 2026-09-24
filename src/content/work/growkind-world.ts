@@ -4,6 +4,18 @@ import type { WorkCase } from '../types';
 export const growkindWorld: WorkCase = {
   slug: 'growkind-world',
   title: 'GrowKind World',
+  headline: {
+    pt: 'Publicar um método educativo como produto digital pago, em dois idiomas.',
+    en: 'Publishing an educational method as a paid digital product, in two languages.',
+  },
+  category: {
+    pt: 'Plataforma editorial e de cursos',
+    en: 'Publishing and courses platform',
+  },
+  tags: {
+    pt: ['Produto', 'Conteúdo pago', 'i18n'],
+    en: ['Product', 'Paid content', 'i18n'],
+  },
   tagline: {
     pt: 'Plataforma educativa e editorial dedicada à infância neurodivergente: livro digital com paywall, cursos por módulo, loja e i18n completo.',
     en: 'Educational and publishing platform for neurodivergent childhood: digital book with paywall, module-based courses, shop and full i18n.',
@@ -25,6 +37,22 @@ export const growkindWorld: WorkCase = {
     },
     alt: { pt: 'Leitor do livro GrowKind', en: 'GrowKind book reader' },
   },
+  metrics: [
+    {
+      value: '30',
+      label: {
+        pt: 'capítulos no leitor com paywall',
+        en: 'chapters in the reader with paywall',
+      },
+    },
+    {
+      value: '433+',
+      label: {
+        pt: 'chaves de tradução PT/EN',
+        en: 'PT/EN translation keys',
+      },
+    },
+  ],
   context: {
     pt: [
       'Um autor e educador queria publicar o seu método (RDF) e um livro de 30 capítulos como produto digital, com cursos separados para famílias e para profissionais, em português e inglês desde o primeiro dia.',
@@ -46,6 +74,18 @@ export const growkindWorld: WorkCase = {
   role: {
     pt: 'Único developer: arquitetura, leitor, paywall, integração Stripe, entrega protegida de conteúdo, i18n e SEO.',
     en: 'Sole developer: architecture, reader, paywall, Stripe integration, protected content delivery, i18n and SEO.',
+  },
+  constraints: {
+    pt: [
+      'Conteúdo pago realmente protegido: nenhum PDF acessível por URL público.',
+      'Duas cópias editoriais completas, não etiquetas traduzidas.',
+      'Leitor agradável num telemóvel, à noite, para pais cansados.',
+    ],
+    en: [
+      'Paid content genuinely protected: no PDF reachable by public URL.',
+      'Two complete editorial copies, not translated labels.',
+      'A reader that is pleasant on a phone, at night, for tired parents.',
+    ],
   },
   solution: {
     pt: [
@@ -86,6 +126,14 @@ export const growkindWorld: WorkCase = {
   result: {
     pt: ['Plataforma em produção, bilingue, com vendas reais via Stripe.'],
     en: ['Platform in production, bilingual, with real sales through Stripe.'],
+  },
+  learned: {
+    pt: [
+      'Servir ficheiros privados por rota autenticada foi simples e robusto; a parte cara foi manter as duas cópias editoriais sincronizadas — numa próxima versão o conteúdo viveria num CMS com fluxo de tradução.',
+    ],
+    en: [
+      'Serving private files through an authenticated route was simple and robust; the expensive part was keeping the two editorial copies in sync — next time the content would live in a CMS with a translation workflow.',
+    ],
   },
   stack: [
     'Next.js 15',

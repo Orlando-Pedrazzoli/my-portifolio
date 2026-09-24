@@ -4,6 +4,18 @@ import type { WorkCase } from '../types';
 export const cdcManager: WorkCase = {
   slug: 'cdc-manager',
   title: 'CDC Manager',
+  headline: {
+    pt: 'Substituir uma operação clínica fragmentada por uma única plataforma integrada.',
+    en: 'Replacing a fragmented clinic operation with one integrated platform.',
+  },
+  category: {
+    pt: 'Plataforma de operações dentárias',
+    en: 'Dental operations platform',
+  },
+  tags: {
+    pt: ['Produto', 'Full stack', 'SaaS'],
+    en: ['Product', 'Full stack', 'SaaS'],
+  },
   tagline: {
     pt: 'Sistema de gestão clínica para clínicas dentárias multi-unidade, construído para substituir integralmente um software legado.',
     en: 'Clinic management system for multi-site dental clinics, built to fully replace a legacy system.',
@@ -18,7 +30,7 @@ export const cdcManager: WorkCase = {
     en: 'Going live at the clinic; being prepared as a product for other clinics.',
   },
   repoUrl: 'https://github.com/Orlando-Pedrazzoli/cdc-manager',
-  selected: false,
+  selected: true,
   cover: {
     src: '/work/cdc-manager/dashboard-admin.webp',
     caption: {
@@ -30,6 +42,29 @@ export const cdcManager: WorkCase = {
       en: 'CDC Manager admin dashboard',
     },
   },
+  metrics: [
+    {
+      value: '34 / 37',
+      label: {
+        pt: 'requisitos de stakeholders entregues',
+        en: 'stakeholder requirements delivered',
+      },
+    },
+    {
+      value: '749',
+      label: {
+        pt: 'atos migrados do sistema legado',
+        en: 'records migrated from the legacy system',
+      },
+    },
+    {
+      value: '25+',
+      label: {
+        pt: 'modelos de dados, 3 áreas, 2 clínicas',
+        en: 'data models, 3 areas, 2 clinics',
+      },
+    },
+  ],
   context: {
     pt: [
       'O Centro Dentário Colombo opera duas clínicas: uma no Centro Comercial Colombo com cinco gabinetes e médicos rotativos, outra na Buraca com um gabinete e um único médico. A operação corria num software de gestão legado (Dentoral) que a equipa queria substituir por completo.',
@@ -55,6 +90,22 @@ export const cdcManager: WorkCase = {
   role: {
     pt: 'Único developer e responsável pelo produto: levantamento de requisitos com os sócios, modelação do domínio, arquitetura, implementação, migração de dados do sistema legado, documentação e apresentações de aprovação.',
     en: 'Sole developer and product owner: requirements with the partners, domain modelling, architecture, implementation, data migration from the legacy system, documentation and approval presentations.',
+  },
+  constraints: {
+    pt: [
+      'Dados legados: 749 atos e 22 categorias importados de um sistema que continuava a ser usado durante a migração.',
+      'Exatidão financeira: comissões de médicos e faturação certificada — um cêntimo errado é um problema contabilístico.',
+      'Marcações concorrentes em cinco gabinetes com médicos rotativos.',
+      'Três perfis de utilizador com permissões distintas e dados clínicos sob RGPD.',
+      'Utilizadores reais em produção: a operação não podia parar entre fases.',
+    ],
+    en: [
+      'Legacy data: 749 acts and 22 categories imported from a system still in use during the migration.',
+      'Financial accuracy: doctor commissions and certified invoicing — one wrong cent is an accounting problem.',
+      'Concurrent bookings across five surgeries with rotating doctors.',
+      'Three user roles with distinct permissions and clinical data under GDPR.',
+      'Real users in production: the operation could not stop between phases.',
+    ],
   },
   solution: {
     pt: [
@@ -166,6 +217,16 @@ export const cdcManager: WorkCase = {
       '34 of 37 stakeholder requirements delivered across eight phased deliveries, with a development report and an approval presentation to the partners.',
       'System ready to run both clinics and prepared, with dynamic branding and per-database isolation, to be installed at other dental clinics.',
       'What this project shows: the ability to take a product from stakeholder discovery to a system in production, with architecture decisions designed for financial and clinical data.',
+    ],
+  },
+  learned: {
+    pt: [
+      'Numa segunda iteração começaria pelo modelo de permissões e pelo trilho de auditoria antes do motor financeiro: foram os pontos que mais forçaram refactoring quando chegaram os requisitos dos sócios.',
+      'A decisão de uma base de dados por clínica foi certa para vender a segunda instalação depressa, mas a partir de várias clínicas pagantes um organizationId por coleção passa a compensar — o código já está preparado para essa migração.',
+    ],
+    en: [
+      "In a second iteration I would start with the permissions model and the audit trail before the financial engine: those were the areas that forced the most refactoring once the partners' requirements arrived.",
+      'One database per clinic was the right call to sell a second installation fast, but past a handful of paying clinics an organizationId per collection starts paying off — the code is already prepared for that migration.',
     ],
   },
   stack: [

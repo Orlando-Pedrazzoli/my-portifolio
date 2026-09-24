@@ -4,6 +4,18 @@ import type { WorkCase } from '../types';
 export const ferriSchoedl: WorkCase = {
   slug: 'ferri-schoedl',
   title: 'Ferri Schoedl Advocacia',
+  headline: {
+    pt: 'Um escritório de advocacia que é também editora e escola.',
+    en: 'A law firm that is also a publisher and a school.',
+  },
+  category: {
+    pt: 'Site institucional com loja e cursos',
+    en: 'Institutional site with shop and courses',
+  },
+  tags: {
+    pt: ['E-commerce', 'Conteúdo pago', 'Stripe'],
+    en: ['E-commerce', 'Paid content', 'Stripe'],
+  },
   tagline: {
     pt: 'Site institucional de um escritório de advocacia em São Paulo com loja de livros jurídicos, cursos preparatórios e publicações — pagamentos Stripe e leitura protegida.',
     en: 'Institutional site for a São Paulo law firm with a legal bookstore, preparatory courses and publications — Stripe payments and protected reading.',
@@ -19,7 +31,7 @@ export const ferriSchoedl: WorkCase = {
   },
   liveUrl: 'https://ferrischoedl.adv.br/',
   repoUrl: 'https://github.com/Orlando-Pedrazzoli/ferri-schoedl',
-  selected: true,
+  selected: false,
   cover: {
     src: '/work/ferri-schoedl/home.webp',
     caption: {
@@ -28,6 +40,7 @@ export const ferriSchoedl: WorkCase = {
     },
     alt: { pt: 'Homepage Ferri Schoedl', en: 'Ferri Schoedl homepage' },
   },
+  metrics: [],
   context: {
     pt: [
       'Um escritório com seis áreas de atuação e um sócio autor de 10 livros e 23 artigos queria um site que fosse ao mesmo tempo cartão de visita, editora e escola: vender livros em papel e digital e cursos com materiais por aula.',
@@ -49,6 +62,16 @@ export const ferriSchoedl: WorkCase = {
   role: {
     pt: 'Único developer, incluindo DNS, domínio e configuração de email transacional num subdomínio isolado do alojamento antigo do cliente.',
     en: "Sole developer, including DNS, domain and transactional email setup on a subdomain isolated from the client's legacy hosting.",
+  },
+  constraints: {
+    pt: [
+      'Comprar sem criar conta; ler depois de comprar com conta. O fluxo tinha de converter sem fricção.',
+      'Email transacional num subdomínio isolado do alojamento antigo do cliente.',
+    ],
+    en: [
+      'Buy without an account; read after buying with one. The flow had to convert without friction.',
+      "Transactional email on a subdomain isolated from the client's legacy hosting.",
+    ],
   },
   solution: {
     pt: [

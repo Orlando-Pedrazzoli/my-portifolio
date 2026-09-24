@@ -1,4 +1,6 @@
 // src/app/[locale]/about/page.tsx
+// /about = percurso completo + formação + stack completa + CV.
+// É a página para quem está a recrutar; a home é para quem está a construir.
 import fs from 'node:fs';
 import path from 'node:path';
 import type { Metadata } from 'next';
@@ -7,8 +9,8 @@ import { imageSize } from 'image-size';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import { trajectory } from '@/content/home';
-import { site } from '@/lib/site';
+import { trajectory, fullStack } from '@/content/home';
+import { site, absoluteUrl, languageAlternates } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
 
 export async function generateMetadata({
@@ -17,8 +19,17 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const l = locale as Locale;
   const t = await getTranslations({ locale, namespace: 'meta' });
-  return { title: t('aboutTitle') };
+  return {
+    title: t('aboutTitle'),
+    description: intro[l][0],
+    alternates: {
+      canonical: absoluteUrl(l, '/about'),
+      languages: languageAlternates('/about'),
+    },
+    openGraph: { type: 'profile', url: absoluteUrl(l, '/about') },
+  };
 }
 
 const intro = {
@@ -70,11 +81,24 @@ export default async function AboutPage({
   const t = await getTranslations('common');
   const photo = photoSize();
 
+  // ProfilePage (Google): página "sobre" com a Person como entidade principal.
+  const profilePage = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    url: absoluteUrl(l, '/about'),
+    inLanguage: l === 'pt' ? 'pt-PT' : 'en',
+    mainEntity: { '@id': `${site.url}/#person` },
+  };
+
   return (
     <article
       className='wrap'
       style={{ paddingBlock: 'clamp(3rem, 8vw, 6rem)' }}
     >
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePage) }}
+      />
       <div className='grid gap-12 md:grid-cols-12'>
         <div className='md:col-span-4'>
           <div className='figure'>
@@ -87,23 +111,32 @@ export default async function AboutPage({
               sizes='(min-width: 768px) 30vw, 100vw'
             />
           </div>
-          <a href={site.cv} download className='btn mt-6'>
+          <a
+            href={site.cv}
+            target='_blank'
+            rel='noopener noreferrer'
+            className='btn btn-solid mt-6'
+          >
             {t('downloadCv')}
           </a>
         </div>
         <div className='md:col-span-8'>
-          <h1 className='display text-[clamp(2.5rem,6vw,4.5rem)]'>
+          <p className='eyebrow'>Orlando Pedrazzoli — Full Stack Developer</p>
+          <h1 className='display t-h1 mt-4'>
             {l === 'pt'
-              ? 'Vinte anos a construir negócios. Agora, software.'
-              : 'Twenty years building businesses. Now, software.'}
+              ? 'Quinze anos a construir negócios. Agora, software.'
+              : 'Fifteen years building businesses. Now, software.'}
           </h1>
-          <div className='prose-measure mt-8 space-y-5 text-lg text-ink-2'>
+          <div className='prose-measure t-lead mt-8 space-y-5 text-ink-2'>
             {intro[l].map((p, i) => (
               <p key={i}>{p}</p>
             ))}
           </div>
 
-          <ol className='mt-16 divide-y divide-line border-t border-line'>
+          <h2 className='eyebrow mt-16'>
+            {l === 'pt' ? 'Percurso' : 'Background'}
+          </h2>
+          <ol className='mt-4 divide-y divide-line border-t border-line'>
             {trajectory.map(item => (
               <li
                 key={item.period}
@@ -113,7 +146,7 @@ export default async function AboutPage({
                   {item.period}
                 </span>
                 <div className='sm:col-span-9'>
-                  <h2 className='display text-2xl'>{item.title[l]}</h2>
+                  <h3 className='display text-2xl'>{item.title[l]}</h3>
                   <p className='mt-3 text-ink-2'>{item.body[l]}</p>
                   {item.link && (
                     <Link
@@ -136,6 +169,18 @@ export default async function AboutPage({
               <li key={e}>{e}</li>
             ))}
           </ul>
+
+          <h2 id='stack' className='eyebrow mt-16 scroll-mt-24'>
+            {l === 'pt' ? 'Stack técnica completa' : 'Full technical stack'}
+          </h2>
+          <dl className='mt-4 grid gap-x-10 gap-y-8 sm:grid-cols-2'>
+            {fullStack.map(g => (
+              <div key={g.title.en}>
+                <dt className='eyebrow mb-2'>{g.title[l]}</dt>
+                <dd className='text-ink-2'>{g.items.join(' · ')}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </article>

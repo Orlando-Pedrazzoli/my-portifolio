@@ -1,4 +1,7 @@
 // src/components/work/CaseArticle.tsx
+// Case study como narrativa: contexto → problema → papel → restrições →
+// solução (screenshots que explicam) → o que foi construído → decisões →
+// arquitetura → resultado → o que mudaria → stack.
 import { getLocale, getTranslations } from 'next-intl/server';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
@@ -15,7 +18,7 @@ function Block({
   children: React.ReactNode;
 }) {
   return (
-    <section className='rule grid gap-4 py-10 md:grid-cols-12 md:gap-8'>
+    <section className='rule grid gap-4 py-12 md:grid-cols-12 md:gap-8'>
       <h2 className='eyebrow md:col-span-3 md:sticky md:top-24 md:self-start'>
         {label}
       </h2>
@@ -40,25 +43,32 @@ export default async function CaseArticle({ c }: { c: WorkCase }) {
         <ArrowLeft size={12} /> {t('backHome')}
       </Link>
 
+      {/* Hero do case: nome, frase de impacto, meta, métricas */}
       <header className='mt-8'>
         <p className='eyebrow'>
-          {c.client[locale]} · {c.year}
+          {c.title} · {c.category[locale]} · {c.year}
         </p>
-        <h1 className='display mt-4 text-[clamp(2.5rem,6vw,4.5rem)]'>
-          {c.title}
-        </h1>
-        <p className='prose-measure mt-6 text-lg text-ink-2 md:text-xl'>
+        <h1 className='display t-h1 mt-4 max-w-[20ch]'>{c.headline[locale]}</h1>
+        <p className='prose-measure t-lead mt-6 text-ink-2'>
           {c.tagline[locale]}
         </p>
 
+        <ul className='mt-6 flex flex-wrap gap-2' aria-label='Tags'>
+          {c.tags[locale].map(tag => (
+            <li key={tag} className='tag'>
+              {tag}
+            </li>
+          ))}
+        </ul>
+
         <dl className='mt-8 grid gap-6 border-t border-line pt-6 sm:grid-cols-3'>
+          <div>
+            <dt className='eyebrow'>{t('client')}</dt>
+            <dd className='mt-1 text-sm'>{c.client[locale]}</dd>
+          </div>
           <div>
             <dt className='eyebrow'>{t('status')}</dt>
             <dd className='mt-1 text-sm'>{c.status[locale]}</dd>
-          </div>
-          <div>
-            <dt className='eyebrow'>{t('role')}</dt>
-            <dd className='mt-1 text-sm'>{c.role[locale]}</dd>
           </div>
           <div className='flex flex-wrap gap-4 self-start sm:justify-end'>
             {c.liveUrl && (
@@ -83,6 +93,17 @@ export default async function CaseArticle({ c }: { c: WorkCase }) {
             )}
           </div>
         </dl>
+
+        {c.metrics.length > 0 && (
+          <dl className='mt-8 grid grid-cols-2 gap-6 border-t border-line pt-6 sm:grid-cols-3'>
+            {c.metrics.map(m => (
+              <div key={m.value}>
+                <dt className='display text-3xl md:text-4xl'>{m.value}</dt>
+                <dd className='mt-1 text-sm text-ink-3'>{m.label[locale]}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
       </header>
 
       {c.cover && (
@@ -90,7 +111,7 @@ export default async function CaseArticle({ c }: { c: WorkCase }) {
           <Figure
             figure={c.cover}
             priority
-            sizes='(min-width: 1024px) 76rem, 100vw'
+            sizes='(min-width: 1280px) 80rem, 100vw'
           />
         </Reveal>
       )}
@@ -101,19 +122,38 @@ export default async function CaseArticle({ c }: { c: WorkCase }) {
             <p key={i}>{p}</p>
           ))}
         </Block>
+
         <Block label={t('problem')}>
           {c.problem[locale].map((p, i) => (
             <p key={i}>{p}</p>
           ))}
         </Block>
+
+        <Block label={t('role')}>
+          <p className='text-ink'>{c.role[locale]}</p>
+        </Block>
+
+        {c.constraints && (
+          <Block label={t('constraints')}>
+            <ul className='grid gap-3 sm:grid-cols-2'>
+              {c.constraints[locale].map((item, i) => (
+                <li key={i} className='border-l-2 border-line-strong pl-4'>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </Block>
+        )}
+
         <Block label={t('solution')}>
           {c.solution[locale].map((p, i) => (
             <p key={i}>{p}</p>
           ))}
         </Block>
 
+        {/* Screenshots grandes — cada legenda explica uma decisão, não só o ecrã */}
         {c.figures.length > 0 && (
-          <div className='rule grid gap-8 py-10 md:grid-cols-2'>
+          <div className='rule grid gap-10 py-12 md:grid-cols-2'>
             {c.figures.map((f, i) => (
               <Reveal
                 key={f.src ?? i}
@@ -121,7 +161,7 @@ export default async function CaseArticle({ c }: { c: WorkCase }) {
                   i === 0 && c.figures.length % 2 === 1 ? 'md:col-span-2' : ''
                 }
               >
-                <Figure figure={f} sizes='(min-width: 768px) 38rem, 100vw' />
+                <Figure figure={f} sizes='(min-width: 768px) 40rem, 100vw' />
               </Reveal>
             ))}
           </div>
@@ -137,13 +177,13 @@ export default async function CaseArticle({ c }: { c: WorkCase }) {
 
         {c.decisions.length > 0 && (
           <Block label={t('decisions')}>
-            <div className='grid gap-8 sm:grid-cols-2'>
+            <div className='grid gap-px border border-line bg-line sm:grid-cols-2'>
               {c.decisions.map(d => (
-                <div key={d.title.en}>
-                  <h3 className='display text-2xl text-ink'>
+                <div key={d.title.en} className='bg-paper p-6'>
+                  <h3 className='display text-xl text-ink'>
                     {d.title[locale]}
                   </h3>
-                  <p className='mt-2'>{d.body[locale]}</p>
+                  <p className='mt-3 text-sm'>{d.body[locale]}</p>
                 </div>
               ))}
             </div>
@@ -165,6 +205,14 @@ export default async function CaseArticle({ c }: { c: WorkCase }) {
             </p>
           ))}
         </Block>
+
+        {c.learned && (
+          <Block label={t('learned')}>
+            {c.learned[locale].map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </Block>
+        )}
 
         <Block label={t('stack')}>
           <p className='font-mono text-sm'>{c.stack.join(' · ')}</p>

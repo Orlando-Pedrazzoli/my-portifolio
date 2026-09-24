@@ -12,7 +12,7 @@ export default async function Capabilities() {
   const t = await getTranslations('sections');
 
   return (
-    <Section id='capabilities' n='01' label={t('capabilities')}>
+    <Section id='services' n='02' label={t('services')}>
       <ol className='divide-y divide-line'>
         {capabilities.map((c, i) => (
           <Reveal
@@ -24,9 +24,7 @@ export default async function Capabilities() {
             <span className='font-mono text-sm text-ink-3 md:col-span-1'>
               {c.n}
             </span>
-            <h3 className='display text-2xl md:col-span-4 md:text-3xl'>
-              {c.title[locale]}
-            </h3>
+            <h3 className='display t-h3 md:col-span-4'>{c.title[locale]}</h3>
             <div className='md:col-span-7'>
               <p className='text-ink-2'>{c.body[locale]}</p>
               <Link
