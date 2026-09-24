@@ -7,18 +7,21 @@ import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import Figure from '@/components/ui/Figure';
 import Reveal from '@/components/ui/Reveal';
+import CaseNav from './CaseNav';
 import type { WorkCase } from '@/content/types';
 import type { Locale } from '@/i18n/routing';
 
 function Block({
+  id,
   label,
   children,
 }: {
+  id: string;
   label: string;
   children: React.ReactNode;
 }) {
   return (
-    <section className='rule grid gap-4 py-12 md:grid-cols-12 md:gap-8'>
+    <section id={id} className='rule grid gap-4 py-12 md:grid-cols-12 md:gap-8'>
       <h2 className='eyebrow md:col-span-3 md:sticky md:top-24 md:self-start'>
         {label}
       </h2>
@@ -30,6 +33,18 @@ function Block({
 export default async function CaseArticle({ c }: { c: WorkCase }) {
   const locale = (await getLocale()) as Locale;
   const t = await getTranslations('common');
+
+  /* Índice de navegação: 5 pontos, não todas as secções. Arquitetura entra
+     quando existe; senão, as decisões ocupam esse lugar. */
+  const nav = [
+    { id: 'context', label: t('context') },
+    { id: 'problem', label: t('problem') },
+    { id: 'solution', label: t('solution') },
+    c.architecture
+      ? { id: 'architecture', label: t('architecture') }
+      : { id: 'decisions', label: t('decisions') },
+    { id: 'result', label: t('result') },
+  ];
 
   return (
     <article
@@ -116,25 +131,27 @@ export default async function CaseArticle({ c }: { c: WorkCase }) {
         </Reveal>
       )}
 
+      <CaseNav items={nav} />
+
       <div className='mt-12'>
-        <Block label={t('context')}>
+        <Block id='context' label={t('context')}>
           {c.context[locale].map((p, i) => (
             <p key={i}>{p}</p>
           ))}
         </Block>
 
-        <Block label={t('problem')}>
+        <Block id='problem' label={t('problem')}>
           {c.problem[locale].map((p, i) => (
             <p key={i}>{p}</p>
           ))}
         </Block>
 
-        <Block label={t('role')}>
+        <Block id='role' label={t('role')}>
           <p className='text-ink'>{c.role[locale]}</p>
         </Block>
 
         {c.constraints && (
-          <Block label={t('constraints')}>
+          <Block id='constraints' label={t('constraints')}>
             <ul className='grid gap-3 sm:grid-cols-2'>
               {c.constraints[locale].map((item, i) => (
                 <li key={i} className='border-l-2 border-line-strong pl-4'>
@@ -145,7 +162,7 @@ export default async function CaseArticle({ c }: { c: WorkCase }) {
           </Block>
         )}
 
-        <Block label={t('solution')}>
+        <Block id='solution' label={t('solution')}>
           {c.solution[locale].map((p, i) => (
             <p key={i}>{p}</p>
           ))}
@@ -167,7 +184,7 @@ export default async function CaseArticle({ c }: { c: WorkCase }) {
           </div>
         )}
 
-        <Block label={t('features')}>
+        <Block id='features' label={t('features')}>
           <ul className='list-disc space-y-2 pl-5'>
             {c.features[locale].map((f, i) => (
               <li key={i}>{f}</li>
@@ -176,7 +193,7 @@ export default async function CaseArticle({ c }: { c: WorkCase }) {
         </Block>
 
         {c.decisions.length > 0 && (
-          <Block label={t('decisions')}>
+          <Block id='decisions' label={t('decisions')}>
             <div className='grid gap-px border border-line bg-line sm:grid-cols-2'>
               {c.decisions.map(d => (
                 <div key={d.title.en} className='bg-paper p-6'>
@@ -191,14 +208,14 @@ export default async function CaseArticle({ c }: { c: WorkCase }) {
         )}
 
         {c.architecture && (
-          <Block label={t('architecture')}>
+          <Block id='architecture' label={t('architecture')}>
             {c.architecture[locale].map((p, i) => (
               <p key={i}>{p}</p>
             ))}
           </Block>
         )}
 
-        <Block label={t('result')}>
+        <Block id='result' label={t('result')}>
           {c.result[locale].map((p, i) => (
             <p key={i} className='text-ink'>
               {p}
@@ -207,14 +224,14 @@ export default async function CaseArticle({ c }: { c: WorkCase }) {
         </Block>
 
         {c.learned && (
-          <Block label={t('learned')}>
+          <Block id='learned' label={t('learned')}>
             {c.learned[locale].map((p, i) => (
               <p key={i}>{p}</p>
             ))}
           </Block>
         )}
 
-        <Block label={t('stack')}>
+        <Block id='stack' label={t('stack')}>
           <p className='font-mono text-sm'>{c.stack.join(' · ')}</p>
         </Block>
       </div>

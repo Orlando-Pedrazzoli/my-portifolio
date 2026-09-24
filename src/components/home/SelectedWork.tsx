@@ -98,7 +98,7 @@ export default async function SelectedWork() {
               {f.title} · {f.category[locale]}
             </p>
             <h3 className='display t-h2 mt-4 max-w-[20ch]'>
-              <Link href={`/work/${f.slug}`} className='link'>
+              <Link href={`/work/${f.slug}`} className='title-link'>
                 {f.headline[locale]}
               </Link>
             </h3>
@@ -170,7 +170,7 @@ export default async function SelectedWork() {
                   {c.title} · {c.category[locale]}
                 </p>
                 <h3 className='display t-h3 mt-4'>
-                  <Link href={`/work/${c.slug}`} className='link'>
+                  <Link href={`/work/${c.slug}`} className='title-link'>
                     {c.headline[locale]}
                   </Link>
                 </h3>

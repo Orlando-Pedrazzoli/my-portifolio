@@ -14,7 +14,7 @@ export default async function Hero() {
     <section
       className='wrap'
       style={{
-        paddingBlock: 'clamp(3.5rem, 10vw, 8rem) clamp(3rem, 7vw, 5rem)',
+        paddingBlock: 'clamp(3rem, 6vw, 5.5rem) clamp(3rem, 7vw, 5rem)',
       }}
     >
       <div className='grid gap-12 lg:grid-cols-12 lg:gap-8'>

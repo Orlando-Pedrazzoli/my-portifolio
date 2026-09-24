@@ -44,10 +44,11 @@
     "status": "Estado",
     "client": "Cliente",
     "year": "Ano",
-    "screenshotPending": "screenshot em breve"
+    "screenshotPending": "screenshot em breve",
+    "nextProject": "Próximo projeto"
   },
   "contact": {
-    "title": "Tens um problema de negócio para resolver?",
+    "title": "Tens algo que valha a pena construir?",
     "lead": "Conta-me o que estás a construir, o que não está a funcionar ou o que queres automatizar.",
     "responds": "Normalmente respondo em 24 horas",
     "emailDirect": "Ou escreve-me diretamente",

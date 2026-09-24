@@ -6,6 +6,7 @@ import { routing, type Locale } from '@/i18n/routing';
 import { work, getCase } from '@/content/work';
 import { site, absoluteUrl, languageAlternates } from '@/lib/site';
 import CaseArticle from '@/components/work/CaseArticle';
+import NextProject from '@/components/work/NextProject';
 
 type Params = Promise<{ locale: string; slug: string }>;
 
@@ -48,6 +49,8 @@ export default async function WorkPage({ params }: { params: Params }) {
   const c = getCase(slug);
   if (!c) notFound();
   const l = locale as Locale;
+  // Próximo projeto na ordem de apresentação; o último volta ao primeiro.
+  const next = work[(work.indexOf(c) + 1) % work.length];
 
   // JSON-LD do case: breadcrumb + a peça como CreativeWork do autor.
   const breadcrumb = {
@@ -93,6 +96,7 @@ export default async function WorkPage({ params }: { params: Params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWork) }}
       />
       <CaseArticle c={c} />
+      {next.slug !== c.slug && <NextProject c={next} />}
     </>
   );
 }

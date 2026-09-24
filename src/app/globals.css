@@ -162,6 +162,17 @@ body {
   background-position: 100% 100%;
 }
 
+/* Link em título de display: sem sublinhado; só a cor reage ao hover.
+   Para headlines grandes, onde o sublinhado do .link pesa demais. */
+.title-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.title-link:hover {
+  color: var(--accent);
+}
+
 /* Reveal ao entrar no viewport (JS acrescenta .is-in) */
 .reveal {
   opacity: 0;
@@ -190,7 +201,14 @@ body {
   .path,
   .path-arrow,
   .index-link,
-  .disclosure-icon {
+  .disclosure-icon,
+  .case-nav-link,
+  .case-nav-label,
+  .next-project,
+  .next-project-arrow,
+  .cap-title,
+  .cap-arrow,
+  .title-link {
     transition: none;
   }
 }
@@ -503,6 +521,181 @@ body {
 }
 .timeline-item:last-child .timeline-dot {
   background: var(--ink);
+}
+
+/* Navegação do case study — desktop: índice fixo à direita (xl+) */
+.case-nav {
+  display: none;
+}
+@media (min-width: 1280px) {
+  .case-nav {
+    display: block;
+    position: fixed;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 30;
+  }
+}
+.case-nav ol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.case-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  padding: 0.25rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  transition: color 0.2s;
+}
+.case-nav-label {
+  opacity: 0;
+  transform: translateX(4px);
+  transition:
+    opacity 0.2s var(--ease-out-quart),
+    transform 0.2s var(--ease-out-quart);
+}
+.case-nav:hover .case-nav-label,
+.case-nav-link:focus-visible .case-nav-label,
+.case-nav-link[aria-current] .case-nav-label {
+  opacity: 1;
+  transform: none;
+}
+.case-nav-n {
+  min-width: 1.5rem;
+  text-align: right;
+  border-bottom: 1px solid transparent;
+}
+.case-nav-link:hover,
+.case-nav-link[aria-current] {
+  color: var(--ink);
+}
+.case-nav-link[aria-current] .case-nav-n {
+  border-bottom-color: var(--ink);
+}
+
+/* Navegação do case study — mobile/tablet: barra sticky com progresso */
+.case-bar {
+  position: sticky;
+  top: var(--header-h);
+  z-index: 30;
+  margin-inline: calc(-1 * var(--gutter));
+  padding-block: 0.6rem;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+.case-bar-progress {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 1px;
+  width: 100%;
+  background: var(--ink);
+  transform-origin: left;
+  will-change: transform;
+}
+@media (min-width: 1280px) {
+  .case-bar {
+    display: none;
+  }
+}
+
+/* Próximo projeto — superfície inteira clicável, mesmo padrão dos Paths */
+.next-project {
+  display: block;
+  color: var(--ink);
+  transition: background-color 0.25s var(--ease-out-quart);
+}
+.next-project:hover {
+  background: var(--paper-2);
+}
+.next-project-title {
+  transition: color 0.2s;
+}
+.next-project:hover .next-project-title {
+  color: var(--accent);
+}
+.next-project-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.next-project-arrow {
+  transition: transform 0.25s var(--ease-out-quart);
+}
+.next-project:hover .next-project-arrow {
+  transform: translateX(6px);
+}
+
+/* Capacidades (O que construo): rows inteiras clicáveis */
+.cap {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+}
+@media (min-width: 768px) {
+  .cap {
+    grid-template-columns: 3rem minmax(0, 1fr) 3rem;
+    gap: 1.5rem;
+    padding: 2.5rem 0;
+  }
+}
+.cap-n {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--ink-3);
+  padding-top: 0.35rem;
+}
+.cap-title {
+  display: block;
+  transition: color 0.2s;
+}
+.cap:hover .cap-title {
+  color: var(--accent);
+}
+.cap-proof {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink);
+}
+.cap-side {
+  display: none;
+}
+@media (min-width: 768px) {
+  .cap-side {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 0.5rem;
+    color: var(--ink-3);
+  }
+}
+.cap-arrow {
+  transition: transform 0.25s var(--ease-out-quart);
+}
+.cap:hover .cap-arrow {
+  transform: translateX(6px);
+}
+.cap:hover .cap-side {
+  color: var(--ink);
 }
 
 /* Etiqueta (tags de trabalho) */

@@ -44,10 +44,11 @@
     "status": "Status",
     "client": "Client",
     "year": "Year",
-    "screenshotPending": "screenshot coming soon"
+    "screenshotPending": "screenshot coming soon",
+    "nextProject": "Next project"
   },
   "contact": {
-    "title": "Have a business problem to solve?",
+    "title": "Have something worth building?",
     "lead": "Tell me what you're building, what isn't working, or what you want to automate.",
     "responds": "Usually responds within 24 hours",
     "emailDirect": "Or email me directly",

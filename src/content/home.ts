@@ -365,6 +365,20 @@ export interface StackGroup {
   items: string[];
 }
 
+/* Home: uma linha só. O site já provou que sei programar; a lista completa
+   vive em /about#stack. */
+export const stackShort = [
+  'TypeScript',
+  'React',
+  'Next.js',
+  'Node.js',
+  'MongoDB',
+  'PostgreSQL',
+  'Stripe',
+  'Mercado Pago',
+  'Vercel',
+];
+
 export const stack: StackGroup[] = [
   {
     title: { pt: 'Core', en: 'Core' },

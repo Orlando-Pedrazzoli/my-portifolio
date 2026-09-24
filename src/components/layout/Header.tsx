@@ -8,6 +8,7 @@ import { site } from '@/lib/site';
 import ThemeToggle from './ThemeToggle';
 import LocaleSwitch from './LocaleSwitch';
 import MobileMenu from './MobileMenu';
+import BrandLink from './BrandLink';
 
 export default async function Header() {
   const t = await getTranslations('nav');
@@ -23,17 +24,13 @@ export default async function Header() {
       <div className='wrap flex flex-col md:h-16 md:flex-row md:items-center md:justify-between'>
         {/* Linha 1 (mobile) / esquerda (desktop): marca */}
         <div className='flex h-12 items-center border-b border-line md:h-auto md:border-0'>
-          <Link
-            href='/'
-            className='flex items-center gap-2.5 text-ink md:gap-3'
-            aria-label='Orlando Pedrazzoli — home'
-          >
+          <BrandLink className='flex items-center gap-2.5 text-ink md:gap-3'>
             {/* Marca "OP" como máscara: herda a cor da tinta em ambos os temas */}
             <span aria-hidden='true' className='logo-mark' />
             <span className='whitespace-nowrap text-sm font-medium tracking-tight'>
               Orlando Pedrazzoli
             </span>
-          </Link>
+          </BrandLink>
         </div>
 
         <nav
