@@ -18,5 +18,37 @@
   "/work/cdc-manager/portal-paciente.jpg": {
     "width": 1170,
     "height": 2240
+  },
+  "/work/chi-sublime/admin-agenda.jpg": {
+    "width": 1457,
+    "height": 892
+  },
+  "/work/chi-sublime/pos.jpg": {
+    "width": 1461,
+    "height": 897
+  },
+  "/work/chi-sublime/reservar.jpg": {
+    "width": 1452,
+    "height": 913
+  },
+  "/work/ferri-schoedl/home.jpg": {
+    "width": 1446,
+    "height": 901
+  },
+  "/work/growkind-world/leitor.jpg": {
+    "width": 1443,
+    "height": 886
+  },
+  "/work/surfers-paradise/admin-produto.jpg": {
+    "width": 1447,
+    "height": 915
+  },
+  "/work/surfers-paradise/home.jpg": {
+    "width": 1445,
+    "height": 901
+  },
+  "/work/surfers-paradise/produto.jpg": {
+    "width": 1447,
+    "height": 915
   }
 }
