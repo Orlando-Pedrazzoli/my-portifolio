@@ -29,6 +29,7 @@ export const growkindWorld: WorkCase = {
   liveUrl: 'https://growkindworld.com/',
   repoUrl: 'https://github.com/Orlando-Pedrazzoli/growkind-world',
   selected: true,
+  statusShort: { pt: 'Em produção', en: 'Production' },
   cover: {
     src: '/work/growkind-world/leitor.webp',
     caption: {

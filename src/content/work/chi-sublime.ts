@@ -29,6 +29,7 @@ export const chiSublime: WorkCase = {
   liveUrl: 'https://www.chisublime.pt/',
   repoUrl: 'https://github.com/Orlando-Pedrazzoli/chi-sublime',
   selected: true,
+  statusShort: { pt: 'Em produção', en: 'Production' },
   cover: {
     src: '/work/chi-sublime/reservar.webp',
     caption: {

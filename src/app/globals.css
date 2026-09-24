@@ -29,6 +29,13 @@
   --gutter: clamp(1.25rem, 4vw, 3rem);
   --section: clamp(4rem, 9vw, 7.5rem);
   --container: 80rem; /* 1280px */
+  /* Header: duas linhas no mobile (3rem + 2.75rem), uma no desktop (4rem). */
+  --header-h: 5.75rem;
+}
+@media (min-width: 768px) {
+  :root {
+    --header-h: 4rem;
+  }
 }
 
 html.dark {
@@ -67,7 +74,7 @@ html.dark {
 html {
   color-scheme: light;
   scroll-behavior: smooth;
-  scroll-padding-top: 4rem;
+  scroll-padding-top: var(--header-h);
   -webkit-text-size-adjust: 100%;
 }
 html.dark {
@@ -179,19 +186,43 @@ body {
   }
   .link,
   .figure img,
-  .card {
+  .card,
+  .path,
+  .path-arrow,
+  .index-link,
+  .disclosure-icon {
     transition: none;
   }
+}
+
+/* Painel do menu mobile: ocupa tudo abaixo do header, fundo opaco.
+   Em CSS próprio (não utilities) para não depender do scan do Tailwind. */
+.mobile-nav {
+  position: fixed;
+  top: var(--header-h);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 40;
+  background: var(--paper);
+  padding: 2.5rem var(--gutter) 2rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 /* Marca OP na navbar — máscara pintada com currentColor */
 .logo-mark {
   display: inline-block;
-  width: 2rem;
+  width: 1.75rem;
   aspect-ratio: 444 / 222;
   background: currentColor;
   -webkit-mask: url('/logo-mark.png') center / contain no-repeat;
   mask: url('/logo-mark.png') center / contain no-repeat;
+}
+@media (min-width: 768px) {
+  .logo-mark {
+    width: 2rem;
+  }
 }
 
 /* Screenshot frame */
@@ -228,6 +259,250 @@ body {
 }
 .card:hover .card-title {
   color: var(--accent);
+}
+
+/* Índice de capacidades (coluna direita do hero) */
+.index {
+  border-top: 1px solid var(--line);
+}
+.index-row {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.index-link {
+  display: flex;
+  gap: 0.75rem;
+  align-items: baseline;
+  color: var(--ink);
+  transition: color 0.2s;
+}
+.index-link:hover {
+  color: var(--accent);
+}
+.index-n {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--ink-3);
+}
+.index-title {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.index-items {
+  margin-top: 0.35rem;
+  padding-left: 1.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  line-height: 1.7;
+  color: var(--ink-3);
+}
+
+/* Métricas do hero: editorial, com separadores subtis.
+   Mobile 2×2 (linha horizontal por par), desktop 4 col (linhas verticais). */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 1.5rem;
+  border-top: 1px solid var(--line);
+}
+.fact {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--line);
+}
+@media (min-width: 1024px) {
+  .facts {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .fact {
+    padding: 1.5rem 1.5rem 1.5rem 0;
+    border-bottom: 0;
+  }
+  .fact + .fact {
+    padding-left: 1.5rem;
+    border-left: 1px solid var(--line);
+  }
+}
+
+/* Caminhos de entrada (Hiring? / Building something?): superfície inteira
+   reage — fundo inverte, seta desloca 6px. Sem sombra, sem borda extra. */
+.path {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 2rem;
+  background: var(--paper);
+  color: var(--ink);
+  transition:
+    background-color 0.25s var(--ease-out-quart),
+    color 0.25s var(--ease-out-quart);
+}
+@media (min-width: 768px) {
+  .path {
+    padding: 2.5rem;
+    min-height: 16rem;
+  }
+}
+.path .eyebrow {
+  transition: color 0.25s;
+}
+.path-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.path-arrow {
+  transition: transform 0.25s var(--ease-out-quart);
+}
+.path:hover,
+.path:focus-visible {
+  background: var(--ink);
+  color: var(--paper);
+}
+.path:hover .eyebrow,
+.path:focus-visible .eyebrow {
+  color: var(--paper);
+  opacity: 0.7;
+}
+.path:hover .path-arrow,
+.path:focus-visible .path-arrow {
+  transform: translate(6px, -6px);
+}
+.path:focus-visible {
+  outline-offset: -2px;
+}
+
+/* Métricas de case: vertical no mobile, 3 colunas a partir de sm, com
+   separadores subtis — mesmo sistema visual das métricas do hero. */
+.metrics {
+  display: grid;
+  border-top: 1px solid var(--line);
+}
+.metric {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line);
+}
+@media (min-width: 640px) {
+  .metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .metric {
+    padding: 1.25rem 1rem 1.25rem 0;
+    border-bottom: 0;
+  }
+  .metric + .metric {
+    padding-left: 1rem;
+    border-left: 1px solid var(--line);
+  }
+}
+
+/* Estado do case: "● Production · 2026" */
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.status-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+/* Segunda imagem do case de destaque (ecrã de telemóvel, retrato): largura
+   limitada para alinhar a base com a altura do screenshot desktop ao lado. */
+.figure-phone {
+  max-width: 78%;
+  margin-left: auto;
+}
+@media (max-width: 1023px) {
+  .figure-phone {
+    max-width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* Disclosure editorial (princípios): <details> nativo, sem JS.
+   Linha inferior por item, ícone + roda 45° quando aberto. */
+.disclosure {
+  border-bottom: 1px solid var(--line);
+}
+.disclosure-summary {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  cursor: pointer;
+  list-style: none;
+  color: var(--ink);
+}
+.disclosure-summary::-webkit-details-marker {
+  display: none;
+}
+.disclosure-summary:hover .display {
+  color: var(--accent);
+}
+.disclosure-icon {
+  margin-top: 0.15rem;
+  color: var(--ink-3);
+  transition: transform 0.3s var(--ease-out-quart);
+}
+.disclosure[open] .disclosure-icon {
+  transform: rotate(45deg);
+  color: var(--ink);
+}
+.disclosure-body {
+  padding: 0 0 1.75rem 3rem;
+}
+@media (max-width: 639px) {
+  .disclosure-summary {
+    grid-template-columns: 1.5rem minmax(0, 1fr) auto;
+    gap: 0.75rem;
+  }
+  .disclosure-body {
+    padding-left: 2.25rem;
+  }
+}
+
+/* Timeline vertical (percurso): rail à esquerda, ponto por item. */
+.timeline {
+  position: relative;
+  padding-left: 1.75rem;
+  border-left: 1px solid var(--line-strong);
+}
+.timeline-item {
+  position: relative;
+  padding-bottom: 2rem;
+}
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+.timeline-dot {
+  position: absolute;
+  left: calc(-1.75rem - 4px);
+  top: 0.35rem;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+}
+.timeline-item:last-child .timeline-dot {
+  background: var(--ink);
 }
 
 /* Etiqueta (tags de trabalho) */

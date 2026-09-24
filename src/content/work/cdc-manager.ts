@@ -31,6 +31,7 @@ export const cdcManager: WorkCase = {
   },
   repoUrl: 'https://github.com/Orlando-Pedrazzoli/cdc-manager',
   selected: true,
+  statusShort: { pt: 'A entrar em produção', en: 'Going live' },
   cover: {
     src: '/work/cdc-manager/dashboard-admin.webp',
     caption: {
@@ -41,6 +42,22 @@ export const cdcManager: WorkCase = {
       pt: 'Dashboard de administração do CDC Manager',
       en: 'CDC Manager admin dashboard',
     },
+  },
+  coverLabel: {
+    pt: 'Admin — receção e operações',
+    en: 'Admin — reception and operations',
+  },
+  coverAside: {
+    src: '/work/cdc-manager/medico-mobile.webp',
+    caption: {
+      pt: 'Painel do médico no telemóvel.',
+      en: 'Doctor panel on mobile.',
+    },
+    alt: { pt: 'Painel do médico em mobile', en: 'Doctor panel on mobile' },
+  },
+  coverAsideLabel: {
+    pt: 'Médico — fluxo mobile',
+    en: 'Doctor — mobile workflow',
   },
   metrics: [
     {

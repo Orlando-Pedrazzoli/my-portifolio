@@ -42,7 +42,14 @@ export interface WorkCase {
   repoUrl?: string;
   /** Aparece na home em "Trabalho selecionado" (o primeiro é o case principal). */
   selected?: boolean;
+  /** Estado em 1–3 palavras para cards e listas: "Em produção" / "Production". */
+  statusShort?: Bilingual;
   cover?: Figure;
+  /** Apresentação do case de destaque na home: etiqueta da capa e uma segunda
+      imagem (ex.: fluxo mobile) com a sua etiqueta. Só o primeiro case usa. */
+  coverLabel?: Bilingual;
+  coverAside?: Figure;
+  coverAsideLabel?: Bilingual;
   /** Até 3 números reais. Sem métricas, sem invenções: o array fica vazio. */
   metrics: Metric[];
   context: Bilingual<string[]>;

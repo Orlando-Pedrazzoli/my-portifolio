@@ -10,18 +10,63 @@ export const hero = {
     pt: 'Full Stack Developer',
     en: 'Full Stack Developer',
   } satisfies Bilingual,
+  /* Opção B da revisão: liga experiência empresarial e engenharia sem explicar. */
   statement: {
-    pt: 'Construo produtos digitais que resolvem problemas reais de negócio.',
-    en: 'I build digital products that solve real business problems.',
+    pt: 'Construo software a partir de como os negócios funcionam de verdade.',
+    en: 'I build software around how businesses actually work.',
   } satisfies Bilingual,
+  /* Desktop explica. */
   lead: {
     pt: 'Full stack developer em Lisboa. Combino engenharia de software com mais de quinze anos a fundar e gerir empresas — e uso isso para levar websites, e-commerce, SaaS e sistemas de gestão da ideia até produção.',
     en: 'Full stack developer based in Lisbon. I combine software engineering with 15+ years of building and operating businesses, and use that to take websites, e-commerce platforms, SaaS products and business systems from idea to production.',
   } satisfies Bilingual,
+  /* Mobile prioriza (progressive disclosure): ~25% mais curto. */
+  leadShort: {
+    pt: 'Full stack developer em Lisboa. Construo websites, e-commerce, SaaS e sistemas de gestão — da ideia até produção.',
+    en: 'Full stack developer based in Lisbon. I build websites, e-commerce, SaaS and business systems — from idea to production.',
+  } satisfies Bilingual,
+  /* CTAs com funções distintas: header "Let's talk", hero "Start a project",
+     fim "Start a conversation". */
+  cta: {
+    work: { pt: 'Ver trabalho selecionado', en: 'View selected work' },
+    project: { pt: 'Começar um projeto', en: 'Start a project' },
+  },
   availability: {
     pt: 'Lisboa, Portugal · Disponível para freelance e oportunidades remotas',
     en: 'Lisbon, Portugal · Available for freelance & remote opportunities',
   } satisfies Bilingual,
+  /* Índice de capacidades — coluna direita do hero em desktop. Estático,
+     em mono; aponta para "O que construo". Nomes iguais aos de `capabilities`. */
+  index: [
+    {
+      n: '01',
+      title: { pt: 'Desenvolvimento de produto', en: 'Product development' },
+      items: {
+        pt: ['SaaS', 'Sistemas de gestão', 'Plataformas de operações'],
+        en: ['SaaS', 'Business systems', 'Operations platforms'],
+      },
+    },
+    {
+      n: '02',
+      title: { pt: 'Aplicações full stack', en: 'Full stack applications' },
+      items: {
+        pt: ['E-commerce', 'APIs e integrações', 'Pagamentos'],
+        en: ['E-commerce', 'APIs & integrations', 'Payments'],
+      },
+    },
+    {
+      n: '03',
+      title: { pt: 'Automação de negócio', en: 'Business automation' },
+      items: {
+        pt: [
+          'Faturação certificada',
+          'Importações de dados',
+          'Crons e webhooks',
+        ],
+        en: ['Certified invoicing', 'Data imports', 'Crons & webhooks'],
+      },
+    },
+  ] satisfies { n: string; title: Bilingual; items: Bilingual<string[]> }[],
   /* Números normalizados — os mesmos em todo o site. */
   facts: [
     {
@@ -43,10 +88,10 @@ export const hero = {
       },
     },
     {
-      value: 'PT · BR',
+      value: 'PT / BR',
       label: {
-        pt: 'clientes em Portugal e no Brasil',
-        en: 'clients across Portugal and Brazil',
+        pt: 'mercados em que trabalho',
+        en: 'markets worked across',
       },
     },
   ],
@@ -148,6 +193,8 @@ export const capabilities: Capability[] = [
 export interface Principle {
   n: string;
   title: Bilingual;
+  /** Uma frase memorável, sempre visível. O `body` abre por disclosure. */
+  lead: Bilingual;
   body: Bilingual;
 }
 
@@ -155,6 +202,10 @@ export const principles: Principle[] = [
   {
     n: '01',
     title: { pt: 'Integridade dos dados', en: 'Data integrity' },
+    lead: {
+      pt: 'Valores financeiros em cêntimos inteiros, nunca floats.',
+      en: 'Financial values are stored in integer cents, never floats.',
+    },
     body: {
       pt: 'Valores financeiros em cêntimos inteiros, nunca floats. Cada ato, fatura ou linha de pedido congela preço e comissão no momento do registo. Nada é apagado: registos anulam-se com autor e motivo, stock corrige-se com movimentos, faturas anulam-se por nota de crédito.',
       en: 'Financial values are stored in integer cents, never floats. Every act, invoice or order line freezes price and commission at the moment it is recorded. Nothing is deleted: records are voided with author and reason, stock is corrected with movements, invoices are voided by credit note.',
@@ -163,6 +214,10 @@ export const principles: Principle[] = [
   {
     n: '02',
     title: { pt: 'Autoridade do servidor', en: 'Server authority' },
+    lead: {
+      pt: 'O cliente é uma sugestão. O servidor decide.',
+      en: 'The client is a suggestion. The server decides.',
+    },
     body: {
       pt: 'Preços revalidados no checkout, cupões validados server-side, permissões verificadas em cada action. O cliente é uma sugestão; o servidor decide.',
       en: 'Prices are revalidated at checkout, coupons are validated server-side, permissions are checked on every action. The client is a suggestion; the server decides.',
@@ -171,6 +226,10 @@ export const principles: Principle[] = [
   {
     n: '03',
     title: { pt: 'Resiliência operacional', en: 'Operational resilience' },
+    lead: {
+      pt: 'Dupla marcação, dupla cobrança e stock negativo são impedidos por transação, não na interface.',
+      en: 'Double booking, double charging and negative stock are prevented by transactions, not in the UI.',
+    },
     body: {
       pt: 'Dupla marcação, dupla cobrança e stock negativo são impedidos por transação na base de dados, não na interface. Se o estado diverge do esperado, a operação aborta e nada fica a meio.',
       en: 'Double booking, double charging and negative stock are prevented by database transactions, not in the UI. If state diverges from what was expected, the operation aborts and nothing is left half done.',
@@ -179,6 +238,10 @@ export const principles: Principle[] = [
   {
     n: '04',
     title: { pt: 'Manutenibilidade', en: 'Maintainability' },
+    lead: {
+      pt: 'Convenções chatas poupam semanas.',
+      en: 'Boring conventions save weeks.',
+    },
     body: {
       pt: 'TypeScript estrito, `tsc` sem erros antes de cada entrega, convenções previsíveis e fronteira clara entre cliente e servidor. Convenções chatas poupam semanas.',
       en: 'Strict TypeScript, error-free `tsc` before every delivery, predictable conventions and a clear separation between client and server. Boring conventions save weeks.',
@@ -189,6 +252,21 @@ export const principles: Principle[] = [
 /* --------------------------------------------------------------------------
    PERCURSO — versão curta (home) e versão longa (/about).
    -------------------------------------------------------------------------- */
+export const background = {
+  statement: {
+    pt: 'Aprendi negócio antes de aprender software.',
+    en: 'I learned business before I learned software.',
+  } satisfies Bilingual,
+  path: {
+    pt: 'Negócio → Fundador → Operações → Software',
+    en: 'Business → Founder → Operations → Software',
+  } satisfies Bilingual,
+  lead: {
+    pt: 'Quinze anos a fabricar produto, negociar com fornecedores, contratar e vender antes da primeira linha de código profissional. É por isso que vejo a operação por trás de cada pedido de software.',
+    en: 'Fifteen years manufacturing product, negotiating with suppliers, hiring and selling before my first professional line of code. That is why I see the operation behind every software request.',
+  } satisfies Bilingual,
+};
+
 export interface TimelineItem {
   year: string;
   label: Bilingual;

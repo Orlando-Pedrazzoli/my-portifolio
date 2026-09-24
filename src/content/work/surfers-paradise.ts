@@ -26,6 +26,7 @@ export const surfersParadise: WorkCase = {
   liveUrl: 'https://www.surfersparadise.com.br/',
   repoUrl: 'https://github.com/Orlando-Pedrazzoli/surfers-paradise',
   selected: true,
+  statusShort: { pt: 'Em produção', en: 'Production' },
   cover: {
     src: '/work/surfers-paradise/home.webp',
     caption: {

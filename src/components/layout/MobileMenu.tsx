@@ -2,6 +2,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { Menu, X } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 
 interface Item {
@@ -29,23 +30,34 @@ export default function MobileMenu({
     };
   }, [open]);
 
+  // Fecha com Escape.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open]);
+
   return (
     <div className='md:hidden'>
+      {/* Ícone em vez de texto: 44×44 de área de toque, label só para AT. */}
       <button
         type='button'
         onClick={() => setOpen(v => !v)}
         aria-expanded={open}
         aria-controls='mobile-nav'
-        className='eyebrow text-ink'
+        aria-label={open ? closeLabel : openLabel}
+        className='-mr-2 grid h-11 w-11 place-items-center text-ink'
       >
-        {open ? closeLabel : openLabel}
+        {open ? (
+          <X size={22} aria-hidden='true' />
+        ) : (
+          <Menu size={22} aria-hidden='true' />
+        )}
       </button>
 
       {open && (
-        <nav
-          id='mobile-nav'
-          className='fixed inset-x-0 top-16 bottom-0 z-40 bg-paper px-[var(--gutter)] pt-10'
-        >
+        <nav id='mobile-nav' className='mobile-nav'>
           <ul className='space-y-6'>
             {items.map(item => (
               <li key={item.href}>

@@ -1,6 +1,8 @@
 // src/components/home/SelectedWork.tsx
-// O centro da homepage: um case principal em destaque, três cases em cards
-// orientados ao negócio (não à tecnologia), e uma lista compacta do resto.
+// O centro da homepage. Case principal em composição horizontal full-width
+// (produto em cima, narrativa e métricas em baixo); os três cases seguintes
+// em linhas alternadas texto/imagem; o resto numa lista compacta.
+// Mobile: imagem primeiro, texto depois; métricas empilhadas.
 import { getLocale, getTranslations } from 'next-intl/server';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
@@ -10,6 +12,7 @@ import Reveal from '@/components/ui/Reveal';
 import { featured, selectedWork, moreWork } from '@/content/work';
 import type { WorkCase } from '@/content/types';
 import type { Locale } from '@/i18n/routing';
+import { cn } from '@/lib/utils';
 
 function Tags({ c, locale }: { c: WorkCase; locale: Locale }) {
   return (
@@ -23,107 +26,189 @@ function Tags({ c, locale }: { c: WorkCase; locale: Locale }) {
   );
 }
 
+/** Prova: "● Production · 2026". Diferença entre construído e a correr. */
+function Status({ c, locale }: { c: WorkCase; locale: Locale }) {
+  if (!c.statusShort) return null;
+  return (
+    <p className='status'>
+      <span className='status-dot' aria-hidden='true' />
+      {c.statusShort[locale]}
+      <span className='text-ink-3'> · {c.year}</span>
+    </p>
+  );
+}
+
 export default async function SelectedWork() {
   const locale = (await getLocale()) as Locale;
   const t = await getTranslations('common');
   const ts = await getTranslations('sections');
   const rest = selectedWork.slice(1);
+  const f = featured;
 
   return (
     <Section id='work' n='01' label={ts('work')} wide>
-      {/* Case principal */}
-      <Reveal as='article' className='grid gap-8 lg:grid-cols-12 lg:gap-12'>
-        <div className='lg:col-span-7'>
-          {featured.cover && (
+      {/* ------------------------------------------------------------------
+          Case principal — full width. A imagem manda; o texto vem depois.
+          ------------------------------------------------------------------ */}
+      <Reveal as='article'>
+        {f.cover && (
+          <div className='grid grid-cols-12 gap-4 md:gap-6'>
             <Link
-              href={`/work/${featured.slug}`}
-              aria-label={featured.title}
-              className='card'
+              href={`/work/${f.slug}`}
+              aria-label={f.title}
+              className={cn(
+                'card col-span-12',
+                f.coverAside && 'lg:col-span-9',
+              )}
             >
               <Figure
-                figure={featured.cover}
+                figure={f.cover}
                 bare
                 priority
-                sizes='(min-width: 1024px) 60vw, 100vw'
+                sizes='(min-width: 1280px) 60rem, (min-width: 1024px) 75vw, 100vw'
               />
+              {f.coverLabel && (
+                <p className='eyebrow mt-3'>{f.coverLabel[locale]}</p>
+              )}
             </Link>
-          )}
-        </div>
-        <div className='flex flex-col lg:col-span-5'>
-          <p className='eyebrow'>
-            {featured.title} · {featured.category[locale]}
-          </p>
-          <h3 className='display t-h3 mt-4'>
-            <Link href={`/work/${featured.slug}`} className='link'>
-              {featured.headline[locale]}
-            </Link>
-          </h3>
-          <p className='mt-5 text-ink-2'>{featured.tagline[locale]}</p>
-          <div className='mt-6'>
-            <Tags c={featured} locale={locale} />
+
+            {f.coverAside && (
+              <Link
+                href={`/work/${f.slug}`}
+                aria-label={f.coverAside.alt[locale]}
+                className='card col-span-7 self-end sm:col-span-5 lg:col-span-3'
+              >
+                <Figure
+                  figure={f.coverAside}
+                  bare
+                  className='figure-phone'
+                  sizes='(min-width: 1024px) 16vw, 45vw'
+                />
+                {f.coverAsideLabel && (
+                  <p className='eyebrow mt-3'>{f.coverAsideLabel[locale]}</p>
+                )}
+              </Link>
+            )}
+          </div>
+        )}
+
+        <div className='mt-10 grid gap-10 border-t border-line pt-8 lg:grid-cols-12 lg:gap-12'>
+          <div className='lg:col-span-7'>
+            <p className='eyebrow'>
+              {f.title} · {f.category[locale]}
+            </p>
+            <h3 className='display t-h2 mt-4 max-w-[20ch]'>
+              <Link href={`/work/${f.slug}`} className='link'>
+                {f.headline[locale]}
+              </Link>
+            </h3>
+            <p className='prose-measure mt-5 text-ink-2'>{f.tagline[locale]}</p>
+            <div className='mt-6'>
+              <Tags c={f} locale={locale} />
+            </div>
           </div>
 
-          {featured.metrics.length > 0 && (
-            <dl className='mt-8 grid grid-cols-3 gap-4 border-t border-line pt-6'>
-              {featured.metrics.map(m => (
-                <div key={m.value}>
-                  <dt className='display text-2xl md:text-3xl'>{m.value}</dt>
-                  <dd className='mt-1 text-xs text-ink-3'>{m.label[locale]}</dd>
-                </div>
-              ))}
-            </dl>
-          )}
-
-          <Link
-            href={`/work/${featured.slug}`}
-            className='btn btn-solid mt-8 self-start'
-          >
-            {t('readCase')} <ArrowRight size={16} />
-          </Link>
+          <div className='flex flex-col lg:col-span-5'>
+            {f.metrics.length > 0 && (
+              <dl className='metrics'>
+                {f.metrics.map(m => (
+                  <div key={m.value} className='metric'>
+                    <dt className='display text-3xl'>{m.value}</dt>
+                    <dd className='mt-1 text-sm text-ink-3'>
+                      {m.label[locale]}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            )}
+            <div className='mt-8 flex flex-wrap items-center justify-between gap-4'>
+              <Status c={f} locale={locale} />
+              <Link href={`/work/${f.slug}`} className='btn btn-solid'>
+                {t('readCase')} <ArrowRight size={16} />
+              </Link>
+            </div>
+          </div>
         </div>
       </Reveal>
 
-      {/* Três cases seguintes — cards */}
-      <div className='mt-20 grid gap-x-8 gap-y-16 md:grid-cols-3'>
-        {rest.map((c, i) => (
-          <Reveal as='article' key={c.slug} delay={i * 60}>
-            <Link href={`/work/${c.slug}`} className='card group block'>
-              {c.cover && (
-                <Figure
-                  figure={c.cover}
-                  bare
-                  sizes='(min-width: 768px) 30vw, 100vw'
-                />
-              )}
-              <p className='eyebrow mt-5'>
-                {c.title} · {c.category[locale]}
-              </p>
-              <h3 className='display card-title mt-3 text-xl md:text-2xl'>
-                {c.headline[locale]}
-              </h3>
-              <p className='mt-3 text-sm text-ink-2'>{c.tagline[locale]}</p>
-            </Link>
-            <div className='mt-4'>
-              <Tags c={c} locale={locale} />
-            </div>
-            {c.metrics[0] && (
-              <p className='mt-4 border-t border-line pt-3 text-sm'>
-                <span className='display text-lg'>{c.metrics[0].value}</span>{' '}
-                <span className='text-ink-3'>{c.metrics[0].label[locale]}</span>
-              </p>
-            )}
-            <Link
-              href={`/work/${c.slug}`}
-              className='link mt-4 inline-flex items-center gap-1 font-mono text-xs text-ink'
+      {/* ------------------------------------------------------------------
+          Três cases seguintes — linhas alternadas. Ritmo: texto/imagem,
+          imagem/texto, texto/imagem. Mobile: imagem sempre primeiro.
+          ------------------------------------------------------------------ */}
+      <div className='mt-24 divide-y divide-line border-t border-line'>
+        {rest.map((c, i) => {
+          const imageLeft = i % 2 === 1;
+          return (
+            <Reveal
+              as='article'
+              key={c.slug}
+              className='grid gap-6 py-12 lg:grid-cols-12 lg:items-center lg:gap-12 lg:py-16'
             >
-              {t('viewCase')} <ArrowUpRight size={12} />
-            </Link>
-          </Reveal>
-        ))}
+              <div
+                className={cn(
+                  'order-first lg:col-span-7',
+                  imageLeft ? 'lg:order-first' : 'lg:order-last',
+                )}
+              >
+                {c.cover && (
+                  <Link
+                    href={`/work/${c.slug}`}
+                    aria-label={c.title}
+                    className='card block'
+                  >
+                    <Figure
+                      figure={c.cover}
+                      bare
+                      sizes='(min-width: 1280px) 45rem, (min-width: 1024px) 55vw, 100vw'
+                    />
+                  </Link>
+                )}
+              </div>
+
+              <div className='lg:col-span-5'>
+                <p className='eyebrow'>
+                  {c.title} · {c.category[locale]}
+                </p>
+                <h3 className='display t-h3 mt-4'>
+                  <Link href={`/work/${c.slug}`} className='link'>
+                    {c.headline[locale]}
+                  </Link>
+                </h3>
+                <p className='mt-4 text-ink-2'>{c.tagline[locale]}</p>
+                <div className='mt-5'>
+                  <Tags c={c} locale={locale} />
+                </div>
+
+                {c.metrics[0] && (
+                  <p className='mt-6 border-t border-line pt-4'>
+                    <span className='display text-2xl'>
+                      {c.metrics[0].value}
+                    </span>{' '}
+                    <span className='text-sm text-ink-3'>
+                      {c.metrics[0].label[locale]}
+                    </span>
+                  </p>
+                )}
+
+                <div className='mt-6 flex flex-wrap items-center justify-between gap-4'>
+                  <Status c={c} locale={locale} />
+                  <Link
+                    href={`/work/${c.slug}`}
+                    className='link inline-flex items-center gap-1 font-mono text-xs text-ink'
+                  >
+                    {t('viewCase')} <ArrowUpRight size={12} />
+                  </Link>
+                </div>
+              </div>
+            </Reveal>
+          );
+        })}
       </div>
 
-      {/* Mais trabalho — lista compacta, sem cards */}
-      <div className='mt-24'>
+      {/* ------------------------------------------------------------------
+          Mais trabalho — lista compacta, sem cards.
+          ------------------------------------------------------------------ */}
+      <div className='mt-20'>
         <p className='eyebrow'>{ts('moreWork')}</p>
         <ul className='mt-4 divide-y divide-line border-y border-line'>
           {moreWork.map(c => (
