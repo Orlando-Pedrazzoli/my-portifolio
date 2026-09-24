@@ -8,8 +8,6 @@ import { ferriSchoedl } from './ferri-schoedl';
 import {
   centroDentarioColombo,
   eliteSurfingBrasil,
-  cmPolicyHub,
-  followerScan,
   goPortugalTours,
   streetPaint,
 } from './more';
@@ -23,8 +21,6 @@ export const work: WorkCase[] = [
   ferriSchoedl,
   centroDentarioColombo,
   eliteSurfingBrasil,
-  cmPolicyHub,
-  followerScan,
   goPortugalTours,
   streetPaint,
 ];

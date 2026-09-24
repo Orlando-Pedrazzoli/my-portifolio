@@ -25,12 +25,12 @@ const intro = {
   pt: [
     'Nasci em São Paulo em 1981 e vivo em Portugal desde 2017. Passei a maior parte da vida adulta a construir empresas — a fabricar produto, negociar com fornecedores, contratar, vender, fechar — antes de fazer a transição para software em 2023.',
     'Isso muda a forma como programo. Quando um cliente descreve um problema, consigo ver a operação por trás dele: quem faz o quê, onde se perde tempo, o que acontece quando alguém se engana. O código vem depois disso, e é melhor por causa disso.',
-    'Hoje divido o tempo entre a Pedrazzoli Digital, onde construo produtos para clientes em Portugal e no Brasil, e a Accenture Portugal, onde trabalho num projeto para a Meta.',
+    'Hoje divido o tempo entre a Pedrazzoli Digital, onde construo produtos para clientes em Portugal e no Brasil, e a Accenture Portugal, onde trabalho como Content Operations Analyst.',
   ],
   en: [
     'I was born in São Paulo in 1981 and have lived in Portugal since 2017. I spent most of my adult life building companies — manufacturing product, negotiating with suppliers, hiring, selling, closing — before transitioning to software in 2023.',
     'That changes how I write code. When a client describes a problem, I can see the operation behind it: who does what, where time is lost, what happens when someone makes a mistake. The code comes after that, and is better because of it.',
-    'Today I split my time between Pedrazzoli Digital, where I build products for clients in Portugal and Brazil, and Accenture Portugal, where I work on a project for Meta.',
+    'Today I split my time between Pedrazzoli Digital, where I build products for clients in Portugal and Brazil, and Accenture Portugal, where I work as a Content Operations Analyst.',
   ],
 };
 

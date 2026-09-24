@@ -92,15 +92,15 @@ export const capabilities: Capability[] = [
     n: '04',
     title: { pt: 'Automação e IA', en: 'Automation & AI' },
     body: {
-      pt: 'IA onde faz sentido e não como decoração: análise de conteúdo contra políticas com Gemini, importações idempotentes de catálogos legados, crons de lembretes, faturação certificada automática.',
-      en: 'AI where it makes sense, not as decoration: policy-based content analysis with Gemini, idempotent imports of legacy catalogs, reminder crons, automated certified invoicing.',
+      pt: 'Automatizar o que é repetitivo e crítico: importações idempotentes de catálogos legados com dry-run, despesas recorrentes e lembretes por cron, faturação certificada comunicada à AT sem intervenção manual. IA onde faz sentido, não como decoração.',
+      en: 'Automating what is repetitive and critical: idempotent imports of legacy catalogs with dry-run, recurring expenses and reminders via cron, certified invoicing reported to the tax authority with no manual step. AI where it makes sense, not as decoration.',
     },
     proof: {
       label: {
-        pt: 'CM Policy Hub: 25 políticas, decision tree + Gemini',
-        en: 'CM Policy Hub: 25 policies, decision tree + Gemini',
+        pt: 'Chi Sublime: faturação certificada via Moloni, crons de caixa',
+        en: 'Chi Sublime: certified invoicing via Moloni, cash crons',
       },
-      slug: 'cm-policy-hub',
+      slug: 'chi-sublime',
     },
   },
   {
@@ -216,10 +216,9 @@ export const trajectory: TrajectoryItem[] = [
     period: '2024 – hoje',
     title: { pt: 'Accenture Portugal', en: 'Accenture Portugal' },
     body: {
-      pt: 'Content Operations Analyst num projeto para a Meta: análise de conteúdo contra mais de 25 políticas de comunidade. Construí uma ferramenta interna com Next.js e Gemini para apoiar essa análise.',
-      en: 'Content Operations Analyst on a project for Meta: content analysis against 25+ community policies. Built an internal tool with Next.js and Gemini to support that analysis.',
+      pt: 'Content Operations Analyst. Em paralelo, continuo a construir produtos para clientes em Portugal e no Brasil através da Pedrazzoli Digital.',
+      en: 'Content Operations Analyst. In parallel, I keep building products for clients in Portugal and Brazil through Pedrazzoli Digital.',
     },
-    link: { label: 'CM Policy Hub', slug: 'cm-policy-hub' },
   },
 ];
 
@@ -263,7 +262,6 @@ export const stack: StackGroup[] = [
       'Moloni',
       'Resend',
       'Cloudinary',
-      'Google Gemini',
     ],
   },
   {
