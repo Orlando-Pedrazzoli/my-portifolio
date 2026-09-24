@@ -9,6 +9,7 @@ import { site } from '@/lib/site';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import StructuredData from '@/components/layout/StructuredData';
+import ThemeScript from '@/components/layout/ThemeScript';
 import '../globals.css';
 
 export function generateStaticParams() {
@@ -74,12 +75,7 @@ export default async function LocaleLayout({
     >
       <head>
         {/* Tema antes do primeiro paint: localStorage > prefers-color-scheme */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html:
-              "(function(){try{var t=localStorage.getItem('theme');var d=t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches;if(d)document.documentElement.classList.add('dark')}catch(e){}})()",
-          }}
-        />
+        <ThemeScript />
         <StructuredData locale={locale as Locale} />
       </head>
       <body>
