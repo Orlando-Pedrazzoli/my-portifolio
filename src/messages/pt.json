@@ -21,8 +21,8 @@
     "contact": "Contacto"
   },
   "common": {
-    "readCase": "Ler o case study",
-    "viewCase": "Ver case study",
+    "readCase": "Ver o projeto",
+    "viewCase": "Ver projeto",
     "allWork": "Ver todo o trabalho",
     "visit": "Ver em produção",
     "repo": "Repositório",
@@ -45,17 +45,18 @@
     "client": "Cliente",
     "year": "Ano",
     "screenshotPending": "screenshot em breve",
-    "nextProject": "Próximo projeto"
+    "nextProject": "Próximo projeto",
+    "backToTop": "Voltar ao topo"
   },
   "contact": {
-    "title": "Tens algo que valha a pena construir?",
-    "lead": "Conta-me o que estás a construir, o que não está a funcionar ou o que queres automatizar.",
+    "title": "Tens um problema que precisa de software?",
+    "lead": "Conta-me o que estás a construir, o que não está a funcionar ou o que gostarias de automatizar.",
     "responds": "Normalmente respondo em 24 horas",
     "emailDirect": "Ou escreve-me diretamente",
     "name": "Nome",
     "email": "Email",
     "message": "Mensagem",
-    "send": "Iniciar conversa",
+    "send": "Falar comigo",
     "sending": "A enviar…",
     "success": "Recebido. Respondo em breve.",
     "error": "Não foi possível enviar. Escreve-me diretamente para o email acima.",
@@ -68,7 +69,7 @@
   },
   "meta": {
     "title": "Orlando Pedrazzoli — Full Stack Developer em Lisboa",
-    "description": "Full stack developer que percebe o negócio por trás do software. E-commerce, plataformas de gestão e SaaS construídos do problema de negócio até produção. Lisboa, disponível remoto.",
+    "description": "Full stack developer que percebe o negócio por trás do software. E-commerce, plataformas de gestão e SaaS construídos do problema de negócio à produção. Lisboa, disponível remoto.",
     "workTitle": "Trabalho",
     "aboutTitle": "Sobre"
   }

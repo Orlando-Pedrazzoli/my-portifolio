@@ -213,7 +213,7 @@ export const goPortugalTours: WorkCase = {
     en: 'Tour booking site',
   },
   tags: {
-    pt: ['Website', 'Reservas', 'i18n'],
+    pt: ['Website', 'Reservas', 'Multilingue'],
     en: ['Website', 'Booking', 'i18n'],
   },
   tagline: {

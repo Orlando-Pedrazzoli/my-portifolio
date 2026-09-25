@@ -5,7 +5,7 @@ export const cdcManager: WorkCase = {
   slug: 'cdc-manager',
   title: 'CDC Manager',
   headline: {
-    pt: 'Substituir uma operação clínica fragmentada por uma única plataforma integrada.',
+    pt: 'De uma operação clínica fragmentada a uma única plataforma de gestão.',
     en: 'Replacing a fragmented clinic operation with one integrated platform.',
   },
   category: {
@@ -63,7 +63,7 @@ export const cdcManager: WorkCase = {
     {
       value: '34 / 37',
       label: {
-        pt: 'requisitos de stakeholders entregues',
+        pt: 'requisitos do cliente implementados',
         en: 'stakeholder requirements delivered',
       },
     },
@@ -226,9 +226,9 @@ export const cdcManager: WorkCase = {
   },
   result: {
     pt: [
-      '34 dos 37 requisitos dos stakeholders entregues em oito entregas faseadas, com relatório de desenvolvimento e apresentação de aprovação aos sócios.',
+      '34 dos 37 requisitos do cliente implementados em oito entregas faseadas, com relatório de desenvolvimento e apresentação de aprovação aos sócios.',
       'Sistema pronto para operar as duas clínicas e preparado, com branding dinâmico e isolamento por base de dados, para ser instalado noutras clínicas dentárias.',
-      'O que este projeto demonstra: capacidade de levar um produto do levantamento com stakeholders até um sistema em produção, com decisões de arquitetura pensadas para dados financeiros e clínicos.',
+      'O que este projeto demonstra: capacidade de levar um produto do levantamento de requisitos com o cliente até um sistema em produção, com decisões de arquitetura pensadas para dados financeiros e clínicos.',
     ],
     en: [
       '34 of 37 stakeholder requirements delivered across eight phased deliveries, with a development report and an approval presentation to the partners.',

@@ -5,7 +5,7 @@ export const chiSublime: WorkCase = {
   slug: 'chi-sublime',
   title: 'Chi Sublime',
   headline: {
-    pt: 'Transformar um negócio de serviços numa operação digital.',
+    pt: 'Levar toda a operação de um negócio de serviços para uma única plataforma.',
     en: 'Turning a service business into a digital operation.',
   },
   category: {

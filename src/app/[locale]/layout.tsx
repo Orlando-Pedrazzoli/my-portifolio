@@ -10,6 +10,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import StructuredData from '@/components/layout/StructuredData';
 import ThemeScript from '@/components/layout/ThemeScript';
+import BackToTop from '@/components/ui/BackToTop';
 import '../globals.css';
 
 export function generateStaticParams() {
@@ -81,8 +82,12 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider>
           <Header />
-          <main>{children}</main>
+          {/* tabIndex -1: alvo de foco do BackToTop, sem entrar na ordem de Tab */}
+          <main tabIndex={-1} className='outline-none'>
+            {children}
+          </main>
           <Footer />
+          <BackToTop />
         </NextIntlClientProvider>
       </body>
     </html>

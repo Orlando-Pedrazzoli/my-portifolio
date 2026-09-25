@@ -17,12 +17,12 @@ export const hero = {
   } satisfies Bilingual,
   /* Desktop explica. */
   lead: {
-    pt: 'Full stack developer em Lisboa. Combino engenharia de software com mais de quinze anos a fundar e gerir empresas — e uso isso para levar websites, e-commerce, SaaS e sistemas de gestão da ideia até produção.',
+    pt: 'Full stack developer em Lisboa. Combino engenharia de software com mais de quinze anos a criar e gerir empresas. É essa experiência que me permite transformar problemas de negócio em websites, e-commerce, SaaS e sistemas de gestão prontos para produção.',
     en: 'Full stack developer based in Lisbon. I combine software engineering with 15+ years of building and operating businesses, and use that to take websites, e-commerce platforms, SaaS products and business systems from idea to production.',
   } satisfies Bilingual,
   /* Mobile prioriza (progressive disclosure): ~25% mais curto. */
   leadShort: {
-    pt: 'Full stack developer em Lisboa. Construo websites, e-commerce, SaaS e sistemas de gestão — da ideia até produção.',
+    pt: 'Full stack developer em Lisboa. Construo websites, e-commerce, SaaS e sistemas de gestão — da ideia à produção.',
     en: 'Full stack developer based in Lisbon. I build websites, e-commerce, SaaS and business systems — from idea to production.',
   } satisfies Bilingual,
   /* CTAs com funções distintas: header "Let's talk", hero "Start a project",
@@ -56,7 +56,7 @@ export const hero = {
     },
     {
       n: '03',
-      title: { pt: 'Automação de negócio', en: 'Business automation' },
+      title: { pt: 'Automação de processos', en: 'Business automation' },
       items: {
         pt: [
           'Faturação certificada',
@@ -144,12 +144,12 @@ export const capabilities: Capability[] = [
     n: '01',
     title: { pt: 'Desenvolvimento de produto', en: 'Product development' },
     body: {
-      pt: 'Do problema de negócio ao produto pronto para produção: levantamento de requisitos com stakeholders, modelação do domínio, faseamento, entrega e iteração com feedback real.',
+      pt: 'Do problema de negócio ao produto pronto para produção: levantamento de requisitos com as pessoas responsáveis pelo negócio, modelação do domínio, faseamento, entrega e iteração com feedback real.',
       en: 'From business problem to production-ready product: requirements with stakeholders, domain modelling, phasing, delivery and iteration on real feedback.',
     },
     proof: {
       label: {
-        pt: 'CDC Manager: 37 requisitos de stakeholders, 7 fases',
+        pt: 'CDC Manager: 37 requisitos do cliente, 7 fases',
         en: 'CDC Manager: 37 stakeholder requirements, 7 phases',
       },
       slug: 'cdc-manager',
@@ -159,7 +159,7 @@ export const capabilities: Capability[] = [
     n: '02',
     title: { pt: 'Aplicações full stack', en: 'Full stack applications' },
     body: {
-      pt: 'Frontend, APIs, bases de dados, autenticação, pagamentos, emails transacionais e integrações de logística e faturação. Tudo em TypeScript, do modelo de dados ao componente.',
+      pt: 'Interfaces, APIs, bases de dados, autenticação, pagamentos, emails transacionais e integrações com sistemas de logística e faturação. Tudo em TypeScript, do modelo de dados ao componente.',
       en: 'Frontend, APIs, databases, authentication, payments, transactional email and logistics and invoicing integrations. All in TypeScript, from the data model to the component.',
     },
     proof: {
@@ -172,7 +172,7 @@ export const capabilities: Capability[] = [
   },
   {
     n: '03',
-    title: { pt: 'Automação de negócio', en: 'Business automation' },
+    title: { pt: 'Automação de processos', en: 'Business automation' },
     body: {
       pt: 'Automatizar fluxos repetitivos e processos operacionais: importações idempotentes de dados legados, lembretes e despesas recorrentes por cron, faturação certificada comunicada à AT sem intervenção manual. IA onde faz sentido, não como decoração.',
       en: 'Automating repetitive workflows and operational processes: idempotent imports of legacy data, reminders and recurring expenses via cron, certified invoicing reported to the tax authority with no manual step. AI where it makes sense, not as decoration.',
@@ -227,11 +227,11 @@ export const principles: Principle[] = [
     n: '03',
     title: { pt: 'Resiliência operacional', en: 'Operational resilience' },
     lead: {
-      pt: 'Dupla marcação, dupla cobrança e stock negativo são impedidos por transação, não na interface.',
+      pt: 'Marcações duplicadas, cobranças duplicadas e stock negativo são impedidos ao nível da base de dados, não da interface.',
       en: 'Double booking, double charging and negative stock are prevented by transactions, not in the UI.',
     },
     body: {
-      pt: 'Dupla marcação, dupla cobrança e stock negativo são impedidos por transação na base de dados, não na interface. Se o estado diverge do esperado, a operação aborta e nada fica a meio.',
+      pt: 'O sistema impede marcações duplicadas, cobranças duplicadas e stock negativo na base de dados — não apenas na interface. Se o estado diverge do esperado, a operação aborta e nada fica a meio.',
       en: 'Double booking, double charging and negative stock are prevented by database transactions, not in the UI. If state diverges from what was expected, the operation aborts and nothing is left half done.',
     },
   },
@@ -262,7 +262,7 @@ export const background = {
     en: 'Business → Founder → Operations → Software',
   } satisfies Bilingual,
   lead: {
-    pt: 'Quinze anos a fabricar produto, negociar com fornecedores, contratar e vender antes da primeira linha de código profissional. É por isso que vejo a operação por trás de cada pedido de software.',
+    pt: 'Passei quinze anos a fabricar produtos, negociar com fornecedores, contratar e vender antes de escrever a minha primeira linha de código profissional. É por isso que vejo a operação por trás de cada pedido de software.',
     en: 'Fifteen years manufacturing product, negotiating with suppliers, hiring and selling before my first professional line of code. That is why I see the operation behind every software request.',
   } satisfies Bilingual,
 };

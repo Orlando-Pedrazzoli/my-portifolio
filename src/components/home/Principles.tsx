@@ -18,7 +18,7 @@ export default async function Principles() {
       id='principles'
       n='03'
       label={t('principles')}
-      title={locale === 'pt' ? 'Como faço engenharia' : 'How I engineer'}
+      title={locale === 'pt' ? 'Como construo software' : 'How I engineer'}
     >
       <div className='border-t border-line'>
         {principles.map((p, i) => (

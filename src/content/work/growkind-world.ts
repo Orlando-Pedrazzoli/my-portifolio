@@ -13,11 +13,11 @@ export const growkindWorld: WorkCase = {
     en: 'Publishing and courses platform',
   },
   tags: {
-    pt: ['Produto', 'Conteúdo pago', 'i18n'],
+    pt: ['Produto', 'Conteúdo pago', 'Multilingue'],
     en: ['Product', 'Paid content', 'i18n'],
   },
   tagline: {
-    pt: 'Plataforma educativa e editorial dedicada à infância neurodivergente: livro digital com paywall, cursos por módulo, loja e i18n completo.',
+    pt: 'Plataforma educativa e editorial dedicada à infância neurodivergente: livro digital com paywall, cursos por módulo, loja e conteúdo completo em dois idiomas.',
     en: 'Educational and publishing platform for neurodivergent childhood: digital book with paywall, module-based courses, shop and full i18n.',
   },
   client: { pt: 'GrowKind World', en: 'GrowKind World' },

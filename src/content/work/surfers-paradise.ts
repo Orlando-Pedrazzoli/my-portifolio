@@ -5,7 +5,7 @@ export const surfersParadise: WorkCase = {
   slug: 'surfers-paradise',
   title: 'Surfers Paradise',
   headline: {
-    pt: 'Construir uma operação de comércio completa, não apenas uma loja online.',
+    pt: 'Não era apenas uma loja online. Era preciso construir toda a operação de e-commerce.',
     en: 'Building a complete commerce operation, not just an online store.',
   },
   category: {
