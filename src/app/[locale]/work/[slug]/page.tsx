@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
 import { work, getCase } from '@/content/work';
-import { site, absoluteUrl, languageAlternates } from '@/lib/site';
+import { site, absoluteUrl, languageAlternates, resolveImage } from '@/lib/site';
 import CaseArticle from '@/components/work/CaseArticle';
 import NextProject from '@/components/work/NextProject';
 
@@ -26,8 +26,13 @@ export async function generateMetadata({
   if (!c) return {};
   const l = locale as Locale;
   const path = `/work/${slug}`;
+  // Title curto (≈50 chars antes do template " — Orlando Pedrazzoli"); a
+  // headline completa fica no og:title e no H1. A imagem OG/Twitter vem de
+  // ./opengraph-image.tsx e ./twitter-image.tsx (file-based metadata tem
+  // prioridade sobre o que está aqui e no layout).
+  const title = `${c.title} — ${c.category[l]}`;
   return {
-    title: `${c.title} — ${c.headline[l]}`,
+    title,
     description: c.tagline[l],
     alternates: {
       canonical: absoluteUrl(l, path),
@@ -38,7 +43,8 @@ export async function generateMetadata({
       description: c.tagline[l],
       url: absoluteUrl(l, path),
       type: 'article',
-      images: c.cover?.src ? [{ url: c.cover.src }] : undefined,
+      locale: l === 'pt' ? 'pt_PT' : 'en_US',
+      authors: [site.name],
     },
   };
 }
@@ -72,17 +78,25 @@ export default async function WorkPage({ params }: { params: Params }) {
       },
     ],
   };
+  const cover = c.cover?.src ? resolveImage(c.cover.src) : null;
   const creativeWork = {
     '@context': 'https://schema.org',
     '@type': 'CreativeWork',
+    '@id': `${absoluteUrl(l, `/work/${slug}`)}#work`,
     name: c.title,
     headline: c.headline[l],
     description: c.tagline[l],
     url: absoluteUrl(l, `/work/${slug}`),
-    image: c.cover?.src ? `${site.url}${c.cover.src}` : undefined,
+    image: cover ? `${site.url}${cover.src}` : undefined,
     inLanguage: l === 'pt' ? 'pt-PT' : 'en',
-    author: { '@type': 'Person', name: site.name, url: site.url },
-    keywords: c.stack.join(', '),
+    // Ano de início do projeto ("2025 – 2026" → 2025).
+    dateCreated: c.year.slice(0, 4),
+    genre: c.category[l],
+    keywords: [...c.tags[l], ...c.stack].join(', '),
+    author: { '@id': `${site.url}/#person` },
+    creator: { '@id': `${site.url}/#person` },
+    isPartOf: { '@type': 'WebSite', url: site.url, name: site.name },
+    ...(c.liveUrl ? { sameAs: c.liveUrl } : {}),
   };
 
   return (

@@ -28,7 +28,13 @@ export async function generateMetadata({
       canonical: absoluteUrl(l, '/about'),
       languages: languageAlternates('/about'),
     },
-    openGraph: { type: 'profile', url: absoluteUrl(l, '/about') },
+    openGraph: {
+      type: 'profile',
+      title: t('aboutTitle'),
+      description: intro[l][0],
+      url: absoluteUrl(l, '/about'),
+      images: [{ url: site.photo, alt: site.name }],
+    },
   };
 }
 

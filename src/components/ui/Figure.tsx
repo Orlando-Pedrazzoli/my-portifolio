@@ -1,10 +1,10 @@
 // src/components/ui/Figure.tsx
 import Image from 'next/image';
 import { getLocale, getTranslations } from 'next-intl/server';
-import manifest from '@/content/images.json';
 import type { Figure as FigureData } from '@/content/types';
 import type { Locale } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
+import { resolveImage } from '@/lib/site';
 
 interface Props {
   figure: FigureData;
@@ -13,25 +13,6 @@ interface Props {
   sizes?: string;
   /** Se true, esconde a legenda (usado em cards). */
   bare?: boolean;
-}
-
-type Manifest = Record<string, { width: number; height: number }>;
-const images = manifest as Manifest;
-const EXTENSIONS = ['.webp', '.jpg', '.jpeg', '.png', '.avif'];
-
-/**
- * Resolve a imagem no manifesto gerado em build (scripts/images-manifest.mjs).
- * Aceita qualquer extensão: se o conteúdo diz "x.webp" e existe "x.jpg", usa
- * o .jpg. Devolve null se a imagem ainda não existir em public/work.
- */
-function resolve(src: string) {
-  if (images[src]) return { src, ...images[src] };
-  const base = src.replace(/\.[a-z0-9]+$/i, '');
-  for (const ext of EXTENSIONS) {
-    const key = base + ext;
-    if (images[key]) return { src: key, ...images[key] };
-  }
-  return null;
 }
 
 /**
@@ -49,7 +30,7 @@ export default async function Figure({
   const locale = (await getLocale()) as Locale;
   const t = await getTranslations('common');
 
-  const img = figure.src ? resolve(figure.src) : null;
+  const img = figure.src ? resolveImage(figure.src) : null;
 
   return (
     <figure className={cn(className)}>

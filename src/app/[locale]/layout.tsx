@@ -5,7 +5,7 @@ import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
 import { sans, mono } from '@/lib/fonts';
-import { absoluteUrl, languageAlternates } from '@/lib/site';
+import { site, absoluteUrl, languageAlternates, hreflang } from '@/lib/site';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import StructuredData from '@/components/layout/StructuredData';
@@ -30,6 +30,8 @@ export async function generateMetadata({
     metadataBase: new URL(absoluteUrl(routing.defaultLocale)),
     title: { default: t('title'), template: `%s — Orlando Pedrazzoli` },
     description: t('description'),
+    authors: [{ name: site.name, url: site.url }],
+    creator: site.name,
     alternates: {
       canonical: absoluteUrl(l),
       languages: languageAlternates(),
@@ -40,6 +42,7 @@ export async function generateMetadata({
       url: absoluteUrl(l),
       siteName: 'Orlando Pedrazzoli',
       locale: l === 'pt' ? 'pt_PT' : 'en_US',
+      alternateLocale: l === 'pt' ? ['en_US'] : ['pt_PT'],
       type: 'website',
       images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
     },
@@ -70,7 +73,7 @@ export default async function LocaleLayout({
 
   return (
     <html
-      lang={locale}
+      lang={hreflang[locale as Locale]}
       suppressHydrationWarning
       className={`${sans.variable} ${mono.variable}`}
     >
