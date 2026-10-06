@@ -57,6 +57,8 @@ export async function generateMetadata({
     },
     manifest: '/site.webmanifest',
     verification: { google: 'gvmu36gpY8cEDhuxWZsByZ7n8QS_1QxwkOWWwEaje4k' },
+    // Commit que gerou esta página — permite ver de fora que deploy está a ser servido.
+    other: { 'build-sha': process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ?? 'local' },
   };
 }
 
