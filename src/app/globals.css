@@ -23,6 +23,8 @@
   --accent: #1f5eff;
   --accent-ink: #ffffff;
   --selection: #dbe6ff;
+  --device-shadow: 0 1px 2px rgb(11 13 16 / 0.04),
+    0 18px 40px -18px rgb(11 13 16 / 0.18);
 
   --measure: 62ch;
   /* 20px em mobile → 48px em desktop, como no grid de produto digital. */
@@ -49,6 +51,8 @@ html.dark {
   --accent: #5b8cff;
   --accent-ink: #0b0d10;
   --selection: #1e3a8a;
+  --device-shadow: 0 1px 2px rgb(0 0 0 / 0.4),
+    0 22px 48px -20px rgb(0 0 0 / 0.7);
 }
 
 @theme inline {
@@ -197,6 +201,8 @@ body {
   }
   .link,
   .figure img,
+  .device-screen img,
+  .device-phone-view img,
   .card,
   .path,
   .path-arrow,
@@ -497,17 +503,233 @@ body {
   background: var(--accent);
 }
 
-/* Segunda imagem do case de destaque (ecrã de telemóvel, retrato): largura
-   limitada para alinhar a base com a altura do screenshot desktop ao lado. */
-.figure-phone {
-  max-width: 78%;
-  margin-left: auto;
+/* ==========================================================================
+   DEVICE FRAMES
+   Molduras em CSS (src/components/ui/Device.tsx). Neutras de propósito:
+   sem cores de semáforo, sem reflexos, sem inclinação 3D, sombra discreta.
+   O palco (.device-stage) é um plano neutro onde os dispositivos assentam.
+   ========================================================================== */
+.device-stage {
+  position: relative;
+  overflow: hidden;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  padding: clamp(1rem, 5%, 3.5rem);
 }
-@media (max-width: 1023px) {
-  .figure-phone {
-    max-width: 100%;
-    margin-left: 0;
+
+/* Browser "a sair" do palco: encostado à margem exterior e à base.
+   O lado colado perde borda e cantos — parece cortado pelo palco. */
+.device-stage-bleed-right,
+.device-stage-bleed-left {
+  padding-bottom: 0;
+}
+.device-stage-bleed-right {
+  padding-right: 0;
+}
+.device-stage-bleed-left {
+  padding-left: 0;
+}
+.device-stage-bleed-right .device-browser {
+  border-right: 0;
+  border-bottom: 0;
+  border-radius: 0.625rem 0 0 0;
+}
+.device-stage-bleed-left .device-browser {
+  border-left: 0;
+  border-bottom: 0;
+  border-radius: 0 0.625rem 0 0;
+}
+
+/* Capa do case: telemóvel (se a capa for retrato) não ocupa a largura toda */
+.device-stage-solo:has(.device-phone) {
+  max-width: 17rem;
+  margin-inline: auto;
+}
+
+/* --- Browser ------------------------------------------------------------ */
+.device-browser {
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: 0.625rem;
+  background: var(--paper);
+  box-shadow: var(--device-shadow);
+}
+.device-bar {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 3fr) 1fr;
+  align-items: center;
+  gap: 0.75rem;
+  height: 2.25rem;
+  padding-inline: 0.875rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper-2);
+}
+.device-dots {
+  display: flex;
+  gap: 0.375rem;
+}
+.device-dots i {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: var(--line-strong);
+}
+.device-address {
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-width: 0;
+  max-width: 100%;
+  padding: 0.1875rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink-3);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.device-address svg {
+  flex: none;
+}
+.device-address span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 639px) {
+  .device-bar {
+    height: 1.75rem;
+    gap: 0.5rem;
+    padding-inline: 0.625rem;
   }
+  .device-dots {
+    gap: 0.25rem;
+  }
+  .device-dots i {
+    width: 0.375rem;
+    height: 0.375rem;
+  }
+  .device-address {
+    padding: 0.0625rem 0.5rem;
+    font-size: 0.625rem;
+  }
+}
+.device-screen {
+  overflow: hidden;
+  background: var(--paper-2);
+}
+.device-screen img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.6s var(--ease-out-quart);
+}
+
+/* --- Telemóvel ---------------------------------------------------------- */
+/* container-type no invólucro: tudo lá dentro mede-se em cqw e escala junto */
+.device-phone {
+  container-type: inline-size;
+}
+.device-phone-body {
+  padding: 3cqw;
+  border-radius: 15cqw;
+  background: #121418;
+  box-shadow:
+    inset 0 0 0 0.6cqw #2b2f36,
+    0 0 0 1px var(--line-strong),
+    var(--device-shadow);
+}
+.device-phone-screen {
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 9 / 19.5;
+  overflow: hidden;
+  border-radius: 12cqw;
+  background: var(--paper);
+}
+.device-phone-status {
+  flex: none;
+  display: flex;
+  justify-content: center;
+  height: 12cqw;
+  padding-top: 3cqw;
+  background: var(--paper);
+}
+.device-phone-island {
+  width: 28cqw;
+  height: 7.5cqw;
+  border-radius: 999px;
+  background: #000;
+}
+.device-phone-view {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--paper-2);
+}
+.device-phone-view img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.6s var(--ease-out-quart);
+}
+.device-phone-view .figure-empty {
+  height: 100%;
+  aspect-ratio: auto;
+}
+
+/* Hover do card: o mesmo zoom subtil do frame simples */
+.card:hover .device-screen img,
+.card:hover .device-phone-view img {
+  transform: scale(1.015);
+}
+
+/* --- Composição do case de destaque: browser + telemóvel sobrepostos ----- */
+/* Uma única célula de grelha: o browser fica em cima à esquerda, o telemóvel
+   alinha-se em baixo à direita e desce um pouco abaixo da base do browser. */
+.device-duo {
+  display: grid;
+}
+.device-duo > * {
+  grid-area: 1 / 1;
+}
+.device-duo-main {
+  width: 90%;
+  margin-bottom: 16%;
+}
+.device-duo-aside {
+  width: 27%;
+  justify-self: end;
+  align-self: end;
+}
+@media (min-width: 1024px) {
+  .device-duo-main {
+    width: 84%;
+    margin-bottom: 5%;
+  }
+  .device-duo-aside {
+    width: 19%;
+  }
+}
+.device-stage-featured {
+  padding: clamp(1.25rem, 5%, 4rem);
+}
+
+/* --- Ecrãs mobile do case lado a lado num palco ------------------------- */
+.device-stage-phones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(2rem, 6vw, 5rem);
+}
+.device-phones-item {
+  width: min(100%, 17rem);
 }
 
 /* Disclosure editorial (princípios): <details> nativo, sem JS.

@@ -10,6 +10,7 @@ import Reveal from '@/components/ui/Reveal';
 import CaseNav from './CaseNav';
 import type { WorkCase } from '@/content/types';
 import type { Locale } from '@/i18n/routing';
+import { isPortrait } from '@/lib/site';
 
 function Block({
   id,
@@ -33,6 +34,12 @@ function Block({
 export default async function CaseArticle({ c }: { c: WorkCase }) {
   const locale = (await getLocale()) as Locale;
   const t = await getTranslations('common');
+
+  /* Screenshots separados por orientação: desktop em janelas de browser,
+     mobile lado a lado num palco próprio (telemóveis numa grelha de duas
+     colunas ficariam minúsculos ao lado de um browser). */
+  const desktopFigures = c.figures.filter(f => !isPortrait(f.src));
+  const phoneFigures = c.figures.filter(f => isPortrait(f.src));
 
   /* Índice de navegação: 5 pontos, não todas as secções. Arquitetura entra
      quando existe; senão, as decisões ocupam esse lugar. */
@@ -123,11 +130,21 @@ export default async function CaseArticle({ c }: { c: WorkCase }) {
 
       {c.cover && (
         <Reveal className='mt-12'>
-          <Figure
-            figure={c.cover}
-            priority
-            sizes='(min-width: 1280px) 80rem, 100vw'
-          />
+          <div className='device-stage'>
+            <Figure
+              figure={c.cover}
+              bare
+              priority
+              device='auto'
+              url={c.liveUrl}
+              label={c.title}
+              className='device-stage-solo'
+              sizes='(min-width: 1280px) 72rem, 100vw'
+            />
+          </div>
+          <p className='eyebrow mt-3 normal-case tracking-normal'>
+            {c.cover.caption[locale]}
+          </p>
         </Reveal>
       )}
 
@@ -169,19 +186,47 @@ export default async function CaseArticle({ c }: { c: WorkCase }) {
         </Block>
 
         {/* Screenshots grandes — cada legenda explica uma decisão, não só o ecrã */}
-        {c.figures.length > 0 && (
+        {desktopFigures.length > 0 && (
           <div className='rule grid gap-10 py-12 md:grid-cols-2'>
-            {c.figures.map((f, i) => (
+            {desktopFigures.map((f, i) => (
               <Reveal
                 key={f.src ?? i}
                 className={
-                  i === 0 && c.figures.length % 2 === 1 ? 'md:col-span-2' : ''
+                  i === 0 && desktopFigures.length % 2 === 1
+                    ? 'md:col-span-2'
+                    : ''
                 }
               >
-                <Figure figure={f} sizes='(min-width: 768px) 40rem, 100vw' />
+                <Figure
+                  figure={f}
+                  device='browser'
+                  url={c.liveUrl}
+                  label={c.title}
+                  sizes={
+                    i === 0 && desktopFigures.length % 2 === 1
+                      ? '(min-width: 1280px) 80rem, 100vw'
+                      : '(min-width: 768px) 40rem, 100vw'
+                  }
+                />
               </Reveal>
             ))}
           </div>
+        )}
+
+        {phoneFigures.length > 0 && (
+          <Reveal className='rule py-12'>
+            <div className='device-stage device-stage-phones'>
+              {phoneFigures.map((f, i) => (
+                <Figure
+                  key={f.src ?? i}
+                  figure={f}
+                  device='phone'
+                  className='device-phones-item'
+                  sizes='(min-width: 768px) 17rem, 70vw'
+                />
+              ))}
+            </div>
+          </Reveal>
         )}
 
         <Block id='features' label={t('features')}>

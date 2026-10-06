@@ -3,6 +3,7 @@
 // (produto em cima, narrativa e métricas em baixo); os três cases seguintes
 // em linhas alternadas texto/imagem; o resto numa lista compacta.
 // Mobile: imagem primeiro, texto depois; métricas empilhadas.
+// Screenshots em molduras de dispositivo (CSS) sobre um palco neutro.
 import { getLocale, getTranslations } from 'next-intl/server';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
@@ -52,44 +53,50 @@ export default async function SelectedWork() {
           ------------------------------------------------------------------ */}
       <Reveal as='article'>
         {f.cover && (
-          <div className='grid grid-cols-12 gap-4 md:gap-6'>
+          <>
+            {/* Palco: browser com o produto + telemóvel sobreposto no canto
+                inferior direito. Um só link — é um único case. */}
             <Link
               href={`/work/${f.slug}`}
               aria-label={f.title}
-              className={cn(
-                'card col-span-12',
-                f.coverAside && 'lg:col-span-9',
-              )}
+              className='card block'
             >
-              <Figure
-                figure={f.cover}
-                bare
-                priority
-                sizes='(min-width: 1280px) 60rem, (min-width: 1024px) 75vw, 100vw'
-              />
-              {f.coverLabel && (
-                <p className='eyebrow mt-3'>{f.coverLabel[locale]}</p>
-              )}
+              <div className='device-stage device-stage-featured'>
+                <div className='device-duo'>
+                  <Figure
+                    figure={f.cover}
+                    bare
+                    priority
+                    device='browser'
+                    url={f.liveUrl}
+                    label={f.title}
+                    className='device-duo-main'
+                    sizes='(min-width: 1280px) 64rem, (min-width: 1024px) 80vw, 90vw'
+                  />
+                  {f.coverAside && (
+                    <Figure
+                      figure={f.coverAside}
+                      bare
+                      device='phone'
+                      className='device-duo-aside'
+                      sizes='(min-width: 1024px) 15rem, 27vw'
+                    />
+                  )}
+                </div>
+              </div>
             </Link>
 
-            {f.coverAside && (
-              <Link
-                href={`/work/${f.slug}`}
-                aria-label={f.coverAside.alt[locale]}
-                className='card col-span-7 self-end sm:col-span-5 lg:col-span-3'
-              >
-                <Figure
-                  figure={f.coverAside}
-                  bare
-                  className='figure-phone'
-                  sizes='(min-width: 1024px) 16vw, 45vw'
-                />
-                {f.coverAsideLabel && (
-                  <p className='eyebrow mt-3'>{f.coverAsideLabel[locale]}</p>
+            {(f.coverLabel || f.coverAsideLabel) && (
+              <div className='mt-3 flex flex-wrap justify-between gap-x-6 gap-y-1'>
+                {f.coverLabel && (
+                  <p className='eyebrow'>{f.coverLabel[locale]}</p>
                 )}
-              </Link>
+                {f.coverAside && f.coverAsideLabel && (
+                  <p className='eyebrow'>{f.coverAsideLabel[locale]}</p>
+                )}
+              </div>
             )}
-          </div>
+          </>
         )}
 
         <div className='mt-10 grid gap-10 border-t border-line pt-8 lg:grid-cols-12 lg:gap-12'>
@@ -156,11 +163,25 @@ export default async function SelectedWork() {
                     aria-label={c.title}
                     className='card block'
                   >
-                    <Figure
-                      figure={c.cover}
-                      bare
-                      sizes='(min-width: 1280px) 45rem, (min-width: 1024px) 55vw, 100vw'
-                    />
+                    {/* O browser "sai" do palco pelo lado de fora da página,
+                        espelhando a alternância texto/imagem. */}
+                    <div
+                      className={cn(
+                        'device-stage',
+                        imageLeft
+                          ? 'device-stage-bleed-left'
+                          : 'device-stage-bleed-right',
+                      )}
+                    >
+                      <Figure
+                        figure={c.cover}
+                        bare
+                        device='browser'
+                        url={c.liveUrl}
+                        label={c.title}
+                        sizes='(min-width: 1280px) 45rem, (min-width: 1024px) 55vw, 100vw'
+                      />
+                    </div>
                   </Link>
                 )}
               </div>

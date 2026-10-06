@@ -61,3 +61,19 @@ export function resolveImage(src: string) {
   }
   return null;
 }
+
+/** true se a imagem é retrato (screenshot de telemóvel). */
+export function isPortrait(src?: string) {
+  if (!src) return false;
+  const img = resolveImage(src);
+  return Boolean(img && img.height / img.width > 1.2);
+}
+
+/** "https://www.surfersparadise.com.br/" → "surfersparadise.com.br". */
+export function hostOf(url: string) {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '');
+  } catch {
+    return url;
+  }
+}

@@ -36,11 +36,16 @@ export default async function NextProject({ c }: { c: WorkCase }) {
           </div>
           {c.cover && (
             <div className='md:col-span-5'>
-              <Figure
-                figure={c.cover}
-                bare
-                sizes='(min-width: 768px) 35vw, 100vw'
-              />
+              <div className='device-stage device-stage-bleed-right'>
+                <Figure
+                  figure={c.cover}
+                  bare
+                  device='browser'
+                  url={c.liveUrl}
+                  label={c.title}
+                  sizes='(min-width: 768px) 35vw, 100vw'
+                />
+              </div>
             </div>
           )}
         </div>
