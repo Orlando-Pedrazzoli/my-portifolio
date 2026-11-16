@@ -617,7 +617,8 @@ body {
   }
 }
 .device-screen {
-  overflow: hidden;
+  /* clip (não hidden): o scale do hover não escapa da janela nem come a moldura */
+  overflow: clip;
   background: var(--paper-2);
 }
 .device-screen img {
@@ -631,21 +632,29 @@ body {
 /* container-type no invólucro: tudo lá dentro mede-se em cqw e escala junto */
 .device-phone {
   container-type: inline-size;
+  position: relative;
+  z-index: 1;
 }
 .device-phone-body {
+  position: relative;
   padding: 3cqw;
   border-radius: 15cqw;
+  /* Borda real. O anel de 1px em box-shadow desaparecia no hover: o scale da
+     imagem promove uma layer e o overflow do palco cortava a sombra. */
+  border: 1px solid var(--line-strong);
   background: #121418;
   box-shadow:
     inset 0 0 0 0.6cqw #2b2f36,
-    0 0 0 1px var(--line-strong),
     var(--device-shadow);
 }
 .device-phone-screen {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
+  isolation: isolate;
   aspect-ratio: 9 / 19.5;
-  overflow: hidden;
+  overflow: clip;
   border-radius: 12cqw;
   background: var(--paper);
 }
@@ -667,7 +676,7 @@ body {
   position: relative;
   flex: 1;
   min-height: 0;
-  overflow: hidden;
+  overflow: clip;
   background: var(--paper-2);
 }
 .device-phone-view img {
@@ -703,6 +712,8 @@ body {
   margin-bottom: 16%;
 }
 .device-duo-aside {
+  position: relative;
+  z-index: 2;
   width: 27%;
   justify-self: end;
   align-self: end;
