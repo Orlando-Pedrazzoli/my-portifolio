@@ -9,7 +9,7 @@ import { imageSize } from 'image-size';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import { trajectory, fullStack } from '@/content/home';
+import { trajectory, fullStack, certifications, leadership } from '@/content/home';
 import { site, absoluteUrl, languageAlternates } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
 
@@ -42,12 +42,12 @@ const intro = {
   pt: [
     'Nasci em São Paulo em 1981 e vivo em Portugal desde 2017. Passei a maior parte da vida adulta a construir empresas — a fabricar produto, negociar com fornecedores, contratar, vender, fechar — antes de fazer a transição para software em 2023.',
     'Isso muda a forma como programo. Quando um cliente descreve um problema, consigo ver a operação por trás dele: quem faz o quê, onde se perde tempo, o que acontece quando alguém se engana. O código vem depois disso, e é melhor por causa disso.',
-    'Hoje divido o tempo entre a Pedrazzoli Digital, onde construo produtos para clientes em Portugal e no Brasil, e a Accenture Portugal, onde trabalho como Content Operations Analyst.',
+    'Hoje divido o tempo entre a Pedrazzoli Digital, onde construo produtos para clientes em Portugal e no Brasil, e a Accenture Portugal, onde trabalho como Content Operations Analyst. Todos os dias pratico a implementação de inteligência artificial em processos reais — com revisão humana, dados protegidos e um critério de qualidade antes de alargar o uso.',
   ],
   en: [
     'I was born in São Paulo in 1981 and have lived in Portugal since 2017. I spent most of my adult life building companies — manufacturing product, negotiating with suppliers, hiring, selling, closing — before transitioning to software in 2023.',
     'That changes how I write code. When a client describes a problem, I can see the operation behind it: who does what, where time is lost, what happens when someone makes a mistake. The code comes after that, and is better because of it.',
-    'Today I split my time between Pedrazzoli Digital, where I build products for clients in Portugal and Brazil, and Accenture Portugal, where I work as a Content Operations Analyst.',
+    'Today I split my time between Pedrazzoli Digital, where I build products for clients in Portugal and Brazil, and Accenture Portugal, where I work as a Content Operations Analyst. Every day I practise implementing artificial intelligence in real processes — with a human in the loop, protected data and a quality bar before the use is widened.',
   ],
 };
 
@@ -173,6 +173,54 @@ export default async function AboutPage({
           <ul className='mt-4 space-y-2 text-ink-2'>
             {education[l].map(e => (
               <li key={e}>{e}</li>
+            ))}
+          </ul>
+
+          <h2 id='certificacoes' className='eyebrow mt-16 scroll-mt-24'>
+            {l === 'pt' ? 'Certificações' : 'Certifications'}
+          </h2>
+          <p className='prose-measure mt-4 text-ink-2'>
+            {l === 'pt'
+              ? 'Percipio, concluídas na Accenture. Excel, Word e Outlook no trabalho de conteúdo e de operação — folhas, documentos e calendário, não como substituto da stack de engenharia.'
+              : 'Percipio, completed at Accenture. Excel, Word and Outlook in content and operations work — spreadsheets, documents and calendar, not as a stand-in for the engineering stack.'}
+          </p>
+          <div className='mt-8 space-y-10'>
+            {certifications.map(group => (
+              <section key={group.title.en}>
+                <h3 className='display text-2xl'>{group.title[l]}</h3>
+                <p className='mt-1 font-mono text-xs text-ink-3'>
+                  Percipio · {group.date[l]}
+                </p>
+                <ul className='mt-4 divide-y divide-line border-t border-line'>
+                  {group.items.map(item => (
+                    <li
+                      key={item.id}
+                      className='flex flex-col gap-1 py-3 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6'
+                    >
+                      <span className='text-ink-2'>{item.name}</span>
+                      <span className='shrink-0 font-mono text-xs text-ink-3'>
+                        nº {item.id} · {item.duration}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))}
+          </div>
+
+          <h2 id='lideranca' className='eyebrow mt-16 scroll-mt-24'>
+            {l === 'pt' ? 'Liderança' : 'Leadership'}
+          </h2>
+          <p className='mt-4 font-mono text-xs text-ink-3'>
+            {leadership.issuer} · {leadership.program}
+          </p>
+          <p className='prose-measure mt-3 text-ink-2'>{leadership.note[l]}</p>
+          <ul className='mt-6 space-y-6'>
+            {leadership.items.map(item => (
+              <li key={item.title.en}>
+                <h3 className='display text-xl'>{item.title[l]}</h3>
+                <p className='mt-2 text-ink-2'>{item.body[l]}</p>
+              </li>
             ))}
           </ul>
 

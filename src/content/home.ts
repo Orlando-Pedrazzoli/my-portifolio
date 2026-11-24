@@ -61,9 +61,9 @@ export const hero = {
         pt: [
           'Faturação certificada',
           'Importações de dados',
-          'Crons e webhooks',
+          'IA aplicada',
         ],
-        en: ['Certified invoicing', 'Data imports', 'Crons & webhooks'],
+        en: ['Certified invoicing', 'Data imports', 'Applied AI'],
       },
     },
   ] satisfies { n: string; title: Bilingual; items: Bilingual<string[]> }[],
@@ -112,8 +112,8 @@ export const paths: Path[] = [
   {
     question: { pt: 'A recrutar?', en: 'Hiring?' },
     body: {
-      pt: 'Vê a minha experiência, competências técnicas e CV.',
-      en: 'See my experience, technical skills and CV.',
+      pt: 'Vê a minha experiência, competências, certificações e CV.',
+      en: 'See my experience, skills, certifications and CV.',
     },
     cta: { pt: 'Ver percurso e CV', en: 'View resume' },
     href: '/about',
@@ -174,8 +174,8 @@ export const capabilities: Capability[] = [
     n: '03',
     title: { pt: 'Automação de processos', en: 'Business automation' },
     body: {
-      pt: 'Automatizar fluxos repetitivos e processos operacionais: importações idempotentes de dados legados, lembretes e despesas recorrentes por cron, faturação certificada comunicada à AT sem intervenção manual. IA onde faz sentido, não como decoração.',
-      en: 'Automating repetitive workflows and operational processes: idempotent imports of legacy data, reminders and recurring expenses via cron, certified invoicing reported to the tax authority with no manual step. AI where it makes sense, not as decoration.',
+      pt: 'Automatizar fluxos repetitivos e processos operacionais: importações idempotentes de dados legados, lembretes e despesas recorrentes por cron, faturação certificada comunicada à AT sem intervenção manual. IA onde faz sentido — com prática diária, revisão humana e um critério de qualidade, não como decoração.',
+      en: 'Automating repetitive workflows and operational processes: idempotent imports of legacy data, reminders and recurring expenses via cron, certified invoicing reported to the tax authority with no manual step. AI where it makes sense — daily practice, a human in the loop and a quality bar, not as decoration.',
     },
     proof: {
       label: {
@@ -351,8 +351,8 @@ export const trajectory: TrajectoryItem[] = [
     period: '2024 – hoje',
     title: { pt: 'Accenture Portugal', en: 'Accenture Portugal' },
     body: {
-      pt: 'Content Operations Analyst. Em paralelo, continuo a construir produtos para clientes em Portugal e no Brasil através da Pedrazzoli Digital.',
-      en: 'Content Operations Analyst. In parallel, I keep building products for clients in Portugal and Brazil through Pedrazzoli Digital.',
+      pt: 'Content Operations Analyst. Microsoft 365 no trabalho diário e formação Accenture em presença executiva, inteligência emocional e coaching. Em paralelo, continuo a construir produtos para clientes em Portugal e no Brasil através da Pedrazzoli Digital.',
+      en: 'Content Operations Analyst. Microsoft 365 in daily work, and Accenture training in executive presence, emotional intelligence and coaching. In parallel, I keep building products for clients in Portugal and Brazil through Pedrazzoli Digital.',
     },
   },
 ];
@@ -465,4 +465,199 @@ export const fullStack: StackGroup[] = [
       'Google Search Console',
     ],
   },
+  {
+    title: { pt: 'Inteligência artificial', en: 'Artificial intelligence' },
+    items: [
+      'IA aplicada a processos',
+      'LLMs em fluxos de trabalho',
+      'Revisão humana',
+      'Avaliação de qualidade',
+      'Privacidade e limite de custo',
+      'Automação reversível',
+    ],
+  },
 ];
+
+/* --------------------------------------------------------------------------
+   IA APLICADA — prática diária. Sem case inventado: o método é a prova.
+   -------------------------------------------------------------------------- */
+export interface Practice {
+  n: string;
+  title: Bilingual;
+  body: Bilingual;
+}
+
+export const aiPractice = {
+  statement: {
+    pt: 'IA no processo, não no cartaz.',
+    en: 'AI in the process, not on the poster.',
+  } satisfies Bilingual,
+  lead: {
+    pt: 'Estudo e implemento inteligência artificial todos os dias. Posso introduzir o uso de IA em qualquer empresa — operações, conteúdo, atendimento, documentos ou produto — desde que o trabalho repetitivo saia e o controlo fique.',
+    en: 'I study and implement artificial intelligence every day. I can introduce AI into any company — operations, content, support, documents or product — as long as the repetitive work leaves and control stays.',
+  } satisfies Bilingual,
+  practices: [
+    {
+      n: '01',
+      title: { pt: 'Começar pelo processo', en: 'Start with the process' },
+      body: {
+        pt: 'Antes do modelo: quem faz a tarefa, quantas vezes, e o que acontece quando alguém se engana. A IA entra numa etapa concreta, não num departamento inteiro de uma vez.',
+        en: 'Before the model: who does the task, how often, and what happens when someone gets it wrong. AI enters one concrete step, not a whole department at once.',
+      },
+    },
+    {
+      n: '02',
+      title: { pt: 'Humano no circuito', en: 'A human in the loop' },
+      body: {
+        pt: 'Onde a decisão tem consequência — dinheiro, cliente, conteúdo publicado, dados pessoais — uma pessoa revê. A IA prepara. Não assina sozinha.',
+        en: 'Where a decision has consequences — money, a client, published content, personal data — a person reviews it. AI prepares. It does not sign alone.',
+      },
+    },
+    {
+      n: '03',
+      title: { pt: 'Dados, custo e reversão', en: 'Data, cost and reversal' },
+      body: {
+        pt: 'Nada sensível numa ferramenta pública. Gasto e latência com limite antes de escalar. A primeira versão tem de poder ser desligada sem partir a operação.',
+        en: 'Nothing sensitive goes into a public tool. Spend and latency are capped before anything scales. The first version has to be switchable off without breaking the operation.',
+      },
+    },
+    {
+      n: '04',
+      title: { pt: 'Medir antes de alargar', en: 'Measure before you widen it' },
+      body: {
+        pt: 'Uma tarefa, um critério de qualidade, uso real. Só depois o mesmo padrão noutro processo. Prática diária — não um piloto que ninguém volta a abrir.',
+        en: 'One task, one quality bar, real use. Only then the same pattern on another process. Daily practice — not a pilot nobody opens again.',
+      },
+    },
+  ] satisfies Practice[],
+};
+
+/* --------------------------------------------------------------------------
+   CERTIFICAÇÕES — só o que tem número Percipio. Liderança à parte:
+   são módulos Accenture, não certificados com número.
+   -------------------------------------------------------------------------- */
+export interface Certificate {
+  name: string;
+  id: string;
+  duration: string;
+}
+
+export interface CertificateGroup {
+  title: Bilingual;
+  date: Bilingual;
+  items: Certificate[];
+}
+
+export const certifications: CertificateGroup[] = [
+  {
+    title: {
+      pt: 'Microsoft Excel 365 (2023)',
+      en: 'Microsoft Excel 365 (2023)',
+    },
+    date: { pt: '29 de outubro de 2026', en: '29 October 2026' },
+    items: [
+      {
+        name: 'Getting started in Excel 365 (2023)',
+        id: '2627168',
+        duration: '43 min',
+      },
+      {
+        name: 'Formatting cells in Excel 365 (2023)',
+        id: '2627227',
+        duration: '34 min',
+      },
+      {
+        name: 'Exploring essential functions in Excel 365 (2023)',
+        id: '2627233',
+        duration: '43 min',
+      },
+      {
+        name: 'Getting started with charts in Excel 365 (2023)',
+        id: '2627243',
+        duration: '48 min',
+      },
+    ],
+  },
+  {
+    title: {
+      pt: 'Microsoft Word 365 (2024) e Word para a Web',
+      en: 'Microsoft Word 365 (2024) and Word for the Web',
+    },
+    date: { pt: '19 de novembro de 2026', en: '19 November 2026' },
+    items: [
+      {
+        name: 'Getting started in Word 365 (2024)',
+        id: '2627275',
+        duration: '43 min',
+      },
+      {
+        name: 'Working with text in Word 365 (2024)',
+        id: '2627122',
+        duration: '49 min',
+      },
+      {
+        name: 'Managing documents in Word 365 (2024)',
+        id: '2627334',
+        duration: '51 min',
+      },
+      {
+        name: 'Formatting text and shaping documents in Word for the Web',
+        id: '2627391',
+        duration: '43 min',
+      },
+    ],
+  },
+  {
+    title: { pt: 'Microsoft Outlook 365', en: 'Microsoft Outlook 365' },
+    date: { pt: '19 de novembro de 2026', en: '19 November 2026' },
+    items: [
+      {
+        name: 'Getting started in Outlook 365',
+        id: '2627427',
+        duration: '33 min',
+      },
+      {
+        name: 'Getting Started with Outlook Mail Web',
+        id: '2629168',
+        duration: '30 min',
+      },
+      {
+        name: 'Managing the calendar in Outlook 365',
+        id: '2629321',
+        duration: '48 min',
+      },
+    ],
+  },
+];
+
+export const leadership = {
+  issuer: 'Accenture',
+  program: 'Leadership Foundations',
+  note: {
+    pt: 'Formação interna. Uso isto no trabalho com clientes, pares e conteúdo — não é um certificado Percipio, por isso não tem número.',
+    en: 'Internal training. I use this with clients, peers and content work — it is not a Percipio certificate, so it has no number.',
+  } satisfies Bilingual,
+  items: [
+    {
+      title: { pt: 'Presença executiva', en: 'Executive presence' },
+      body: {
+        pt: 'Confiança, clareza e credibilidade. A forma de aparecer muda com a audiência — liderança, pares, clientes, equipas transversais — sem perder consistência.',
+        en: 'Confidence, clarity and credibility. How you show up changes with the audience — leadership, peers, clients, cross-functional teams — without losing consistency.',
+      },
+    },
+    {
+      title: { pt: 'Inteligência emocional', en: 'Emotional intelligence' },
+      body: {
+        pt: 'Autoconsciência, autogestão, consciência social e gestão de relações. Serve para feedback, conflito e trabalho sob pressão.',
+        en: 'Self-awareness, self-management, social awareness and relationship management. It is how feedback, conflict and pressure get handled.',
+      },
+    },
+    {
+      title: { pt: 'Coaching', en: 'Coaching' },
+      body: {
+        pt: 'Modelo DEEP: definir o foco, ampliar a consciência, explorar escolhas e planear a ação. Perguntar antes de dizer.',
+        en: 'The DEEP model: determine the focus, enhance awareness, explore choices and plan for action. Ask before you tell.',
+      },
+    },
+  ],
+};

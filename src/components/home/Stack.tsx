@@ -11,7 +11,7 @@ export default async function Stack() {
   const t = await getTranslations();
 
   return (
-    <Section id='stack' n='05' label={t('sections.stack')}>
+    <Section id='stack' n='06' label={t('sections.stack')}>
       <ul className='flex flex-wrap gap-x-6 gap-y-3 font-mono text-sm text-ink-2'>
         {stackShort.map(item => (
           <li key={item}>{item}</li>

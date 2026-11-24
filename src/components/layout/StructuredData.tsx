@@ -14,8 +14,8 @@ export default function StructuredData({ locale }: { locale: Locale }) {
     jobTitle: 'Full Stack Developer',
     description:
       locale === 'pt'
-        ? 'Full stack developer em Lisboa que combina engenharia de software com mais de quinze anos a construir e gerir empresas.'
-        : 'Full stack developer in Lisbon combining software engineering with 15+ years of building and operating businesses.',
+        ? 'Full stack developer em Lisboa que combina engenharia de software com mais de quinze anos a construir e gerir empresas. Estuda e implementa IA em processos reais todos os dias.'
+        : 'Full stack developer in Lisbon combining software engineering with 15+ years of building and operating businesses. Studies and implements AI in real company processes every day.',
     sameAs: [site.github, site.linkedin],
     worksFor: [
       {
@@ -42,6 +42,33 @@ export default function StructuredData({ locale }: { locale: Locale }) {
       'E-commerce',
       'SaaS',
       'Business automation',
+      'Applied artificial intelligence',
+      'Microsoft Excel',
+      'Microsoft Word',
+      'Microsoft Outlook',
+      'Executive presence',
+      'Emotional intelligence',
+      'Coaching',
+    ],
+    hasCredential: [
+      {
+        '@type': 'EducationalOccupationalCredential',
+        name: 'Microsoft Excel 365 (2023)',
+        credentialCategory: 'certificate',
+        recognizedBy: { '@type': 'Organization', name: 'Percipio' },
+      },
+      {
+        '@type': 'EducationalOccupationalCredential',
+        name: 'Microsoft Word 365 (2024)',
+        credentialCategory: 'certificate',
+        recognizedBy: { '@type': 'Organization', name: 'Percipio' },
+      },
+      {
+        '@type': 'EducationalOccupationalCredential',
+        name: 'Microsoft Outlook 365',
+        credentialCategory: 'certificate',
+        recognizedBy: { '@type': 'Organization', name: 'Percipio' },
+      },
     ],
   };
   const website = {

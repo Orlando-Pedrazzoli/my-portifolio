@@ -10,7 +10,7 @@ export default async function Contact() {
   const t = await getTranslations();
 
   return (
-    <Section id='contact' n='06' label={t('sections.contact')} wide>
+    <Section id='contact' n='07' label={t('sections.contact')} wide>
       <div className='grid gap-12 lg:grid-cols-12 lg:gap-16'>
         <div className='lg:col-span-6'>
           <h2 className='display t-h1 max-w-[14ch]'>{t('contact.title')}</h2>

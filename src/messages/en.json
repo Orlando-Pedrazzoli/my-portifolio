@@ -16,6 +16,7 @@
     "moreWork": "More work",
     "services": "What I build",
     "principles": "Engineering principles",
+    "ai": "Applied AI",
     "background": "Background",
     "stack": "Tech stack",
     "contact": "Contact"
@@ -29,6 +30,7 @@
     "downloadCv": "Download CV",
     "fullBackground": "Full background",
     "fullStack": "View full technical stack",
+    "certifications": "See certifications",
     "backHome": "Back to work",
     "problem": "The problem",
     "solution": "Solution",
@@ -50,7 +52,7 @@
   },
   "contact": {
     "title": "Have something worth building?",
-    "lead": "Tell me what you're building, what isn't working, or what you want to automate.",
+    "lead": "Tell me what you're building, what isn't working, or what you want to automate — with or without AI.",
     "responds": "Usually responds within 24 hours",
     "emailDirect": "Or email me directly",
     "name": "Name",
@@ -69,7 +71,7 @@
   },
   "meta": {
     "title": "Orlando Pedrazzoli — Full Stack Developer in Lisbon",
-    "description": "Full Stack Developer in Lisbon. Websites, e-commerce, SaaS and business systems with TypeScript, React, Next.js and Node.js — from business problem to production. Available remotely.",
+    "description": "Full Stack Developer in Lisbon. Websites, e-commerce, SaaS, business systems and AI applied to real processes. TypeScript, React and Next.js. Available remotely.",
     "workTitle": "Work",
     "aboutTitle": "Background & resume"
   }
