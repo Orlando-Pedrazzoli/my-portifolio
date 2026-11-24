@@ -2,8 +2,9 @@
 import type { Bilingual } from './types';
 
 /* --------------------------------------------------------------------------
-   HERO — posicionamento: developer que percebe o negócio por trás do software.
-   Sem lista de tecnologias aqui; isso vive mais abaixo.
+   HERO — a afirmação fica estável (é o posicionamento, e o H1).
+   A bancada ao lado é a interação: escolher um trabalho levanta as peças
+   distintivas desse trabalho. Não é a stack completa — essa está no case.
    -------------------------------------------------------------------------- */
 export const hero = {
   role: {
@@ -35,38 +36,6 @@ export const hero = {
     pt: 'Lisboa, Portugal · Disponível para freelance e oportunidades remotas',
     en: 'Lisbon, Portugal · Available for freelance & remote opportunities',
   } satisfies Bilingual,
-  /* Índice de capacidades — coluna direita do hero em desktop. Estático,
-     em mono; aponta para "O que construo". Nomes iguais aos de `capabilities`. */
-  index: [
-    {
-      n: '01',
-      title: { pt: 'Desenvolvimento de produto', en: 'Product development' },
-      items: {
-        pt: ['SaaS', 'Sistemas de gestão', 'Plataformas de operações'],
-        en: ['SaaS', 'Business systems', 'Operations platforms'],
-      },
-    },
-    {
-      n: '02',
-      title: { pt: 'Aplicações full stack', en: 'Full stack applications' },
-      items: {
-        pt: ['E-commerce', 'APIs e integrações', 'Pagamentos'],
-        en: ['E-commerce', 'APIs & integrations', 'Payments'],
-      },
-    },
-    {
-      n: '03',
-      title: { pt: 'Automação de processos', en: 'Business automation' },
-      items: {
-        pt: [
-          'Faturação certificada',
-          'Importações de dados',
-          'IA aplicada',
-        ],
-        en: ['Certified invoicing', 'Data imports', 'Applied AI'],
-      },
-    },
-  ] satisfies { n: string; title: Bilingual; items: Bilingual<string[]> }[],
   /* Números normalizados — os mesmos em todo o site. */
   facts: [
     {
@@ -95,6 +64,186 @@ export const hero = {
       },
     },
   ],
+};
+
+/* --------------------------------------------------------------------------
+   BANCADA — a interação do hero. Cada trabalho levanta só as peças que o
+   distinguem (não a stack inteira). "Tudo" não escolhe kit: as peças
+   ficam pousadas até alguém tocar. IA levanta o método, não um produto.
+   -------------------------------------------------------------------------- */
+export type BenchIcon = 'all' | 'product' | 'shop' | 'ops' | 'practice';
+
+export interface BenchPiece {
+  id: string;
+  name: Bilingual;
+  note: Bilingual;
+}
+
+export interface BenchJob {
+  id: string;
+  label: Bilingual;
+  icon: BenchIcon;
+  /** Ids de `bench.pieces`. Vazio = a olhar, sem kit. */
+  pieces: string[];
+  /** Três linhas; a última vai no acento. */
+  title: Bilingual<[string, string, string]>;
+  href: string;
+  cta: Bilingual;
+  proof: Bilingual;
+}
+
+export const bench = {
+  defaultJob: 'product',
+  picker: {
+    pt: 'O que estás a construir?',
+    en: 'What are you building?',
+  } satisfies Bilingual,
+  hint: {
+    pt: 'Toca numa peça para a adicionar ou tirar.',
+    en: 'Tap a piece to add or remove it.',
+  } satisfies Bilingual,
+  preview: { pt: 'Pré-visualização', en: 'Preview' } satisfies Bilingual,
+  inKit: { pt: 'No kit', en: 'In the kit' } satisfies Bilingual,
+  outKit: { pt: 'Fora do kit', en: 'Not in the kit' } satisfies Bilingual,
+  pieceOne: { pt: 'peça', en: 'piece' } satisfies Bilingual,
+  pieceMany: { pt: 'peças', en: 'pieces' } satisfies Bilingual,
+  empty: {
+    pt: 'Toca nas peças para montar um kit.',
+    en: 'Tap pieces to build a kit.',
+  } satisfies Bilingual,
+  custom: { pt: 'Personalizado', en: 'Custom' } satisfies Bilingual,
+  yours: { pt: 'As tuas peças', en: 'Your picks' } satisfies Bilingual,
+  reset: { pt: 'Repor o kit', en: 'Reset the kit' } satisfies Bilingual,
+  addAria: { pt: 'Adicionar ao kit', en: 'Add to the kit' } satisfies Bilingual,
+  removeAria: {
+    pt: 'Tirar do kit',
+    en: 'Remove from the kit',
+  } satisfies Bilingual,
+  pieces: [
+    { id: 'next', name: { pt: 'Next.js', en: 'Next.js' }, note: { pt: 'App', en: 'App' } },
+    {
+      id: 'ts',
+      name: { pt: 'TypeScript', en: 'TypeScript' },
+      note: { pt: 'Tipos', en: 'Types' },
+    },
+    {
+      id: 'mongo',
+      name: { pt: 'MongoDB', en: 'MongoDB' },
+      note: { pt: 'Dados', en: 'Data' },
+    },
+    {
+      id: 'auth',
+      name: { pt: 'NextAuth', en: 'NextAuth' },
+      note: { pt: 'Sessões', en: 'Sessions' },
+    },
+    {
+      id: 'zod',
+      name: { pt: 'Zod', en: 'Zod' },
+      note: { pt: 'Validação', en: 'Validation' },
+    },
+    {
+      id: 'mp',
+      name: { pt: 'Mercado Pago', en: 'Mercado Pago' },
+      note: { pt: 'Pagamentos', en: 'Payments' },
+    },
+    {
+      id: 'moloni',
+      name: { pt: 'Moloni', en: 'Moloni' },
+      note: { pt: 'Faturação', en: 'Invoicing' },
+    },
+    {
+      id: 'cron',
+      name: { pt: 'Crons', en: 'Crons' },
+      note: { pt: 'Recorrência', en: 'Recurrence' },
+    },
+    {
+      id: 'process',
+      name: { pt: 'Processo', en: 'Process' },
+      note: { pt: 'Primeiro', en: 'First' },
+    },
+    {
+      id: 'human',
+      name: { pt: 'Revisão humana', en: 'Human review' },
+      note: { pt: 'No circuito', en: 'In the loop' },
+    },
+    {
+      id: 'limits',
+      name: { pt: 'Dados e custo', en: 'Data and cost' },
+      note: { pt: 'Com limite', en: 'Capped' },
+    },
+    {
+      id: 'measure',
+      name: { pt: 'Medir', en: 'Measure' },
+      note: { pt: 'Antes de alargar', en: 'Before widening' },
+    },
+  ] satisfies BenchPiece[] as BenchPiece[],
+  jobs: [
+    {
+      id: 'all',
+      label: { pt: 'Tudo', en: 'All' },
+      icon: 'all',
+      pieces: [],
+      title: {
+        pt: ['Escolhe', 'um trabalho.', 'Ou as peças.'],
+        en: ['Pick', 'a job.', 'Or the pieces.'],
+      },
+      href: '/#work',
+      cta: { pt: 'Ver trabalho', en: 'See the work' },
+      proof: { pt: 'As tuas peças', en: 'Your picks' },
+    },
+    {
+      id: 'product',
+      label: { pt: 'Um produto', en: 'A product' },
+      icon: 'product',
+      pieces: ['next', 'ts', 'mongo', 'auth', 'zod'],
+      title: {
+        pt: ['Um produto', 'clínico,', 'em produção.'],
+        en: ['A clinic', 'product,', 'in production.'],
+      },
+      href: '/work/cdc-manager',
+      cta: { pt: 'Ver este trabalho', en: 'See this work' },
+      proof: { pt: 'CDC Manager', en: 'CDC Manager' },
+    },
+    {
+      id: 'shop',
+      label: { pt: 'Uma loja', en: 'A shop' },
+      icon: 'shop',
+      pieces: ['next', 'ts', 'mongo', 'mp'],
+      title: {
+        pt: ['Uma loja', 'com pagamento', 'a funcionar.'],
+        en: ['A shop', 'with payments', 'that work.'],
+      },
+      href: '/work/surfers-paradise',
+      cta: { pt: 'Ver este trabalho', en: 'See this work' },
+      proof: { pt: 'Surfers Paradise', en: 'Surfers Paradise' },
+    },
+    {
+      id: 'ops',
+      label: { pt: 'Uma operação', en: 'An operation' },
+      icon: 'ops',
+      pieces: ['next', 'ts', 'moloni', 'cron'],
+      title: {
+        pt: ['Agenda,', 'caixa e', 'faturação.'],
+        en: ['Schedule,', 'the till and', 'invoices.'],
+      },
+      href: '/work/chi-sublime',
+      cta: { pt: 'Ver este trabalho', en: 'See this work' },
+      proof: { pt: 'Chi Sublime', en: 'Chi Sublime' },
+    },
+    {
+      id: 'practice',
+      label: { pt: 'IA no processo', en: 'AI in the process' },
+      icon: 'practice',
+      pieces: ['process', 'human', 'limits', 'measure'],
+      title: {
+        pt: ['IA no', 'processo,', 'não no cartaz.'],
+        en: ['AI in the', 'process,', 'not the poster.'],
+      },
+      href: '/#ai',
+      cta: { pt: 'Ver a prática', en: 'See the practice' },
+      proof: { pt: 'IA aplicada', en: 'Applied AI' },
+    },
+  ] satisfies BenchJob[] as BenchJob[],
 };
 
 /* --------------------------------------------------------------------------
