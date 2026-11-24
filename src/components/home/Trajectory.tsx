@@ -15,7 +15,7 @@ export default async function Trajectory() {
   const t = await getTranslations();
 
   return (
-    <Section id='background' n='04' label={t('sections.background')}>
+    <Section id='background' n='05' label={t('sections.background')}>
       <p className='eyebrow'>{background.path[locale]}</p>
       <h2 className='display t-h2 mt-4 max-w-[18ch]'>
         {background.statement[locale]}

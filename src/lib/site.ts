@@ -13,7 +13,7 @@ export const site = {
   photo: '/img_orlando.jpg',
   /** Data da última revisão de conteúdo. Atualizar quando o conteúdo muda
       de facto — alimenta o lastModified do sitemap (não a data do build). */
-  contentUpdated: '2026-09-25',
+  contentUpdated: '2026-11-24',
 } as const;
 
 /** Código hreflang / BCP 47 de cada locale. PT é explicitamente pt-PT:

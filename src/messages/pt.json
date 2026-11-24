@@ -16,6 +16,7 @@
     "moreWork": "Mais trabalho",
     "services": "O que construo",
     "principles": "Princípios de engenharia",
+    "ai": "IA aplicada",
     "background": "Percurso",
     "stack": "Stack",
     "contact": "Contacto"
@@ -29,6 +30,7 @@
     "downloadCv": "Descarregar CV",
     "fullBackground": "Percurso completo",
     "fullStack": "Ver stack técnica completa",
+    "certifications": "Ver certificações",
     "backHome": "Voltar ao trabalho",
     "problem": "O problema",
     "solution": "Solução",
@@ -50,7 +52,7 @@
   },
   "contact": {
     "title": "Tens um problema que precisa de software?",
-    "lead": "Conta-me o que estás a construir, o que não está a funcionar ou o que gostarias de automatizar.",
+    "lead": "Conta-me o que estás a construir, o que não está a funcionar ou o que gostarias de automatizar — com ou sem IA.",
     "responds": "Normalmente respondo em 24 horas",
     "emailDirect": "Ou escreve-me diretamente",
     "name": "Nome",
@@ -69,7 +71,7 @@
   },
   "meta": {
     "title": "Orlando Pedrazzoli — Full Stack Developer em Lisboa",
-    "description": "Full Stack Developer em Lisboa. Websites, e-commerce, SaaS e sistemas de gestão com TypeScript, React, Next.js e Node.js — do problema de negócio à produção. Disponível remoto.",
+    "description": "Full Stack Developer em Lisboa. Websites, e-commerce, SaaS, sistemas de gestão e IA aplicada a processos reais. TypeScript, React e Next.js. Disponível remoto.",
     "workTitle": "Trabalho",
     "aboutTitle": "Percurso e CV"
   }
