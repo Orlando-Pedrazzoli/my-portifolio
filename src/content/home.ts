@@ -682,16 +682,20 @@ export const aiPractice = {
 };
 
 /* --------------------------------------------------------------------------
-   CERTIFICAÇÕES — só o que tem número Percipio. Liderança à parte:
-   são módulos Accenture, não certificados com número.
+   CERTIFICAÇÕES — só o que se verifica. Percipio tem número. Udacity tem
+   página pública de conclusão de curso (fluência, não nanodegree).
+   Liderança à parte: módulos Accenture, sem número.
    -------------------------------------------------------------------------- */
 export interface Certificate {
   name: string;
   id: string;
   duration: string;
+  /** Página pública de verificação, quando existe. */
+  url?: string;
 }
 
 export interface CertificateGroup {
+  issuer: string;
   title: Bilingual;
   date: Bilingual;
   items: Certificate[];
@@ -699,6 +703,26 @@ export interface CertificateGroup {
 
 export const certifications: CertificateGroup[] = [
   {
+    issuer: 'Udacity',
+    title: { pt: 'Fluência em IA', en: 'AI fluency' },
+    date: { pt: 'novembro de 2026', en: 'November 2026' },
+    items: [
+      {
+        name: 'Generative AI Fluency',
+        id: '4520ac0c-e4f0-11f1-9bd6-136af0fefc0d',
+        duration: '7 h',
+        url: 'https://www.udacity.com/certificate/e/4520ac0c-e4f0-11f1-9bd6-136af0fefc0d',
+      },
+      {
+        name: 'Agentic AI Fluency',
+        id: '47f7bb10-e8be-11f1-9a28-dbe138a36106',
+        duration: '6 h',
+        url: 'https://www.udacity.com/certificate/e/47f7bb10-e8be-11f1-9a28-dbe138a36106',
+      },
+    ],
+  },
+  {
+    issuer: 'Percipio',
     title: {
       pt: 'Microsoft Excel 365 (2023)',
       en: 'Microsoft Excel 365 (2023)',
@@ -728,6 +752,7 @@ export const certifications: CertificateGroup[] = [
     ],
   },
   {
+    issuer: 'Percipio',
     title: {
       pt: 'Microsoft Word 365 (2024) e Word para a Web',
       en: 'Microsoft Word 365 (2024) and Word for the Web',
@@ -757,6 +782,7 @@ export const certifications: CertificateGroup[] = [
     ],
   },
   {
+    issuer: 'Percipio',
     title: { pt: 'Microsoft Outlook 365', en: 'Microsoft Outlook 365' },
     date: { pt: '19 de novembro de 2026', en: '19 November 2026' },
     items: [
