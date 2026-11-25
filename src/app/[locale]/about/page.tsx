@@ -181,15 +181,15 @@ export default async function AboutPage({
           </h2>
           <p className='prose-measure mt-4 text-ink-2'>
             {l === 'pt'
-              ? 'Percipio, concluídas na Accenture. Excel, Word e Outlook no trabalho de conteúdo e de operação — folhas, documentos e calendário, não como substituto da stack de engenharia.'
-              : 'Percipio, completed at Accenture. Excel, Word and Outlook in content and operations work — spreadsheets, documents and calendar, not as a stand-in for the engineering stack.'}
+              ? 'Percipio, concluídas na Accenture. Excel, Word e Outlook servem o trabalho de conteúdo e de operação — folhas, documentos e calendário — e não substituem a stack de engenharia. Udacity: certificados de conclusão de curso, de fluência, não nanodegrees. IA generativa e IA agêntica — o que um agente faz, como se avalia e quando entra num processo.'
+              : 'Percipio, completed at Accenture. Excel, Word and Outlook are for content and operations work — spreadsheets, documents and calendar — not a stand-in for the engineering stack. Udacity: course-completion fluency certificates, not nanodegrees. Generative AI and agentic AI — what an agent does, how it is evaluated, and when it belongs in a process.'}
           </p>
           <div className='mt-8 space-y-10'>
             {certifications.map(group => (
               <section key={group.title.en}>
                 <h3 className='display text-2xl'>{group.title[l]}</h3>
                 <p className='mt-1 font-mono text-xs text-ink-3'>
-                  Percipio · {group.date[l]}
+                  {group.issuer} · {group.date[l]}
                 </p>
                 <ul className='mt-4 divide-y divide-line border-t border-line'>
                   {group.items.map(item => (
@@ -199,7 +199,20 @@ export default async function AboutPage({
                     >
                       <span className='text-ink-2'>{item.name}</span>
                       <span className='shrink-0 font-mono text-xs text-ink-3'>
-                        nº {item.id} · {item.duration}
+                        {item.url ? (
+                          <a
+                            href={item.url}
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            className='link'
+                          >
+                            {l === 'pt' ? 'Verificar' : 'Verify'}
+                          </a>
+                        ) : (
+                          <>nº {item.id}</>
+                        )}
+                        {' · '}
+                        {item.duration}
                       </span>
                     </li>
                   ))}
